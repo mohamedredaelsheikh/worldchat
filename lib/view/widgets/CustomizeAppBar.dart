@@ -13,7 +13,7 @@ import 'package:ahlachat/viewmodels/InboxRooms_Viewmodel/InboxRoomsViewmodel.dar
 import 'package:provider/provider.dart';
 
 
-class CustomizeAppbar extends StatelessWidget  with PreferredSizeWidget{
+class CustomizeAppbar extends StatelessWidget  implements PreferredSizeWidget{
 
 String? tittle;
 bool  ? autopop;
@@ -46,7 +46,7 @@ CustomizeAppbar({this.tittle,  this.autopop});
 }
 
 
-class CustomizeChatAppbar extends StatelessWidget  with PreferredSizeWidget{
+class CustomizeChatAppbar extends StatelessWidget  implements PreferredSizeWidget{
 
   String? tittle;
   String? image;

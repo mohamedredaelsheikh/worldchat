@@ -1,7 +1,7 @@
 
 import 'dart:async';
 
-import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +33,7 @@ ChangeRepeate(state){
   EndAgora(){
     muted=true;
     _engine?.leaveChannel();
-    //_engine?.destroy();
+    //_engine?.release();
     notifyListeners();
   }
   bool disableAudio=false;
@@ -55,28 +55,36 @@ ChangeRepeate(state){
   }
 
   var initialValue=0.0;
-  Future<void> initialize({ClientRole? role,required Token,required channelName}) async {
+  Future<void> initialize({ClientRoleType? role,required Token,required channelName}) async {
     await _initAgoraRtcEngine(Role: role);
     _addAgoraEventHandlers();
-    await _engine?.joinChannel(Token, channelName, null,int.parse(UserId!));
+    await _engine?.joinChannel(
+      token: Token?.toString() ?? '',
+      channelId: channelName.toString(),
+      uid: int.parse(UserId!),
+      options: const ChannelMediaOptions(),
+    );
 
     notifyListeners();
   }
-  Future<void> _initAgoraRtcEngine({Role}) async {
-    _engine = await RtcEngine.create(APP_ID);
+  Future<void> _initAgoraRtcEngine({ClientRoleType? Role}) async {
+    _engine = createAgoraRtcEngine();
+    await _engine?.initialize(RtcEngineContext(appId: APP_ID));
 
 
     await _engine?.enableAudio();
-    await _engine?.setChannelProfile(ChannelProfile.LiveBroadcasting);
-    if(Role==ClientRole.Broadcaster){
+    await _engine?.setChannelProfile(ChannelProfileType.channelProfileLiveBroadcasting);
+    if(Role==ClientRoleType.clientRoleBroadcaster){
       await _engine?. adjustRecordingSignalVolume(400);
         muted=false;
     }else{
         muted=true;
     }
-    await _engine?.enableAudioVolumeIndication(250, 3, true);
+    await _engine?.enableAudioVolumeIndication(interval: 250, smooth: 3, reportVad: true);
 
-    await _engine?.setClientRole(Role);
+    if (Role != null) {
+      await _engine?.setClientRole(role: Role);
+    }
 
     notifyListeners();
   }
@@ -88,7 +96,7 @@ int index=0;
     playmusic=true;
     index=indexsong;
     PlaySong.add(tittle);
-    await _engine?.startAudioMixing(filePath, false, false, -1);
+    await _engine?.startAudioMixing(filePath: filePath, loopback: false, cycle: -1);
     notifyListeners();
   }
 
@@ -166,11 +174,11 @@ int volumnaudio=50;
 
 
   muteusermic(uid)async{
-    await _engine?.muteRemoteAudioStream(uid, true);
+    await _engine?.muteRemoteAudioStream(uid: uid, mute: true);
     notifyListeners();
   }
   unmuteusermic(uid)async{
-    await _engine?.muteRemoteAudioStream(uid, false);
+    await _engine?.muteRemoteAudioStream(uid: uid, mute: false);
     notifyListeners();
   }
 
@@ -194,10 +202,10 @@ int volumnaudio=50;
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: false);
    if(Room.Mutedids.contains(uid)){
      Room.Mutedids.remove(uid);
-     await _engine?.muteRemoteAudioStream(uid, false);
+     await _engine?.muteRemoteAudioStream(uid: uid, mute: false);
    }else{
      Room.Mutedids.add(uid);
-     await _engine?.muteRemoteAudioStream(uid, true);
+     await _engine?.muteRemoteAudioStream(uid: uid, mute: true);
    }
 
 
@@ -206,7 +214,7 @@ int volumnaudio=50;
   SetasBroadcaster()async{
     muted=false;
     notifyListeners();
-    await _engine?.setClientRole(ClientRole.Broadcaster);
+    await _engine?.setClientRole(role: ClientRoleType.clientRoleBroadcaster);
     await _engine?. adjustRecordingSignalVolume(400);
   }
   SetasAudience()async{
@@ -214,7 +222,7 @@ int volumnaudio=50;
 
     muted=true;
     notifyListeners();
-   await _engine?.setClientRole(ClientRole.Audience);
+   await _engine?.setClientRole(role: ClientRoleType.clientRoleAudience);
   }
 
   void Mute()async{
@@ -235,7 +243,7 @@ int volumnaudio=50;
     muted=true;
     JoinChairs=false;
     KickedFromChair=false;
-    await _engine?.setClientRole(ClientRole.Audience);
+    await _engine?.setClientRole(role: ClientRoleType.clientRoleAudience);
     notifyListeners();
   }
   int userjoindid=0;
@@ -245,24 +253,24 @@ int volumnaudio=50;
   List UserIDS=[];
 
    void _addAgoraEventHandlers() {
-    _engine?.setEventHandler(RtcEngineEventHandler(
-      error: (code) {print('onError: $code');},
-      joinChannelSuccess: (channel, uid, elapsed) {
-        userjoindid=uid;
+    _engine?.registerEventHandler(RtcEngineEventHandler(
+      onError: (ErrorCodeType err, String msg) {print('onError: $err $msg');},
+      onJoinChannelSuccess: (RtcConnection connection, int elapsed) {
+        userjoindid=connection.localUid ?? 0;
 
       },
-      leaveChannel: (stats) {
+      onLeaveChannel: (RtcConnection connection, RtcStats stats) {
         print('onLeaveChannel :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: ');
       },
-      userJoined: (uid, elapsed) {
-        usersuid.add(uid);
-        userjoin.add({'userid':userjoindid,'uid':uid});
+      onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
+        usersuid.add(remoteUid);
+        userjoin.add({'userid':userjoindid,'uid':remoteUid});
 
-        }, audioVolumeIndication: (volumeInfo, v) {
+        }, onAudioVolumeIndication: (RtcConnection connection, List<AudioVolumeInfo> speakers, int speakerNumber, int totalVolume) {
 
-      volumeInfo.forEach((speaker) {
+      speakers.forEach((speaker) {
 
-    if (speaker.volume >70){
+    if ((speaker.volume ?? 0) >70){
 
       if(speaker.uid!=0){
         speakerids.add({'uid':speaker.uid,'time': DateTime.now()});

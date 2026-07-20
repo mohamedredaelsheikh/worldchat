@@ -38,7 +38,7 @@ class _SplashScreanState extends State<SplashScrean> {
   void checkConnectitivy() async {
 
     var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile||connectivityResult==ConnectivityResult.wifi) {
+    if (connectivityResult.contains(ConnectivityResult.mobile)||connectivityResult.contains(ConnectivityResult.wifi)) {
       SchedulerBinding.instance?.addPostFrameCallback((_) async{
      await Helper().ids();
      Helper().checkVersion();

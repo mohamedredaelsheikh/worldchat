@@ -55,12 +55,11 @@ class AdminChair extends StatelessWidget {
               if(Agora.speakerids.any((element) =>element['uid']==int.parse(Room.Currentroom?.chairs?[8].userId??'0') )&&Room.Currentroom?.chairs?[8].mute==0  )    Positioned(top: 0,
                 child: AvatarGlow(
                   glowColor: Colors.tealAccent,
-                  endRadius:40,showTwoGlows: true,
+                  glowRadiusFactor: 0.4,
                   duration: Duration(milliseconds: 1000),
                   repeat: true,
                   animate: true,
                   child:SizedBox(),
-                  repeatPauseDuration:Duration(milliseconds: 100) ,
                 ),
               ),
               Column(mainAxisSize: MainAxisSize.min,

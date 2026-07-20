@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -31,7 +32,7 @@ class DeviceInfo {
     if (Platform.isAndroid) {
       AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
       packageName = packageInfo.packageName;
-      deviceID = androidInfo.androidId!;
+      deviceID = await const AndroidId().getId() ?? "";
       version = packageInfo.version;
       versionCode = packageInfo.buildNumber;
       model = androidInfo.model!;

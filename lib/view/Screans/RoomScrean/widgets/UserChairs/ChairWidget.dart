@@ -100,12 +100,11 @@ import 'package:provider/provider.dart';
             Positioned(top: 0,
             child: AvatarGlow(
               glowColor: Colors.tealAccent,
-              endRadius:40,showTwoGlows: true,
+              glowRadiusFactor: 0.4,
               duration: Duration(milliseconds: 1000),
               repeat: true,
               animate: true,
               child:SizedBox(),
-              repeatPauseDuration:Duration(milliseconds: 50) ,
             ),
            ),
           Column(mainAxisSize: MainAxisSize.min,

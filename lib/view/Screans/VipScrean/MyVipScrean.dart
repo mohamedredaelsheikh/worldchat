@@ -25,7 +25,7 @@ class MyVipScrean extends StatelessWidget {
         appBar: AppBar(elevation:0,centerTitle: true,iconTheme: IconThemeData(color: Color(0xFFeae2be)),backgroundColor: Colors.transparent,title: Text(getLang(context: context,key: "My_Vip"),style: style5.copyWith(color:Color(0xFFeae2be)),),actions: [
         TextButton(
           style: TextButton.styleFrom(
-            primary:Color(0xFFeae2be),
+            foregroundColor:Color(0xFFeae2be),
           ),
           onPressed: () {
             showDialog(context: context,builder: (context) {

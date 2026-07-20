@@ -5,13 +5,12 @@ import 'package:ahlachat/view/Screans/MainScreans/Explore/ExoploreTaps.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MessageScrean/MessageTaps.dart';
 import 'package:ahlachat/viewmodels/Socket_ViewModel/Socketviewmodel.dart';
 import 'package:ahlachat/viewmodels/Wallet_ViewModel/Wallet_ViewModel.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:in_app_update/in_app_update.dart';
-import 'package:palestine_trusted_device/palestine_trusted_device.dart';
 import 'package:provider/provider.dart';
 import 'package:pusher_channels/pusher_channels.dart';
 import '../../../util/Dialogs.dart';
@@ -108,23 +107,6 @@ class _ButtomNavigationState extends State<ButtomNavigation> with   WidgetsBindi
     // }
   }
 
-  Trusted(){
-    PalTrustedDevice.check(
-      emulator: true,
-      devMode: false,
-      onExtStorage: false,
-      rooted: false,
-      onFail: () {
-        Dialogs().showtoast('you use emulator');
-        SystemNavigator.pop();
-
-      },
-
-    );
-
-  }
-
-
   checkforupdates(){
 
     InAppUpdate.checkForUpdate().then((updateInfo) {
@@ -166,12 +148,12 @@ class _ButtomNavigationState extends State<ButtomNavigation> with   WidgetsBindi
 
      Provider.of<RoomViewmodel>(context,listen: false).GetRoom(context: context);
       Provider.of<RoomViewmodel>(context,listen: false).GetFixedRoom(context: context);
-      Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+      Connectivity().onConnectivityChanged.listen((List<ConnectivityResult> result) {
         initPlatformState();
     // isVpnActive();
     // Trusted();
 
-        if(result.name=='none'){
+        if(result.contains(ConnectivityResult.none)){
 
             Navigator.pushNamed(context, AppConstants.InternetConnection_Screan);
 
@@ -318,7 +300,7 @@ print(index);
               icon:Stack(   children: [
                 Image.asset(_selectedIndex==2?Images.chatcon:Images.chatconcolor,height:25,width: 25,),
              if( Provider.of<LoginViewmodel>(context, listen:true).userinfo?.MessageNumber!=0&&Provider.of<LoginViewmodel>(context, listen:true).userinfo?.MessageNumber!=null)   Positioned(top: -5,
-                  child: Badge(
+                  child: badges.Badge(
                     badgeContent: Text(user.userinfo?.MessageNumber.toString()??"0",style: TextStyle(color: Colors.white,fontSize: 10)),
 
 

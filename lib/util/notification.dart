@@ -36,7 +36,8 @@ class LocalNotificationService {
 
     await _localNotificationService.initialize(
       settings,
-      onSelectNotification:       (payload) {
+      onDidReceiveNotificationResponse: (NotificationResponse response) {
+        final payload = response.payload;
         if(payload=='1'){
           Provider.of<InboxroomViewModel>(NavigationService.navigatorKey.currentContext!,listen: false).GetInboxroom(context: NavigationService.navigatorKey.currentContext);
           showModalBottomSheet(backgroundColor: Colors.white,isScrollControlled: false, barrierColor:Colors.black.withAlpha(1), shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
@@ -102,7 +103,7 @@ class LocalNotificationService {
         tz.local,
       ),
       details,
-      androidAllowWhileIdle: true,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
       UILocalNotificationDateInterpretation.absoluteTime,
     );

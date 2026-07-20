@@ -41,7 +41,7 @@ import 'viewmodels/Agency_ViewModel/Agency_ViewModel.dart';
 import 'viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'viewmodels/Language_Viewmodel/LanguageViewmodel.dart';
 import 'viewmodels/RoomPlay_ViewModel/RoomPlayViewModel.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 class NavigationService {
   static GlobalKey<NavigatorState> navigatorKey =
   GlobalKey<NavigatorState>();
@@ -51,7 +51,8 @@ void main() async{
   await PurchasaApi.init();
   await Firebase.initializeApp();
   await FirebaseAppCheck.instance.activate(
-    webRecaptchaSiteKey: '6LeTyNskAAAAAPBF2IAaDviJkDBPnjufzgf0ydQo',
+    androidProvider: AndroidProvider.playIntegrity,
+    appleProvider: AppleProvider.appAttest,
   );
   checklanguage();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +61,7 @@ void main() async{
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   getnotifitoken();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) async{
-    Wakelock.enable();
+    WakelockPlus.enable();
      runApp(MyApp());
     //await SentryReporter.setup(MyApp());
   });

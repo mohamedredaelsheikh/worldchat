@@ -16,6 +16,7 @@ import 'package:ahlachat/view/Screans/ChatScrean/ChatScrean.dart';
 import 'package:ahlachat/view/Screans/HostreportScrean/HostreportScrean.dart';
 import 'package:ahlachat/view/Screans/SearchScrean/widgets/SearchPeople.dart';
 import 'package:ahlachat/viewmodels/InboxRooms_Viewmodel/InboxRoomsViewmodel.dart';
+import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -313,15 +314,15 @@ Cropimage2(value)async{
   CroppedFile? croppedFile = await ImageCropper().cropImage(
     sourcePath: value.path,
 
-    aspectRatioPresets: [
-      CropAspectRatioPreset.square,
-      CropAspectRatioPreset.ratio3x2,
-      CropAspectRatioPreset.original,
-      CropAspectRatioPreset.ratio4x3,
-      CropAspectRatioPreset.ratio16x9
-    ],
     uiSettings: [
       AndroidUiSettings(
+          aspectRatioPresets: [
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.ratio3x2,
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.ratio4x3,
+            CropAspectRatioPreset.ratio16x9
+          ],
           toolbarTitle: 'Cropper',
           toolbarColor: Colors.deepOrange,
           toolbarWidgetColor: Colors.white,
@@ -1326,9 +1327,7 @@ Future<String?>  getId() async {
     return iosDeviceInfo.identifierForVendor; // unique ID on iOS
   } else if(Platform.isAndroid) {
     print('Platform.isAndroid');
-    var androidDeviceInfo = await deviceInfo.androidInfo;
-
-    return androidDeviceInfo.androidId; // unique ID on Android
+    return await const AndroidId().getId(); // unique ID on Android
   }
 }
   getAllconstant(context) async {
@@ -1437,15 +1436,15 @@ print(version);print(Appversion);
   Cropimage(value)async{
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: value.path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-        CropAspectRatioPreset.ratio3x2,
-        CropAspectRatioPreset.original,
-        CropAspectRatioPreset.ratio4x3,
-        CropAspectRatioPreset.ratio16x9
-      ],
       uiSettings: [
         AndroidUiSettings(
+            aspectRatioPresets: [
+              CropAspectRatioPreset.square,
+              CropAspectRatioPreset.ratio3x2,
+              CropAspectRatioPreset.original,
+              CropAspectRatioPreset.ratio4x3,
+              CropAspectRatioPreset.ratio16x9
+            ],
             toolbarTitle: 'Cropper',
             toolbarColor: Colors.deepOrange,
             toolbarWidgetColor: Colors.white,

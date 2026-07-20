@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -16,20 +15,21 @@ class WebViewScrean extends StatefulWidget {
   WebViewScreanState createState() => WebViewScreanState();
 }
 class WebViewScreanState extends State<WebViewScrean> {
+  late final WebViewController _controller;
+
   @override
   void initState() {
     super.initState();
-    // Enable virtual display.
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse(widget.link));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: whitecolor,iconTheme: IconThemeData(color: MainColor),title: Text( widget.name,style: style5,)),
-      body: WebView(javascriptMode: JavascriptMode.unrestricted,
-        initialUrl: widget.link,
-      ),
+      body: WebViewWidget(controller: _controller),
     );
   }
 }
@@ -43,25 +43,29 @@ class WebViewRollet extends StatefulWidget {
   WebViewRolletState createState() => WebViewRolletState();
 }
 class WebViewRolletState extends State<WebViewRollet> {
-  @override
-  void initState() {
-    super.initState();
-    // Enable virtual display.
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
-  }
+  late final WebViewController _controller;
+
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers = {
     Factory(() => EagerGestureRecognizer())
   };
 
-  UniqueKey _key = UniqueKey();
+  final UniqueKey _key = UniqueKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse(widget.link));
+  }
+
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
-    return       WebView(javascriptMode: JavascriptMode.unrestricted,
-      gestureRecognizers:gestureRecognizers ,key: _key,
-      initialUrl: widget.link,allowsInlineMediaPlayback: true,initialMediaPlaybackPolicy: AutoMediaPlaybackPolicy.always_allow,
-
-
+    return WebViewWidget(
+      controller: _controller,
+      key: _key,
+      gestureRecognizers: gestureRecognizers,
     );
   }
 }

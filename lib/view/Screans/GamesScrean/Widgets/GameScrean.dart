@@ -17,10 +17,12 @@ class GameScrean extends StatefulWidget {
   GameScreanState createState() => GameScreanState();
 }
 class GameScreanState extends State<GameScrean> {
+  late final WebViewController _controller;
+
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance?.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       GamesViewModel  Games= Provider.of<GamesViewModel>(context,listen: false);
 
       Games.IncreamentGames(id: Games.GamesList[widget.index].id,index: widget.index);
@@ -29,8 +31,10 @@ class GameScreanState extends State<GameScrean> {
       }
     });
 
-    // Enable virtual display.
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    final Games = Provider.of<GamesViewModel>(context, listen: false);
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse(Games.GamesList[widget.index].path ?? ''));
   }
 Orintation()async{
   await SystemChrome.setPreferredOrientations([
@@ -55,9 +59,7 @@ UpOrintation()async{
       return true;
     },
       child: Scaffold(
-         body: WebView(javascriptMode: JavascriptMode.unrestricted,
-          initialUrl:Games.GamesList[widget.index].path,
-        ),
+         body: WebViewWidget(controller: _controller),
       ),
     );
   }

@@ -3,83 +3,82 @@ import 'dart:ui';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 
 
-  TextStyle style1 =  GoogleFonts.notoSans(
+  TextStyle style1 =  TextStyle(fontFamily: 'NotoSans',
   fontWeight: FontWeight.bold,
   fontSize:16,
   color: whitecolor,
 
 );
 
-TextStyle Namestyle =  GoogleFonts.notoSans(
+TextStyle Namestyle =  TextStyle(fontFamily: 'NotoSans',
   fontWeight: FontWeight.normal,
   fontSize:14,
 
 );
-TextStyle Namestyle2 =  GoogleFonts.notoSans(
+TextStyle Namestyle2 =  TextStyle(fontFamily: 'NotoSans',
   fontWeight: FontWeight.normal,
   fontSize:14,
 color: Colors.white
 );
-  TextStyle styleb = GoogleFonts.notoSans(
+  TextStyle styleb = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: Colors.black,
 );
-  TextStyle styleb45 = GoogleFonts.notoSans(
+  TextStyle styleb45 = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: Colors.black45,
 );
-  TextStyle style2 = GoogleFonts.notoSans(
+  TextStyle style2 = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.bold,
   fontSize:16,
   color: blackcolor,
 );
-  TextStyle style7 = GoogleFonts.notoSans(
+  TextStyle style7 = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.bold,
   fontSize:16,
   color: whitecolor,
 );
-  TextStyle style3 = GoogleFonts.notoSans(
+  TextStyle style3 = TextStyle(fontFamily: 'NotoSans',
 
   fontSize:2,
   fontWeight: FontWeight.bold,
 );
-  TextStyle style4 = GoogleFonts.notoSans(
+  TextStyle style4 = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: Colors.black45,
 );
-  TextStyle style5 = GoogleFonts.notoSans(
+  TextStyle style5 = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: blackcolor,
 );
 
-  TextStyle style6 = GoogleFonts.notoSans(
+  TextStyle style6 = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:11,
   color: blackcolor,
 );
 
-  TextStyle style8 = GoogleFonts.notoSans(
+  TextStyle style8 = TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:13,
   color: blackcolor,
 );
-  TextStyle style11= GoogleFonts.notoSans(
+  TextStyle style11= TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,height: 1,
   fontSize:17,
