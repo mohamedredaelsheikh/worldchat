@@ -1,6 +1,5 @@
 
 import 'package:country_calling_code_picker/country_code_picker.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,6 @@ class CompleteSignUp extends StatefulWidget {
 }
 
 class _CompleteSignUpState extends State<CompleteSignUp> {
-  @override
   void _showDatePickers(ctx) {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: false);
     FocusScope.of(context).unfocus();
@@ -34,10 +32,10 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
         context: ctx,
         builder: (_) => Container(
               height: SizeConfig.screenHeight! * 0.48366,
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     height: SizeConfig.screenHeight! * 0.392,
                     child: CupertinoDatePicker(
                         mode: CupertinoDatePickerMode.date,
@@ -68,13 +66,14 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
               ),
             ));
   }
+  @override
   Widget build(BuildContext context) {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
     return Scaffold(
       appBar: AppBar(centerTitle: true,
           elevation: 0,title: Text(getLang(context: context, key: "Set_Profile"),style: style2.copyWith(fontSize: 17)),
           backgroundColor: whitecolor,
-          iconTheme: IconThemeData(
+          iconTheme: const IconThemeData(
             color: Colors.black45,
           ),
           leading: InkWell(
@@ -101,7 +100,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
           }
           return true;
         },
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.screenHeight!,
           width: SizeConfig.screenWidth!,
           child: Padding(
@@ -146,7 +145,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
                     ),
                     Expanded(
                       child: Container(height: SizeConfig.TenSize!*4,
-                        decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(0.1),borderRadius: BorderRadius.circular(20)),
+                        decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: 0.1),borderRadius: BorderRadius.circular(20)),
                         child: Center(
                           child: Padding(
                             padding:   EdgeInsets.symmetric(horizontal: SizeConfig.TenSize!,vertical: 5),
@@ -178,7 +177,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
                     children: [
                       Image.asset(Images.EnterBirth,height: SizeConfig.TenSize!*4,width: SizeConfig.TenSize!*7),
                      Expanded(
-                       child: Container(  height: SizeConfig.TenSize!*4,decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(0.1),borderRadius: BorderRadius.circular(20)),
+                       child: Container(  height: SizeConfig.TenSize!*4,decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: 0.1),borderRadius: BorderRadius.circular(20)),
 
                          child: Row(
                            children: [
@@ -187,7 +186,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
                                child: Text(user.History ?? getLang(context: context, key: "What_Birthday"),
                                    style: style8.copyWith(height: 2.0,fontSize: SizeConfig.TenSize!*1.7) ),
                              ),
-                             Spacer(),
+                             const Spacer(),
 
                            ],
                          ),
@@ -212,7 +211,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
 
                       setState(() {});
                     },
-                      child: Container( width: SizeConfig.TenSize!*12,decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(user.ginder == 1?1:0.1),borderRadius: BorderRadius.circular(20)),
+                      child: Container( width: SizeConfig.TenSize!*12,decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: user.ginder == 1?1:0.1),borderRadius: BorderRadius.circular(20)),
                         child: Padding(
                           padding:   EdgeInsets.symmetric(horizontal: SizeConfig.TenSize!*3,vertical: SizeConfig.TenSize!),
                           child: Center(
@@ -232,7 +231,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
                      user.ginder = 0;
                       setState(() {});
                     },
-                      child: Container(width: SizeConfig.TenSize!*12, decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(user.ginder == 0?1:0.1),borderRadius: BorderRadius.circular(20)),
+                      child: Container(width: SizeConfig.TenSize!*12, decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: user.ginder == 0?1:0.1),borderRadius: BorderRadius.circular(20)),
                         child: Padding(
                           padding:   EdgeInsets.symmetric(horizontal: SizeConfig.TenSize!*3,vertical: SizeConfig.TenSize!),
                           child: Center(
@@ -260,7 +259,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
                     children: [
                       Image.asset(Images.EnterLocation,height: SizeConfig.TenSize!*4,width: SizeConfig.TenSize!*7),
                       Expanded(
-                        child: Container( height: SizeConfig.TenSize!*4, decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(0.1),borderRadius: BorderRadius.circular(20)),
+                        child: Container( height: SizeConfig.TenSize!*4, decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: 0.1),borderRadius: BorderRadius.circular(20)),
 
                           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -272,7 +271,7 @@ class _CompleteSignUpState extends State<CompleteSignUp> {
                                       fontSize: 13, color: Colors.black),
                                 ),
                               ),
-Spacer(),
+const Spacer(),
                               user.Code2 != null
                                   ? Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -329,7 +328,7 @@ Spacer(),
                     ),
                   ),
 
-Spacer(),
+const Spacer(),
                 Padding(
                   padding:   EdgeInsets.symmetric(horizontal: SizeConfig.TenSize!*3.5),
                   child: Text(getLang(context: context, key: "Complete_Profile"),textAlign: TextAlign.center,style: style6.copyWith(fontSize: SizeConfig.TenSize!*1.3,color: Colors.black45)),

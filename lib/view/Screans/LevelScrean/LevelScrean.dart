@@ -3,14 +3,12 @@
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/view/widgets/LevelWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
 import '../../../util/Localization.dart';
 import '../../../util/SizeConfig.dart';
-import '../../../util/app_constants.dart';
 import '../../../util/dimensions.dart';
 import '../../../util/images.dart';
 import '../../../util/styles.dart';
@@ -23,21 +21,21 @@ class LevelScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
-    RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
+    Provider.of<RoomViewmodel>(context,listen: true);
 
     return Scaffold(
-      appBar: AppBar(iconTheme: IconThemeData(color: Colors.black),backgroundColor: Colors.white,title:   Text(getLang(context: context,key: "Level"),style: style2,),automaticallyImplyLeading: true ),
+      appBar: AppBar(iconTheme: const IconThemeData(color: Colors.black),backgroundColor: Colors.white,title:   Text(getLang(context: context,key: "Level"),style: style2,),automaticallyImplyLeading: true ),
 
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: CustomScrollView(
           slivers: [
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
             SliverToBoxAdapter(child:  Row(crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CircleAvatar(radius: 35,backgroundColor: whitecolor,backgroundImage: CachedNetworkImageProvider(user.userinfo?.image??Images.profilephoto)),
-                SizedBox(width:Dimensions.FONT_SIZE_EXTRA_LARGE,),
+                const SizedBox(width:Dimensions.FONT_SIZE_EXTRA_LARGE,),
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -60,12 +58,12 @@ class LevelScrean extends StatelessWidget {
               ],
 
             ),),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
             SliverToBoxAdapter(child:Center(child: InkWell(onTap: () {
 
  },child: Text(getLang(context: context, key: "Privileges"),style: style2.copyWith(fontSize: 16,fontWeight: FontWeight.bold),))),),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
-          SliverToBoxAdapter(child:      Container(width: SizeConfig.screenWidth!,child: Row(
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+          SliverToBoxAdapter(child:      SizedBox(width: SizeConfig.screenWidth!,child: Row(
             children: [
               Expanded(
                 child: InkWell(onTap:(){
@@ -91,29 +89,29 @@ class LevelScrean extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  InkWell(onTap: (){Navigator.pop(context);},child: Icon(Icons.cancel_outlined,color: Colors.black54)),
+                                  InkWell(onTap: (){Navigator.pop(context);},child: const Icon(Icons.cancel_outlined,color: Colors.black54)),
                                   const Spacer(),
-                                  Icon(Icons.cancel_outlined,color: whitecolor),
+                                  const Icon(Icons.cancel_outlined,color: whitecolor),
 
                                 ],
                               ),
                               Text(getLang(context: context, key: "level_frame"),style: style5.copyWith(fontSize: 16,fontWeight: FontWeight.bold),),
-                              SizedBox(height: 15,),
+                              const SizedBox(height: 15,),
 
-                              Container(width: 250,height: 300,
+                              SizedBox(width: 250,height: 300,
                                 child: GridView.builder(
                                   itemCount: user.LevelFrames.length,
-                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount:   2 ,childAspectRatio: 0.8 ),
                                   itemBuilder: (BuildContext context, int index) {
                                     return Container(
-                                      decoration: BoxDecoration(color:Color(0xFFFAFAFA),borderRadius: BorderRadius.circular(20)),
+                                      decoration: BoxDecoration(color:const Color(0xFFFAFAFA),borderRadius: BorderRadius.circular(20)),
                                       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Container(width: 80,height: 80,child:  CachedNetworkImage(
+                                          SizedBox(width: 80,height: 80,child:  CachedNetworkImage(
                                               imageUrl:user.LevelFrames[index].image??Images.Level  ,fit: BoxFit.cover)),
-                                          Text('${user.LevelFrames[index].levelStart} - ${user.LevelFrames[index].levelEnd}',style: TextStyle(fontWeight: FontWeight.bold)),
+                                          Text('${user.LevelFrames[index].levelStart} - ${user.LevelFrames[index].levelEnd}',style: const TextStyle(fontWeight: FontWeight.bold)),
 
                                         ],
                                       ),
@@ -149,9 +147,9 @@ class LevelScrean extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    InkWell(onTap: (){Navigator.pop(context);},child: Icon(Icons.cancel_outlined,color: Colors.black54)),
+                                    InkWell(onTap: (){Navigator.pop(context);},child: const Icon(Icons.cancel_outlined,color: Colors.black54)),
                                     const Spacer(),
-                                    Icon(Icons.cancel_outlined,color: whitecolor),
+                                    const Icon(Icons.cancel_outlined,color: whitecolor),
 
                                   ],
                                 ),
@@ -159,7 +157,7 @@ class LevelScrean extends StatelessWidget {
                                 const SizedBox(height: 15,),
                                 Column(
                                   children: [
-                                    Container(color:  Colors.grey.withOpacity(0.2),child: Padding(
+                                    Container(color:  Colors.grey.withValues(alpha: 0.2),child: Padding(
                                       padding: const EdgeInsets.all(3.0),
                                       child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -173,9 +171,9 @@ class LevelScrean extends StatelessWidget {
 
                                   ],
                                 ),
-                                Container(height: 200,
+                                SizedBox(height: 200,
                                   child: SingleChildScrollView(
-                                    physics: BouncingScrollPhysics(),
+                                    physics: const BouncingScrollPhysics(),
                                     child: Column(
                                         children: List.generate(LevelsListmodel.length, (index) => Padding(
                                           padding: const EdgeInsets.symmetric(vertical: 10),
@@ -184,7 +182,7 @@ class LevelScrean extends StatelessWidget {
                                             mainAxisAlignment: MainAxisAlignment.spaceAround,
 
                                             children: [
-                                              Text('${LevelsListmodel[index].start}-${LevelsListmodel[index].end}',style: TextStyle(fontWeight: FontWeight.bold)),
+                                              Text('${LevelsListmodel[index].start}-${LevelsListmodel[index].end}',style: const TextStyle(fontWeight: FontWeight.bold)),
                                               Image.asset(LevelsListmodel[index].image??"" ,width: 50),
                                             ],
                                           ),
@@ -212,9 +210,9 @@ class LevelScrean extends StatelessWidget {
               ),
             ],
           ),),),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
            SliverToBoxAdapter(child:  Center(child: Text(getLang(context: context, key: "How_level"),style: style5.copyWith(fontSize: 16,fontWeight: FontWeight.bold),textAlign: TextAlign.center,)),),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
             SliverToBoxAdapter(
               child:   Lang=='En'?Column(
                   children:List.generate(LevelsContentEN.length, (index) => Padding(
@@ -222,12 +220,12 @@ class LevelScrean extends StatelessWidget {
                     child: Container(
                       child: Row(crossAxisAlignment: CrossAxisAlignment.center,children: [
                         Image.asset(LevelsContentEN[index].image??'',height: 30,width: 30),
-                        SizedBox(width:   10),
+                        const SizedBox(width:   10),
                         Column(  crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(LevelsContentEN[index].name??'',style: style5.copyWith(fontWeight: FontWeight.bold,fontSize: 12),),
-                            SizedBox(height: 3),
-                            Container(width:300,child: Text(LevelsContentEN[index].description??'',style: styleb45.copyWith(fontSize: 12),)),
+                            const SizedBox(height: 3),
+                            SizedBox(width:300,child: Text(LevelsContentEN[index].description??'',style: styleb45.copyWith(fontSize: 12),)),
                           ],)
                       ]),
                     ),
@@ -238,12 +236,12 @@ class LevelScrean extends StatelessWidget {
                     child: Container(
                       child: Row(crossAxisAlignment: CrossAxisAlignment.center,children: [
                         Image.asset(LevelsContent[index].image??'',height: 30,width: 30),
-                        SizedBox(width:   10),
+                        const SizedBox(width:   10),
                         Column(  crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(LevelsContent[index].name??'',style: style5.copyWith(fontWeight: FontWeight.bold,fontSize: 12),),
-                            SizedBox(height: 3),
-                            Container(width:300,child: Text(LevelsContent[index].description??'',style: styleb45.copyWith(fontSize: 12),)),
+                            const SizedBox(height: 3),
+                            SizedBox(width:300,child: Text(LevelsContent[index].description??'',style: styleb45.copyWith(fontSize: 12),)),
                           ],)
                       ]),
                     ),
@@ -279,8 +277,8 @@ class ProgressLine extends StatelessWidget {
           width: double.infinity,
           height: 15,
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: color.withValues(alpha: 0.1),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
         ),
         LayoutBuilder(
@@ -289,14 +287,14 @@ class ProgressLine extends StatelessWidget {
             height: 15,
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
           ),
         ),
         Container(
           width: double.infinity,
-          height: 15,child: Center(child:Text('$sum/$total',style: TextStyle(fontSize: 10,color: Colors.white),)),
-          decoration: BoxDecoration(
+          height: 15,child: Center(child:Text('$sum/$total',style: const TextStyle(fontSize: 10,color: Colors.white),)),
+          decoration: const BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),

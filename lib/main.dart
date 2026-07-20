@@ -1,5 +1,3 @@
-import 'package:ahlachat/Repositores/SentyeReport/SentryReport.dart';
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/Router.dart';
 import 'package:ahlachat/util/app_constants.dart';
@@ -62,7 +60,7 @@ void main() async{
   getnotifitoken();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) async{
     WakelockPlus.enable();
-     runApp(MyApp());
+     runApp(const MyApp());
     //await SentryReporter.setup(MyApp());
   });
 

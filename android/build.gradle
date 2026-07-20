@@ -40,8 +40,12 @@ subprojects {
                 if (namespace == null) {
                     def manifestFile = file("${project.projectDir}/src/main/AndroidManifest.xml")
                     if (manifestFile.exists()) {
-                        def manifest = new groovy.xml.XmlSlurper().parse(manifestFile)
-                        def pkg = manifest.@package.text()
+                        // Parse the package attribute with a regex instead of an XML parser:
+                        // the IDE's older bundled Groovy can't resolve the newer XML slurper
+                        // class, and a regex avoids it entirely while behaving the same at build time.
+                        def manifestText = manifestFile.getText('UTF-8')
+                        def pkgMatcher = (manifestText =~ /package\s*=\s*"([^"]+)"/)
+                        def pkg = pkgMatcher ? pkgMatcher[0][1] : null
                         if (pkg != null && !pkg.isEmpty()) {
                             namespace pkg
                         }

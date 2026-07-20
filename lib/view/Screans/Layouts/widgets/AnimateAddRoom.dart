@@ -28,14 +28,14 @@ class _AddRoomScreanState extends State<AddRoomScrean> {
            padding: const EdgeInsets.symmetric(horizontal: 10),
            child: CustomScrollView(
              slivers: [
-               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
                SliverToBoxAdapter(child:  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    InkWell(onTap: (){
                      Room.getImage();
                    },
-                     child: Container(  height: 90,width: 100,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2),borderRadius: BorderRadius.circular(8)  ),child:Room.Roomimage==null?Icon(Icons.image,color: MainColor.withOpacity(0.7),size: 50) :ClipRRect(    borderRadius: BorderRadius.circular((10.0)),child: Image.file(Room.Roomimage,fit: BoxFit.fill,))),
+                     child: Container(  height: 90,width: 100,decoration: BoxDecoration(color: Colors.grey.withValues(alpha: 0.2),borderRadius: BorderRadius.circular(8)  ),child:Room.Roomimage==null?Icon(Icons.image,color: MainColor.withValues(alpha: 0.7),size: 50) :ClipRRect(    borderRadius: BorderRadius.circular((10.0)),child: Image.file(Room.Roomimage,fit: BoxFit.fill,))),
                    ),
                    InkWell(onTap: () {
                      Room.clearadd();
@@ -44,8 +44,8 @@ class _AddRoomScreanState extends State<AddRoomScrean> {
 
                  ],
                ), ),
-               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
-               SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2),borderRadius: BorderRadius.circular(10)),
+               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+               SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withValues(alpha: 0.2),borderRadius: BorderRadius.circular(10)),
 
       child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -56,8 +56,8 @@ class _AddRoomScreanState extends State<AddRoomScrean> {
 
             ) ,),
       ),),),
-               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
-               SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2),borderRadius: BorderRadius.circular(10)),
+               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+               SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withValues(alpha: 0.2),borderRadius: BorderRadius.circular(10)),
 
                  child: Padding(
                    padding: const EdgeInsets.all(8.0),
@@ -68,7 +68,7 @@ class _AddRoomScreanState extends State<AddRoomScrean> {
 
                    ) ,),
                  ),),),
-               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
                SliverGrid(
                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                      crossAxisCount:4,
@@ -87,7 +87,7 @@ Room.choosen.add(user.Roomcatigoris[index]['name']);
 
                    },child: Container(
 decoration: BoxDecoration(
-color:  !Room.choosen.contains(user.Roomcatigoris[index]['name'])?Colors.black.withOpacity(0.1):MainColor.withOpacity(0.7),
+color:  !Room.choosen.contains(user.Roomcatigoris[index]['name'])?Colors.black.withValues(alpha: 0.1):MainColor.withValues(alpha: 0.7),
 borderRadius: BorderRadius.circular(10)),
 child: Padding(
   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -97,15 +97,15 @@ child: Padding(
                    childCount: user.Roomcatigoris.length,
                  ),
                ),
-               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
-               SliverToBoxAdapter(child:SingleChildScrollView(  physics: BouncingScrollPhysics(),scrollDirection: Axis.horizontal,child: Row(
+               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+               SliverToBoxAdapter(child:SingleChildScrollView(  physics: const BouncingScrollPhysics(),scrollDirection: Axis.horizontal,child: Row(
                  children: [
-                   SizedBox(width: 5,),
+                   const SizedBox(width: 5,),
                    Padding(
                      padding: const EdgeInsets.symmetric(horizontal: 5),
                      child: InkWell(onTap: () {
                        Room.getImage3();
-                     },child: Container(child: Center(child: Icon(Icons.image_outlined,color: MainColor,)),height: 140,width: 80,decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),color:  Colors.grey.withOpacity(0.2)))),
+                     },child: Container(child: const Center(child: Icon(Icons.image_outlined,color: MainColor,)),height: 140,width: 80,decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),color:  Colors.grey.withValues(alpha: 0.2)))),
                    ),
                    Row(children:List.generate( user.background.length , (index) => InkWell(onTap: () {
                      Room.backchoosen.clear();
@@ -119,20 +119,20 @@ child: Padding(
     ))),
                  ],
                ))),
-               SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
                SliverToBoxAdapter(child: InkWell(onTap: (){
                  bool existed = false;
-                 insult.forEach((item) {
+                 for (var item in insult) {
                    if(item.contains(Room.RoomName.text)){
                      existed = true;
                      print(item);
-                   }   });
+                   }   }
                  if(existed==true){
 
                  }else{
 
                  }
-                 if(  Room.RoomName.text.length==0|| Room.RoomAds.text.length==0||Room.choosen.isEmpty||Room.Roomimage==null||Room.backchoosen.isEmpty)
+                 if(  Room.RoomName.text.isEmpty|| Room.RoomAds.text.isEmpty||Room.choosen.isEmpty||Room.Roomimage==null||Room.backchoosen.isEmpty)
                  {
 
 
@@ -150,10 +150,10 @@ child: Padding(
 
                },child: Center(child: Padding(
                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: Room.RoomName.text.length==0||Room.choosen.isEmpty||Room.Roomimage==null||Room.backchoosen.isEmpty?Colors.black12:MainColor ),child: Center(child: Text(getLang(key:"Save",context: context ),style:  style1,)),height:45,width: SizeConfig.screenWidth!,),
+                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: Room.RoomName.text.isEmpty||Room.choosen.isEmpty||Room.Roomimage==null||Room.backchoosen.isEmpty?Colors.black12:MainColor ),child: Center(child: Text(getLang(key:"Save",context: context ),style:  style1,)),height:45,width: SizeConfig.screenWidth!,),
                ))),),
 
-               SliverPadding(padding: EdgeInsets.symmetric(vertical: 60)),
+               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 60)),
 
              ],
 

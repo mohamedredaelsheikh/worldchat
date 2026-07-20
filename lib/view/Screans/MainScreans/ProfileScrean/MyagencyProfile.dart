@@ -15,6 +15,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 class MyAgencyScrean extends StatefulWidget {
+  const MyAgencyScrean({super.key});
+
   @override
   State<MyAgencyScrean> createState() => _MyAgencyScreanState();
 }
@@ -30,6 +32,7 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
     }
   }
 
+  @override
   void initState() {
     _controller2 = ScrollController();
     _controller2?.addListener(_scrollListener);
@@ -41,10 +44,11 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
     final int minutes =  value - (hour * 60);
     return '${hour.toString().padLeft(2, "0")} ساعه ${minutes.toString().padLeft(2, "0")} دقيقه';
   }
+  @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     AagencyViewModel  Agency=Provider.of<AagencyViewModel>(context,listen:  true);
-    RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
+    Provider.of<RoomViewmodel>(context,listen: true);
 
     return Scaffold(   appBar: AppBar(actions: [
       if(user.userinfo?.id==Agency.Agencyinfo?.userId) Padding(
@@ -61,9 +65,9 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('سوف يكلفك تغيير اسم الوكاله 5000 من الالماس الخاص بك',style: style2.copyWith(fontSize: 20),),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     TextFormField(controller: Agency.EditAagencyName,),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(onTap: (){
@@ -97,24 +101,24 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
               )
           );
 
-        },child: Icon(Icons.settings)),
+        },child: const Icon(Icons.settings)),
       ),
 
      if(user.userinfo?.id==Agency.Agencyinfo?.userId) Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: InkWell(onTap: () {
         Agency.GetJoinRequested(id: Agency.Agencyinfo?.id);
-        navigateTo(context: context, screen: JoinAgencyRequests());
+        navigateTo(context: context, screen: const JoinAgencyRequests());
 
-      },child: Icon(Icons.person_add_alt)),
+      },child: const Icon(Icons.person_add_alt)),
     ),
 
-    ]  ,iconTheme: IconThemeData(color: Colors.black),centerTitle: true,elevation: 0,title: Text(Agency.Agencyinfo?.name??"",style: style6.copyWith(fontSize: 19),)),
+    ]  ,iconTheme: const IconThemeData(color: Colors.black),centerTitle: true,elevation: 0,title: Text(Agency.Agencyinfo?.name??"",style: style6.copyWith(fontSize: 19),)),
 
         body:RefreshIndicator(color: MainColor, onRefresh: ()async{
           Agency.GetJoinAgency(context: context);
         },
-          child: Container( decoration: BoxDecoration(
+          child: Container( decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -127,7 +131,7 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
             padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
             child: CustomScrollView(
               slivers:   [
-                SliverToBoxAdapter(child: const SizedBox(height: 5,),),
+                const SliverToBoxAdapter(child: SizedBox(height: 5,),),
                 SliverToBoxAdapter(child: Row(
                   children: [
 
@@ -140,7 +144,7 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
                         children: [
 
                           AgencySideInfo(AgencyDate:Agency.Agencyinfo ,showdescr: 0),
-                          Spacer(),
+                          const Spacer(),
                           if( Agency.Agencyinfo?.agencyKind==0||Agency.Agencyinfo?.agencyKind==2)     if(user.userinfo?.agency==null&&!(user.userinfo?.joinsrequested?.contains(Agency.Agencyinfo?.id)??false ) )
                             InkWell(onTap: (){
                               Dialogs().showdialog(context: context,tittle: getLang(context: context, key:"Join_Agency"), content: '${getLang(context: context, key: "Want_Join")} ${Agency.Agencyinfo?.name} ${getLang(context: context, key: "Agency")} ?', buttontext: getLang(context: context, key: "Yes"), onTap: ()async{
@@ -170,16 +174,16 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
 
                   ],
                 ),),
-                SliverToBoxAdapter(child: const SizedBox(height: 30,),),
+                const SliverToBoxAdapter(child: SizedBox(height: 30,),),
 
-                SliverToBoxAdapter(child:  Row(
+                const SliverToBoxAdapter(child:  Row(
                   children: [
                     Text("اعضاء الوكاله",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14,height: 1,color: Colors.white),),
                     Spacer(),
 
                   ],
                 ),),
-                SliverToBoxAdapter(child: const SizedBox(height: 30,),),
+                const SliverToBoxAdapter(child: SizedBox(height: 30,),),
                 SliverToBoxAdapter(child: Column(
                   children:List.generate( Agency.useragincys.length, (index) =>Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -187,13 +191,13 @@ class _MyAgencyScreanState extends State<MyAgencyScrean> {
                       onTap: () {
                         if(user.userinfo?.id!=Agency.useragincys[index].id){
                           user.GetShoweduserProfile(Agency.useragincys[index]);
-                          navigateTo(context: context,screen: ShowUserProfile());
+                          navigateTo(context: context,screen: const ShowUserProfile());
                         }
                       },
                       child: Row(
                         children: [
                           CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(Agency.useragincys[index].image??''),),
-                          SizedBox(width: 5,),
+                          const SizedBox(width: 5,),
                           UserSideInfoWidgets(UserDate: Agency.useragincys[index],TextColor: Colors.black,)
                         ],
                       ),

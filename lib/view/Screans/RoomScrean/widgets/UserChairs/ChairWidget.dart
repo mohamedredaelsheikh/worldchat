@@ -20,7 +20,7 @@ import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:provider/provider.dart';
  class Chairwidget extends StatelessWidget {
   final int index;
-    Chairwidget({ required this.index});
+    const Chairwidget({super.key,  required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ import 'package:provider/provider.dart';
     GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
     AgoraViewmodel Agora=Provider.of<AgoraViewmodel>(context,listen: true);
 
-    return  PopupMenuButton( color: Colors.black , padding: EdgeInsets.all(0.0),iconSize: 100 ,
+    return  PopupMenuButton( color: Colors.black , padding: const EdgeInsets.all(0.0),iconSize: 100 ,
 
       itemBuilder: (BuildContext bc) {
       return   [
@@ -39,7 +39,7 @@ import 'package:provider/provider.dart';
         if(Room.checkadmin(context: context))  _buildPopupMenuItem(title: Room.Currentroom?.supervisorsId?.contains(Room.Currentroom?.chairs?[index].user?.id.toString())??false?getLang(key: "Remove_Admin",context: context):getLang(key: "Add_Admin",context: context),iconData: Icons.star,val: 5),
         if(Room.checkadmin(context: context)||Room.Currentroom?.chairs?[index].userId==user.userinfo?.id.toString())   _buildPopupMenuItem(title:getLang(key: "Leave_Chair",context: context),iconData: Icons.chair_outlined,val: 3),
         if((Room.checkadmin(context: context)||((Room.Currentroom?.supervisorsId?.contains(user.userinfo?.id.toString())??false)&&!(Room.Currentroom?.supervisorsId?.contains(Room.Currentroom?.chairs?[index].user?.id.toString())??false)))) _buildPopupMenuItem(title: getLang(key: "Room_kick",context: context),iconData: Icons.output_outlined,val: 4),
-      ];},shape: RoundedRectangleBorder(
+      ];},shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(10.0),
         )),onSelected: (value){
@@ -66,7 +66,7 @@ import 'package:provider/provider.dart';
           }
         });
         gits.Cost=0;
-        showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+        showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
           context: context,
           builder: (context) {
             return const NestedTabBar();
@@ -101,10 +101,10 @@ import 'package:provider/provider.dart';
             child: AvatarGlow(
               glowColor: Colors.tealAccent,
               glowRadiusFactor: 0.4,
-              duration: Duration(milliseconds: 1000),
+              duration: const Duration(milliseconds: 1000),
               repeat: true,
               animate: true,
-              child:SizedBox(),
+              child:const SizedBox(),
             ),
            ),
           Column(mainAxisSize: MainAxisSize.min,
@@ -125,7 +125,7 @@ import 'package:provider/provider.dart';
                     children: [
                       Text(Helper().k_m_b_generator(Room.Currentroom?.chairs?[index].Karisma) ,style: style2.copyWith(fontSize:10,height: 1,color: whitecolor)),
                       const   SizedBox(width: 3,),
-                      FaIcon(FontAwesomeIcons.heartCircleCheck,size:8,color: Colors.red),
+                      const FaIcon(FontAwesomeIcons.heartCircleCheck,size:8,color: Colors.red),
                     ],
                   ),
                 ),
@@ -140,12 +140,12 @@ import 'package:provider/provider.dart';
   }
 }
 PopupMenuItem _buildPopupMenuItem({String ?title, IconData ?iconData,int ?val}) {
-  return PopupMenuItem(value: val,height: 30,padding: EdgeInsets.all(0),
+  return PopupMenuItem(value: val,height: 30,padding: const EdgeInsets.all(0),
     child:  Row(
       children: [
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         Icon(iconData, color: Colors.white,size:  14),
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         Text(title??'',style: style5.copyWith(color: Colors.white,height: 1,fontSize: 13)),
       ],
     ),

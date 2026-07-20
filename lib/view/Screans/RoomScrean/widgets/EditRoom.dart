@@ -11,7 +11,6 @@ import 'package:ahlachat/viewmodels/RoomPlay_ViewModel/RoomPlayViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:provider/provider.dart';
 
-import '../../../widgets/CircleProgress.dart';
 class EditRoom extends StatefulWidget {
   const EditRoom({Key? key}) : super(key: key);
   @override
@@ -25,21 +24,21 @@ class _EditRoomState extends State<EditRoom> {
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
     LoginViewmodel user= Provider.of<LoginViewmodel>(context,listen: true);
-    RoomPlayViewModel  RoomPlay= Provider.of<RoomPlayViewModel>(context, listen: false);
-    SvgViewmodel svga=  Provider.of<SvgViewmodel>(context,listen: true);
+    Provider.of<RoomPlayViewModel>(context, listen: false);
+    Provider.of<SvgViewmodel>(context,listen: true);
     return  Container(color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: CustomScrollView(
           slivers: [
-            SliverPadding(padding: EdgeInsets.symmetric(vertical:50)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical:50)),
             SliverToBoxAdapter(child:  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(onTap: (){
                   Room.getImage2();
                 },
-                  child: Container(  height: 90,width: 100,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2),borderRadius: BorderRadius.circular(8)  ),child:Room.Roomimage2==null?CachedNetworkImage(imageUrl: Room.Currentroom?.image??'',fit: BoxFit.fill,) :ClipRRect(    borderRadius: BorderRadius.circular((10.0)),child: Image.file(Room.Roomimage2,fit: BoxFit.fill,))),
+                  child: Container(  height: 90,width: 100,decoration: BoxDecoration(color: Colors.grey.withValues(alpha: 0.2),borderRadius: BorderRadius.circular(8)  ),child:Room.Roomimage2==null?CachedNetworkImage(imageUrl: Room.Currentroom?.image??'',fit: BoxFit.fill,) :ClipRRect(    borderRadius: BorderRadius.circular((10.0)),child: Image.file(Room.Roomimage2,fit: BoxFit.fill,))),
                 ),
                 InkWell(onTap: () {
                   Room.clearadd2();
@@ -48,8 +47,8 @@ class _EditRoomState extends State<EditRoom> {
 
               ],
             ), ),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
-            SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2),borderRadius: BorderRadius.circular(10)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withValues(alpha: 0.2),borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(onChanged: (v){
@@ -59,8 +58,8 @@ class _EditRoomState extends State<EditRoom> {
 
                 ) ,),
               ),),),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
-            SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2),borderRadius: BorderRadius.circular(10)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            SliverToBoxAdapter(child:Container(    decoration: BoxDecoration(color: Colors.grey.withValues(alpha: 0.2),borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(onChanged: (v){
@@ -71,7 +70,7 @@ class _EditRoomState extends State<EditRoom> {
                 ) ,),
               ),),),
 
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
             SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount:4,
@@ -91,7 +90,7 @@ Room.choosen2.add(user.Roomcatigoris[index]['name']);
 
                 },child: Container(
                     decoration: BoxDecoration(
-                        color:   !Room.choosen2.contains(user.Roomcatigoris[index]['name'])?Colors.black.withOpacity(0.1):MainColor.withOpacity(0.7),
+                        color:   !Room.choosen2.contains(user.Roomcatigoris[index]['name'])?Colors.black.withValues(alpha: 0.1):MainColor.withValues(alpha: 0.7),
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -101,15 +100,15 @@ Room.choosen2.add(user.Roomcatigoris[index]['name']);
                 childCount: user.Roomcatigoris.length,
               ),
             ),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
-            SliverToBoxAdapter(child:SingleChildScrollView(  physics: BouncingScrollPhysics(),scrollDirection: Axis.horizontal,child: Row(
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            SliverToBoxAdapter(child:SingleChildScrollView(  physics: const BouncingScrollPhysics(),scrollDirection: Axis.horizontal,child: Row(
               children: [
-                SizedBox(width: 5,),
+                const SizedBox(width: 5,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: InkWell(onTap: () {
                     Room.getImage3();
-                  },child: Container(child: Center(child: Icon(Icons.image_outlined,color: MainColor,)),height: 140,width: 80,decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),color:  Colors.grey.withOpacity(0.2)))),
+                  },child: Container(child: const Center(child: Icon(Icons.image_outlined,color: MainColor,)),height: 140,width: 80,decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),color:  Colors.grey.withValues(alpha: 0.2)))),
                 ),
                 Row(children:List.generate( user.background.length , (index) => InkWell(onTap: () {
                   Room.backchoosen2.clear();
@@ -124,10 +123,10 @@ setState(() {
                 ))),
               ],
             ))),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
             SliverToBoxAdapter(
    child: InkWell(onTap: (){
-if(Room.EditRoomName.text.length==0||Room.choosen2.isEmpty||Room.backchoosen2.isEmpty||Room.flagchoosen2.isEmpty||Room.EditRoomDescription.text.length==0)
+if(Room.EditRoomName.text.isEmpty||Room.choosen2.isEmpty||Room.backchoosen2.isEmpty||Room.flagchoosen2.isEmpty||Room.EditRoomDescription.text.isEmpty)
 {
 
 
@@ -136,10 +135,10 @@ if(Room.EditRoomName.text.length==0||Room.choosen2.isEmpty||Room.backchoosen2.is
 Room.updateRoom( );
 }
 //     Room
-},child: Center(child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: Room.EditRoomName.text.length==0||Room.choosen2.isEmpty||Room.backchoosen2.isEmpty||Room.flagchoosen2.isEmpty?Colors.black45:MainColor),child: Center(child: Text(getLang(context: context,key: "Edit"),style:  style1,)),height:50,width: SizeConfig.screenWidth!,))),
+},child: Center(child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: Room.EditRoomName.text.isEmpty||Room.choosen2.isEmpty||Room.backchoosen2.isEmpty||Room.flagchoosen2.isEmpty?Colors.black45:MainColor),child: Center(child: Text(getLang(context: context,key: "Edit"),style:  style1,)),height:50,width: SizeConfig.screenWidth!,))),
 
             ),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
             SliverToBoxAdapter(child:
               InkWell(onTap: (){
 if(Room.Currentroom?.chairs?[9].user!=null){
@@ -163,7 +162,7 @@ Room.updateThroneChair(State:'0',context: context );
 },child: Container(decoration: BoxDecoration(color:Colors.deepPurpleAccent ,borderRadius: BorderRadius.circular(10) ),child: Center(child: Text(Room.Currentroom?.SecondKing==0?getLang(context: context,key: "Open_Throne_Chair"):getLang(context: context,key: "Close_Throne_Chair"),style:  style1.copyWith(fontSize: 12),)),height:50)),
 
                ),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
           ],
         ),
       ),

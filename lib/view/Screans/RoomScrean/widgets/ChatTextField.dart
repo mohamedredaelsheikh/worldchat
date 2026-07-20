@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/styles.dart';
 
 class ChatTextField extends StatelessWidget {
@@ -23,7 +22,7 @@ class ChatTextField extends StatelessWidget {
   final Widget? prefxIcon;
   final Widget? suffixicon;
   final VoidCallback ? ontap;
-  ChatTextField({
+  ChatTextField({super.key, 
     this.suffixicon,
     this.hint,
     this.obscureText,

@@ -37,31 +37,31 @@ class InboxRoomModel {
     if (json['message'] != null) {
       message = <Message>[];
       json['message'].forEach((v) {
-        message!.add(new Message.fromJson(v));
+        message!.add(Message.fromJson(v));
       });
     }
-    user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
+    user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
     sender =
-    json['sender'] != null ? new usermodel.fromJson(json['sender']) : null;
+    json['sender'] != null ? usermodel.fromJson(json['sender']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['user_id'] = this.userId;
-    data['sender_id'] = this.senderId;
-    data['last_message'] = this.lastMessage;
-    data['number_unread'] = this.numberUnread;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.message != null) {
-      data['message'] = this.message!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['sender_id'] = senderId;
+    data['last_message'] = lastMessage;
+    data['number_unread'] = numberUnread;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (message != null) {
+      data['message'] = message!.map((v) => v.toJson()).toList();
     }
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    if (this.sender != null) {
-      data['sender'] = this.sender!.toJson();
+    if (sender != null) {
+      data['sender'] = sender!.toJson();
     }
     return data;
   }

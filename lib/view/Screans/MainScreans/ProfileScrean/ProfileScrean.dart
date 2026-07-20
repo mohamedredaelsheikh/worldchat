@@ -1,10 +1,8 @@
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
-import 'package:ahlachat/util/notification.dart';
 import 'package:ahlachat/view/Screans/AgencyLeaderBoardScrean/AgencyLeaderBoardScrean.dart';
 
 import 'package:ahlachat/view/Screans/Family/FamilyProfileScrean.dart';
-import 'package:ahlachat/view/Screans/HostreportScrean/HostreportScrean.dart';
 import 'package:ahlachat/view/Screans/LanguageScrean/LanguageScrean.dart';
 import 'package:ahlachat/view/Screans/LevelScrean/LevelScrean.dart';
 import 'package:ahlachat/view/Screans/MainScreans/ProfileScrean/ContactUs.dart';
@@ -41,6 +39,8 @@ import 'package:provider/provider.dart';
 import '../../../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 
 class ProfileScrean extends StatelessWidget{
+  const ProfileScrean({super.key});
+
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
@@ -56,7 +56,7 @@ class ProfileScrean extends StatelessWidget{
      appBar: AppBar(backgroundColor: Colors.transparent,titleSpacing: 0,automaticallyImplyLeading: false,
     leading: IconButton(icon:  Image.asset('assets/image/ic_me_noble.png',height: 25,width: 25), onPressed: (){
      Agency.GetAgencyLeaderBoard();
-     navigateTo(context: context, screen: AgencyLeaderBoardScrean());
+     navigateTo(context: context, screen: const AgencyLeaderBoardScrean());
     },),
     actions: [
       IconButton(
@@ -73,21 +73,21 @@ class ProfileScrean extends StatelessWidget{
     ),
      body: Padding( 
        padding: const EdgeInsets.symmetric(horizontal: 10),
-       child: CustomScrollView(  physics: BouncingScrollPhysics(),
+       child: CustomScrollView(  physics: const BouncingScrollPhysics(),
          slivers: [
            SliverToBoxAdapter(
              child: InkWell(onTap:() {
                user.GetShoweduserProfile(user.userinfo);
-               navigateTo(context: context, screen: ShowUserProfile());
+               navigateTo(context: context, screen: const ShowUserProfile());
              } ,
                child: Row(crossAxisAlignment: CrossAxisAlignment.center,
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
                    CircleAvatar(radius: 38,backgroundColor: whitecolor,backgroundImage: CachedNetworkImageProvider(user.userinfo?.image??Images.profilephoto)),
-                   SizedBox(width: 10,),
+                   const SizedBox(width: 10,),
                    ProfileSideInfoWidgets(UserDate: user.userinfo),
-                   Spacer(),
-                   Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 35,)
+                   const Spacer(),
+                   Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 35,)
 
 
 
@@ -96,7 +96,7 @@ class ProfileScrean extends StatelessWidget{
                ),
              ),
            ),
-           SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+           const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
            const SliverToBoxAdapter(
              child:FollwoingRowWidget()
            ),
@@ -118,14 +118,14 @@ class ProfileScrean extends StatelessWidget{
                          Column(crossAxisAlignment: CrossAxisAlignment.center,
                            mainAxisAlignment: MainAxisAlignment.center,
                            children: [
-                             Flexible(child: Text(getLang(context: context,key:"Recharge"),style: TextStyle(height: 1,fontSize: 16,color:  Color(0xFFff8848),fontWeight: FontWeight.w600),)),
+                             Flexible(child: Text(getLang(context: context,key:"Recharge"),style: const TextStyle(height: 1,fontSize: 16,color:  Color(0xFFff8848),fontWeight: FontWeight.w600),)),
 
-                             Text(getLang(context: context,key:"Balance")+" : ${user.userinfo?.coins??''}",style: TextStyle(fontSize: 10),)
+                             Text(getLang(context: context,key:"Balance")+" : ${user.userinfo?.coins??''}",style: const TextStyle(fontSize: 10),)
                            ],
                          ),
-                         Icon(Icons.navigate_next,color:Color(0xFFff8848),size: 30,)
+                         const Icon(Icons.navigate_next,color:Color(0xFFff8848),size: 30,)
                        ],
-                     ),decoration: BoxDecoration(color: Color(0xFFfff4e6),borderRadius: BorderRadius.circular(10)),),
+                     ),decoration: BoxDecoration(color: const Color(0xFFfff4e6),borderRadius: BorderRadius.circular(10)),),
                    )) ,
                        const SizedBox( width: 10,),
                        Expanded(child: InkWell(onTap: () {
@@ -138,10 +138,10 @@ class ProfileScrean extends StatelessWidget{
 
                              Image.asset(Images.VipIcon,height: 45),
 
-                             Flexible(child: Text(getLang(key: "Vip_Center",context: context),style: TextStyle(height: 1,fontSize: 16,color:  Color(0xFF9d3ce1),fontWeight: FontWeight.w600),)),
-                             Icon(Icons.navigate_next,color:Color(0xFF9d3ce1),size: 30,)
+                             Flexible(child: Text(getLang(key: "Vip_Center",context: context),style: const TextStyle(height: 1,fontSize: 16,color:  Color(0xFF9d3ce1),fontWeight: FontWeight.w600),)),
+                             const Icon(Icons.navigate_next,color:Color(0xFF9d3ce1),size: 30,)
                            ],
-                         ),decoration: BoxDecoration(color: Color(0xFFf5ecff),borderRadius: BorderRadius.circular(10)),),
+                         ),decoration: BoxDecoration(color: const Color(0xFFf5ecff),borderRadius: BorderRadius.circular(10)),),
                        )) ,
                  ],
                )
@@ -159,7 +159,7 @@ class ProfileScrean extends StatelessWidget{
                        crossAxisAlignment: CrossAxisAlignment.center,
                        children: [
                          Image.asset(Images.profileGifts,height: 80),
-                         Text(getLang(key:   "gifts",context: context),style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
+                         Text(getLang(key:   "gifts",context: context),style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
                        ],
                      ),
                    ),
@@ -172,7 +172,7 @@ class ProfileScrean extends StatelessWidget{
                        crossAxisAlignment: CrossAxisAlignment.center,
                        children: [
                          Image.asset(Images.profilebag,height: 80),
-                         Text(getLang(key: "Bag",context: context),style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
+                         Text(getLang(key: "Bag",context: context),style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
 
                        ],
                      ),
@@ -186,19 +186,19 @@ class ProfileScrean extends StatelessWidget{
                        crossAxisAlignment: CrossAxisAlignment.center,
                        children: [
                          Image.asset(Images.profilestore,height: 80),
-                         Text(getLang(key: "Shop",context: context),style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
+                         Text(getLang(key: "Shop",context: context),style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
                        ],
                      ),
                    ),
                    InkWell(onTap: () {
-                      navigateTo(context: context, screen: LevelScrean());
+                      navigateTo(context: context, screen: const LevelScrean());
                    },
                      child: Column(mainAxisSize: MainAxisSize.min,
                        mainAxisAlignment: MainAxisAlignment.start,
                        crossAxisAlignment: CrossAxisAlignment.center,
                        children: [
                          Image.asset(Images.profilelevel,height: 80),
-                         Text(getLang(key: "Level",context: context),style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
+                         Text(getLang(key: "Level",context: context),style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 15,height: 1),)
                        ],
                      ),
                    ),
@@ -214,7 +214,7 @@ class ProfileScrean extends StatelessWidget{
                    onTap: (){
 
                    Agency.GetAgencyinfo(context: context,info:user.userinfo?.agency);
-                   navigateTo(context: context, screen: MyAgencyScrean());
+                   navigateTo(context: context, screen: const MyAgencyScrean());
 
                    },
                    child: Row(
@@ -222,18 +222,18 @@ class ProfileScrean extends StatelessWidget{
                        Row(crossAxisAlignment: CrossAxisAlignment.center,
                          mainAxisAlignment: MainAxisAlignment.center,children: [
                           CachedNetworkImage(imageUrl:  user.userinfo?.agency?.image??'',height: 30,width: 30) ,
-                           SizedBox(width: 10,),
-                           Text(getLang(key: "Agency",context: context),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                           const SizedBox(width: 10,),
+                           Text(getLang(key: "Agency",context: context),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                          ],),
-                       Spacer(),
-                       Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                       const Spacer(),
+                       Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                      ],
                    ),
                  ),
           if(user.userinfo?.MyFamil!=null)       InkWell(
             onTap: (){
               Family.GetFamily(Val: user.userinfo?.MyFamil);
-              navigateTo(context: context,screen: FamilyProfileScrean());
+              navigateTo(context: context,screen: const FamilyProfileScrean());
             },
             child: Row(
                      children: [
@@ -241,12 +241,12 @@ class ProfileScrean extends StatelessWidget{
                            mainAxisAlignment: MainAxisAlignment.center,children: [
                            Image.asset(Family.Levels.where((element) => element['Coins']<=user.userinfo?.MyFamil?.karisma).last['image'],height: 30) ,
 
-                         SizedBox(width: 10,),
+                         const SizedBox(width: 10,),
 
-                         Text(getLang(key: "Family",context: context),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                         Text(getLang(key: "Family",context: context),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                        ],),
-                       Spacer(),
-                       Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                       const Spacer(),
+                       Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                      ],
                    ),
           ),
@@ -262,16 +262,16 @@ class ProfileScrean extends StatelessWidget{
                          mainAxisAlignment: MainAxisAlignment.center,children: [
                            Image.asset(Images.Modif,height: 30) ,
 
-                           SizedBox(width: 10,),
+                           const SizedBox(width: 10,),
 
-                           Text(getLang(key: "modif",context: context),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                           Text(getLang(key: "modif",context: context),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                          ],),
-                       Spacer(),
-                       Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                       const Spacer(),
+                       Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                      ],
                    ),
                  ),
-                 if(user.userinfo?.MyFamil==null)     SizedBox(height: 8,),
+                 if(user.userinfo?.MyFamil==null)     const SizedBox(height: 8,),
                  if(user.userinfo?.agency==null)
                    InkWell(onTap: () {
                      Navigator.pushNamed(context,AppConstants.Exchange_Screan);
@@ -282,15 +282,15 @@ class ProfileScrean extends StatelessWidget{
                          Row(crossAxisAlignment: CrossAxisAlignment.center,
                            mainAxisAlignment: MainAxisAlignment.center,children: [
                              Image.asset(Images.jwile,height:30),
-                             SizedBox(width: 10,),
-                             Text(getLang(context: context,key: "Exchange"),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                             const SizedBox(width: 10,),
+                             Text(getLang(context: context,key: "Exchange"),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                            ],),
                          const Spacer(),
-                         Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                         Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                        ],
                      ),
                    ),
-                 SizedBox(height:8,),
+                 const SizedBox(height:8,),
                    InkWell(onTap: () {
                    Level.GetModels(context );
 
@@ -300,50 +300,50 @@ class ProfileScrean extends StatelessWidget{
                        Row(crossAxisAlignment: CrossAxisAlignment.center,
                          mainAxisAlignment: MainAxisAlignment.center,children: [
                            Image.asset(Images.profilemodel,height:30),
-                           SizedBox(width: 10,),
-                             Text(getLang(context: context,key: "Models"),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                           const SizedBox(width: 10,),
+                             Text(getLang(context: context,key: "Models"),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                          ],),
                        const Spacer(),
-                       Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                       Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                      ],
                    ),
                  ),
-                 SizedBox(height:8,),
+                 const SizedBox(height:8,),
                  InkWell(onTap: () {
-          navigateTo(context: context, screen: LanguageScrean());
+          navigateTo(context: context, screen: const LanguageScrean());
                  },
                    child: Row(
                      children: [
                        Row(crossAxisAlignment: CrossAxisAlignment.center,
                          mainAxisAlignment: MainAxisAlignment.center,children: [
                            Image.asset(Images.profilelanguage,height:28),
-                           SizedBox(width: 10,),
-                             Text(getLang(key: "Language",context: context),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                           const SizedBox(width: 10,),
+                             Text(getLang(key: "Language",context: context),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                          ],),
                        const Spacer(),
-                       Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                       Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                      ],
                    ),
                  ),
-                 SizedBox(height: 8,),
+                 const SizedBox(height: 8,),
                  InkWell(onTap: () {
-                   navigateTo(context: context, screen: ContactUs());
+                   navigateTo(context: context, screen: const ContactUs());
                   },
                    child: Row(
                      children: [
                        Row(crossAxisAlignment: CrossAxisAlignment.center,
                          mainAxisAlignment: MainAxisAlignment.center,children: [
                            Image.asset(Images.profileReport,height:28),
-                           SizedBox(width: 10,),
+                           const SizedBox(width: 10,),
 
-                           Text(getLang(context: context,key: "Report"),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                           Text(getLang(context: context,key: "Report"),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                          ],),
-                       Spacer(),
-                       Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                       const Spacer(),
+                       Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                      ],
                    ),
                  ),
-                 SizedBox(height: 8,),
+                 const SizedBox(height: 8,),
                  InkWell(onTap: () {
                    Dialogs().showdialog(context: context, tittle: 'tittle', content: getLang(context: context, key: "Sure_Logout"), buttontext: getLang(context: context, key: "Yes"), onTap: (){
                      Navigator.pop(context);
@@ -367,13 +367,13 @@ class ProfileScrean extends StatelessWidget{
                        Row(crossAxisAlignment: CrossAxisAlignment.center,
                          mainAxisAlignment: MainAxisAlignment.center,children: [
                     
-                           FaIcon(FontAwesomeIcons.signOut,color: MainColor,size: 20),
-                           SizedBox(width: 10,),
+                           const FaIcon(FontAwesomeIcons.signOut,color: MainColor,size: 20),
+                           const SizedBox(width: 10,),
 
-                           Text(getLang(key: "LogOut",context: context),style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
+                           Text(getLang(key: "LogOut",context: context),style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,height: 2),)
                          ],),
-                       Spacer(),
-                       Icon(Icons.navigate_next,color: Colors.grey.withOpacity(0.5),size: 30,)
+                       const Spacer(),
+                       Icon(Icons.navigate_next,color: Colors.grey.withValues(alpha: 0.5),size: 30,)
                      ],
                    ),
                  )

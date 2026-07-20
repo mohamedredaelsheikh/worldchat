@@ -14,7 +14,7 @@ class FriendsScrean extends StatelessWidget {
   Widget build(BuildContext context) {
     FollowViewModel Follow=  Provider.of<FollowViewModel>(context,listen: true);
     LoginViewmodel user=Provider.of<LoginViewmodel>(context, listen: true);
-    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key: "Friends"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
+    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: const IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key: "Friends"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
 
 
       body: SingleChildScrollView(
@@ -24,11 +24,11 @@ class FriendsScrean extends StatelessWidget {
             user.GetShoweduserProfile( Follow.Friends[index]);
 
 
-          navigateTo(context: context,screen: ShowUserProfile());
+          navigateTo(context: context,screen: const ShowUserProfile());
 
         },
           child: Container(child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
 
@@ -36,9 +36,9 @@ class FriendsScrean extends StatelessWidget {
 
                 CircleAvatar(backgroundColor: Colors.transparent,radius: 30,backgroundImage: CachedNetworkImageProvider(Follow.Friends[index].image??'')),
 
-                 SizedBox(width: 6,),
+                 const SizedBox(width: 6,),
                 UserSideInfoWidgets(UserDate:  Follow.Friends[index]),
-                Spacer(),
+                const Spacer(),
                 InkWell(onTap: (){
                   Follow. RemoveFollow2(context: context,followid:Follow.Friends[index].id );
                 },child: Container(decoration: BoxDecoration(color: MainColor,borderRadius: BorderRadius.circular(15)),child: Center(child: Text(getLang(context: context, key: "UnFollow") ,style: style6.copyWith(height: 1,color: whitecolor))),height: 25 ,width: 60,))

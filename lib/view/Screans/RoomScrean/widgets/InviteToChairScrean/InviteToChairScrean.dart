@@ -16,13 +16,13 @@ class InviteToChair extends StatelessWidget {
   Widget build(BuildContext context) {
     RoomViewmodel  Room=  Provider.of<RoomViewmodel>(context,listen: true);
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
-    return Container(decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!,width: SizeConfig.screenWidth!,
+    return Container(decoration: const BoxDecoration(color: Colors.black,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!,width: SizeConfig.screenWidth!,
         child:SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Text(getLang(context: context,key: "Tag_Member"),style: style4.copyWith(color: Colors.white),),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Column(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.start,children:List.generate(Room.joinuserRooms.length, (index) =>  Column(
                 children: [
                   if(user.userinfo?.id.toString()!=Room.joinuserRooms[index].user?.id.toString()&&!Room.InvitedChair.contains(Room.joinuserRooms[index].user?.id.toString())) Padding(
@@ -31,13 +31,13 @@ class InviteToChair extends StatelessWidget {
                       children: [
                         InkWell(onTap: () {
                           user.GetShoweduserProfile(Room.joinuserRooms[index].user);
-                          navigateTo(context: context,screen: ShowUserProfile());
+                          navigateTo(context: context,screen: const ShowUserProfile());
 
                         },
                           child: Row(
                             children: [
                               CircleAvatar(backgroundColor: Colors.transparent,radius: 16,backgroundImage: CachedNetworkImageProvider (Room.joinuserRooms[index].user?.image??AppConstants.User_Profile) ),
-                              SizedBox(width: 5,),
+                              const SizedBox(width: 5,),
                               UserSideInfoWidgets(UserDate:Room.joinuserRooms[index].user ,TextColor: Colors.white,)
                             ],
                           ),
@@ -45,7 +45,7 @@ class InviteToChair extends StatelessWidget {
 
 
                         const Spacer(),
-                        InkWell(onTap: (){      Room.SentInviteChairRoom(context: context,user_id: Room.joinuserRooms[index].user?.id);},child: Icon(Icons.add_link_outlined,color:Colors.white,size: 25,)),
+                        InkWell(onTap: (){      Room.SentInviteChairRoom(context: context,user_id: Room.joinuserRooms[index].user?.id);},child: const Icon(Icons.add_link_outlined,color:Colors.white,size: 25,)),
                         const SizedBox(width: 10,),
 
                       ],

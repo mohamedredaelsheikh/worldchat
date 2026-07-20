@@ -5,6 +5,8 @@ import '../../../../util/app_constants.dart';
 import '../../../../util/styles.dart';
 
 class CountryCodePhone extends StatelessWidget {
+  const CountryCodePhone({super.key});
+
 
 
   @override
@@ -15,7 +17,7 @@ class CountryCodePhone extends StatelessWidget {
       },
       // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
       initialSelection: 'EG',
-      favorite: ['+20','EG'],
+      favorite: const ['+20','EG'],
       // optional. Shows only country name and flag
       showCountryOnly: false,textStyle:style1.copyWith(color: MainColor),
 
@@ -27,6 +29,8 @@ class CountryCodePhone extends StatelessWidget {
   }
 }
 class  SelectCountry extends StatelessWidget {
+  const SelectCountry({super.key});
+
 
 
   @override
@@ -37,7 +41,7 @@ class  SelectCountry extends StatelessWidget {
       },
       // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
       initialSelection: 'EG',
-      favorite: ['+20','EG'],
+      favorite: const ['+20','EG'],
       // optional. Shows only country name and flag
       showCountryOnly: true,textStyle:style1.copyWith(color: MainColor),
 

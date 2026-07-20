@@ -3,14 +3,12 @@ import 'package:dio/dio.dart';
 
 import '../../models/Inboxroom.dart';
 import '../../models/MessageModel.dart';
-import '../../util/Dialogs.dart';
 import '../../util/app_constants.dart';
 import '../Moment_repositores/Moment_repository.dart';
 
 
 int Index=2;
 class Chatapi extends MomentRepository {
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -36,9 +34,9 @@ class Chatapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data;
 
-        list.forEach((element) {
+        for (var element in list) {
           InboxRooms.add(InboxRoomModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -53,7 +51,6 @@ class Chatapi extends MomentRepository {
 
   Future<Message> SentImageChat({ context,image, userid  }) async {
 print(userid);print(UserId);
-    var send=true;
     try {
       FormData formData =   FormData.fromMap({
         "message":await MultipartFile.fromFile(image?.path, filename: image?.path?.split('/')?.last),
@@ -83,7 +80,7 @@ print(userid);print(UserId);
 bool deleted=false;
     try {
       Response response2 = await dio.get(
-        '/api/deleteInboxRoom/${inboxid}',
+        '/api/deleteInboxRoom/$inboxid',
       );
 
       if (response2.statusCode == 200) {
@@ -123,7 +120,7 @@ bool deleted=false;
 
     bool read=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "inboxroomid": InboxRoom.toString(),
 
       });

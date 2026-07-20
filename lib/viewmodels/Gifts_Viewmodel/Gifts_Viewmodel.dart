@@ -1,7 +1,6 @@
 
 import 'package:ahlachat/models/RoomModel.dart';
 import 'package:ahlachat/models/gifts.dart';
-import 'package:ahlachat/models/gifts.dart';
 import 'package:flutter/material.dart';
 import 'package:ahlachat/models/GiveGifts.dart';
 import 'package:ahlachat/models/Usermodel.dart';
@@ -9,7 +8,6 @@ import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:provider/provider.dart';
 import 'package:spring/spring.dart';
 
-import '../../util/Dialogs.dart';
 
 class GiftsViewModel extends ChangeNotifier{
   TabController?  nestedTabController;
@@ -90,7 +88,7 @@ class GiftsViewModel extends ChangeNotifier{
       print(WaitingGifts);
 
       if(WaitingGifts.isNotEmpty) {
-        Future.delayed(Duration(seconds: 3),() {
+        Future.delayed(const Duration(seconds: 3),() {
 
           GitGlopalGiftData(Quantati:WaitingGifts.first['Quantati'] ,
             sender: WaitingGifts.first["sender"],
@@ -140,7 +138,7 @@ class GiftsViewModel extends ChangeNotifier{
     if(WaitingLucky.isNotEmpty){
       WaitingLucky.removeAt(0);
       if(WaitingLucky.isNotEmpty) {
-        Future.delayed(Duration(seconds: 3),() {
+        Future.delayed(const Duration(seconds: 3),() {
           GitGlopalLuckyData(
             sender: WaitingLucky.first["sender"],
             state: WaitingLucky.first["state"],
@@ -239,7 +237,7 @@ addtogiftlist({value,giftprices,costs}){
   }
   initcontroller({context, thisx}){
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: false);
-    nestedTabController = new TabController(length: user.Giftcatigoris.length, vsync: thisx);
+    nestedTabController = TabController(length: user.Giftcatigoris.length, vsync: thisx);
     nestedTabController?.addListener(() {
 
       index=nestedTabController?.index??0;

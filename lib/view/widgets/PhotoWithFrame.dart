@@ -7,12 +7,12 @@ class PhotoFrame extends StatelessWidget {
  String? image;
  String? Frame;
 
- PhotoFrame({this.image, this.Frame});
+ PhotoFrame({super.key, this.image, this.Frame});
 
   @override
   Widget build(BuildContext context) {
 
-    return      Container(width: 70,height:70,
+    return      SizedBox(width: 70,height:70,
       child: Stack(fit: StackFit.loose,alignment: Alignment.center,children: [
         image==null||  image==''?const SizedBox():  CircleAvatar(backgroundColor: Colors.transparent,radius:24  ,backgroundImage:CachedNetworkImageProvider(image?? '') ),
           Frame==null||  Frame==''?const SizedBox():   SVGASimpleImage(resUrl:Frame??''),
@@ -27,12 +27,12 @@ class UserFrame extends StatelessWidget {
   String? image;
   String? Frame;
 
-  UserFrame({this.image, this.Frame});
+  UserFrame({super.key, this.image, this.Frame});
 
   @override
   Widget build(BuildContext context) {
 
-    return      Container(width: 70,height:70,
+    return      SizedBox(width: 70,height:70,
       child: Stack(fit: StackFit.loose,alignment: Alignment.center,children: [
         image==null||  image==''?const SizedBox():  CircleAvatar(backgroundColor:Colors.transparent ,radius:24  ,backgroundImage:CachedNetworkImageProvider(image?? '') ),
         Frame==null||  Frame==''?const SizedBox():   SVGASimpleImage(resUrl:Frame??''),
@@ -46,7 +46,7 @@ class MainFrame extends StatelessWidget {
   String? image;
   String? Frame;
 
-  MainFrame({this.image, this.Frame});
+  MainFrame({super.key, this.image, this.Frame});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class PhotoFrame2 extends StatelessWidget {
   String? image;
   String? Frame;
 
-  PhotoFrame2({this.image, this.Frame});
+  PhotoFrame2({super.key, this.image, this.Frame});
  
   @override
   Widget build(BuildContext context) {
@@ -77,12 +77,12 @@ class FrameUserProfile extends StatelessWidget {
   String? image;
   String? Frame;
 
-  FrameUserProfile({this.image, this.Frame});
+  FrameUserProfile({super.key, this.image, this.Frame});
 
   @override
   Widget build(BuildContext context) {
 
-    return  Container(height: 100,width: 100,
+    return  SizedBox(height: 100,width: 100,
       child: Stack(children: [
         image==null||image==''?const SizedBox():  Align(alignment: Alignment.center,child: CircleAvatar(backgroundColor: Colors.transparent,radius:40  ,backgroundImage:CachedNetworkImageProvider(image?? '') )),
         Frame==null||Frame==''?const SizedBox():   SVGASimpleImage(resUrl:Frame??''),
@@ -94,12 +94,12 @@ class FrameRelationsProfile extends StatelessWidget {
   String? image;
   String? Frame;
 
-  FrameRelationsProfile({this.image, this.Frame});
+  FrameRelationsProfile({super.key, this.image, this.Frame});
 
   @override
   Widget build(BuildContext context) {
 
-    return  Container(height: 80,width: 80,
+    return  SizedBox(height: 80,width: 80,
       child: Stack(children: [
         image==null||image==''?const SizedBox():  Align(alignment: Alignment.center,child: CircleAvatar(backgroundColor: Colors.transparent  ,backgroundImage:CachedNetworkImageProvider(image?? '') )),
         Frame==null||Frame==''?const SizedBox():   SVGASimpleImage(resUrl:Frame??''),
@@ -112,7 +112,7 @@ class LeaderboardFrame  extends StatelessWidget {
   String? image;
   String? Frame;
 
-  LeaderboardFrame({this.image, this.Frame});
+  LeaderboardFrame({super.key, this.image, this.Frame});
 
   @override
   Widget build(BuildContext context) {

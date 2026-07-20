@@ -7,9 +7,7 @@ import 'package:ahlachat/models/FamilyModel.dart';
 import 'package:ahlachat/models/FamilyRequest.dart';
 import 'package:ahlachat/models/FamilyRequestModel.dart';
 import 'package:ahlachat/models/Leaderboardusermodel.dart';
-import 'package:ahlachat/models/RoomModel.dart';
 import 'package:ahlachat/models/Usermodel.dart';
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:dio/dio.dart';
@@ -18,7 +16,6 @@ import 'package:provider/provider.dart';
 
 class Familyapi extends MomentRepository {
 
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -47,9 +44,9 @@ class Familyapi extends MomentRepository {
 
       if (response2.statusCode == 200) {
         List list =response2.data['Family'];
-        list.forEach((element) {
+        for (var element in list) {
           AllFamily.add(FamilyModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -128,9 +125,9 @@ print(e);
       if (response2.statusCode == 200) {
         List list =response2.data['Families'] ;
 
-        list.forEach((element) {
+        for (var element in list) {
           RequestesFamily.add(FamilyRequest.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -152,9 +149,9 @@ print(e);
       if (response2.statusCode == 200) {
         List list =response2.data['users'] ;
 
-        list.forEach((element) {
+        for (var element in list) {
           FamilyMembers.add(usermodel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -426,7 +423,7 @@ print(response2.data);
       );
       print(response2.data);
       if (response2.statusCode == 200) {
-        LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: false);
+        Provider.of<LoginViewmodel>(context,listen: false);
 
 
 

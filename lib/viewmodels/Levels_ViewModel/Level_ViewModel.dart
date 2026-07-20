@@ -13,12 +13,10 @@ class LevelViewModel extends ChangeNotifier{
 List<UserLevelGifts> LevelGift=[];
   bool showloading = false;
   void showSpinner() {
-     ;
     showloading = true;
     notifyListeners(); // (Method for ChangeNotifiers) Or equivalent call to rebuild the view
   }
   void HiddenSpinner() {
-     ;
     showloading = false;
     notifyListeners(); // (Method for ChangeNotifiers) Or equivalent call to rebuild the view
   }
@@ -32,7 +30,7 @@ List<AchiveModels>? Models;
         .then((value) {
 
       Models=value;
-      navigateTo(context: context, screen: ModelsScrean());
+      navigateTo(context: context, screen: const ModelsScrean());
 
       DismissGlopalLoading();
     });

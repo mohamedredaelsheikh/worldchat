@@ -1,14 +1,9 @@
 
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ahlachat/models/ChairModel.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
-import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/styles.dart';
-import 'package:ahlachat/view/widgets/CustomeTextField.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +14,7 @@ class AddRoomPassword extends StatelessWidget {
    @override
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context,listen: true);
 
     return AnimatedPositioned(
         height:   Room.showloading18 ? SizeConfig.screenHeight! /2:0,
@@ -27,12 +22,12 @@ class AddRoomPassword extends StatelessWidget {
         top: 0.0,
         duration: const Duration(milliseconds: 300,),
         curve: Curves.fastOutSlowIn,
-        child:  Container(decoration: BoxDecoration(color: whitecolor ,borderRadius: BorderRadius.only(bottomRight:   Radius.circular(20),bottomLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!,width: SizeConfig.screenWidth!,
+        child:  Container(decoration: const BoxDecoration(color: whitecolor ,borderRadius: BorderRadius.only(bottomRight:   Radius.circular(20),bottomLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!,width: SizeConfig.screenWidth!,
             child:SingleChildScrollView(
               child:  Column(mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Row(
                     children: [
                       InkWell(onTap: () {
@@ -41,15 +36,15 @@ class AddRoomPassword extends StatelessWidget {
 
                       },child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(decoration: BoxDecoration( borderRadius: BorderRadius.circular(20)),child: Icon(Icons.close,size:25,color: MainColor)),
+                        child: Container(decoration: BoxDecoration( borderRadius: BorderRadius.circular(20)),child: const Icon(Icons.close,size:25,color: MainColor)),
                       ),
                       ),
                     const Spacer(),
 
                     ],
                   ),
-                  SizedBox(height: 20,),
-                  Container(width: SizeConfig.screenWidth , child: Row(
+                  const SizedBox(height: 20,),
+                  SizedBox(width: SizeConfig.screenWidth , child: Row(
                     children: [
                       InkWell(onTap: () {
                         Room.hideSpinner18();
@@ -65,14 +60,14 @@ class AddRoomPassword extends StatelessWidget {
                       ),
                       ),
 
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       Expanded(
                         child: TextFormField(onChanged: (v){
 
-                        },controller:  Room.PasswordRoom , cursorColor: MainColor ,textAlign: TextAlign.center,decoration:InputDecoration(hintText: getLang(context: context,key: "RoomPassword"),  enabledBorder: UnderlineInputBorder(
+                        },controller:  Room.PasswordRoom , cursorColor: MainColor ,textAlign: TextAlign.center,decoration:InputDecoration(hintText: getLang(context: context,key: "RoomPassword"),  enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: MainColor),
                         ),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(color: MainColor),
                           ),
 
@@ -82,9 +77,9 @@ class AddRoomPassword extends StatelessWidget {
 
                     ],
                   )),
-                  SizedBox(height: 40,),
-                  Room.showloading19? Center(child: CustomeCircleProgress()): InkWell(onTap: (){
-                    if(Room.PasswordRoom.text.length==0)
+                  const SizedBox(height: 40,),
+                  Room.showloading19? const Center(child: CustomeCircleProgress()): InkWell(onTap: (){
+                    if(Room.PasswordRoom.text.isEmpty)
                     {
                       Room.hideSpinner18();
                       Room. RemoveRoomPassword(context: context);

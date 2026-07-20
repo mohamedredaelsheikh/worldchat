@@ -35,16 +35,16 @@ class Message {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['message'] = this.message;
-    data['deletestate'] = this.deletestate;
-    data['user_id'] = this.userId;
-    data['Inboxroom_id'] = this.inboxroomId;
-    data['sender_id'] = this.senderId;
-    data['created_at'] = this.createdAt;
-    data['status']=this.status;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['message'] = message;
+    data['deletestate'] = deletestate;
+    data['user_id'] = userId;
+    data['Inboxroom_id'] = inboxroomId;
+    data['sender_id'] = senderId;
+    data['created_at'] = createdAt;
+    data['status']=status;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

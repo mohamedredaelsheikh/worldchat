@@ -35,7 +35,7 @@ class AdminChair extends StatelessWidget {
         Room.Currentroom?.chairs?[8].adminleaved==1||Room.Currentroom?.chairs?[8].user==null?Padding(
           padding: const EdgeInsets.only(top: 10),
           child: Image.asset(Images.Chairs, height: 50,width: 50),
-        ):  Container( width:70  ,
+        ):  SizedBox( width:70  ,
           child: InkWell(onTap: (){
 
             if(user.userinfo?.id.toString()==Room.Currentroom?.adminId.toString()){
@@ -56,10 +56,10 @@ class AdminChair extends StatelessWidget {
                 child: AvatarGlow(
                   glowColor: Colors.tealAccent,
                   glowRadiusFactor: 0.4,
-                  duration: Duration(milliseconds: 1000),
+                  duration: const Duration(milliseconds: 1000),
                   repeat: true,
                   animate: true,
-                  child:SizedBox(),
+                  child:const SizedBox(),
                 ),
               ),
               Column(mainAxisSize: MainAxisSize.min,
@@ -68,7 +68,7 @@ class AdminChair extends StatelessWidget {
                 children: [
                   PhotoFrame(image:Room.checkadmin(context: context)?user.userinfo?.image:Room.Currentroom?.chairs?[8].user?.image,Frame:Room.checkadmin(context: context)?user.userinfo?.frameimage:Room.Currentroom?.chairs?[8].user?.frameimage),
                   InkWell(onTap: () {
-                    GlopalbottomSheet(context: context,Screan: UserCollectKarismas());
+                    GlopalbottomSheet(context: context,Screan: const UserCollectKarismas());
 
                     Room.GetCollectKarisma(context: context,userid:Room.Currentroom?.chairs?[8].userId ,chairid: Room.Currentroom?.chairs?[8].id);
                   },child: Column(mainAxisSize: MainAxisSize.min,
@@ -173,7 +173,7 @@ class AdminChair extends StatelessWidget {
                          children: [
                            PhotoFrame(image:Room.Currentroom?.chairs?[9].user?.image,Frame:Room.Currentroom?.chairs?[9].user?.frameimage),
                            InkWell(onTap: () {
-                             GlopalbottomSheet(context: context,Screan: UserCollectKarismas());
+                             GlopalbottomSheet(context: context,Screan: const UserCollectKarismas());
 
                              Room.GetCollectKarisma(context: context,userid:Room.Currentroom?.chairs?[9].userId,chairid: Room.Currentroom?.chairs?[9].id );
                            },

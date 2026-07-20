@@ -20,18 +20,18 @@ class PostsModel {
     if (json['Postes'] != null) {
       postes = <Postes>[];
       json['Postes'].forEach((v) {
-        postes!.add(new Postes.fromJson(v));
+        postes!.add(Postes.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['errNum'] = this.errNum;
-    data['msg'] = this.msg;
-    if (this.postes != null) {
-      data['Postes'] = this.postes!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['errNum'] = errNum;
+    data['msg'] = msg;
+    if (postes != null) {
+      data['Postes'] = postes!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -64,8 +64,8 @@ class Postes {
 
   Postes.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    userId =json['user_id']==null? '':json['user_id'];
-    content = json['content']==null? '':json['content'];
+    userId =json['user_id'] ?? '';
+    content = json['content'] ?? '';
   //  image = json['image']==null? '':AppConstants.Image_URL+json['image'];
     likes = json['likes'];
     comments = json['comments'];
@@ -77,12 +77,12 @@ class Postes {
 
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-      user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
+      user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
 
       if (json['commentsuser'] != null) {
         commentsuser = <Comments>[];
         json['commentsuser'].forEach((v) {
-       commentsuser!.add(new Comments.fromJson(v));
+       commentsuser!.add(Comments.fromJson(v));
       });
     }else{
       commentsuser =[];
@@ -91,7 +91,7 @@ class Postes {
     if (json['like'] != null) {
       like = <Like>[];
       json['like'].forEach((v) {
-        like!.add(new Like.fromJson(v));
+        like!.add(Like.fromJson(v));
       });
   }else{
       like =[];
@@ -102,23 +102,23 @@ class Postes {
 
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['user_id'] = this.userId;
-    data['content'] = this.content;
-    data['likes'] = this.likes;
-    data['comments'] = this.comments;
-    data['image'] = this.image;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.commentsuser != null) {
-      data['commentsuser'] = this.commentsuser!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['content'] = content;
+    data['likes'] = likes;
+    data['comments'] = comments;
+    data['image'] = image;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (commentsuser != null) {
+      data['commentsuser'] = commentsuser!.map((v) => v.toJson()).toList();
     }
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    if (this.like != null) {
-      data['like'] = this.like!.map((v) => v.toJson()).toList();
+    if (like != null) {
+      data['like'] = like!.map((v) => v.toJson()).toList();
     }
     return data;
   }

@@ -1,12 +1,9 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:ahlachat/Repositores/Shop_repositores/ShopRepository.dart';
 import 'package:ahlachat/models/RelationModel.dart';
 import 'package:dio/dio.dart';
 
-import '../../models/MyItemModel.dart';
-import '../../models/ShopModel.dart';
 import '../../util/Dialogs.dart';
 import '../../util/app_constants.dart';
 
@@ -36,7 +33,7 @@ class Relationapi extends ShopRepository {
     int check=0;
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "sender_id": UserId.toString(),
         "user_id": user_id.toString(),
         "Relation_id": Relationid.toString(),
@@ -75,7 +72,7 @@ class Relationapi extends ShopRepository {
     bool check=false;
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "id": id.toString(),
       });
 
@@ -106,7 +103,7 @@ class Relationapi extends ShopRepository {
     print(id.toString());
     print(userid.toString());
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "id": id.toString(),
         "user_id":UserId.toString()
       });
@@ -139,7 +136,7 @@ class Relationapi extends ShopRepository {
     print(id.toString());
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "id": id.toString(),
         "user_id":UserId.toString()
       });
@@ -176,9 +173,9 @@ print(response2.data);
       if (response2.statusCode == 200) {
         List list =response2.data;
 
-        list.forEach((element) {
+        for (var element in list) {
           UserRelations.add(RelationModel.fromJson(element));
-        });
+        }
 
 
       }
@@ -200,7 +197,7 @@ print(response2.data);
     bool check=false;
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "item_id": itemId.toString(),
         "user_id": UserId.toString(),
         "reciver":userid.toString(),
@@ -234,7 +231,7 @@ print(response2.data);
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
 

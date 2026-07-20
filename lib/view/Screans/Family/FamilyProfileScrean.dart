@@ -2,7 +2,6 @@ import 'package:ahlachat/models/RoomModel.dart';
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
-import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
@@ -14,17 +13,18 @@ import 'package:ahlachat/view/Screans/UserProfile/ShowUserProfile.dart';
 import 'package:ahlachat/viewmodels/Animated_Viewmodel/ElementViewModel.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Family_ViewModel/Family_ViewModel.dart';
-import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 class FamilyProfileScrean extends StatelessWidget {
+  const FamilyProfileScrean({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
-    SvgViewmodel svga=  Provider.of<SvgViewmodel>(context,listen: true);
+    Provider.of<SvgViewmodel>(context,listen: true);
     FamilyViewModel  Family=Provider.of<FamilyViewModel>(context,listen:  true);
     LoginViewmodel user= Provider.of<LoginViewmodel>(context,listen: true);
     return SafeArea(
@@ -43,14 +43,14 @@ class FamilyProfileScrean extends StatelessWidget {
                       const SizedBox(height: 5,),
                       InkWell(onTap: () {
                         Family.GetFamilyMembers();
-                        navigateTo(context: context,screen: FamilyMemberScrean());
+                        navigateTo(context: context,screen: const FamilyMemberScrean());
                       },
                         child: Container(decoration: BoxDecoration(color: Colors.white12,borderRadius: BorderRadius.circular(10)),child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: Row(mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(Icons.person,color: whitecolor,size: 12) ,
-                              SizedBox(width: 5,),
+                              const Icon(Icons.person,color: whitecolor,size: 12) ,
+                              const SizedBox(width: 5,),
                               Text(Family.CurrentFamily?.nubmers?.toString()??'',style: style3.copyWith(fontSize: 10,color: Colors.white),)
                             ],
                           ),
@@ -71,7 +71,7 @@ class FamilyProfileScrean extends StatelessWidget {
                         gradient:  LinearGradient(
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
-                            colors: [Colors.white,Color(Family.Levels.where((element) => element['Coins']<=Family.CurrentFamily?.karisma).last['Color']).withOpacity(0.8)])
+                            colors: [Colors.white,Color(Family.Levels.where((element) => element['Coins']<=Family.CurrentFamily?.karisma).last['Color']).withValues(alpha: 0.8)])
                     ),
                     width: SizeConfig.screenWidth,
 
@@ -80,7 +80,7 @@ class FamilyProfileScrean extends StatelessWidget {
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(Family.Levels.where((element) => element['Coins']<=Family.CurrentFamily?.karisma).last['name'],style: style1),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Row(crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -96,7 +96,7 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
                                       Row(
                                         children: [
                                            Expanded(child: ProgressLine(percentage:((Family.CurrentFamily?.karisma??0)/(Family.Levels.where((element) => element['Level']==(int.parse(Family.Levels.where((element) => element['Coins']<=Family.CurrentFamily?.karisma).last['Level'])+1).toString()).first['Coins'])).round(),color:Color((Family.Levels.where((element) => element['Level']==(int.parse(Family.Levels.where((element) => element['Coins']<=Family.CurrentFamily?.karisma).last['Level'])+1).toString()).first['Color'])))),
-                                          SizedBox(width: 10,),
+                                          const SizedBox(width: 10,),
                                          Image.asset(Family.Levels.where((element) => element['Level']==(int.parse(Family.Levels.where((element) => element['Coins']<=Family.CurrentFamily?.karisma).last['Level'])+1).toString()).first['image'].toString(),height: 40) ,
 
                                         ],
@@ -126,7 +126,7 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
                       const SizedBox(height: 10,),
                       Text(getLang(context: context, key: "Family_Notice"),style: style2.copyWith(fontSize: 15)),
                       const SizedBox(height: 0,),
-                      Text(Family.CurrentFamily?.describtion??getLang(context: context, key: "No_Description"),style: style5.copyWith(height: 2,fontSize: 13,color: Colors.black87.withOpacity(0.8))),
+                      Text(Family.CurrentFamily?.describtion??getLang(context: context, key: "No_Description"),style: style5.copyWith(height: 2,fontSize: 13,color: Colors.black87.withValues(alpha: 0.8))),
                     ],
                   ),
                 )),
@@ -142,7 +142,7 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
                           const Spacer(),
                           InkWell(onTap: (){
 
-                            navigateTo(context: context,screen: MemberFamilyRank());
+                            navigateTo(context: context,screen: const MemberFamilyRank());
                             Family.GetMemberFamilyLeaderboard();
                           },
                             child: Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
@@ -158,11 +158,11 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
                       SingleChildScrollView(scrollDirection: Axis.horizontal,
                         child: Row(
                             children:List.generate(Family.CurrentFamily?.topStar?.length??0, (index) =>  Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 3),
+                              padding: const EdgeInsets.symmetric(horizontal: 3),
                               child:   InkWell(
                                 onTap: () {
                                   user.GetShoweduserProfile(Family.CurrentFamily?.topStar![index].user);
-                                  navigateTo(context: context,screen: ShowUserProfile());
+                                  navigateTo(context: context,screen: const ShowUserProfile());
                                 },
                                 child: Column(
                                   children: [
@@ -172,7 +172,7 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
                                       child: Row(
                                         children: [
                                           Image.asset(Images.coins,width: 12,height: 12),
-                                          SizedBox(width: 3,),
+                                          const SizedBox(width: 3,),
                                           Text(Helper().k_m_b_generator(int.parse(Family.CurrentFamily?.topStar![index].coins??'0')).toString(),style: style2.copyWith(height: 1, fontSize: 10),),
                                         ],
                                       ),
@@ -213,7 +213,7 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
                     childCount: Family.CurrentFamily?.rooms?.length??0,
                   ),
                 ),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 40))
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 40))
               ],
             ),
          if(user.userinfo?.MyFamil==null &&Family.CurrentFamily?.userId!=user.userinfo?.id)
@@ -229,7 +229,7 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
                   }
 
 
-                },child: Container(height: 45,width: SizeConfig.screenWidth,child: Center(child: Text( user.userinfo?.FamilyRequests?.contains(Family.CurrentFamily?.id)==true ?getLang(context: context,key: "Reviewing"):getLang(context: context,key: "Join_Family"),style: style2.copyWith(height: 1),)),decoration: BoxDecoration(color:Color(0xFFf3c98d),borderRadius: BorderRadius.circular(10)),)),
+                },child: Container(height: 45,width: SizeConfig.screenWidth,child: Center(child: Text( user.userinfo?.FamilyRequests?.contains(Family.CurrentFamily?.id)==true ?getLang(context: context,key: "Reviewing"):getLang(context: context,key: "Join_Family"),style: style2.copyWith(height: 1),)),decoration: BoxDecoration(color:const Color(0xFFf3c98d),borderRadius: BorderRadius.circular(10)),)),
               ),
             ),
 
@@ -244,7 +244,7 @@ print(Family.Levels.where((element) => element['Level']==(int.parse(Family.Level
 
 if(value=='0'){
   Family.GetFamilyRequests();
-  navigateTo(context: context, screen: JoinRequestScrean());
+  navigateTo(context: context, screen: const JoinRequestScrean());
 }else if(value=='1'){
   Family.LeaveMyFamily(context: context);
 }
@@ -259,9 +259,9 @@ else if(value=='2'){
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('سوف يكلفك تغيير اسم العائله 5000 من الالماس الخاص بك',style: style2.copyWith(fontSize: 20),),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             TextFormField(controller: Family.EditFamilyName,),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(onTap: (){
@@ -299,7 +299,7 @@ Navigator.pop(context);
 else if(value=='3'){
   showDialog(
       context: context,
-      builder: (_) => AlertDialog(shape: RoundedRectangleBorder(
+      builder: (_) => AlertDialog(shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0))),
 
         backgroundColor: Colors.white,
@@ -308,17 +308,17 @@ else if(value=='3'){
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('- يمكنك تبديل دخل العائله الي عملات ترجع الي محفظتك مقابل 3% من قيمه الدخل',style: style2.copyWith(fontSize: 15),),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Row(children: [
               Text(' - قيمه الدخل الحالي هي  : ',style: style2.copyWith(fontSize: 15),),
               Text(Family.CurrentFamily?.GlopalKarisma.toString()??'',style: style2.copyWith(fontSize: 15),)
             ],),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Text('- لقد قمت بفك   : '+((Family.CurrentFamily?.karisma??0)-(Family.CurrentFamily?.GlopalKarisma??0)).toString()+'  من الدخل هذا الشهر  ' ,style: style2.copyWith(fontSize: 15),),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
               Text('ُ - عند التحويل ستحصل علي    : '+((Family.CurrentFamily?.GlopalKarisma??0)*3/100).round().toString()+' ماسه من الدخل هذا الشهر ',style: style2.copyWith(fontSize: 15),),
 
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(onTap: (){
@@ -399,8 +399,8 @@ class ProgressLine extends StatelessWidget {
           width: double.infinity,
           height: 10,
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: color.withValues(alpha: 0.1),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
         ),
         LayoutBuilder(
@@ -409,7 +409,7 @@ class ProgressLine extends StatelessWidget {
             height: 10,
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
           ),
         ),

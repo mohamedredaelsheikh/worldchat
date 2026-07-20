@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 class MessageScrean extends StatefulWidget {
 
 var kind;
-  MessageScrean({this.kind});
+  MessageScrean({super.key, this.kind});
   @override
   State<MessageScrean> createState() => _MessageScreanState();
 }
@@ -29,9 +29,9 @@ class _MessageScreanState extends State<MessageScrean> {
         onRefresh: () async{
           Provider.of<InboxroomViewModel>(context,listen: false).GetInboxroom(context: context);
         },
-        child: CustomScrollView( physics: BouncingScrollPhysics(),
+        child: CustomScrollView( physics: const BouncingScrollPhysics(),
           slivers: [
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
             SliverToBoxAdapter(child:Column(
               children:List.generate(Inboxrooms.Inboxrooms.length, (index){
                 List<InboxRoomModel> sortedchat=Inboxrooms.Inboxrooms..sort((a, b) => a.updatedAt!.compareTo(b.updatedAt!),) ;
@@ -46,12 +46,12 @@ class _MessageScreanState extends State<MessageScrean> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                           Text('World Team',style: style2.copyWith(fontSize: 20),),
-                           SizedBox(height: 10,),
+                           const SizedBox(height: 10,),
                            InkWell(onTap: (){
                              Navigator.pop(context);
                              Inboxrooms.DeleteInboxroom(context: context,inboxid:Chat[index].id );
                            },child: Text(getLang(context: context,key: "Delete_Conv"),style: style5.copyWith(fontSize: 15),)),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                             InkWell(onTap: (){
                               Navigator.pop(context);
 
@@ -94,14 +94,14 @@ class _MessageScreanState extends State<MessageScrean> {
                                   ),
                                   Row(
                                     children: [
-                                      if (Chat[index].message?.isNotEmpty??false)Container(width: 200,child: Text(Chat[index].message?.last.status==1?getLang(context: context,key: "IMage"):Chat[index].message?.last.status==2?'Gift🎁':Chat[index].message?.last.message??'',style: TextStyle().copyWith(
+                                      if (Chat[index].message?.isNotEmpty??false)SizedBox(width: 200,child: Text(Chat[index].message?.last.status==1?getLang(context: context,key: "IMage"):Chat[index].message?.last.status==2?'Gift🎁':Chat[index].message?.last.message??'',style: const TextStyle().copyWith(
                                           color: Colors.black45,fontSize: 12),maxLines: 1,overflow: TextOverflow.ellipsis,)),
                                       const Spacer(),
                                       Chat[index].numberUnread==0?const SizedBox():
                                       Padding(
                                         padding: const EdgeInsets.symmetric(horizontal:10 ).copyWith(top:10),
                                         child: badges.Badge( badgeColor: MainColor,
-                                          child: Icon(Icons.notifications_active_outlined,size: 19),
+                                          child: const Icon(Icons.notifications_active_outlined,size: 19),
                                         ),
                                       )
 
@@ -119,7 +119,7 @@ class _MessageScreanState extends State<MessageScrean> {
                 );
               } ),
             )),
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+            const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
           ],
         )
     );

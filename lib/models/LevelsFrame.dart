@@ -30,14 +30,14 @@ class LevelFrame {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['image'] = this.image;
-    data['svga'] = this.svga;
-    data['level_start'] = this.levelStart;
-    data['level_end'] = this.levelEnd;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['image'] = image;
+    data['svga'] = svga;
+    data['level_start'] = levelStart;
+    data['level_end'] = levelEnd;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

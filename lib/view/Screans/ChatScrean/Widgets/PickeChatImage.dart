@@ -8,11 +8,11 @@ import '../../../../viewmodels/InboxRooms_Viewmodel/InboxRoomsViewmodel.dart';
 class PickedImageChat extends StatelessWidget {
    var id;
    usermodel ?userinfo;
-   PickedImageChat({this.userinfo,this.id});
+   PickedImageChat({super.key, this.userinfo,this.id});
   @override
   Widget build(BuildContext context) {
     InboxroomViewModel    Inboxrooms= Provider.of<InboxroomViewModel>(context,listen: true);
-    LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
+    Provider.of<LoginViewmodel>(context, listen: true);
 
     return  Container(height: 70,child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,11 +26,11 @@ class PickedImageChat extends StatelessWidget {
 
 
           Navigator.pop(context);
-        },child : Icon(Icons.send,color: Colors.white,)) ,
+        },child : const Icon(Icons.send,color: Colors.white,)) ,
         const  SizedBox(width: 20,),
         InkWell(onTap: (){
           Navigator.pop(context);
-        },child: Icon(Icons.clear ,color: Colors.white,)) ,
+        },child: const Icon(Icons.clear ,color: Colors.white,)) ,
         const Spacer(),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -38,6 +38,6 @@ class PickedImageChat extends StatelessWidget {
         ),
 
       ],
-    ),width: SizeConfig.screenWidth,color:  MainColor.withOpacity(0.7),);
+    ),width: SizeConfig.screenWidth,color:  MainColor.withValues(alpha: 0.7),);
   }
 }

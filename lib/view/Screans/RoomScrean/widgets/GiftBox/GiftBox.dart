@@ -1,6 +1,5 @@
 import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/SendGift.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
@@ -13,7 +12,7 @@ class GiftBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: false);
+    Provider.of<LoginViewmodel>(context,listen: false);
     GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
 
     return       InkWell(onTap: (){
@@ -27,7 +26,7 @@ class GiftBox extends StatelessWidget {
 
           }
         });        gits.Cost=0;
-      showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.transparent,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+      showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.transparent,elevation: 0,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
         context: context,
         builder: (context) {
           return const NestedTabBar();

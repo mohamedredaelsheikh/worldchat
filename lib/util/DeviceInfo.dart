@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class DeviceInfo {
@@ -18,7 +17,7 @@ class DeviceInfo {
 
   static DeviceInfo? getInstance() {
     if (instance == null) {
-      instance = new DeviceInfo();
+      instance = DeviceInfo();
       return instance;
     } else {
       return instance;
@@ -35,7 +34,7 @@ class DeviceInfo {
       deviceID = await const AndroidId().getId() ?? "";
       version = packageInfo.version;
       versionCode = packageInfo.buildNumber;
-      model = androidInfo.model!;
+      model = androidInfo.model;
       osVersion = "${androidInfo.version.sdkInt}" ;
     } else if (Platform.isIOS) {
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
@@ -43,8 +42,8 @@ class DeviceInfo {
       deviceID = iosInfo.identifierForVendor!;
       version = packageInfo.version;
       versionCode = version; //version is the unique things at the ios
-      model = iosInfo.utsname.machine!;
-      osVersion = iosInfo.systemVersion!;
+      model = iosInfo.utsname.machine;
+      osVersion = iosInfo.systemVersion;
     }
 
   }

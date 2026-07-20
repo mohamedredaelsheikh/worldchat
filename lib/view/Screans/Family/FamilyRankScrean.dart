@@ -21,21 +21,21 @@ class LeaderboardFamilyScrean extends StatefulWidget {
 class _LeaderboardFamilyScreanState extends State<LeaderboardFamilyScrean> {
   @override
   Widget build(BuildContext context) {
-    LoginViewmodel Family = Provider.of<LoginViewmodel>(context, listen: true);
+    Provider.of<LoginViewmodel>(context, listen: true);
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
 
-    return Container(decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage('assets/image/eh.png'),fit: BoxFit.cover)),
+    return Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage('assets/image/eh.png'),fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(centerTitle: false,automaticallyImplyLeading: true,leading:  IconButton(
-            icon: Icon(Icons.navigate_before, color: Colors.white),
+            icon: const Icon(Icons.navigate_before, color: Colors.white),
         onPressed: () => Navigator.of(context).pop(),
       ) ,actions: [  Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: IconButton(
             icon: Image.asset(Images.SearchIcon, color: Colors.white,height: 23),
-            onPressed: () => navigateTo(context: context, screen: SearchFamilyScrean()),
+            onPressed: () => navigateTo(context: context, screen: const SearchFamilyScrean()),
           ),
       )],backgroundColor: Colors.transparent,title: Text(getLang(context: context, key: "Family"),style: style1,)),
         body:    Stack(alignment: Alignment.center,
@@ -54,26 +54,26 @@ class _LeaderboardFamilyScreanState extends State<LeaderboardFamilyScrean> {
                       tabPosition: TabPosition.bottom,
                     ),
                         isScrollable: true,
-                        labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
+                        labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
                         unselectedLabelColor: Colors.white54,
                         labelColor:    Colors.amberAccent,
                         onTap: (val) {},
 
                         tabs:   [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Tab(
                               text: getLang(context: context,key: "Daily"),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Tab(
                               text: getLang(context: context,key: "Weekly"),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Tab(
                               text: getLang(context: context,key: "Monthly"),
                             ),
@@ -99,8 +99,8 @@ class _LeaderboardFamilyScreanState extends State<LeaderboardFamilyScrean> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(bottom: 15),
                 child: InkWell(onTap: () {
-                  navigateTo(context: context,screen: CreateFamilyCondition());
-                },child: Container(height: 45,width: SizeConfig.screenWidth,child: Center(child: Text(getLang(key: "Create_Family",context: context),style: style2.copyWith(height: 1),)),decoration: BoxDecoration(color:Color(0xFFf3c98d),borderRadius: BorderRadius.circular(10)),)),
+                  navigateTo(context: context,screen: const CreateFamilyCondition());
+                },child: Container(height: 45,width: SizeConfig.screenWidth,child: Center(child: Text(getLang(key: "Create_Family",context: context),style: style2.copyWith(height: 1),)),decoration: BoxDecoration(color:const Color(0xFFf3c98d),borderRadius: BorderRadius.circular(10)),)),
               ),
             )
           ],

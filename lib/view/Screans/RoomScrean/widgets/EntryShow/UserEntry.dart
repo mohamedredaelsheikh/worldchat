@@ -25,8 +25,8 @@ class UserEntry extends StatelessWidget {
       child: SingleChildScrollView(scrollDirection:Axis.horizontal ,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 0),
-          child:Container( padding: EdgeInsets.all(3),decoration: BoxDecoration(
-              image: DecorationImage(image: ExactAssetImage(Images.Entryimage),fit: BoxFit.fill),
+          child:Container( padding: const EdgeInsets.all(3),decoration: BoxDecoration(
+              image: const DecorationImage(image: ExactAssetImage(Images.Entryimage),fit: BoxFit.fill),
               borderRadius: BorderRadius.circular(20)),height: 60.0,width: 160,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,

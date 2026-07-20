@@ -1,5 +1,4 @@
 import 'package:ahlachat/models/GiveGifts.dart';
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +19,7 @@ class SvgViewmodel extends ChangeNotifier    {
     EnterImage=enterImage;
     Entername=entername;
 
-    animationController=await SVGAAnimationController(vsync: thiss)..addListener(() {
+    animationController=SVGAAnimationController(vsync: thiss)..addListener(() {
       if ( animationController?.isCompleted == true) {
         animationController?.stop();
         isLoading = true;
@@ -37,6 +36,7 @@ class SvgViewmodel extends ChangeNotifier    {
     svgas.add(svgaimage);
   }
 
+  @override
   void dispose() {
     animationController?.dispose();
     animationController = null;
@@ -44,7 +44,7 @@ class SvgViewmodel extends ChangeNotifier    {
     animationController2?.dispose();
     animationController2 = null;
     animationController2?.clear();
-    notifyListeners();
+    super.dispose();
   }
 
 
@@ -91,7 +91,7 @@ class SvgViewmodel extends ChangeNotifier    {
     if(Image.isNotEmpty){
       if(animationController2 == null ||animationController2?.value==0.0){
 
-        animationController2=await SVGAAnimationController(vsync: thiss, )..addListener(() {
+        animationController2=SVGAAnimationController(vsync: thiss, )..addListener(() {
           if (animationController2?.isCompleted == true){
 
             Provider.of<GiftsViewModel>(context,listen: false).startmotion(ListUser:Give?.ListUser??[],image:Give?.image,name: Give?.name,quantity: Give?.quantity);
@@ -108,7 +108,7 @@ class SvgViewmodel extends ChangeNotifier    {
         if(Provider.of<GiftsViewModel>(context,listen: false).selected2==true){
 
           Provider.of<GiftsViewModel>(context,listen: false).hidpanner2();
-          Future.delayed(Duration(seconds: 1),() {
+          Future.delayed(const Duration(seconds: 1),() {
 
             Provider.of<GiftsViewModel>(context,listen: false).sidepanner2(user: userinfo,Give: Give);
           },);
@@ -165,7 +165,7 @@ class SvgViewmodel extends ChangeNotifier    {
   SVGAAnimationController? animationController3;
   getcontroller3({String? Svga})async{
 
-    animationController3=await SVGAAnimationController(vsync: thiss )..addListener(() {
+    animationController3=SVGAAnimationController(vsync: thiss )..addListener(() {
       if (animationController3?.isCompleted == true){
         animationController3?.repeat();
       }});
@@ -198,7 +198,7 @@ class SvgViewmodel extends ChangeNotifier    {
   bool loading5=false;
   getcontroller4({String? Svga})async{
     loading5=true;
-    animationController4=await SVGAAnimationController(vsync: thiss )..addListener(() {
+    animationController4=SVGAAnimationController(vsync: thiss )..addListener(() {
       if (animationController4?.isCompleted == true){
         loading5=false;
         animationController4?.stop();
@@ -252,7 +252,7 @@ class SvgViewmodel extends ChangeNotifier    {
     }
     if(Image2.isNotEmpty){
       if(animationController5 == null ||animationController5?.value==0.0){
-        animationController5=await SVGAAnimationController(vsync: thiss)..addListener(() {
+        animationController5=SVGAAnimationController(vsync: thiss)..addListener(() {
           if (animationController5?.isCompleted == true){
             animationController5=null;
             animationController5?.dispose();

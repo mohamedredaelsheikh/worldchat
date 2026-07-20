@@ -16,7 +16,7 @@ import '../../../../../util/images.dart';
 import '../../../../../util/styles.dart';
 
 class ExploreTaps extends StatefulWidget {
-  ExploreTaps({Key? key}) : super(key: key);
+  const ExploreTaps({Key? key}) : super(key: key);
 
   @override
   State<ExploreTaps> createState() => _ExploreTapsState();
@@ -92,9 +92,9 @@ print(_tabController.index);
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    MomentViewModel   posts=Provider.of<MomentViewModel>(context,listen: true);
-    LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
-    FollowViewModel Follow=  Provider.of<FollowViewModel>(context,listen: true);
+    Provider.of<MomentViewModel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context, listen: true);
+    Provider.of<FollowViewModel>(context,listen: true);
     return DefaultTabController(
       length: 2,
       child: Scaffold(backgroundColor: Colors.transparent,appBar: AppBar(backgroundColor: Colors.transparent,titleSpacing: 0,automaticallyImplyLeading: false,
@@ -141,16 +141,17 @@ print(_tabController.index);
                 IconButton(
                     icon: Image.asset(Images.AddMoment,height: 25),
                     onPressed: (){
-                      GlopalbottomSheet(context: context,Screan: AddPostScrean());
+                      GlopalbottomSheet(context: context,Screan: const AddPostScrean());
 
                     },
                   ),
+                  // ignore: dead_code
                   if(false)   IconButton(
                     icon: Image.asset(Images.SearchIcon,height: 25),
                     onPressed: (){
                       Room.SearchController.clear();
                       Room.SearchRooms.clear();
-                      navigateTo(context: context,screen: SearchScrean());
+                      navigateTo(context: context,screen: const SearchScrean());
 
                     },
                   ),
@@ -161,7 +162,7 @@ print(_tabController.index);
       ),
         body:  Padding(
           padding: const EdgeInsets.only(top: 10),
-          child: TabBarView(controller: _tabController,children: [
+          child: TabBarView(controller: _tabController,children: const [
             RecommendedMoments(),
             FollowingMoments(),
           ],),

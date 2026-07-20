@@ -9,7 +9,7 @@ class AgencySideInfo extends StatelessWidget {
   Agencymodel? AgencyDate;
   Color TextColor;
   int showdescr;
-  AgencySideInfo({required this.AgencyDate,this.TextColor=Colors.white,this.showdescr=1});
+  AgencySideInfo({super.key, required this.AgencyDate,this.TextColor=Colors.white,this.showdescr=1});
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +17,15 @@ class AgencySideInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(  AgencyDate?.name??'',style: style5.copyWith(fontWeight: FontWeight.bold,height: 1,fontSize: 17,color: TextColor)),
-        if(showdescr==0) SizedBox(height: 5,),
+        if(showdescr==0) const SizedBox(height: 5,),
       if(showdescr==0)  Row(
           children: [
             if( AgencyDate?.agencyKind==1||AgencyDate?.agencyKind==2)  Icon(Icons.monetization_on_outlined,size: 20,color: TextColor) ,
-            if( AgencyDate?.agencyKind==1)  SizedBox(width: 10,),
+            if( AgencyDate?.agencyKind==1)  const SizedBox(width: 10,),
             if( AgencyDate?.agencyKind==0||AgencyDate?.agencyKind==2)      Icon(Icons.group,size: 20,color:TextColor) ,
           ],
         ),
-        SizedBox(height: 5,),
+        const SizedBox(height: 5,),
         InkWell(onTap: () {
           Clipboard.setData(ClipboardData(text:AgencyDate?.appid??'' ));
           Dialogs().showtoast(getLang(context: context, key: "Copied"));

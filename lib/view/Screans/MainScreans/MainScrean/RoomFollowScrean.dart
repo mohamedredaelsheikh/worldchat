@@ -4,7 +4,6 @@ import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MainScrean/widgets/RoomsContainer.dart';
-import 'package:ahlachat/viewmodels/Animated_Viewmodel/ElementViewModel.dart';
 
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,9 @@ import 'package:provider/provider.dart';
 
 import '../../../../viewmodels/Socket_ViewModel/Socketviewmodel.dart';
 class RoomFollowScrean extends StatelessWidget {
-  ScrollController? _controller= ScrollController();
+  final ScrollController? _controller= ScrollController();
+
+  RoomFollowScrean({super.key});
 
   @override
 
@@ -34,13 +35,13 @@ class RoomFollowScrean extends StatelessWidget {
     },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: CustomScrollView(cacheExtent: 20.0,controller: _controller,
+        child: CustomScrollView(cacheExtent: 20.0, controller: _controller,
 
           slivers: <Widget>[
 
          if(Rooms.FollowingUserRooms.isEmpty)   SliverToBoxAdapter(
               child:Column(children: [
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 Image.asset(Images.Empty,height: 180),
                   Text(getLang(context: context,key: "no_broadcaster")),
                 const SizedBox(height: 20,),
@@ -48,7 +49,7 @@ class RoomFollowScrean extends StatelessWidget {
             ),
             if(Rooms.FollowingUserRooms.isNotEmpty)
               SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio:1.1,
                     mainAxisSpacing: 5,
@@ -71,7 +72,7 @@ class RoomFollowScrean extends StatelessWidget {
               ),
             ),
             SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   childAspectRatio:1.1,
                   mainAxisSpacing: 5,

@@ -28,7 +28,7 @@ class UserPostsWidgets extends StatelessWidget {
      usermodel ?Postuser= user.userProfileData;
         return  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
-          child: Container(width: SizeConfig.screenWidth!,
+          child: SizedBox(width: SizeConfig.screenWidth!,
               child: Column(mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -37,9 +37,9 @@ class UserPostsWidgets extends StatelessWidget {
                     child: Row(
                       children: [
                         CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(Postuser?.image ?? ''), radius: 23, ),
-                        SizedBox(width: 5,),
+                        const SizedBox(width: 5,),
                         UserSideInfoWidgets(UserDate: Postuser,showdescr: 1,),
-                        Spacer(),
+                        const Spacer(),
                         if(user.userProfileData?.id==user.userinfo?.id)      SizedBox(height: 20,
                           child: PopupMenuButton(padding: const EdgeInsets.only(top: 0),  icon:const Icon(
                             Icons.more_vert,
@@ -68,7 +68,7 @@ class UserPostsWidgets extends StatelessWidget {
                       child: Column(mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           ReadMoreText(
                             user.userProfileData?.Postuser![index].content ?? '',
                             trimLines: 2,
@@ -76,8 +76,8 @@ class UserPostsWidgets extends StatelessWidget {
                             trimMode: TrimMode.Line,style: style5.copyWith(height: 1),
                             trimCollapsedText: getLang(context: context,key: "Show_more"),
                             trimExpandedText:  getLang(context: context,key: "Show_less"),
-                            moreStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
-                            lessStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                            moreStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                            lessStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 5),
 
@@ -107,7 +107,7 @@ class UserPostsWidgets extends StatelessWidget {
                                   posts.LikePost(Postid: user.userProfileData?.Postuser![index].id,context: context );
                                 }
                               }, child:  FaIcon( FontAwesomeIcons.fire,color: posts.LikedPost.contains( user.userProfileData?.Postuser![index].id.toString())?MainColor:Colors.grey,  )),
-                              SizedBox(width: 7,),
+                              const SizedBox(width: 7,),
                               Text(  user.userProfileData?.Postuser![index].like?.length.toString() ?? '', style: style6),
                             ],
                           ),
@@ -118,8 +118,8 @@ class UserPostsWidgets extends StatelessWidget {
                           },
                             child: Row(
                               children: [
-                                FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
-                                SizedBox(width: 7,),
+                                const FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
+                                const SizedBox(width: 7,),
                                 Text( user.userProfileData?.Postuser![index].commentsuser?.length.toString() ?? '', style: style6, ),
                               ],
                             ),

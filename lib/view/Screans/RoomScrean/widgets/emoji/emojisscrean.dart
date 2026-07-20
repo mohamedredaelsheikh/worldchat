@@ -1,28 +1,20 @@
 
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
-import 'package:ahlachat/util/app_constants.dart';
-import 'package:ahlachat/util/dimensions.dart';
-import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../models/Chatroom.dart';
-import '../../../../../viewmodels/Socket_ViewModel/Socketviewmodel.dart';
-import '../../../RolletUserScrean/RolletUserScrean.dart';
 class EmojiTabBar extends StatelessWidget  {
   const EmojiTabBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
+    Provider.of<GiftsViewModel>(context, listen: true);
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
 
@@ -30,7 +22,7 @@ class EmojiTabBar extends StatelessWidget  {
       child: DefaultTabController(length: user.emojisCategory.length,
         child: Column(
           children: [
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             TabBar(
                 indicatorColor:Colors.white,
                 labelColor: Colors.white,

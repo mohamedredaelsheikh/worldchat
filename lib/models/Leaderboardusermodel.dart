@@ -12,15 +12,15 @@ class Leaderboardusermodel {
   Leaderboardusermodel.fromJson(Map<String, dynamic> json) {
     coins = json['coins'];
     userId = json['user_id'];
-    user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
+    user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['coins'] = this.coins;
-    data['user_id'] = this.userId;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['coins'] = coins;
+    data['user_id'] = userId;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
     return data;
   }
@@ -36,15 +36,15 @@ class LeaderboardFamilymodel {
   LeaderboardFamilymodel.fromJson(Map<String, dynamic> json) {
     coins = json['coins'];
     userId = json['user_id'];
-    Family = json['family'] != null ? new FamilyModel.fromJson(json['family']) : null;
+    Family = json['family'] != null ? FamilyModel.fromJson(json['family']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['coins'] = this.coins;
-    data['user_id'] = this.userId;
-    if (this.Family != null) {
-      data['family'] = this.Family!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['coins'] = coins;
+    data['user_id'] = userId;
+    if (Family != null) {
+      data['family'] = Family!.toJson();
     }
     return data;
   }
@@ -60,15 +60,15 @@ class LeaderboardAgencymodel {
   LeaderboardAgencymodel.fromJson(Map<String, dynamic> json) {
     coins = json['coins'];
     agencyid = json['agency_id'];
-    Agency = json['agency'] != null ? new Agencymodel.fromJson(json['agency']) : null;
+    Agency = json['agency'] != null ? Agencymodel.fromJson(json['agency']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['coins'] = this.coins;
-    data['agency_id'] = this.agencyid;
-    if (this.Agency != null) {
-      data['agency'] = this.Agency!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['coins'] = coins;
+    data['agency_id'] = agencyid;
+    if (Agency != null) {
+      data['agency'] = Agency!.toJson();
     }
     return data;
   }
@@ -84,24 +84,24 @@ class AgencyLeaderBoard {
     if (json['Supporter'] != null) {
       supporter = <LeaderboardAgencymodel>[];
       json['Supporter'].forEach((v) {
-        supporter!.add(new LeaderboardAgencymodel.fromJson(v));
+        supporter!.add(LeaderboardAgencymodel.fromJson(v));
       });
     }
     if (json['Supported'] != null) {
       supported = <LeaderboardAgencymodel>[];
       json['Supported'].forEach((v) {
-        supported!.add(new LeaderboardAgencymodel.fromJson(v));
+        supported!.add(LeaderboardAgencymodel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.supporter != null) {
-      data['Supporter'] = this.supporter!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (supporter != null) {
+      data['Supporter'] = supporter!.map((v) => v.toJson()).toList();
     }
-    if (this.supported != null) {
-      data['Supported'] = this.supported!.map((v) => v.toJson()).toList();
+    if (supported != null) {
+      data['Supported'] = supported!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -118,36 +118,36 @@ class ListoflEaderboardcategory {
     if (json['weeklysupporter'] != null) {
       weeklysupporter = <Leaderboardusermodel>[];
       json['weeklysupporter'].forEach((v) {
-        weeklysupporter!.add(new Leaderboardusermodel.fromJson(v));
+        weeklysupporter!.add(Leaderboardusermodel.fromJson(v));
       });
     }
     if (json['Monthlysupporter'] != null) {
       monthlysupporter = <Leaderboardusermodel>[];
       json['Monthlysupporter'].forEach((v) {
-        monthlysupporter!.add(new Leaderboardusermodel.fromJson(v));
+        monthlysupporter!.add(Leaderboardusermodel.fromJson(v));
       });
     }
     if (json['dailysupporter'] != null) {
       dailysupporter = <Leaderboardusermodel>[];
       json['dailysupporter'].forEach((v) {
-        dailysupporter!.add(new Leaderboardusermodel.fromJson(v));
+        dailysupporter!.add(Leaderboardusermodel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.weeklysupporter != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (weeklysupporter != null) {
       data['weeklysupporter'] =
-          this.weeklysupporter!.map((v) => v.toJson()).toList();
+          weeklysupporter!.map((v) => v.toJson()).toList();
     }
-    if (this.monthlysupporter != null) {
+    if (monthlysupporter != null) {
       data['Monthlysupporter'] =
-          this.monthlysupporter!.map((v) => v.toJson()).toList();
+          monthlysupporter!.map((v) => v.toJson()).toList();
     }
-    if (this.dailysupporter != null) {
+    if (dailysupporter != null) {
       data['dailysupporter'] =
-          this.dailysupporter!.map((v) => v.toJson()).toList();
+          dailysupporter!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -164,36 +164,36 @@ class ListoflEaderboardFamilycategory {
     if (json['weeklyFamily'] != null) {
       weeklysupporter = <LeaderboardFamilymodel>[];
       json['weeklyFamily'].forEach((v) {
-        weeklysupporter!.add(new LeaderboardFamilymodel.fromJson(v));
+        weeklysupporter!.add(LeaderboardFamilymodel.fromJson(v));
       });
     }
     if (json['MonthlyFamily'] != null) {
       monthlysupporter = <LeaderboardFamilymodel>[];
       json['MonthlyFamily'].forEach((v) {
-        monthlysupporter!.add(new LeaderboardFamilymodel.fromJson(v));
+        monthlysupporter!.add(LeaderboardFamilymodel.fromJson(v));
       });
     }
     if (json['dailyFamily'] != null) {
       dailysupporter = <LeaderboardFamilymodel>[];
       json['dailyFamily'].forEach((v) {
-        dailysupporter!.add(new LeaderboardFamilymodel.fromJson(v));
+        dailysupporter!.add(LeaderboardFamilymodel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.weeklysupporter != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (weeklysupporter != null) {
       data['weeklyFamily'] =
-          this.weeklysupporter!.map((v) => v.toJson()).toList();
+          weeklysupporter!.map((v) => v.toJson()).toList();
     }
-    if (this.monthlysupporter != null) {
+    if (monthlysupporter != null) {
       data['Monthlysupporter'] =
-          this.monthlysupporter!.map((v) => v.toJson()).toList();
+          monthlysupporter!.map((v) => v.toJson()).toList();
     }
-    if (this.dailysupporter != null) {
+    if (dailysupporter != null) {
       data['dailyFamily'] =
-          this.dailysupporter!.map((v) => v.toJson()).toList();
+          dailysupporter!.map((v) => v.toJson()).toList();
     }
     return data;
   }

@@ -30,14 +30,14 @@ class GamesModel {
     image =AppConstants.Image_URL+ json['image'];
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['status'] = this.status;
-    data['oriantation'] = this.oriantation;
-    data['path'] = this.path;
-    data['image'] = this.image;
-    data['usersnumber'] = this.NumberPersons;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['status'] = status;
+    data['oriantation'] = oriantation;
+    data['path'] = path;
+    data['image'] = image;
+    data['usersnumber'] = NumberPersons;
 
 
     return data;

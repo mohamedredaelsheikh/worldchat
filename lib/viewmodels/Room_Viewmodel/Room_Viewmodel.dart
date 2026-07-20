@@ -9,12 +9,10 @@ import 'package:ahlachat/models/guessGameModel.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/util/images.dart';
-import 'package:ahlachat/util/notification.dart';
 import 'package:ahlachat/util/styles.dart';
 
 import 'package:ahlachat/view/Screans/SearchScrean/widgets/SearchRoom.dart';
 import 'package:ahlachat/view/widgets/ImageView.dart';
-import 'package:ahlachat/viewmodels/Music_Viewmodel/MusicViewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:ahlachat/Repositores/Room_repositores/Room_api.dart';
 import 'package:ahlachat/models/ChairModel.dart';
@@ -46,7 +44,7 @@ import '../../models/Leaderboardusermodel.dart';
 class RoomViewmodel extends ChangeNotifier {
 FlagModel ?SelectedCountry;
 bool showcombo=false;
-final CountdownController Timercontroller = new CountdownController(autoStart: true);
+final CountdownController Timercontroller = CountdownController(autoStart: true);
 ShowLuckyCombo(){
 
   showcombo=true;
@@ -66,18 +64,18 @@ addCombo({int ?id, image,image2,count}){
   print('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
   print(DDDD.toList());
   print('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
-  if(DDDD.toList().length!=0){
+  if(DDDD.toList().isNotEmpty){
     DDDD.first['count']= int.parse(DDDD.first['count'].toString())+int.parse(count.toString());
     DDDD.first['time']=DateTime.now();
     notifyListeners();
   }else{
     Combouser.add({'uid':id ,'time': DateTime.now(),'image':image,'count':count,'imagegift':image2});
 
-    if(Combouser.length>0){
-      Timer.periodic(Duration(seconds:2,), (timer) {
+    if(Combouser.isNotEmpty){
+      Timer.periodic(const Duration(seconds:2,), (timer) {
         for (var i in Combouser){
           if(DateTime.now().difference(i['time']).inSeconds>6){
-            if(Combouser.length>0){
+            if(Combouser.isNotEmpty){
               Combouser.remove(i) ;
               notifyListeners();
               break;
@@ -102,11 +100,11 @@ addComboWin({ persantage,amount}){
 
   Combowin.add({ 'time': DateTime.now(),'persantage':persantage,'amount':amount });
 
-  if(Combowin.length>0){
-    Timer.periodic(Duration(seconds:2,), (timer) {
+  if(Combowin.isNotEmpty){
+    Timer.periodic(const Duration(seconds:2,), (timer) {
       for (var i in Combowin){
         if(DateTime.now().difference(i['time']).inSeconds>2){
-          if(Combowin.length>0){
+          if(Combowin.isNotEmpty){
             Combowin.remove(i) ;
             notifyListeners();
             break;
@@ -145,7 +143,7 @@ HideEnterWidget(){
    EnterOffser=6.0;
   }else{
    EnterOffser=-10.5;
-    Future.delayed(Duration(milliseconds: 500),() {
+    Future.delayed(const Duration(milliseconds: 500),() {
     selected=false;
     },);
 
@@ -185,23 +183,23 @@ EnterRoom({required id,required context,required adminId})async{
                       child: Column(
                         children: [
                           Text(getLang(context: context, key: "Enter_Password"),style: style1),
-                          SizedBox(height: 25,),
+                          const SizedBox(height: 25,),
                           PinCodeTextField(keyboardType: TextInputType.number,
                             length: 4,
-                            obscureText: false,textStyle: TextStyle(color:  Color(0xFFeae2be)),
+                            obscureText: false,textStyle: const TextStyle(color:  Color(0xFFeae2be)),
                             animationType: AnimationType.fade,
                             pinTheme: PinTheme(borderWidth: 0.0,
                               shape: PinCodeFieldShape.box,
-                              fieldOuterPadding:EdgeInsets.symmetric(horizontal: 3),
-                              activeColor: Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
-                              selectedColor: Color(0xFFeae2be),
-                              inactiveColor: Color(0xFFeae2be),
+                              fieldOuterPadding:const EdgeInsets.symmetric(horizontal: 3),
+                              activeColor: const Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
+                              selectedColor: const Color(0xFFeae2be),
+                              inactiveColor: const Color(0xFFeae2be),
                               fieldHeight: 40,
                               fieldWidth: 40,
-                              activeFillColor: Color(0xFFeae2be),
+                              activeFillColor: const Color(0xFFeae2be),
                             ),
-                            animationDuration: Duration(milliseconds: 300),
-                            cursorColor: Color(0xFFeae2be),
+                            animationDuration: const Duration(milliseconds: 300),
+                            cursorColor: const Color(0xFFeae2be),
                             enablePinAutofill: true,
                             enableActiveFill: false,mainAxisAlignment: MainAxisAlignment.spaceAround,
                             enabled:true,
@@ -237,12 +235,12 @@ EnterRoom({required id,required context,required adminId})async{
 
 
                             }
-                          },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be)))),
+                          },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be)))),
                         ],
                       ),
                     )),
                 ],
-                backgroundColor: Color(0xFF2b2f3b),
+                backgroundColor: const Color(0xFF2b2f3b),
 
             )
         );
@@ -293,23 +291,23 @@ EnterRoom2({id,context})async{
                   child: Column(
                     children: [
                       Text(getLang(context: context, key: "Enter_Password"),style: style1),
-                      SizedBox(height: 25,),
+                      const SizedBox(height: 25,),
                       PinCodeTextField(keyboardType: TextInputType.number,
                         length: 4,
-                        obscureText: false,textStyle: TextStyle(color:  Color(0xFFeae2be)),
+                        obscureText: false,textStyle: const TextStyle(color:  Color(0xFFeae2be)),
                         animationType: AnimationType.fade,
                         pinTheme: PinTheme(borderWidth: 0.0,
                           shape: PinCodeFieldShape.box,
-                          fieldOuterPadding:EdgeInsets.symmetric(horizontal: 3),
-                          activeColor: Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
-                          selectedColor: Color(0xFFeae2be),
-                          inactiveColor: Color(0xFFeae2be),
+                          fieldOuterPadding:const EdgeInsets.symmetric(horizontal: 3),
+                          activeColor: const Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
+                          selectedColor: const Color(0xFFeae2be),
+                          inactiveColor: const Color(0xFFeae2be),
                           fieldHeight: 40,
                           fieldWidth: 40,
-                          activeFillColor: Color(0xFFeae2be),
+                          activeFillColor: const Color(0xFFeae2be),
                         ),
-                        animationDuration: Duration(milliseconds: 300),
-                        cursorColor: Color(0xFFeae2be),
+                        animationDuration: const Duration(milliseconds: 300),
+                        cursorColor: const Color(0xFFeae2be),
                         enablePinAutofill: true,
                         enableActiveFill: false,mainAxisAlignment: MainAxisAlignment.spaceAround,
                         enabled:true,
@@ -344,12 +342,12 @@ EnterRoom2({id,context})async{
 
 
                         }
-                      },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be)))),
+                      },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be)))),
                     ],
                   ),
                 )),
               ],
-              backgroundColor: Color(0xFF2b2f3b),
+              backgroundColor: const Color(0xFF2b2f3b),
 
             )
         );
@@ -391,23 +389,23 @@ EnterRoom3({id,context})async{
                   child: Column(
                     children: [
                       Text(getLang(context: context, key: "Enter_Password"),style: style1),
-                      SizedBox(height: 25,),
+                      const SizedBox(height: 25,),
                       PinCodeTextField(keyboardType: TextInputType.number,
                         length: 4,
-                        obscureText: false,textStyle: TextStyle(color:  Color(0xFFeae2be)),
+                        obscureText: false,textStyle: const TextStyle(color:  Color(0xFFeae2be)),
                         animationType: AnimationType.fade,
                         pinTheme: PinTheme(borderWidth: 0.0,
                           shape: PinCodeFieldShape.box,
-                          fieldOuterPadding:EdgeInsets.symmetric(horizontal: 3),
-                          activeColor: Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
-                          selectedColor: Color(0xFFeae2be),
-                          inactiveColor: Color(0xFFeae2be),
+                          fieldOuterPadding:const EdgeInsets.symmetric(horizontal: 3),
+                          activeColor: const Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
+                          selectedColor: const Color(0xFFeae2be),
+                          inactiveColor: const Color(0xFFeae2be),
                           fieldHeight: 40,
                           fieldWidth: 40,
-                          activeFillColor: Color(0xFFeae2be),
+                          activeFillColor: const Color(0xFFeae2be),
                         ),
-                        animationDuration: Duration(milliseconds: 300),
-                        cursorColor: Color(0xFFeae2be),
+                        animationDuration: const Duration(milliseconds: 300),
+                        cursorColor: const Color(0xFFeae2be),
                         enablePinAutofill: true,
                         enableActiveFill: false,mainAxisAlignment: MainAxisAlignment.spaceAround,
                         enabled:true,
@@ -442,12 +440,12 @@ EnterRoom3({id,context})async{
 
 
                         }
-                      },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be)))),
+                      },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be)))),
                     ],
                   ),
                 )),
               ],
-              backgroundColor: Color(0xFF2b2f3b),
+              backgroundColor: const Color(0xFF2b2f3b),
 
             )
         );
@@ -472,9 +470,9 @@ List<Map> RankInmages=[
 
 ];
 List<Color> LeaderShipColors=[
-  Color(0xFFff4f5b),
+  const Color(0xFFff4f5b),
 
-  Color(0xFF0039c4),
+  const Color(0xFF0039c4),
   Colors.orange,
 
 ];
@@ -814,7 +812,7 @@ ClearCurrentroom(){
               Provider.of<GiftsViewModel>(context, listen: false).DeleteGlopal();
               Navigator.pushNamed( context, AppConstants.Room_Screan);
 
-              Future.delayed(Duration(seconds: 1),() =>  Room.JoinChair(index: int.parse(Chair_id)-1,context: context,chairid:Chair_id ),);
+              Future.delayed(const Duration(seconds: 1),() =>  Room.JoinChair(index: int.parse(Chair_id)-1,context: context,chairid:Chair_id ),);
             }
           }else{
             Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Another_Set"));
@@ -1135,7 +1133,7 @@ AddUserIds({id }){
     notifyListeners();
   }
   AddKaresmaChair({required List   userids,int ?Amount}){
-    userids.forEach((elements) {
+    for (var elements in userids) {
 
       Currentroom?.chairs?.forEach((element) {
 if(element.userId.toString()==elements.toString()){
@@ -1145,7 +1143,7 @@ if(element.userId.toString()==elements.toString()){
       print(Currentroom?.chairs?.where((element) => element.userId.toString()==element.toString()));
        
       notifyListeners();
-    });
+    }
 
   }
 
@@ -1177,32 +1175,20 @@ return muted;
   updateRoom( )async{
     ShowGlopalLoading();
     await Roomapi().UpdateRoom(RoomAds: EditRoomDescription.text, image: Roomimage2,name: EditRoomName.text,backimage: backchoosen2.first,Category: choosen2.first,roomid: Currentroom?.id).then((value){
-      if(value!=null){
-        Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Done_Succ"));
-      clearadd2();
+      Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Done_Succ"));
+    clearadd2();
 
-      }else{
-        Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Sorry"));
-
-
-      }
       DismissGlopalLoading();
       notifyListeners();
-    });;
+    });
 
   }
 
   updateThroneChair ({State,context})async{
     ShowGlopalLoading();
     await Roomapi().UpdateThroneChair(context: context,room_id:   Currentroom?.id,State: State).then((value){
-      if(value!=null){
-        Dialogs().showtoast('updated');
+      Dialogs().showtoast('updated');
 
-      }else{
-        Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Sorry"));
-
-
-      }
       DismissGlopalLoading();
       notifyListeners();
     });
@@ -1220,7 +1206,7 @@ return muted;
       }
       DismissGlopalLoading();
       notifyListeners();
-    });;
+    });
 
   }
 
@@ -1255,14 +1241,8 @@ return muted;
   SetRoomPassword({context,PasswordRoom})async{
     ShowGlopalLoading();
     await Roomapi().SetRoomPssword(context: context, roomid: Currentroom?.id,password: PasswordRoom.text).then((value){
-      if(value!=null){
-        Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Done_Succ"));
-        PasswordRoom.clear();
-      }else{
-        Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Sorry"));
-
-        PasswordRoom.clear();
-      }
+      Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Done_Succ"));
+      PasswordRoom.clear();
       Navigator.pop(context);
      // DismissGlopalLoading();
       notifyListeners();
@@ -1272,12 +1252,7 @@ return muted;
   RemoveRoomPassword({context})async{
     ShowGlopalLoading();
     await Roomapi().RemoveRoomPssword(context: context, roomid: Currentroom?.id,).then((value){
-      if(value!=null){
-        Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Done_Succ"));
-      }else{
-        Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Sorry"));
-
-      }
+      Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Done_Succ"));
       DismissGlopalLoading();
       notifyListeners();
     });
@@ -1296,7 +1271,7 @@ if(state==1){
         Dialogs().showtoast(getLang(context:NavigationService.navigatorKey.currentContext,key: "Sorry"));
       }
       notifyListeners();
-    });;
+    });
 
   }
   GetUserJoin({context})async{
@@ -1326,7 +1301,7 @@ if(state==1){
     Currentroom?.Category=NewRoom.Category;
     Currentroom?.nothostedimage=NewRoom.nothostedimage;
     Currentroom?.RoomAds=NewRoom.RoomAds;
-    Rooms.forEach((element) {
+    for (var element in Rooms) {
        if(element.id==NewRoom.id){
          element.name=NewRoom.name;
          element.image=NewRoom.image;
@@ -1334,18 +1309,18 @@ if(state==1){
          element.RoomAds=NewRoom.RoomAds;
          element.Category=NewRoom.Category;
        }
-     });
+     }
      notifyListeners();
   }
   updateCurrentRoomPassword({required var Password,required String Id}){
     Currentroom?.password=Password;
-     Rooms.forEach((element) {
+     for (var element in Rooms) {
       if(element.id.toString()==Id.toString()){
 
         element.password=Password;
         notifyListeners();
       }
-    });
+    }
 
     notifyListeners();
   }
@@ -1394,7 +1369,7 @@ if(state==1){
       return true;
     }else{
       return false;
-    };
+    }
   }
 
   clearadd(){
@@ -1565,9 +1540,9 @@ GetReciverLeaderboard({context}) async {
     showSpinner2();
     await Roomapi().GetMoreTrendRoom(context).then((value) {
        
-      value.forEach((element) {
+      for (var element in value) {
         NewRooms.add(element);
-      });
+      }
 
       print(NewRooms.length);
       hideSpinner2();
@@ -1598,7 +1573,7 @@ GetFixedRoom({context}) async {
     ShowGlopalLoading();
     await Roomapi().SearchRooms(context,text).then((value) {
       SearchRooms=value;
-      navigateTo(context: context,screen: SearchRoom());
+      navigateTo(context: context,screen: const SearchRoom());
       DismissGlopalLoading();
 
     });
@@ -1618,9 +1593,9 @@ showSpinner46();
     showSpinner2();
     await Roomapi().AddmoreRooms(context).then((value) {
        
-      value.forEach((element) {
+      for (var element in value) {
         Rooms.add(element);
-      });
+      }
 
       print(Rooms.length);
       hideSpinner2();
@@ -1701,9 +1676,9 @@ GetCountriRoom( ) async {
     showloading2=true;
     await Roomapi().AddExploreRecommended(context).then((value) {
 
-      value.forEach((element) {
+      for (var element in value) {
         ExploreRooms.add(element);
-      });
+      }
 
 
       hideSpinner2();
@@ -1714,9 +1689,9 @@ GetCountriRoom( ) async {
 
     await Roomapi().AddmoreRecommended(context).then((value) {
 
-      value.forEach((element) {
+      for (var element in value) {
         RecomendedRoom.add(element);
-      });
+      }
 
 
       hideSpinner2();
@@ -1811,7 +1786,7 @@ Future<bool> EnterTrackRoomPassword({id, pass}) async {
           }else{
             Provider.of<AgoraViewmodel>(context,listen: false).initialize(role: ClientRoleType.clientRoleAudience,Token: value.Token,channelName: value.agoratoken);
           }
-          Future.delayed(Duration(seconds: 2),() {
+          Future.delayed(const Duration(seconds: 2),() {
 
             Provider.of<GiftsViewModel>(context,listen: false).sidepanner();
             Provider.of<SvgViewmodel>(context,listen: false).getcontroller(enterImage: user.userinfo?.image,entername: user.userinfo?.name,svga: user.userinfo?.entry??'');
@@ -1886,7 +1861,7 @@ Future<bool> EnterTrackRoomPassword({id, pass}) async {
           Provider.of<GiftsViewModel>(context, listen: false).hidpanner();
           svga.animationController?.clear();
           Currentroom=value;
-          Future.delayed(Duration(seconds: 2),() {
+          Future.delayed(const Duration(seconds: 2),() {
 
             Provider.of<GiftsViewModel>(context,listen: false).sidepanner();
             if(user.userinfo?.entry!=null&&user.userinfo?.entry!=''){
@@ -1955,7 +1930,7 @@ Future<bool> EnterTrackRoomPassword({id, pass}) async {
           }else{
             Provider.of<AgoraViewmodel>(context,listen: false).initialize(role: ClientRoleType.clientRoleAudience,Token: value.Token,channelName: value.agoratoken);
           }
-          Future.delayed(Duration(seconds: 2),() {
+          Future.delayed(const Duration(seconds: 2),() {
             print('Test ============================> 8');
             Provider.of<GiftsViewModel>(context,listen: false).sidepanner();
             Provider.of<SvgViewmodel>(context,listen: false).getcontroller(enterImage: user.userinfo?.image,entername: user.userinfo?.name,svga: user.userinfo?.entry??'');
@@ -2305,7 +2280,7 @@ LeaveLoading=false;
    AddusertoChair({Chairs ?data,ctx }){
     LoginViewmodel user=Provider.of<LoginViewmodel>(ctx, listen: false);
 
-    if(data?.userId!=user.userinfo?.id){
+    if(data?.userId.toString()!=user.userinfo?.id.toString()){
       print(data?.user);
       print(data?.chairId);
       print(data?.roomId);
@@ -2452,11 +2427,11 @@ Timer.periodic(const Duration(seconds: 1), (timer) {
   List guesses=[];
   AddGuessGame({winnerid, guessgamemodel? guess}){
     guesses.add({'winnerid':winnerid ,'time': DateTime.now(),'guess':guess});
-    if(guesses.length>0){
-      Timer.periodic(Duration(seconds:1,), (timer) {
+    if(guesses.isNotEmpty){
+      Timer.periodic(const Duration(seconds:1,), (timer) {
         for (var i in guesses){
           if(DateTime.now().difference(i['time']).inSeconds>3){
-            if(guesses.length>0){
+            if(guesses.isNotEmpty){
               guesses.remove(i) ;
               notifyListeners();
               break;
@@ -2547,7 +2522,7 @@ LockChairUpdate({int? state,Chairs? info})async{
       }
 
 
-    });;
+    });
   }
 Addinsults({context,type,message})async{
     print('reunasdasdasd');
@@ -2560,7 +2535,7 @@ Addinsults({context,type,message})async{
       }
 
 
-    });;
+    });
   }
 //-----------------------------------SentGift
  SentGift({context,giftid,Listuser,quantity,Cost}) async {
@@ -2594,7 +2569,7 @@ Addinsults({context,type,message})async{
   }
   checkcompo(){
     LoginViewmodel user = Provider.of<LoginViewmodel>(roomcontext, listen: false);
-    if(Combocost!=null&&ComboListuser!=null&&waitingtimer2&&ComboQuantity!=null&&ComboGiftid!=null&&ComboListuser.isNotEmpty&&Combocost<=user.userinfo?.coins){
+    if(Combocost!=null&&waitingtimer2&&ComboQuantity!=null&&ComboGiftid!=null&&ComboListuser.isNotEmpty&&Combocost<=user.userinfo?.coins){
       return true;
     }
     return false;

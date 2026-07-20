@@ -1,5 +1,4 @@
 
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 
 import 'package:ahlachat/util/app_constants.dart';
@@ -11,21 +10,19 @@ import 'package:ahlachat/view/Screans/UserProfile/AddImageProfileScrean.dart';
 import 'package:ahlachat/view/Screans/UserProfile/HonorWall.dart';
 import 'package:ahlachat/view/Screans/UserProfile/ProfileView.dart';
 import 'package:ahlachat/view/Screans/UserProfile/UserPostsWidgets.dart';
-import 'package:ahlachat/viewmodels/Animated_Viewmodel/ElementViewModel.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Follow_ViewModel/Follow_ViewModel.dart';
-import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:ahlachat/viewmodels/Moment_Viewmodel/Moment_ViewModel.dart';
 import 'package:ahlachat/viewmodels/Relations_ViewModel/RelationsViewModel.dart';
-import 'package:ahlachat/viewmodels/RoomPlay_ViewModel/RoomPlayViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
-import 'package:ahlachat/viewmodels/Socket_ViewModel/Socketviewmodel.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:svgaplayer_flutter/player.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 class ShowUserProfile extends StatefulWidget {
+  const ShowUserProfile({super.key});
+
 
   @override
   State<ShowUserProfile> createState() => _ShowUserProfileState();
@@ -57,10 +54,10 @@ class _ShowUserProfileState extends State<ShowUserProfile> {
                   SliverAppBar(pinned: false,
                     backgroundColor: Colors.transparent,
                     collapsedHeight: 300,
-                    expandedHeight: 300,iconTheme: IconThemeData(color: Colors.black),
+                    expandedHeight: 300,iconTheme: const IconThemeData(color: Colors.black),
                     automaticallyImplyLeading: false,
                     leading: IconButton(
-                      icon: CircleAvatar(  radius: 16,backgroundColor: Colors.black12,child: Icon(Icons.navigate_before, color: Colors.white,size: 30)),
+                      icon: const CircleAvatar(  radius: 16,backgroundColor: Colors.black12,child: Icon(Icons.navigate_before, color: Colors.white,size: 30)),
                 onPressed: () => Navigator.of(context).pop(),
                 ) ,
                     actions: [
@@ -98,9 +95,9 @@ class _ShowUserProfileState extends State<ShowUserProfile> {
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: InkWell(
                           onTap: () {
-                      navigateTo(context: context, screen: AddImageProfileScrean());
+                      navigateTo(context: context, screen: const AddImageProfileScrean());
                           },
-                          child: CircleAvatar(backgroundColor: Colors.black12,
+                          child: const CircleAvatar(backgroundColor: Colors.black12,
                               radius: 16,
                               child: Icon(Icons.edit_note_rounded,color: Colors.white,)
                           ),
@@ -112,15 +109,15 @@ class _ShowUserProfileState extends State<ShowUserProfile> {
                           onTap: () {
                             Relation.GetUserRelation(context: context);
                           },
-                          child: CircleAvatar(backgroundColor: Colors.black12,
+                          child: const CircleAvatar(backgroundColor: Colors.black12,
                               radius: 16,
                               child: Icon(Icons.star,color: Colors.white,)
                           ),
                         ),
                       )
 ],
-                    flexibleSpace: Padding(
-                      padding: const EdgeInsets.only(top: 0),
+                    flexibleSpace: const Padding(
+                      padding: EdgeInsets.only(top: 0),
                       child: ProfileView(),
                     ),
                   ),
@@ -154,7 +151,7 @@ class _ShowUserProfileState extends State<ShowUserProfile> {
                   )
                 ];
               },
-              body:   TabBarView(
+              body:   const TabBarView(
                 children:[
 
                HonorWallWidget()  ,
@@ -168,8 +165,8 @@ class _ShowUserProfileState extends State<ShowUserProfile> {
     if(user.userProfileData?.id!=user.userinfo?.id)   Align(alignment: Alignment.bottomCenter,child: Container( decoration: BoxDecoration(color: Colors.white,gradient: LinearGradient(colors: [
          Colors.white,
          Colors.white,
-         Colors.white.withOpacity(0.5),
-       ],begin: Alignment.bottomCenter,end: Alignment.topCenter )),height: 100,child: DelayedDisplay(delay: Duration(seconds:1),
+         Colors.white.withValues(alpha: 0.5),
+       ],begin: Alignment.bottomCenter,end: Alignment.topCenter )),height: 100,child: DelayedDisplay(delay: const Duration(seconds:1),
          child: Padding(
            padding: const EdgeInsets.all(8.0),
            child: Align(

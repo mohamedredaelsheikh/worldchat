@@ -17,10 +17,10 @@ class SendToFriendsScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FollowViewModel Follow=  Provider.of<FollowViewModel>(context,listen: true);
-    LoginViewmodel user=Provider.of<LoginViewmodel>(context, listen: true);
+    Provider.of<LoginViewmodel>(context, listen: true);
     ShopViewmodel Shop=  Provider.of<ShopViewmodel>(context,listen: true);
 
-    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key: "Friends"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
+    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: const IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key: "Friends"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
 
 
       body: SingleChildScrollView(
@@ -32,7 +32,7 @@ class SendToFriendsScrean extends StatelessWidget {
 
         },
           child: Container(child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
 
@@ -40,7 +40,7 @@ class SendToFriendsScrean extends StatelessWidget {
 
                 CircleAvatar(backgroundColor: Colors.transparent,radius: 30,backgroundImage: CachedNetworkImageProvider(Follow.Friends[index].image??'')),
 
-                SizedBox(width: 6,),
+                const SizedBox(width: 6,),
                 UserSideInfoWidgets(UserDate:  Follow.Friends[index]),
 
 
@@ -54,14 +54,16 @@ class SendToFriendsScrean extends StatelessWidget {
   }
 }
 class SendrelationshipToFriendsScrean extends StatelessWidget {
+  const SendrelationshipToFriendsScrean({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     FollowViewModel Follow=  Provider.of<FollowViewModel>(context,listen: true);
-    LoginViewmodel user=Provider.of<LoginViewmodel>(context, listen: true);
-    ShopViewmodel Shop=  Provider.of<ShopViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context, listen: true);
+    Provider.of<ShopViewmodel>(context,listen: true);
 
-    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key: "Friends"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
+    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: const IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key: "Friends"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
 
 
       body: SingleChildScrollView(
@@ -73,7 +75,7 @@ class SendrelationshipToFriendsScrean extends StatelessWidget {
 
         },
           child: Container(child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
 
@@ -81,7 +83,7 @@ class SendrelationshipToFriendsScrean extends StatelessWidget {
 
                 CircleAvatar(backgroundColor: Colors.transparent,radius: 30,backgroundImage: CachedNetworkImageProvider(Follow.Friends[index].image??'')),
 
-                SizedBox(width: 6,),
+                const SizedBox(width: 6,),
                 UserSideInfoWidgets(UserDate:  Follow.Friends[index]),
 
 

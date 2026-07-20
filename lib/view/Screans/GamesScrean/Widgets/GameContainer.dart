@@ -9,7 +9,7 @@ import '../../../../viewmodels/Games_ViewModel/Games_ViewModel.dart';
 
 class GameContainer extends StatelessWidget {
   int index;
-  GameContainer({required this.index});
+  GameContainer({super.key, required this.index});
   @override
   Widget build(BuildContext context) {
     GamesViewModel Games=  Provider.of<GamesViewModel>(context,listen: true);
@@ -29,7 +29,7 @@ class GameContainer extends StatelessWidget {
                   children: [
                     Text(Games.GamesList[index].NumberPersons.toString(),style: style1.copyWith(color: whitecolor,fontSize: 11),),
                     const SizedBox(width: 5,),
-                    Icon(Icons.person,color: whitecolor,size: 13),
+                    const Icon(Icons.person,color: whitecolor,size: 13),
                   ],
                 ),
               ),)

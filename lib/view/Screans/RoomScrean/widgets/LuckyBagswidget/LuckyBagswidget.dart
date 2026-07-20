@@ -14,7 +14,7 @@ class LuckyBagswidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List LuckyPackage=[{'coins':50,'id':1},{'coins':100,'id':2},{'coins':500,'id':3},{'coins':1000,'id':4}];
-    GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
+    Provider.of<GiftsViewModel>(context, listen: true);
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
 
@@ -23,9 +23,9 @@ class LuckyBagswidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text("اكياس الحظ",style: style2.copyWith(fontSize: 15),),
-        SizedBox(height: 10,),
-        Container( width: MediaQuery.of(context).size.width * .7,height: 280,
-          child: GridView.builder(cacheExtent: 15,physics: ScrollPhysics(),
+        const SizedBox(height: 10,),
+        SizedBox( width: MediaQuery.of(context).size.width * .7,height: 280,
+          child: GridView.builder(cacheExtent: 15, physics: const ScrollPhysics(),
               gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount:2,
                   childAspectRatio:1,
@@ -37,20 +37,20 @@ class LuckyBagswidget extends StatelessWidget {
                     user.UpdatePackageid(val: LuckyPackage[index]['coins']);
                   },
                   child: Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:LuckyPackage[index]['coins']==user.Packageid? Colors.blue.withOpacity(0.3) :Colors.blueGrey.withOpacity(0.1)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:LuckyPackage[index]['coins']==user.Packageid? Colors.blue.withValues(alpha: 0.3) :Colors.blueGrey.withValues(alpha: 0.1)),
                     child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(height: 15,),
+                          const SizedBox(height: 15,),
                           Image.asset(Images.LuckyPrize,height: 70),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Row(crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(LuckyPackage[index]['coins'].toString(),style: style2,),
-                              SizedBox(width: 5,),
+                              const SizedBox(width: 5,),
                               Image.asset(Images.coins,width: 13),
                             ],
                           )

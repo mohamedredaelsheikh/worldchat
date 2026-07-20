@@ -1,11 +1,7 @@
 import 'package:ahlachat/models/RoomModel.dart';
-import 'package:ahlachat/util/Dialogs.dart';
-import 'package:ahlachat/util/Localization.dart';
-import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MainScrean/widgets/RoomsContainer.dart';
 import 'package:ahlachat/viewmodels/Animated_Viewmodel/ElementViewModel.dart';
-import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +11,7 @@ class CountriesRoomScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
-    SvgViewmodel svga=  Provider.of<SvgViewmodel>(context,listen: true);
+    Provider.of<SvgViewmodel>(context,listen: true);
 
     return Scaffold(
         appBar: AppBar(  leading: IconButton(
@@ -31,8 +27,7 @@ class CountriesRoomScrean extends StatelessWidget {
 
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: CustomScrollView(cacheExtent: 20.0 ,
-                slivers: <Widget>[
+            child: CustomScrollView(cacheExtent: 20.0, slivers: <Widget>[
                   SliverGrid(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,

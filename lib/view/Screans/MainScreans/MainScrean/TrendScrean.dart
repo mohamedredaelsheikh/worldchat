@@ -10,12 +10,14 @@ import 'package:ahlachat/viewmodels/Socket_ViewModel/Socketviewmodel.dart';
 import 'package:provider/provider.dart';
 
 class TrendScrean extends StatelessWidget {
-  ScrollController? _controller= ScrollController();
+  final ScrollController? _controller= ScrollController();
   int showed_ads = 0;
+
+  TrendScrean({super.key});
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
-    SvgViewmodel svga=  Provider.of<SvgViewmodel>(context,listen: true);
+    Provider.of<SvgViewmodel>(context,listen: true);
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
 
     roomcontext=context;
@@ -31,14 +33,13 @@ class TrendScrean extends StatelessWidget {
     },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: CustomScrollView(cacheExtent: 20.0,
-              controller: _controller,
+        child: CustomScrollView(cacheExtent: 20.0, controller: _controller,
               slivers: <Widget>[
 
                     SliverToBoxAdapter(
-                  child:  user.Banners.isEmpty?SizedBox():ImageSlide(),
+                  child:  user.Banners.isEmpty?const SizedBox():const ImageSlide(),
                 ),
-             if(Rooms.FixedRooms.length!=0)
+             if(Rooms.FixedRooms.isNotEmpty)
                SliverGrid(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
@@ -55,9 +56,9 @@ class TrendScrean extends StatelessWidget {
                     childCount: Rooms.FixedRooms.length,
                   ),
                 ),
-          SliverPadding(padding: EdgeInsets.only(top: 5)),
+          const SliverPadding(padding: EdgeInsets.only(top: 5)),
           SliverGrid(
-           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                crossAxisCount: 2,
                childAspectRatio:1.1,
                mainAxisSpacing: 5,

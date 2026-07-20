@@ -35,16 +35,16 @@ class AchiveModels {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['image'] = this.image;
-    data['blackimage'] = this.blackimage;
-    data['name'] = this.name;
-    data['status'] = this.status;
-    data['description']  =this.description;
-    data['reason'] = this.reason;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['image'] = image;
+    data['blackimage'] = blackimage;
+    data['name'] = name;
+    data['status'] = status;
+    data['description']  =description;
+    data['reason'] = reason;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

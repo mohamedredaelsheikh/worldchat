@@ -1,5 +1,4 @@
 import 'package:ahlachat/models/AchiveModel.dart';
-import 'package:ahlachat/util/app_constants.dart';
 
 class UserModels {
   int? id;
@@ -16,23 +15,23 @@ class UserModels {
   UserModels.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     Achiveid =json['Achiveid'];
-    AchiveModel=json['model'] != null ? new AchiveModels.fromJson(json['model']) : null;
+    AchiveModel=json['model'] != null ? AchiveModels.fromJson(json['model']) : null;
     userId = int.parse(json['user_id'].toString());
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['Achiveid'] = this.Achiveid;
-    data['user_id'] = this.userId;
-    data['created_at'] = this.createdAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['Achiveid'] = Achiveid;
+    data['user_id'] = userId;
+    data['created_at'] = createdAt;
 
-    if (this.AchiveModel != null) {
-      data['model'] = this.AchiveModel!.toJson();
+    if (AchiveModel != null) {
+      data['model'] = AchiveModel!.toJson();
     }
-    data['updated_at'] = this.updatedAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

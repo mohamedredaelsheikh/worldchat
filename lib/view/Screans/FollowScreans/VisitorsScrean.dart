@@ -15,28 +15,28 @@ class VisitorsScrean extends StatelessWidget {
   Widget build(BuildContext context) {
     FollowViewModel Follow=  Provider.of<FollowViewModel>(context,listen: true);
     LoginViewmodel user= Provider.of<LoginViewmodel>(context,listen: true);
-    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key:  "Visitors"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
-      body: SingleChildScrollView(       physics: BouncingScrollPhysics(),
+    return Scaffold( appBar: AppBar( backgroundColor: Colors.transparent,iconTheme: const IconThemeData(color: Colors.black), centerTitle: false,elevation: 0,title: Text(getLang(context: context,key:  "Visitors"),style: style6.copyWith(fontSize: 19,color:Colors.black87),)),
+      body: SingleChildScrollView(       physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children:List.generate(Follow.visitor.length, (index){
               if(Follow.visitor[index].user?.id==user.userinfo?.id){
-                return SizedBox();
+                return const SizedBox();
               }
               return Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: InkWell(
                   onTap: () {
                     user.GetShoweduserProfile(Follow.visitor[index].user);
-                    navigateTo(context: context,screen: ShowUserProfile());
+                    navigateTo(context: context,screen: const ShowUserProfile());
 
                   },
                   child: Container(
                     child: Row(
                       children: [
                         CircleAvatar(backgroundColor: Colors.transparent,radius: 30,backgroundImage: CachedNetworkImageProvider( Follow.visitor[index].user?.image??'')),
-                        SizedBox(width: 6,),
+                        const SizedBox(width: 6,),
                         UserSideInfoWidgets(UserDate: Follow.visitor[index].user,)
                       ],
                     ),

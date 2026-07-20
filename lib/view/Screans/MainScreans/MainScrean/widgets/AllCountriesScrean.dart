@@ -21,7 +21,7 @@ class AllCountriesScrean extends StatelessWidget {
 body: CustomScrollView(
   slivers: [
     SliverGrid(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio:4,
           mainAxisSpacing: 10,
@@ -32,18 +32,18 @@ body: CustomScrollView(
           Rooms.GetSelectedCountry(Rooms.Countries[index]);
           //  Navigator.pushNamed( context, AppConstants.CountriesRoomScrean);
 
-          navigateTo(context: context,screen:  CountriesRoomScrean());
+          navigateTo(context: context,screen:  const CountriesRoomScrean());
 
         },
-          child: Container( decoration: BoxDecoration(color: Color(0xFF1878f3).withOpacity(0.05),borderRadius: BorderRadius.circular(5) )
+          child: Container( decoration: BoxDecoration(color: const Color(0xFF1878f3).withValues(alpha: 0.05),borderRadius: BorderRadius.circular(5) )
             ,child:Row(
               children: [
-                SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 Image.asset(
                   Rooms.Countries[index].flag??"", package: countryCodePackageName, width: 17,
                 ),
-                SizedBox(width: 5,),
-                Flexible(child: Text(  Rooms.Countries[index].name??"",maxLines: 1,style: style2.copyWith(height: 1,fontSize: 12,color: Colors.black87.withOpacity(0.6)),))
+                const SizedBox(width: 5,),
+                Flexible(child: Text(  Rooms.Countries[index].name??"",maxLines: 1,style: style2.copyWith(height: 1,fontSize: 12,color: Colors.black87.withValues(alpha: 0.6)),))
               ],
             ) ,),
         );

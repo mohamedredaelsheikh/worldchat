@@ -21,7 +21,7 @@ class AdminKarisma extends StatelessWidget {
           child: Text(Helper().k_m_b_generator(Room.Currentroom?.chairs?[8].Karisma) ,style: style2.copyWith(fontSize: 7,color: whitecolor)),
         ),
         const  SizedBox(width: 3,),
-        FaIcon(FontAwesomeIcons.heartCircleCheck,size: 7,color: Colors.red),
+        const FaIcon(FontAwesomeIcons.heartCircleCheck,size: 7,color: Colors.red),
       ],
     );
   }

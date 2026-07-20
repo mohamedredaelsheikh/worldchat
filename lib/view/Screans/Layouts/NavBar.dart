@@ -3,7 +3,6 @@ import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/view/Screans/Layouts/widgets/DragableWidget.dart';
 import 'package:ahlachat/view/Screans/MainScreans/Explore/ExoploreTaps.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MessageScrean/MessageTaps.dart';
-import 'package:ahlachat/viewmodels/Socket_ViewModel/Socketviewmodel.dart';
 import 'package:ahlachat/viewmodels/Wallet_ViewModel/Wallet_ViewModel.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -18,12 +17,9 @@ import '../../../util/Localization.dart';
 import '../../../util/app_constants.dart';
 import '../../../util/images.dart';
 import '../../../util/notification.dart';
-import '../../../viewmodels/Agora_ViewModel/AgoraViewmodel.dart';
-import '../../../viewmodels/Animated_Viewmodel/ElementViewModel.dart';
 import '../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import '../../../viewmodels/InboxRooms_Viewmodel/InboxRoomsViewmodel.dart';
 import '../../../viewmodels/Moment_Viewmodel/Moment_ViewModel.dart';
-import '../../../viewmodels/Music_Viewmodel/MusicViewmodel.dart';
 import '../../../viewmodels/RoomPlay_ViewModel/RoomPlayViewModel.dart';
 import '../../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import '../../../viewmodels/Socket_ViewModel/GlopelSocketModelView.dart';
@@ -34,6 +30,8 @@ import 'package:flutter_jailbreak_detection/flutter_jailbreak_detection.dart';
 
 
 class ButtomNavigation extends StatefulWidget {
+  const ButtomNavigation({super.key});
+
   @override
   _ButtomNavigationState createState() => _ButtomNavigationState();
 }
@@ -78,14 +76,15 @@ class _ButtomNavigationState extends State<ButtomNavigation> with   WidgetsBindi
   }
 
   static  final List<Widget> _widgetOptions = <Widget>[
-    MainScrean(),
-      ExploreTaps(),
-    MessageTaps(),
+    const MainScrean(),
+      const ExploreTaps(),
+    const MessageTaps(),
 
-   ProfileScrean(),
+   const ProfileScrean(),
   ];
   Future<void> initPlatformState() async {
     bool jailbroken;
+    // ignore: unused_local_variable
     bool developerMode;
 
     try {
@@ -133,8 +132,8 @@ class _ButtomNavigationState extends State<ButtomNavigation> with   WidgetsBindi
   }
   @override
   void initState() {
-    WidgetsBinding.instance?.addObserver(this);
-    SchedulerBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addObserver(this);
+    SchedulerBinding.instance.addPostFrameCallback((_) {
 
       checkforupdates();
       Helper().RequestPermissions();
@@ -206,8 +205,9 @@ print(index);
 
     });
   }
+  @override
   void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
 
     super.dispose();
   }
@@ -219,12 +219,11 @@ print(index);
     });
 
   }
-  @override
   DateTime? currentBackPressTime;
   bool onWillPop() {
     DateTime now = DateTime.now();
     if (currentBackPressTime == null ||
-        now.difference(currentBackPressTime??DateTime.now()) > Duration(seconds: 2)) {
+        now.difference(currentBackPressTime??DateTime.now()) > const Duration(seconds: 2)) {
       currentBackPressTime = now;
       Dialogs().showtoast(getLang( context: context, key: "Tap_Exit"));
       return false;
@@ -301,7 +300,7 @@ print(index);
                 Image.asset(_selectedIndex==2?Images.chatcon:Images.chatconcolor,height:25,width: 25,),
              if( Provider.of<LoginViewmodel>(context, listen:true).userinfo?.MessageNumber!=0&&Provider.of<LoginViewmodel>(context, listen:true).userinfo?.MessageNumber!=null)   Positioned(top: -5,
                   child: badges.Badge(
-                    badgeContent: Text(user.userinfo?.MessageNumber.toString()??"0",style: TextStyle(color: Colors.white,fontSize: 10)),
+                    badgeContent: Text(user.userinfo?.MessageNumber.toString()??"0",style: const TextStyle(color: Colors.white,fontSize: 10)),
 
 
                   ),
@@ -319,7 +318,7 @@ print(index);
           currentIndex: _selectedIndex,
           elevation: 10,
           selectedItemColor: Colors.black87,unselectedItemColor: Colors.black45,
-          unselectedLabelStyle:   TextStyle( fontSize: 12),
+          unselectedLabelStyle:   const TextStyle( fontSize: 12),
           onTap: _onItemTapped,
         ),
       ),

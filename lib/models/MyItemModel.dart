@@ -26,20 +26,20 @@ class Salesmodel {
     if (json['sales'] != null) {
       sales = <Sales>[];
       json['sales'].forEach((v) {
-        sales!.add(new Sales.fromJson(v));
+        sales!.add(Sales.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.sales != null) {
-      data['sales'] = this.sales!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (sales != null) {
+      data['sales'] = sales!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -79,22 +79,22 @@ class Sales {
     categoryId = json['category_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    item = json['item'] != null ? new Items.fromJson(json['item']) : null;
+    item = json['item'] != null ? Items.fromJson(json['item']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['item_id'] = this.itemId;
-    data['user_id'] = this.userId;
-    data['status'] = this.status;
-    data['day'] = this.day;
-    data['price'] = this.price;
-    data['category_id'] = this.categoryId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.item != null) {
-      data['item'] = this.item!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['item_id'] = itemId;
+    data['user_id'] = userId;
+    data['status'] = status;
+    data['day'] = day;
+    data['price'] = price;
+    data['category_id'] = categoryId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (item != null) {
+      data['item'] = item!.toJson();
     }
     return data;
   }

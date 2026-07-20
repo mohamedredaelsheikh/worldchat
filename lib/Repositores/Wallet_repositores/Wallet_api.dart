@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:purchases_flutter/models/offering_wrapper.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 
 import '../../models/PayPalPackage.dart';
@@ -33,7 +32,7 @@ class PurchasaApi {
       final Current=offerings.current;
       print(Current);
       return Current==null?[]: [Current];
-    }on PlatformException catch(e){
+    }on PlatformException {
       return [];
     }
   }
@@ -49,9 +48,9 @@ class PurchasaApi {
 
         List list =response2.data['PaypalPackage'] ;
 
-        list.forEach((element) {
+        for (var element in list) {
           PayPalPackages.add(PayPalPackage.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {

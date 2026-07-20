@@ -23,12 +23,12 @@ class FamilyViewModel extends ChangeNotifier{
   TextEditingController FamilyName=TextEditingController();
   TextEditingController FamilyDesc=TextEditingController();
   List Levels=[
-    {'Level':'1','name':'Bronze Family','Coins':0,'image':Images.FamilyLevel1,'Color':const Color(0xff0c8a4b).value,'BackImage':Images.Family1},
-    {'Level':'1','name':'Bronze Family','Coins':200000,'image':Images.FamilyLevel1,'Color':const Color(0xff0c8a4b).value,'BackImage':Images.Family1},
-    {'Level':'2','name':'Silver Family','Coins':600000,'image':Images.FamilyLevel2,'Color':const Color(0xff0158fc).value,'BackImage':Images.Family2},
-    {'Level':'3','name':'Gold Family','Coins':1200000,'image':Images.FamilyLevel3,'Color':const Color(0xff15110d).value,'BackImage':Images.Family5},
-    {'Level':'4','name':'World Family','Coins':2000000,'image':Images.FamilyLevel4,'Color':const Color(0xff7132ff).value,'BackImage':Images.Family3},
-    {'Level':'5','name':'World Family','Coins':3300000,'image':Images.FamilyLevel4,'Color':const Color(0xff7132ff).value,'BackImage':Images.Family5},
+    {'Level':'1','name':'Bronze Family','Coins':0,'image':Images.FamilyLevel1,'Color':const Color(0xff0c8a4b).toARGB32(),'BackImage':Images.Family1},
+    {'Level':'1','name':'Bronze Family','Coins':200000,'image':Images.FamilyLevel1,'Color':const Color(0xff0c8a4b).toARGB32(),'BackImage':Images.Family1},
+    {'Level':'2','name':'Silver Family','Coins':600000,'image':Images.FamilyLevel2,'Color':const Color(0xff0158fc).toARGB32(),'BackImage':Images.Family2},
+    {'Level':'3','name':'Gold Family','Coins':1200000,'image':Images.FamilyLevel3,'Color':const Color(0xff15110d).toARGB32(),'BackImage':Images.Family5},
+    {'Level':'4','name':'World Family','Coins':2000000,'image':Images.FamilyLevel4,'Color':const Color(0xff7132ff).toARGB32(),'BackImage':Images.Family3},
+    {'Level':'5','name':'World Family','Coins':3300000,'image':Images.FamilyLevel4,'Color':const Color(0xff7132ff).toARGB32(),'BackImage':Images.Family5},
   ];
   ListoflEaderboardcategory ? MemberFamilyLeaderBoard;
   List<FamilyModel> SearchFamily=[];
@@ -57,7 +57,7 @@ class FamilyViewModel extends ChangeNotifier{
     await Familyapi().SearchFamily( text).then((value) {
       SearchFamily=value;
       print(SearchFamily.length);
-   navigateTo(context: context,screen: SearchFamilyResults());
+   navigateTo(context: context,screen: const SearchFamilyResults());
       DismissGlopalLoading();
     });
     notifyListeners();

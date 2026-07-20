@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class LevelWidget extends StatelessWidget {
   int Karisma;
 
-  LevelWidget({required this.Karisma});
+  LevelWidget({super.key, required this.Karisma});
   @override
   Widget build(BuildContext context) {
     return Stack(fit: StackFit.loose,alignment: Alignment.center,

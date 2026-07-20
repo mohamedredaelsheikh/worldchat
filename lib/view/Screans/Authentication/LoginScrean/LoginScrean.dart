@@ -1,19 +1,14 @@
 
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/view/Screans/Authentication/IDloginScrean/IDloginScrean.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_jailbreak_detection/flutter_jailbreak_detection.dart';
 import 'package:provider/provider.dart';
 import '../../../../util/app_constants.dart';
 import '../../../../util/images.dart';
 import '../../../../util/styles.dart';
 import '../../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'Widgets/GoogleSigninButton.dart';
-import 'Widgets/PhoneSignin.dart';
 import 'Widgets/Termsanscondition.dart';
 class LoginScrean extends StatefulWidget {
   const LoginScrean({Key? key}) : super(key: key);
@@ -54,6 +49,7 @@ class _LoginScreanState extends State<LoginScrean> {
   //   // }
   // }
 
+  @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: false) ;
     return WillPopScope(onWillPop: () async{
@@ -63,14 +59,14 @@ class _LoginScreanState extends State<LoginScrean> {
         body: Container(
           decoration: BoxDecoration(gradient: LinearGradient(  begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [0.05, 0.5, ],colors: [
-                Color(0xFF1878f3).withOpacity(0.5),Colors.white
+              stops: const [0.05, 0.5, ],colors: [
+                const Color(0xFF1878f3).withValues(alpha: 0.5),Colors.white
           ])),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Spacer(),
+                const Spacer(),
 
                 Padding(
                   padding:   EdgeInsets.all(SizeConfig.TenSize!*3),
@@ -87,7 +83,7 @@ class _LoginScreanState extends State<LoginScrean> {
                     InkWell(onTap: () {
                       user.LoginPassword.clear();
                       user.LoginID.clear();
-                      navigateTo(context: context, screen: IDloginScrean());
+                      navigateTo(context: context, screen: const IDloginScrean());
 
                     },child: Image.asset(Images.ID,height:  SizeConfig.TenSize!*5.5)),
                     SizedBox(width:  SizeConfig.TenSize!*5.5,),

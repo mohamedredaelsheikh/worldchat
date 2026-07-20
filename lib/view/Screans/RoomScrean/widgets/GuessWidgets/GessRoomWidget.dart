@@ -15,12 +15,12 @@ class GeussRoomWidget extends StatelessWidget {
     return   Align(alignment: Alignment.center,
       child:   Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Container(width: SizeConfig.screenWidth,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.black,image: DecorationImage(image: ExactAssetImage('assets/image/icon_room_mora_game_bg.png'),fit: BoxFit.cover)),height: 150,
+        child: Container(width: SizeConfig.screenWidth,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.black,image: const DecorationImage(image: ExactAssetImage('assets/image/icon_room_mora_game_bg.png'),fit: BoxFit.cover)),height: 150,
             child:Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  SizedBox(height:  8,),
+                  const SizedBox(height:  8,),
                   Row(crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -28,20 +28,20 @@ class GeussRoomWidget extends StatelessWidget {
                         children: [
 
                           CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(Room.guesses.first['guess'].Reciver.image??''),radius: 13),
-                          SizedBox(width: 5,),
+                          const SizedBox(width: 5,),
                           Text(Room.guesses.first['guess'].Reciver.name,style: style1.copyWith(fontSize: 13),),
                         ],
                       ),
                       Row(
                         children: [Text(Room.guesses.first['guess'].Sender.name,style: style1.copyWith(fontSize: 13),),
-                          SizedBox(width: 5,),
+                          const SizedBox(width: 5,),
                           CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(Room.guesses.first['guess'].Sender.image??''),radius: 13),
 
                         ],
                       ),
                     ],
                   ),
-                  SizedBox(height:  10,),
+                  const SizedBox(height:  10,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20,),
                     child: Row(crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,9 +52,9 @@ class GeussRoomWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height:  10,),
+                  const SizedBox(height:  10,),
                   Room.guesses.first['guess'].status==3?
-                  Text( '${Room.guesses.first['guess'].Sender?.name}  تعادل مع  ${Room.guesses.first['guess'].Reciver?.name}',textDirection: TextDirection.ltr,style: TextStyle(color: Colors.orange,fontSize: 16 ),):Text('${Room.guesses.first['guess'].Sender?.id==Room.guesses.first['guess'].winner?Room.guesses.first['guess'].Sender?.name:Room.guesses.first['guess'].Reciver?.name} الفائز هو  ',textDirection: TextDirection.ltr,style: TextStyle(color: Colors.orange,fontSize: 16),),
+                  Text( '${Room.guesses.first['guess'].Sender?.name}  تعادل مع  ${Room.guesses.first['guess'].Reciver?.name}',textDirection: TextDirection.ltr,style: const TextStyle(color: Colors.orange,fontSize: 16 ),):Text('${Room.guesses.first['guess'].Sender?.id==Room.guesses.first['guess'].winner?Room.guesses.first['guess'].Sender?.name:Room.guesses.first['guess'].Reciver?.name} الفائز هو  ',textDirection: TextDirection.ltr,style: const TextStyle(color: Colors.orange,fontSize: 16),),
                 ],
               ),
             )

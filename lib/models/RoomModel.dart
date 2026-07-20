@@ -98,72 +98,72 @@ class RoomModel {
     if (json['join_room'] != null) {
       joinRooms = <joinRoom>[];
       json['join_room'].forEach((v) {
-        joinRooms?.add(new joinRoom.fromJson(v));
+        joinRooms?.add(joinRoom.fromJson(v));
       });
     }
 
     if (json['supervisors'] != null) {
       supervisor = <Supervisors>[];
       json['supervisors'].forEach((v) {
-        supervisor?.add(new Supervisors.fromJson(v));
+        supervisor?.add(Supervisors.fromJson(v));
         supervisorsId?.add(v['user_id']);
       });
     }
 
 
-    admin = json['admin'] != null ? new usermodel.fromJson(json['admin']) : null;
+    admin = json['admin'] != null ? usermodel.fromJson(json['admin']) : null;
     if (json['chairs'] != null) {
       chairs = <Chairs>[];
       json['chairs'].forEach((v) {
-        chairs!.add(new Chairs.fromJson(v));
+        chairs!.add(Chairs.fromJson(v));
       });
     }
     if (json['chatroom'] != null) {
       chatroom = <Chatroom>[];
       json['chatroom'].forEach((v) {
-        chatroom!.add(new Chatroom.fromJson(v));
+        chatroom!.add(Chatroom.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['image'] = this.image;
-    data['animateimage'] = this.animateimage;
-    data['frame'] = this.frame;
-    data['Token']=this.Token;
-    data['password'] = this.password;
-    data['RoomID'] = this.RoomID;
-    data['user_number'] = this.userNumber;
-    data['admin_id'] = this.adminId;
-    data['Locked'] = this.locked;
-    data['state'] = this.state;
-    data['FollowRoom']=this.FollowRoom;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['Category']=this.Category;
-    data['city']=this.city;
-    data['importance']=this.importance;
-    data['agoratoken']=this.agoratoken;
-    data['RoomAds']=this.RoomAds;
-    data['Karisma']=this.Karisma;
-    data['SecondKing']=this.SecondKing;
-    if (this.joinRooms != null) {
-      data['join_room'] = this.joinRooms!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['image'] = image;
+    data['animateimage'] = animateimage;
+    data['frame'] = frame;
+    data['Token']=Token;
+    data['password'] = password;
+    data['RoomID'] = RoomID;
+    data['user_number'] = userNumber;
+    data['admin_id'] = adminId;
+    data['Locked'] = locked;
+    data['state'] = state;
+    data['FollowRoom']=FollowRoom;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['Category']=Category;
+    data['city']=city;
+    data['importance']=importance;
+    data['agoratoken']=agoratoken;
+    data['RoomAds']=RoomAds;
+    data['Karisma']=Karisma;
+    data['SecondKing']=SecondKing;
+    if (joinRooms != null) {
+      data['join_room'] = joinRooms!.map((v) => v.toJson()).toList();
     }
-    if (this.supervisor != null) {
-      data['supervisors'] = this.supervisor!.map((v) => v.toJson()).toList();
+    if (supervisor != null) {
+      data['supervisors'] = supervisor!.map((v) => v.toJson()).toList();
     }
-    if (this.admin != null) {
-      data['admin'] = this.admin!.toJson();
+    if (admin != null) {
+      data['admin'] = admin!.toJson();
     }
-    if (this.chairs != null) {
-      data['chairs'] = this.chairs!.map((v) => v.toJson()).toList();
+    if (chairs != null) {
+      data['chairs'] = chairs!.map((v) => v.toJson()).toList();
     }
-    if (this.chatroom != null) {
-      data['chatroom'] = this.chatroom!.map((v) => v.toJson()).toList();
+    if (chatroom != null) {
+      data['chatroom'] = chatroom!.map((v) => v.toJson()).toList();
     }
     return data;
   }

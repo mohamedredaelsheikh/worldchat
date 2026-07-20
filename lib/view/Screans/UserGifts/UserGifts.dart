@@ -8,11 +8,13 @@ import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Shop_ViewModel/Shop_ViewModel.dart';
 import 'package:provider/provider.dart';
 class UserGifts extends StatelessWidget {
+  const UserGifts({super.key});
+
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     ShopViewmodel Shops=  Provider.of<ShopViewmodel>(context,listen: true);
-    return Scaffold(appBar: AppBar( automaticallyImplyLeading: true,iconTheme: IconThemeData(color:Colors.black45),title:Text(getLang(context: context, key: "Your_Gifts"),style:TextStyle(color: Colors.black,fontWeight: FontWeight.normal),) ),
+    return Scaffold(appBar: AppBar( automaticallyImplyLeading: true,iconTheme: const IconThemeData(color:Colors.black45),title:Text(getLang(context: context, key: "Your_Gifts"),style:const TextStyle(color: Colors.black,fontWeight: FontWeight.normal),) ),
         body:Column(
           children: List.generate(user.UserGift.length, (index) =>InkWell(
             onTap: (){
@@ -32,12 +34,12 @@ class UserGifts extends StatelessWidget {
                   Column(mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(user.UserGift[index].tittle??'',style: TextStyle().copyWith(fontWeight: FontWeight.normal,  fontSize: 16)),
+                      Text(user.UserGift[index].tittle??'',style: const TextStyle().copyWith(fontWeight: FontWeight.normal,  fontSize: 16)),
                       const      SizedBox(height: 5,),
                       Text(user.UserGift[index].message??'',style: style6.copyWith(fontWeight: FontWeight.normal,height: 1,)),
                     ],
                   ),
-                Spacer(),
+                const Spacer(),
                 Column(crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [

@@ -1,6 +1,5 @@
 import 'package:ahlachat/models/RoomModel.dart';
 import 'package:ahlachat/util/Localization.dart';
-import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MainScrean/widgets/AllCountriesScrean.dart';
@@ -12,7 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../viewmodels/Socket_ViewModel/Socketviewmodel.dart';
 class ExploreRoomScrean extends StatelessWidget {
-  ScrollController? _controller= ScrollController();
+  final ScrollController? _controller= ScrollController();
+
+  ExploreRoomScrean({super.key});
 
   @override
 
@@ -34,7 +35,7 @@ class ExploreRoomScrean extends StatelessWidget {
     },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: CustomScrollView(cacheExtent: 20.0,controller: _controller,
+        child: CustomScrollView(cacheExtent: 20.0, controller: _controller,
 
           slivers: <Widget>[
 
@@ -44,16 +45,16 @@ class ExploreRoomScrean extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(getLang(context: context,key: "Countries"),style: style2.copyWith(fontSize: 15,height: 1)),
-Spacer(),
+const Spacer(),
                     InkWell(onTap: () {
 
-                      navigateTo(context: context,screen: AllCountriesScrean());
+                      navigateTo(context: context,screen: const AllCountriesScrean());
 
                     },
                       child: Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
                         children:   [
                           Text(getLang(context: context,key: "More"),style:   style2.copyWith(fontSize: 14,color: Colors.black26,height: 1)),
-                          Icon(Icons.navigate_next_outlined,color: Colors.black26,size: 20,)
+                          const Icon(Icons.navigate_next_outlined,color: Colors.black26,size: 20,)
                         ],
                       ),
                     )
@@ -63,7 +64,7 @@ Spacer(),
             ),
 
               SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio:4,
                     mainAxisSpacing: 10,
@@ -74,18 +75,18 @@ Spacer(),
                     Rooms.GetSelectedCountry(Rooms.Countries[index]);
                   //  Navigator.pushNamed( context, AppConstants.CountriesRoomScrean);
 
-                    navigateTo(context: context,screen:  CountriesRoomScrean());
+                    navigateTo(context: context,screen:  const CountriesRoomScrean());
 
                   },
-                    child: Container( decoration: BoxDecoration(color: Color(0xFF1878f3).withOpacity(0.05),borderRadius: BorderRadius.circular(5) )
+                    child: Container( decoration: BoxDecoration(color: const Color(0xFF1878f3).withValues(alpha: 0.05),borderRadius: BorderRadius.circular(5) )
                       ,child:Row(
 children: [
-    SizedBox(width: 10,),
+    const SizedBox(width: 10,),
   Image.asset(
     Rooms.Countries[index].flag??"", package: countryCodePackageName, width: 17,
  ),
-  SizedBox(width: 5,),
-  Flexible(child: Text(  Rooms.Countries[index].name??"",maxLines: 1,style: style2.copyWith(height: 1,fontSize: 12,color: Colors.black87.withOpacity(0.6)),))
+  const SizedBox(width: 5,),
+  Flexible(child: Text(  Rooms.Countries[index].name??"",maxLines: 1,style: style2.copyWith(height: 1,fontSize: 12,color: Colors.black87.withValues(alpha: 0.6)),))
 ],
                       ) ,),
                   );
@@ -100,7 +101,7 @@ children: [
               ),
             ),
             SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   childAspectRatio:1.1,
                   mainAxisSpacing: 5,

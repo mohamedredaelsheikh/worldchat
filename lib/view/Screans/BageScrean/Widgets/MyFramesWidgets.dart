@@ -14,7 +14,7 @@ class Frameitemwidgets  extends StatelessWidget {
   Items ?items;
   String ?create;
   String ?update_at;
-  Frameitemwidgets({this.items,this.create,this.update_at});
+  Frameitemwidgets({super.key, this.items,this.create,this.update_at});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class Frameitemwidgets  extends StatelessWidget {
           child: Column(mainAxisAlignment:MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               InkWell(onTap: (){
                if(items?.kind==0||items?.kind==2||items?.kind==3){
                  Dialogs().ShowEntery( context: context,svga: items?.svggift);
@@ -36,15 +36,15 @@ class Frameitemwidgets  extends StatelessWidget {
                  Dialogs().ShowFrame(context: context,svga: items?.svggift);
                }
 
-               },child:         FaIcon(FontAwesomeIcons.playCircle,size: 20,color:MainColor),
+               },child:         const FaIcon(FontAwesomeIcons.playCircle,size: 20,color:MainColor),
               ),
                Center(child: CachedNetworkImage ( imageUrl:items?.imagegift??'',height: 100)),
-              SizedBox(height: 7,),
-              Center(child: Text(items?.name??'',style:style6.copyWith(fontWeight: FontWeight.normal,color: Colors.black.withOpacity(0.8),fontSize: 12) )),
-              SizedBox(height: 4,),
+              const SizedBox(height: 7,),
+              Center(child: Text(items?.name??'',style:style6.copyWith(fontWeight: FontWeight.normal,color: Colors.black.withValues(alpha: 0.8),fontSize: 12) )),
+              const SizedBox(height: 4,),
               Center(child: Text('For ${(DateTime.parse(create??'').difference(DateTime.now()).inDays==0?1:DateTime.parse(create??'').difference(DateTime.now()).inDays).toString()} Days',style:style5.copyWith( fontSize: 12,color: Colors.black45),)),
 
-             Spacer(),
+             const Spacer(),
               user.userinfo?.frameimage==items?.svggift||user.userinfo?.entry==items?.svggift|| user.userinfo?.Enterbubles==items?.imagegift|| user.userinfo?.bubbles==items?.svggift?
               Padding(
 

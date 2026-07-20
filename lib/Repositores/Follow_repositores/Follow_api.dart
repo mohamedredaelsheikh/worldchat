@@ -4,13 +4,11 @@ import 'package:ahlachat/models/Usermodel.dart';
 import 'package:dio/dio.dart';
 
 import '../../models/Visitors.dart';
-import '../../util/Dialogs.dart';
 import '../../util/app_constants.dart';
 
 
 class Followapi extends FollowRepository {
 
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -31,15 +29,15 @@ class Followapi extends FollowRepository {
 
     try {
       Response response2 = await dio.get(
-        '/api/Getmyfollowers/${UserId}',
+        '/api/Getmyfollowers/$UserId',
       );
 
       if (response2.statusCode == 200) {
         List list =response2.data['Follow'] ;
 
-        list.forEach((element) {
+        for (var element in list) {
           Myfans.add(Follows.fromJson(element));
-        });
+        }
 
  
       }
@@ -58,8 +56,8 @@ class Followapi extends FollowRepository {
         "user_id": userid.toString(),
         "room_id": roomid.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
-      FormData formData = new FormData.fromMap(map);
+      map.removeWhere((key, value) => value == null);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/SentShareRoom',
         data: formData,
@@ -81,15 +79,15 @@ class Followapi extends FollowRepository {
 
     try {
       Response response2 = await dio.get(
-        '/api/Getmyvisitors/${UserId}',
+        '/api/Getmyvisitors/$UserId',
       );
 
       if (response2.statusCode == 200) {
         List list =response2.data['visitor'] ;
 
-        list.forEach((element) {
+        for (var element in list) {
           Myvisitors.add(visitors.fromJson(element));
-        });
+        }
 
  
       }
@@ -106,15 +104,15 @@ class Followapi extends FollowRepository {
 
     try {
       Response response2 = await dio.get(
-        '/api/Getmyvisitors/${id}',
+        '/api/Getmyvisitors/$id',
       );
 
       if (response2.statusCode == 200) {
         List list =response2.data['visitor'] ;
         print(response2.data['visitor'] );
-        list.forEach((element) {
+        for (var element in list) {
           Myvisitors.add(visitors.fromJson(element));
-        });
+        }
 
  
       }
@@ -131,15 +129,15 @@ class Followapi extends FollowRepository {
 
     try {
       Response response2 = await dio.get(
-        '/api/Getmyfollowing/${UserId}',
+        '/api/Getmyfollowing/$UserId',
       );
 
       if (response2.statusCode == 200) {
         List list =response2.data['Follow'] ;
 
-        list.forEach((element) {
+        for (var element in list) {
           Myfans.add(Follows.fromJson(element));
-        });
+        }
 
  
       }
@@ -162,9 +160,9 @@ class Followapi extends FollowRepository {
       if (response2.statusCode == 200) {
         List list =response2.data  ;
 
-        list.forEach((element) {
+        for (var element in list) {
           Friends.add(usermodel.fromJson(element));
-        });
+        }
 
  
       }
@@ -207,9 +205,9 @@ bool state=false;
         List list =response2.data['Follow'] ;
         SharedRoomIds =response2.data['ShareIds'];
 
-        list.forEach((element) {
+        for (var element in list) {
           Myfans.add(Follows.fromJson(element));
-        });
+        }
 
 
       }
@@ -232,9 +230,9 @@ bool state=false;
       if (response2.statusCode == 200) {
         List list =response2.data['Follow'] ;
         print(response2.data['Follow'] );
-        list.forEach((element) {
+        for (var element in list) {
           Myfans.add(Follows.fromJson(element));
-        });
+        }
         print(Myfans );
  
       }
@@ -258,9 +256,9 @@ bool state=false;
       if (response2.statusCode == 200) {
         List list =response2.data['Follow'] ;
         print(response2.data['Follow'] );
-        list.forEach((element) {
+        for (var element in list) {
           Myfans.add(Follows.fromJson(element));
-        });
+        }
         print(Myfans );
  
       }
@@ -283,9 +281,9 @@ bool state=false;
       if (response2.statusCode == 200) {
         List list =response2.data['Follow'] ;
         print(response2.data['Follow'] );
-        list.forEach((element) {
+        for (var element in list) {
           Myfans.add(Follows.fromJson(element));
-        });
+        }
         print(Myfans );
  
       }
@@ -306,8 +304,8 @@ bool state=false;
         "user_id":UserId.toString(),
         "sender_id":senderid.toString()
       };
-      map.removeWhere((key, value) => key == null || value == null);
-      FormData formData = new FormData.fromMap(map);
+      map.removeWhere((key, value) => value == null);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/ReturnFollow',
         data: formData,
@@ -329,8 +327,8 @@ bool state=false;
       var  map={
         "follow_id":followid.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
-      FormData formData = new FormData.fromMap(map);
+      map.removeWhere((key, value) => value == null);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/RemoveFollow',
         data: formData,
@@ -354,8 +352,8 @@ bool state=false;
         "user_id":Userid.toString(),
         "sender_id":UserId.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
-      FormData formData = new FormData.fromMap(map);
+      map.removeWhere((key, value) => value == null);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/RemoveUserFollow',
         data: formData,
@@ -380,8 +378,8 @@ bool state=false;
         "user_id":userid.toString(),
         "sender_id":Sender.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
-      FormData formData = new FormData.fromMap(map);
+      map.removeWhere((key, value) => value == null);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/Followuser',
         data: formData,
@@ -406,8 +404,8 @@ bool state=false;
         "user_id":userid.toString(),
         "sender_id":Sender.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
-      FormData formData = new FormData.fromMap(map);
+      map.removeWhere((key, value) => value == null);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/RemoveFollowRoom',
         data: formData,

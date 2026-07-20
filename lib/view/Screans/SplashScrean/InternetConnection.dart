@@ -1,11 +1,11 @@
 import 'package:ahlachat/util/SizeConfig.dart';
-import 'package:ahlachat/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
-import '../../../util/app_constants.dart';
 class InternetConnection extends StatefulWidget {
+  const InternetConnection({super.key});
+
   @override
   State<InternetConnection> createState() => InternetConnection_State();
 }

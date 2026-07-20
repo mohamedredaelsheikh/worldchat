@@ -10,6 +10,8 @@ import '../../../viewmodels/Games_ViewModel/Games_ViewModel.dart';
 import '../../widgets/CircleProgress.dart';
 import 'Widgets/GameContainer.dart';
 class GamesScrean extends StatefulWidget {
+  const GamesScrean({super.key});
+
 
   @override
   State<GamesScrean> createState() => _GamesScreanState();
@@ -26,6 +28,7 @@ class _GamesScreanState extends State<GamesScrean> {
        }
   }
 
+  @override
   void initState(){
     _controller = ScrollController();
     _controller?.addListener(_scrollListener);
@@ -42,13 +45,13 @@ class _GamesScreanState extends State<GamesScrean> {
         child: CustomScrollView(
           controller: _controller,
           slivers: <Widget>[
-            SliverPadding(padding: EdgeInsets.only(top: 5)),
-            Games.GamesList.length==0?     SliverToBoxAdapter(
+            const SliverPadding(padding: EdgeInsets.only(top: 5)),
+            Games.GamesList.isEmpty?     SliverToBoxAdapter(
               child: Container(height: 300,width: 200,color: Colors.white,
               child: Center(child: Image.asset(Images.Empty1,height: 200,width: 200)),
               )
             ):   SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio:1.1,
                   mainAxisSpacing: 5,
@@ -69,8 +72,8 @@ class _GamesScreanState extends State<GamesScrean> {
             ),
 
             SliverToBoxAdapter(
-              child: !Games.showloading2?const SizedBox():Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: !Games.showloading2?const SizedBox():const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Center(child: CustomeCircleProgress()),
               ),
             )

@@ -32,12 +32,12 @@ class LeaveAdminChair extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircleAvatar(radius: 35,backgroundColor: Colors.blue,child: Icon(Icons.close,size: 35,color: whitecolor),),
+                        const CircleAvatar(radius: 35,backgroundColor: Colors.blue,child: Icon(Icons.close,size: 35,color: whitecolor),),
                         Text(getLang(context: context,key: "Cancel"),style: style3.copyWith(fontWeight: FontWeight.normal))
                       ],
                     ),
                   ),
-                  SizedBox(height: 100,),
+                  const SizedBox(height: 100,),
                   InkWell(onTap: () {
                    //  Navigator.pop(context);
 
@@ -50,7 +50,7 @@ class LeaveAdminChair extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircleAvatar(radius: 35,backgroundColor: Colors.red,child: Icon(Icons.chair,size: 35,color: whitecolor),),
+                        const CircleAvatar(radius: 35,backgroundColor: Colors.red,child: Icon(Icons.chair,size: 35,color: whitecolor),),
                         Text(getLang(context: context,key: "Leave_Chair"),style:style3.copyWith(fontWeight: FontWeight.normal))
                       ],
                     ),

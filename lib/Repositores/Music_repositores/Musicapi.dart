@@ -1,16 +1,12 @@
 
 import 'package:dio/dio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import '../../models/UserMusic.dart';
-import '../../models/VipModel.dart';
-import '../../util/Dialogs.dart';
 import '../../util/app_constants.dart';
 import '../Moment_repositores/Moment_repository.dart';
 
 
 class Musicapi extends MomentRepository {
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -41,7 +37,7 @@ print(musicsss.filename);
 
   usermusic ?music;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "music": musicsss,
         "user_id":UserId.toString(),
         "name":Music?.title.toString()

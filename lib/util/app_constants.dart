@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../models/Language/Localization.dart';
-import '../models/StartBannerModel.dart';
 
 String? Token;
 String? UserId;
@@ -134,48 +133,48 @@ ChecklevelModel checkLevelimage({context,required int karisma}){
   if(karisma>=1&&karisma<=9  ) {
     return  ChecklevelModel(image: 'assets/image/level1-10.png',colors:Colors.orange);
   }else if(karisma>=10&&karisma<=19  ) {
-    return  ChecklevelModel(image: 'assets/image/level10-20.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level10-20.png',colors:const Color(0xFF8C98A8) );
   }else if( karisma>=20&&karisma<=29  ) {
-    return  ChecklevelModel(image: 'assets/image/level20-30.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level20-30.png',colors:const Color(0xFF8C98A8) );
 
   }else if(karisma>=30&&karisma<=39  ) {
-    return  ChecklevelModel(image: 'assets/image/level30-40.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level30-40.png',colors:const Color(0xFF8C98A8) );
 
   }else if(karisma>=40&&karisma<=49  ) {
-    return  ChecklevelModel(image: 'assets/image/level40-50.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level40-50.png',colors:const Color(0xFF8C98A8) );
 
   }else if(karisma>=50&&karisma<=59  ) {
-    return  ChecklevelModel(image: 'assets/image/level50-60.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level50-60.png',colors:const Color(0xFF8C98A8) );
 
   }else if(karisma>=60&&karisma<=69  ) {
-    return  ChecklevelModel(image: 'assets/image/level60-70.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level60-70.png',colors:const Color(0xFF8C98A8) );
 
   }else if(karisma>=70&&karisma<=79  ) {
-    return  ChecklevelModel(image: 'assets/image/level70-80.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level70-80.png',colors:const Color(0xFF8C98A8) );
 
   }else if( karisma>=80&&karisma<=89  ) {
-    return  ChecklevelModel(image: 'assets/image/level80-90.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level80-90.png',colors:const Color(0xFF8C98A8) );
 
   }else if( karisma>=90&&karisma<=99  ) {
-    return  ChecklevelModel(image: 'assets/image/level90-100.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/level90-100.png',colors:const Color(0xFF8C98A8) );
 
   }else if( karisma>=100&&karisma<=109  ) {
-    return  ChecklevelModel(image: 'assets/image/ic_user_level_200to219.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/ic_user_level_200to219.png',colors:const Color(0xFF8C98A8) );
 
    }else if( karisma>=110&&karisma<=119  ) {
-return  ChecklevelModel(image: 'assets/image/ic_user_level_220to239.png',colors:Color(0xFF8C98A8) );
+return  ChecklevelModel(image: 'assets/image/ic_user_level_220to239.png',colors:const Color(0xFF8C98A8) );
 
 }else if( karisma>=120&&karisma<=129  ) {
-    return  ChecklevelModel(image: 'assets/image/ic_user_level_240to259.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/ic_user_level_240to259.png',colors:const Color(0xFF8C98A8) );
 
   }else if( karisma>=260&&karisma<=279  ) {
-    return  ChecklevelModel(image: 'assets/image/ic_user_level_260to279.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/ic_user_level_260to279.png',colors:const Color(0xFF8C98A8) );
 
   }else if( karisma>=280 ) {
-    return  ChecklevelModel(image: 'assets/image/ic_user_level_280to300.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/ic_user_level_280to300.png',colors:const Color(0xFF8C98A8) );
 
   }else{
-    return  ChecklevelModel(image: 'assets/image/ic_user_level_1to19.png',colors:Color(0xFF8C98A8) );
+    return  ChecklevelModel(image: 'assets/image/ic_user_level_1to19.png',colors:const Color(0xFF8C98A8) );
 
   }
 

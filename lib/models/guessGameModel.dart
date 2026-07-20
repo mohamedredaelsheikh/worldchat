@@ -38,27 +38,27 @@ class guessgamemodel {
     winner=json['winner'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    Sender = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
-    Reciver= json['Reciver'] != null ? new usermodel.fromJson(json['Reciver']) : null;
+    Sender = json['user'] != null ? usermodel.fromJson(json['user']) : null;
+    Reciver= json['Reciver'] != null ? usermodel.fromJson(json['Reciver']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['Sender_id'] = this.senderId;
-    data['Sender_gueess'] = this.senderGueess;
-    data['Accept_id'] = this.acceptId;
-    data['Accept_gueess'] = this.acceptGueess;
-    data['Coins'] = this.coins;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['winner'] = this.winner;
-    if (this.Sender != null) {
-      data['user'] = this.Sender!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['Sender_id'] = senderId;
+    data['Sender_gueess'] = senderGueess;
+    data['Accept_id'] = acceptId;
+    data['Accept_gueess'] = acceptGueess;
+    data['Coins'] = coins;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['winner'] = winner;
+    if (Sender != null) {
+      data['user'] = Sender!.toJson();
     }
-    if (this.Reciver != null) {
-      data['Reciver'] = this.Reciver!.toJson();
+    if (Reciver != null) {
+      data['Reciver'] = Reciver!.toJson();
     }
     return data;
   }

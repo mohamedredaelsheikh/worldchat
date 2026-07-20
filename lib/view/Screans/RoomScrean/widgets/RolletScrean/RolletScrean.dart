@@ -16,7 +16,7 @@ class RolletRoom extends StatelessWidget {
         bottom: 0.0,
         duration: const Duration(milliseconds: 300,),
         curve: Curves.fastOutSlowIn,
-        child:  Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height:  SizeConfig.screenHeight!/1.5, width: SizeConfig.screenWidth!,
+        child:  Container(decoration: const BoxDecoration(color: whitecolor,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height:  SizeConfig.screenHeight!/1.5, width: SizeConfig.screenWidth!,
           child:Column(mainAxisSize: MainAxisSize.min,
             children: [
  InkWell(onTap: (){

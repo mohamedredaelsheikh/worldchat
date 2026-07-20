@@ -14,6 +14,8 @@ import '../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import '../../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import '../../widgets/CircleProgress.dart';
 class AgencyProfileScrean extends StatefulWidget {
+  const AgencyProfileScrean({super.key});
+
   @override
   State<AgencyProfileScrean> createState() => _AgencyProfileScreanState();
 }
@@ -29,16 +31,18 @@ class _AgencyProfileScreanState extends State<AgencyProfileScrean> {
     }
   }
 
+  @override
   void initState() {
     _controller2 = ScrollController();
     _controller2?.addListener(_scrollListener);
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     AagencyViewModel  Agency=Provider.of<AagencyViewModel>(context,listen:  true);
-    RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
+    Provider.of<RoomViewmodel>(context,listen: true);
 
     return Scaffold(
         body:RefreshIndicator(color: MainColor, onRefresh: ()async{
@@ -49,7 +53,7 @@ class _AgencyProfileScreanState extends State<AgencyProfileScrean> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                Container( decoration: BoxDecoration(
+                Container( decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -67,7 +71,7 @@ class _AgencyProfileScreanState extends State<AgencyProfileScrean> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(onTap: (){Navigator.pop(context);},child: Icon(Icons.navigate_before_rounded,color: Colors.white,size: 40)),
+                          InkWell(onTap: (){Navigator.pop(context);},child: const Icon(Icons.navigate_before_rounded,color: Colors.white,size: 40)),
 
 
                           if(user.userinfo?.agency?.id==  Agency.Agencyinfo?.id) Text(" ${getLang(context: context, key:  "Your_Karisma" )} : ${user.userinfo?.AgencyKarisma.toString()}" ,style: style2,),
@@ -118,9 +122,9 @@ class _AgencyProfileScreanState extends State<AgencyProfileScrean> {
                                       padding: const EdgeInsets.all(8.0),
                                       child:   Row(
                                         children: [
-                                          if( Agency.Agencyinfo?.agencyKind==1||Agency.Agencyinfo?.agencyKind==2)  Icon(Icons.monetization_on_outlined,size: 20,color:MainColor) ,
-                                          if( Agency.Agencyinfo?.agencyKind==1)  SizedBox(width: 10,),
-                                          if( Agency.Agencyinfo?.agencyKind==0||Agency.Agencyinfo?.agencyKind==2)      Icon(Icons.group,size: 20,color: MainColor) ,
+                                          if( Agency.Agencyinfo?.agencyKind==1||Agency.Agencyinfo?.agencyKind==2)  const Icon(Icons.monetization_on_outlined,size: 20,color:MainColor) ,
+                                          if( Agency.Agencyinfo?.agencyKind==1)  const SizedBox(width: 10,),
+                                          if( Agency.Agencyinfo?.agencyKind==0||Agency.Agencyinfo?.agencyKind==2)      const Icon(Icons.group,size: 20,color: MainColor) ,
                                         ],
                                       ),
                                     )
@@ -133,14 +137,14 @@ class _AgencyProfileScreanState extends State<AgencyProfileScrean> {
                                     InkWell(onTap: (){
                                       Clipboard.setData(ClipboardData(text:Agency.Agencyinfo?.appid??'' ));
                                       Dialogs().showtoast(getLang(context: context, key: "Copied"));
-                                    },child:Icon(Icons.copy_outlined,color:Colors.black45,size: 16,)),
+                                    },child:const Icon(Icons.copy_outlined,color:Colors.black45,size: 16,)),
                                   ],
                                 ),
 
                                 Row(
                                   children: [
                                     Container(
-                                      decoration: BoxDecoration(color: MainColor.withOpacity(0.5),borderRadius:   BorderRadius.circular(20)),
+                                      decoration: BoxDecoration(color: MainColor.withValues(alpha: 0.5),borderRadius:   BorderRadius.circular(20)),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 5),
                                         child: Text( Agency.Agencyinfo?.user?.name??'',style: style6.copyWith(fontWeight: FontWeight.normal)),
@@ -149,7 +153,7 @@ class _AgencyProfileScreanState extends State<AgencyProfileScrean> {
                                     const   SizedBox(width: 10,),
                                     Row(
                                       children: [
-                                        Icon(Icons.group,size: 18,color: Colors.black45) ,
+                                        const Icon(Icons.group,size: 18,color: Colors.black45) ,
                                         const        SizedBox(width: 5,),
                                         Text( Agency.Agencyinfo?.userNumber.toString()??'',style: style6.copyWith(fontSize: 13, color: Colors.black45,fontWeight: FontWeight.normal)),
                                       ],
@@ -168,15 +172,15 @@ class _AgencyProfileScreanState extends State<AgencyProfileScrean> {
                     ],
                   ),
                 )),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(getLang(context: context, key: "Members"),style: style5.copyWith(fontSize: 19,fontWeight: FontWeight.normal)),
                 ),
-SizedBox(height: 10,),
+const SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child:Agency.showloading3?Center(child: CustomeCircleProgress()): Agency.useragincys.length==0?Padding(
+                  child:Agency.showloading3?const Center(child: CustomeCircleProgress()): Agency.useragincys.isEmpty?Padding(
                     padding: const EdgeInsets.only(top: 150),
                     child: Center(child: Text(getLang(context: context, key: "No_Members"),style: style2.copyWith(fontSize: 20),)),
                   ): Column(
@@ -189,7 +193,7 @@ SizedBox(height: 10,),
                         }else{
                           user.GetShoweduserProfile(  Agency.useragincys[index]);
 
-                          Navigator.pushNamed(context, '${AppConstants.ShowUser_Profile}');
+                          Navigator.pushNamed(context, AppConstants.ShowUser_Profile);
 
                         }
 
@@ -211,7 +215,7 @@ SizedBox(height: 10,),
                                     InkWell(onTap: (){
                                       Clipboard.setData(ClipboardData(text: Agency.useragincys[index].myappid??'' ));
                                       Dialogs().showtoast(getLang(context: context, key: "Copied"));
-                                    },child:Icon(Icons.copy_outlined,color:Colors.black45,size: 12,)),
+                                    },child:const Icon(Icons.copy_outlined,color:Colors.black45,size: 12,)),
                                   ],
                                 ),
 

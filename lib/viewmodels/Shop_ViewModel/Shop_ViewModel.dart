@@ -37,12 +37,10 @@ class ShopViewmodel extends ChangeNotifier {
     notifyListeners();
   }
   void showSpinner() {
-     ;
     showloading = true;
     notifyListeners(); // (Method for ChangeNotifiers) Or equivalent call to rebuild the view
   }
   void HiddenSpinner() {
-     ;
     showloading = false;
     notifyListeners(); // (Method for ChangeNotifiers) Or equivalent call to rebuild the view
   }
@@ -57,12 +55,10 @@ class ShopViewmodel extends ChangeNotifier {
     notifyListeners(); // (Method for ChangeNotifiers) Or equivalent call to rebuild the view
   }
   void showSpinner3() {
-     ;
     showloading3 = true;
     notifyListeners(); // (Method for ChangeNotifiers) Or equivalent call to rebuild the view
   }
   void HiddenSpinner3() {
-     ;
     showloading3 = false;
     notifyListeners(); // (Method for ChangeNotifiers) Or equivalent call to rebuild the view
   }
@@ -81,7 +77,7 @@ class ShopViewmodel extends ChangeNotifier {
     ShowGlopalLoading();
     await shopapi().GetMyBag( ).then((value) {
       AllMyItem=value;
-      navigateTo(context: context, screen: BagScrean());
+      navigateTo(context: context, screen: const BagScrean());
       DismissGlopalLoading();
     });
     notifyListeners();

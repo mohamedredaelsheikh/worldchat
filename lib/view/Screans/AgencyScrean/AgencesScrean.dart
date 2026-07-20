@@ -10,6 +10,8 @@ import '../../../util/images.dart';
 import '../../../util/styles.dart';
 import '../../../viewmodels/Agency_ViewModel/Agency_ViewModel.dart';
 class AgencesScrean extends StatefulWidget {
+  const AgencesScrean({super.key});
+
 
   @override
   State<AgencesScrean> createState() => _AgencesScreanState();
@@ -27,6 +29,7 @@ class _AgencesScreanState extends State<AgencesScrean> {
     }
   }
 
+  @override
   void initState() {
     _controller = ScrollController();
     _controller?.addListener(_scrollListener);
@@ -38,14 +41,14 @@ class _AgencesScreanState extends State<AgencesScrean> {
     AagencyViewModel  Agency=Provider.of<AagencyViewModel>(context,listen:  true);
 
      return Scaffold(
-        body:Agency.showloading?Center(child: CircularProgressIndicator(color: MainColor ),) :
+        body:Agency.showloading?const Center(child: CircularProgressIndicator(color: MainColor ),) :
           RefreshIndicator(color: MainColor, onRefresh: ()async{
             Agency.GetAgency(context: context);
      },
           child: SingleChildScrollView(  controller: _controller,
             child: Column(
               children: [
-                Container( decoration: BoxDecoration(
+                Container( decoration: const BoxDecoration(
 
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
@@ -63,13 +66,13 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 children: [
   InkWell(onTap: (){
     Navigator.pop(context);
-  },child: Icon(Icons.navigate_before_rounded,color: Colors.white,size: 40)),
+  },child: const Icon(Icons.navigate_before_rounded,color: Colors.white,size: 40)),
 InkWell(onTap: (){
 
 },child: Text(getLang(context: context, key: "Agencies"),style: style5.copyWith(fontSize: 20))),
   InkWell(onTap: (){
     Navigator.pushNamed(context, AppConstants.SearchAgency_Screan);
-  },child: Icon(Icons.search,color: Colors.white,size: 30)),
+  },child: const Icon(Icons.search,color: Colors.white,size: 30)),
 
 ],
                   ),
@@ -100,14 +103,14 @@ InkWell(onTap: (){
                                     InkWell(onTap: (){
                                       Clipboard.setData(ClipboardData(text:Agency.Agences[index].appid??'' ));
                                       Dialogs().showtoast(getLang(context: context, key: "Copied"));
-                                    },child:Icon(Icons.copy_outlined,color:Colors.black45,size: 16,)),
+                                    },child:const Icon(Icons.copy_outlined,color:Colors.black45,size: 16,)),
                                   ],
                                 ),
 
                                 Row(
                                   children: [
                                     Container(
-                                      decoration: BoxDecoration(color: MainColor.withOpacity(0.5),borderRadius:   BorderRadius.circular(20)),
+                                      decoration: BoxDecoration(color: MainColor.withValues(alpha: 0.5),borderRadius:   BorderRadius.circular(20)),
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 5),
                                         child: Text(Agency.Agences[index].user?.name??'',style: style6.copyWith(fontWeight: FontWeight.normal)),
@@ -116,7 +119,7 @@ InkWell(onTap: (){
                                     const        SizedBox(width: 10,),
                                     Row(
                                       children: [
-                                        Icon(Icons.group,size: 18,color: MainColor) ,
+                                        const Icon(Icons.group,size: 18,color: MainColor) ,
                                         const             SizedBox(width: 5,),
                                         Text( Agency.Agences[index].userNumber.toString() ,style: style6.copyWith(fontSize: 13, color: MainColor,fontWeight: FontWeight.normal)),
                                       ],
@@ -130,9 +133,9 @@ Padding(
   padding: const EdgeInsets.all(8.0),
   child:   Row(
     children: [
-    if( Agency.Agences[index].agencyKind==1||Agency.Agences[index].agencyKind==2)  Icon(Icons.monetization_on_outlined,size: 20,color:MainColor) ,
-      if( Agency.Agences[index].agencyKind==1)  SizedBox(width: 10,),
-      if( Agency.Agences[index].agencyKind==0||Agency.Agences[index].agencyKind==2)      Icon(Icons.group,size: 20,color: MainColor) ,
+    if( Agency.Agences[index].agencyKind==1||Agency.Agences[index].agencyKind==2)  const Icon(Icons.monetization_on_outlined,size: 20,color:MainColor) ,
+      if( Agency.Agences[index].agencyKind==1)  const SizedBox(width: 10,),
+      if( Agency.Agences[index].agencyKind==0||Agency.Agences[index].agencyKind==2)      const Icon(Icons.group,size: 20,color: MainColor) ,
     ],
 
   ),

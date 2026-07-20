@@ -42,29 +42,29 @@ class ImageSlide extends StatelessWidget {
             print(user.Banners[index].id);
             if(user.Banners[index].roomId=='1'){
               Rooms.GetWeeklyStar(context: context);
-              navigateTo(context: context, screen: WeeklystarScrean());
+              navigateTo(context: context, screen: const WeeklystarScrean());
 
             }else if(user.Banners[index].roomId=='2'){
               Agency.GetAgencyLeaderBoard();
-              navigateTo(context: context, screen: AgencyLeaderBoardScrean());
+              navigateTo(context: context, screen: const AgencyLeaderBoardScrean());
 
             }else if(user.Banners[index].roomId=='3'){
               Navigator.pushNamed( context, AppConstants.LeaderboardScrean);
               Provider.of<RoomViewmodel>(context,listen: false).GetRoomLeaderboard(context: context);
             }else if(user.Banners[index].roomId=='4'){
               Rooms.GetFamilyLeaderboard(context: context);
-              navigateTo(context: context,screen: LeaderboardFamilyScrean());
+              navigateTo(context: context,screen: const LeaderboardFamilyScrean());
             }else if(user.Banners[index].roomId=='5'){
 
               showModalBottomSheet( barrierColor: Colors.black.withAlpha(1),
                   backgroundColor: Colors.transparent, isScrollControlled: true,
                   context: context,
                   builder: (context) {
-                    return Container(height: 600,child: WebViewRollet(name: getLang( context: context, key: "Terms_Service"), link: 'http://game.worldchat.online/?token=${user.userinfo?.rememperToken}',));
+                    return SizedBox(height: 600,child: WebViewRollet(name: getLang( context: context, key: "Terms_Service"), link: 'http://game.worldchat.online/?token=${user.userinfo?.rememperToken}',));
                   });
             }else if(user.Banners[index].roomId=='6'){
 
-              navigateTo(context: context,screen: Container(width: SizeConfig.screenWidth,height: SizeConfig.screenHeight,
+              navigateTo(context: context,screen: SizedBox(width: SizeConfig.screenWidth,height: SizeConfig.screenHeight,
               child: SingleChildScrollView(
                 child: Column(children: [
                   Image.asset('assets/image/target002.png'),
@@ -91,7 +91,7 @@ class ImageSlide extends StatelessWidget {
 
 
                           },child: const FaIcon( FontAwesomeIcons.whatsapp,size: 30,color: whitecolor)),
-SizedBox(width: 20,),
+const SizedBox(width: 20,),
                           Expanded(child: Container(height: 150,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: DecorationImage(image: CachedNetworkImageProvider(user.Banners[index].SubBanner![indexs].image??''),fit: BoxFit.fill)))),
                         ],
                       ),
@@ -116,11 +116,13 @@ SizedBox(width: 20,),
 }
 
 class ImageSlide2 extends StatelessWidget {
+  const ImageSlide2({super.key});
+
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user= Provider.of<LoginViewmodel>(context,listen: true);
     return  Container(width: 70,
-      decoration: BoxDecoration(gradient: gradiant1,borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),topRight: Radius.circular(20),)),
+      decoration: const BoxDecoration(gradient: gradiant1,borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),topRight: Radius.circular(20),)),
       child: ImageSlideshow(
         width: double.infinity,
         height: 50,

@@ -1,19 +1,15 @@
 import 'package:ahlachat/viewmodels/Music_Viewmodel/MusicViewmodel.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
-import 'package:filling_slider/filling_slider.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/viewmodels/Agora_ViewModel/AgoraViewmodel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'package:ahlachat/view/Screans/RoomScrean/widgets/MusicList.dart';
 
 import '../../../../util/app_constants.dart';
-import '../../AddMusicScrean/AddMusicScrean.dart';
 
 class MusicPlayerRoom extends StatefulWidget {
   const MusicPlayerRoom({Key? key}) : super(key: key);
@@ -27,14 +23,14 @@ class _MusicPlayerRoomState extends State<MusicPlayerRoom> {
   Widget build( context) {
     RoomViewmodel Room   =Provider.of<RoomViewmodel>(context,listen: true);
     AgoraViewmodel Agora =Provider.of<AgoraViewmodel>(context,listen: true);
-    MusicViewModel music= Provider.of<MusicViewModel>(context,listen: true);
+    Provider.of<MusicViewModel>(context,listen: true);
 
 
     print('Agora. setaudiodefult');
-    return Container(decoration: const BoxDecoration( color: Colors.black12,borderRadius: const BorderRadius.only(topRight: const Radius.circular(20),topLeft: Radius.circular(20) )) ,width: SizeConfig.screenWidth!,
+    return Container(decoration: const BoxDecoration( color: Colors.black12,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )) ,width: SizeConfig.screenWidth!,
         child:Room.showloading14? const Padding(
           padding: EdgeInsets.only(top: 100),
-          child: const Center(child: CircularProgressIndicator(),),
+          child: Center(child: CircularProgressIndicator(),),
         ):Column(mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 20,),
@@ -48,7 +44,7 @@ class _MusicPlayerRoomState extends State<MusicPlayerRoom> {
                  //   music.addsongs();
                     Navigator.pushNamed(context, AppConstants.AddMusic_Screan);
                   },child: const Icon(Icons.list,color: whitecolor,size: 30,)),
-                  if(Agora.PlaySong.isNotEmpty) Container(width: SizeConfig.screenWidth!-80,child: Text(Agora.PlaySong.first,style: style1.copyWith(fontSize: 13,overflow: TextOverflow.ellipsis))),
+                  if(Agora.PlaySong.isNotEmpty) SizedBox(width: SizeConfig.screenWidth!-80,child: Text(Agora.PlaySong.first,style: style1.copyWith(fontSize: 13,overflow: TextOverflow.ellipsis))),
                 ],
               ),
             ),
@@ -85,7 +81,7 @@ class _MusicPlayerRoomState extends State<MusicPlayerRoom> {
                       const SizedBox(width: 20,),
                       const FaIcon( FontAwesomeIcons.volumeHigh,size: 16,color: whitecolor),
                       Expanded(
-                        child: Slider(activeColor: Colors.white,inactiveColor: MainColor.withOpacity(0.3),
+                        child: Slider(activeColor: Colors.white,inactiveColor: MainColor.withValues(alpha: 0.3),
                           value:Agora.volumnaudio.toDouble(),
                           max: 100,
                           min: 0,

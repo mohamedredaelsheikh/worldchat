@@ -12,14 +12,14 @@ class PhoneSignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: false);
+    Provider.of<LoginViewmodel>(context,listen: false);
     return InkWell(
       onTap: (){
       //  user.signInWithFacebook();
       },
       child: Container(width: SizeConfig.screenWidth!/1.4,
         height: 55,
-        decoration:  BoxDecoration(color: Color(0xFF1878f3),borderRadius: BorderRadius.circular(25) ),
+        decoration:  BoxDecoration(color: const Color(0xFF1878f3),borderRadius: BorderRadius.circular(25) ),
         child: Padding(
           padding: HWPadding10,
           child: Row(mainAxisSize: MainAxisSize.min,

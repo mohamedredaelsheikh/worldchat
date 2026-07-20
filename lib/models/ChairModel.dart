@@ -35,7 +35,7 @@ class Chairs {
     chairId = json['chair_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
+    user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
     mute=json['mute'];
     Lock=json['Lock'];
     Karisma=json['Karisma'];
@@ -43,20 +43,20 @@ class Chairs {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['user_id'] = this.userId;
-    data['room_id'] = this.roomId;
-    data['chair_id'] = this.chairId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['Lock'] = this.Lock;
-    data['mute'] = this.mute;
-    data['adminleaved']= this.adminleaved;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['room_id'] = roomId;
+    data['chair_id'] = chairId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['Lock'] = Lock;
+    data['mute'] = mute;
+    data['adminleaved']= adminleaved;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    data['Karisma'] = this.Karisma;
+    data['Karisma'] = Karisma;
     return data;
   }
 }

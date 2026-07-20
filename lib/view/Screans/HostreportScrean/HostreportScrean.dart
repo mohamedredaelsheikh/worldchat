@@ -35,12 +35,12 @@ class HostreportScrean extends StatelessWidget {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
 
     return Scaffold(
-      appBar: AppBar(centerTitle: true,title: Text(getLang(key: "modif",context: context),style: style2),automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black45),),
+      appBar: AppBar(centerTitle: true,title: Text(getLang(key: "modif",context: context),style: style2),automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black45),),
 body: Container(color: secondcolor,
   child:   CustomScrollView(
 
     slivers: [
-      SliverPadding(padding: EdgeInsets.only(top: 10)),
+      const SliverPadding(padding: EdgeInsets.only(top: 10)),
       SliverToBoxAdapter(child: Container(color: Colors.white,child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
@@ -51,7 +51,7 @@ body: Container(color: secondcolor,
 
         ],),
       )),),
-      SliverPadding(padding: EdgeInsets.only(top: 10)),
+      const SliverPadding(padding: EdgeInsets.only(top: 10)),
       SliverToBoxAdapter(child: Container(color: Colors.white,child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
@@ -62,7 +62,7 @@ body: Container(color: secondcolor,
 
         ],),
       )),),
-      SliverPadding(padding: EdgeInsets.only(top: 10)),
+      const SliverPadding(padding: EdgeInsets.only(top: 10)),
       SliverToBoxAdapter(child: Container(color: Colors.white,child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [

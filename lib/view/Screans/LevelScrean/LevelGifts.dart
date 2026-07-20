@@ -17,8 +17,8 @@ class LevelGifts extends StatelessWidget {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     ShopViewmodel Shops=  Provider.of<ShopViewmodel>(context,listen: true);
 
-    return Scaffold(appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black),title:Text(getLang(context: context,key: "LevelGifts"),style: style5,) ),
-    body:Level.showloading?Center(child: CircularProgressIndicator(),) :
+    return Scaffold(appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black),title:Text(getLang(context: context,key: "LevelGifts"),style: style5,) ),
+    body:Level.showloading?const Center(child: CircularProgressIndicator(),) :
     Column(
       children: List.generate(Level.LevelGift.length, (index) =>Padding(
         padding: const EdgeInsets.only(top: 10,left: 10,right: 10),
@@ -30,7 +30,7 @@ class LevelGifts extends StatelessWidget {
             Column(mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(width:300,
+                SizedBox(width:300,
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(Level.LevelGift[index].tittle??'',style: style6.copyWith(fontWeight: FontWeight.bold,fontSize: 12)),
@@ -66,7 +66,7 @@ class LevelGifts extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                Container(width: 300,child: Text(Level.LevelGift[index].message??'',style: style6.copyWith(fontWeight: FontWeight.normal))),
+                SizedBox(width: 300,child: Text(Level.LevelGift[index].message??'',style: style6.copyWith(fontWeight: FontWeight.normal))),
 
               ],
             ),

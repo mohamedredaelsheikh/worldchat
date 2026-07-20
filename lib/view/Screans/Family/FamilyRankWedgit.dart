@@ -15,7 +15,7 @@ class FamilyRankWidget extends StatelessWidget {
 
   List<LeaderboardFamilymodel>? FamilyList;
 
-  FamilyRankWidget({this.FamilyList});
+  FamilyRankWidget({super.key, this.FamilyList});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class FamilyRankWidget extends StatelessWidget {
           Expanded(child:InkWell(onTap: (){
     if ( (FamilyList?.length??0) >2){
       Family.GetFamily(Val: FamilyList?[2].Family);
-      navigateTo(context: context,screen: FamilyProfileScrean());
+      navigateTo(context: context,screen: const FamilyProfileScrean());
     }
 
           },
@@ -37,9 +37,9 @@ class FamilyRankWidget extends StatelessWidget {
               padding: const EdgeInsets.only(top: 60,),
               child: Stack(
                 children: [
-                  Container(height: 180,decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.rank1),fit: BoxFit.cover)),),
+                  Container(height: 180,decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.rank1),fit: BoxFit.cover)),),
                   if ((FamilyList?.length??0) >2)   Align(alignment: Alignment.topCenter,
-                    child: Container(width: 100,
+                    child: SizedBox(width: 100,
                       child: Column( mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -57,11 +57,11 @@ class FamilyRankWidget extends StatelessWidget {
               ),
             ),
           )),
-          SizedBox(width: 5,),
+          const SizedBox(width: 5,),
           Expanded(child: InkWell(onTap: (){
             if ( (FamilyList?.length??0) >0 ){
               Family.GetFamily(Val: FamilyList?[0].Family);
-              navigateTo(context: context,screen: FamilyProfileScrean());
+              navigateTo(context: context,screen: const FamilyProfileScrean());
             }
 
 
@@ -70,9 +70,9 @@ class FamilyRankWidget extends StatelessWidget {
               padding: const EdgeInsets.only(top: 30,),
               child: Stack(
                 children: [
-                  Container(height: 180,decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.rank2),fit: BoxFit.cover)),),
+                  Container(height: 180,decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.rank2),fit: BoxFit.cover)),),
                   if ( (FamilyList?.length??0) >0 )  Align(alignment: Alignment.topCenter,
-                    child: Container(width: 100,
+                    child: SizedBox(width: 100,
                       child: Column( mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -90,11 +90,11 @@ class FamilyRankWidget extends StatelessWidget {
               ),
             ),
           )),
-          SizedBox(width: 5,),
+          const SizedBox(width: 5,),
           Expanded(child: InkWell(onTap: (){
             if ( (FamilyList?.length??0) >1){
               Family.GetFamily(Val: FamilyList?[1].Family);
-              navigateTo(context: context,screen: FamilyProfileScrean());
+              navigateTo(context: context,screen: const FamilyProfileScrean());
             }
 
 
@@ -103,9 +103,9 @@ class FamilyRankWidget extends StatelessWidget {
               padding: const EdgeInsets.only(top: 60,),
               child: Stack(
                 children: [
-                  Container(height: 180,decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.rank3),fit: BoxFit.cover)),),
+                  Container(height: 180,decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.rank3),fit: BoxFit.cover)),),
                   if ( (FamilyList?.length??0) >1 )  Align(alignment: Alignment.topCenter,
-                    child: Container(width: 100,
+                    child: SizedBox(width: 100,
                       child: Column( mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -132,13 +132,13 @@ class FamilyRankWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(onTap: (){
               Family.GetFamily(Val: dailysupporter?.Family);
-              navigateTo(context: context,screen: FamilyProfileScrean());
+              navigateTo(context: context,screen: const FamilyProfileScrean());
             },
-              child: Container(height: 60,width: SizeConfig.screenWidth, child: Row(mainAxisAlignment: MainAxisAlignment.start,
+              child: SizedBox(height: 60,width: SizeConfig.screenWidth, child: Row(mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(width : 15,),
-                  Text((index+4).toString(),style: style1.copyWith(color:Color(0xFFFFD700),fontSize: 26,height: 1 ),),
+                  Text((index+4).toString(),style: style1.copyWith(color:const Color(0xFFFFD700),fontSize: 26,height: 1 ),),
                   const SizedBox(width : 20,),
                   ClipPath(
                     clipper:HexagonalClipper(reverse: true),
@@ -154,7 +154,7 @@ class FamilyRankWidget extends StatelessWidget {
                       Text(Helper().CutName(dailysupporter?.Family?.describtion??'')??getLang(context: context, key: "No_Description"),style: style1.copyWith( height: 1,fontSize: 13, ),),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(child: Center(child: Text('${Helper().k_m_b_generator(int.parse(dailysupporter?.coins??'0')).toString()} 🔥',style: style1.copyWith(height: 1, fontSize: 13),)),height: 30,width: 60,decoration: BoxDecoration( borderRadius: BorderRadius.circular(20),color: Colors.black45,border: Border.all(width:1,color: Colors.yellowAccent)),
                   ),
                   const SizedBox(width : 15,),

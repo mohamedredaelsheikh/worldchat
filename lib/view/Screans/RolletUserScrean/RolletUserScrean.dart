@@ -54,7 +54,7 @@ class _RolletFullscreanState extends State<RolletFullscrean>  with SingleTickerP
   static final _random = Random();
 
   late RouletteController _controller;
-  bool _clockwise = true;
+  final bool _clockwise = true;
 
 
   @override
@@ -74,7 +74,7 @@ class _RolletFullscreanState extends State<RolletFullscrean>  with SingleTickerP
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: false);
 
 
-    return Container(decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), ),image: DecorationImage(image: ExactAssetImage(Images.VipBackground),fit: BoxFit.fill)),
+    return Container(decoration: const BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), ),image: DecorationImage(image: ExactAssetImage(Images.VipBackground),fit: BoxFit.fill)),
       child: Scaffold(backgroundColor: Colors.transparent,
 
         body: Center(
@@ -89,7 +89,7 @@ class _RolletFullscreanState extends State<RolletFullscrean>  with SingleTickerP
               offset: _random.nextDouble(),
             );
 
-           Future.delayed(Duration(seconds: 4),() => Room.Playrollet(context: context,name: Room.Rolletchoice[num]),);
+           Future.delayed(const Duration(seconds: 4),() => Room.Playrollet(context: context,name: Room.Rolletchoice[num]),);
 
           },
             child:   Image.asset(Images.Rolletuser),

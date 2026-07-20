@@ -6,7 +6,6 @@ import 'dart:developer';
 import 'package:ahlachat/models/guessGameModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ahlachat/models/ChairModel.dart';
 import 'package:ahlachat/models/Chatroom.dart';
 import 'package:ahlachat/models/JoinRoomModel.dart';
@@ -25,7 +24,6 @@ import 'package:pusher_client/pusher_client.dart';
 import 'package:ahlachat/models/Usermodel.dart';
 import 'package:ahlachat/models/GiveGifts.dart';
 
-import '../../util/helperclass.dart';
 //ezgif.com_gif_maker_4_.json
 var roomcontext;
 class SocketViewmodel extends ChangeNotifier{
@@ -141,15 +139,15 @@ class SocketViewmodel extends ChangeNotifier{
         var  Give = givegifts.fromJson(data['data']['gift']);
 
           var user=usermodel.fromJson(data['data']['user']);
-        Give.ListUser.forEach((elements) {
+        for (var elements in Give.ListUser) {
          List ?SSS= Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.joinRooms?.where((element) => element.userId.toString()==elements.toString()).toList();
-        if(SSS?.length!=0 ){
+        if((SSS?.isNotEmpty ?? true) ){
           usermodel ? userinfo=SSS?.first.user;
           Provider.of<RoomViewmodel>(roomcontext,listen: false).Addmessagetocurrentroom(message: Chatroom(kind:2 ,user: user,id: 0,content:'xxxxxxxxxx',userId:user.id.toString(),updatedAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.updatedAt,roomId:  Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.id.toString(),createdAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.createdAt,Gift:Give,RecevedUser: userinfo ));
         }else{
           Provider.of<RoomViewmodel>(roomcontext,listen: false).Addmessagetocurrentroom(message: Chatroom(kind:2 ,user: user,id: 0,content:'xxxxxxxxxx',userId:user.id.toString(),updatedAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.updatedAt,roomId: Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.id.toString(),createdAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.createdAt,Gift:Give,RecevedUser:Provider.of<LoginViewmodel>(roomcontext,listen: false).userinfo  ));
         }
-         });
+         }
         Provider.of<RoomViewmodel>(roomcontext,listen: false). updatekaresma( context:roomcontext,Amount: Give.ListUser.length*Give.price!* int.parse(Give.quantity??"0") );
        if(data['data']['kind']==1||data['data']['kind']=='1'){
          Provider.of<RoomViewmodel>(roomcontext,listen: false).AddKaresmaChair(userids: Give.ListUser,Amount: ((int.parse(Give.quantity??'0')*(Give.price??0))/10).round() ) ;
@@ -174,7 +172,7 @@ class SocketViewmodel extends ChangeNotifier{
           if(Provider.of<RoomPlayViewModel>(roomcontext, listen: false).IsRoom==true){
             Navigator.pop(roomcontext);
           }
-          Future.delayed(Duration(seconds: 1),() {
+          Future.delayed(const Duration(seconds: 1),() {
             Provider.of<RoomViewmodel>(roomcontext,listen: false).ClearCurrentroom();
           },);
         }
@@ -310,15 +308,15 @@ class SocketViewmodel extends ChangeNotifier{
           var user=usermodel.fromJson(data['data']['user']);
           Provider.of<RoomViewmodel>(roomcontext,listen: false). addCombo(count:Give.quantity ,id:user.id,image:user.image??'',image2: Give.image );
 
-          Give.ListUser.forEach((elements) {
+          for (var elements in Give.ListUser) {
             List ?SSS= Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.joinRooms?.where((element) => element.userId.toString()==elements.toString()).toList();
-            if(SSS?.length!=0 ){
+            if((SSS?.isNotEmpty ?? true) ){
               usermodel ? userinfo=SSS?.first.user;
               Provider.of<RoomViewmodel>(roomcontext,listen: false).Addmessagetocurrentroom(message: Chatroom(kind:2 ,user: user,id: 0,content:'xxxxxxxxxx',userId:user.id.toString(),updatedAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.updatedAt,roomId:  Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.id.toString(),createdAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.createdAt,Gift:Give,RecevedUser: userinfo ));
             }else{
               Provider.of<RoomViewmodel>(roomcontext,listen: false).Addmessagetocurrentroom(message: Chatroom(kind:2 ,user: user,id: 0,content:'xxxxxxxxxx',userId:user.id.toString(),updatedAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.updatedAt,roomId: Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.id.toString(),createdAt:        Provider.of<RoomViewmodel>(roomcontext,listen: false).Currentroom?.createdAt,Gift:Give,RecevedUser:Provider.of<LoginViewmodel>(roomcontext,listen: false).userinfo  ));
             }
-          });
+          }
           Provider.of<RoomViewmodel>(roomcontext,listen: false). updatekaresma( context:roomcontext,Amount: Give.ListUser.length*Give.price!* int.parse(Give.quantity??"0") );
           if(data['data']['kind']==1||data['data']['kind']=='1'){
             Provider.of<RoomViewmodel>(roomcontext,listen: false).AddKaresmaChair(userids: Give.ListUser,Amount: ((int.parse(Give.quantity??'0')*(Give.price??0))/10).round() ) ;

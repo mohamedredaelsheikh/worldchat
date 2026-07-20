@@ -4,7 +4,6 @@ import 'package:ahlachat/view/widgets/ImageView.dart';
 import 'package:ahlachat/view/widgets/UserSideInfoWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:ahlachat/models/CommentsModel.dart';
 import 'package:ahlachat/models/Likemodel.dart';
 import 'package:ahlachat/util/Dialogs.dart';
@@ -16,12 +15,11 @@ import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Follow_ViewModel/Follow_ViewModel.dart';
 import 'package:ahlachat/viewmodels/Moment_Viewmodel/Moment_ViewModel.dart';
-import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 class Momentcontent extends StatelessWidget {
   Postes ChoosePost;
-  Momentcontent({required this.ChoosePost});
+  Momentcontent({super.key, required this.ChoosePost});
   TextEditingController Message=TextEditingController();
   TextEditingController MessageReplay=TextEditingController();
 
@@ -35,7 +33,7 @@ class Momentcontent extends StatelessWidget {
 
     return  Scaffold(
       appBar: AppBar(leading: IconButton(
-        icon: Icon(Icons.navigate_before, color: Colors.black),
+        icon: const Icon(Icons.navigate_before, color: Colors.black),
         onPressed: () => Navigator.of(context).pop(),
       ), title:   Text(getLang(context: context,key: "Moment_Content"),style: style4.copyWith(height: 1,color: Colors.black87,fontWeight: FontWeight.normal)),centerTitle: false),
       body:  Scaffold(
@@ -46,7 +44,7 @@ class Momentcontent extends StatelessWidget {
        padding: const EdgeInsets.all(8.0),
        child: Stack(
          children: [
-           CustomScrollView(physics: BouncingScrollPhysics(),
+           CustomScrollView(physics: const BouncingScrollPhysics(),
              slivers: <Widget>[
                SliverToBoxAdapter(
                  child:   Column(mainAxisSize: MainAxisSize.min,
@@ -60,14 +58,14 @@ class Momentcontent extends StatelessWidget {
                          InkWell(onTap: (){
                            if(ChoosePost.user?.id!=user.userinfo?.id){
                              user.GetShoweduserProfile(ChoosePost.user);
-                             navigateTo(context: context,screen: ShowUserProfile());
+                             navigateTo(context: context,screen: const ShowUserProfile());
                            }
 
                          },
                            child: Row(
                              children: [
                                CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(ChoosePost.user?.image ?? ''), radius: 23, ),
-                               SizedBox(width: 5,),
+                               const SizedBox(width: 5,),
                                UserSideInfoWidgets(UserDate: ChoosePost.user,showdescr: 1,)
                              ],
                            ),
@@ -153,7 +151,7 @@ class Momentcontent extends StatelessWidget {
                                  posts.LikePost(Postid: ChoosePost.id ,context: context);
                                }
                              }, child:  FaIcon( FontAwesomeIcons.fire,color: posts.LikedPost.contains(ChoosePost.id.toString())?MainColor:Colors.grey,  )),
-                             SizedBox(width: 7,),
+                             const SizedBox(width: 7,),
                              Text( ChoosePost.like?.length.toString() ?? '', style: style6),
                            ],
                          ),
@@ -164,8 +162,8 @@ class Momentcontent extends StatelessWidget {
                          },
                            child: Row(
                              children: [
-                               FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
-                               SizedBox(width: 7,),
+                               const FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
+                               const SizedBox(width: 7,),
                                Text( ChoosePost.commentsuser?.length.toString() ?? '', style: style6, ),
                              ],
                            ),
@@ -193,7 +191,7 @@ class Momentcontent extends StatelessWidget {
                    {
                      if(likes[indexx].user?.id!=user.userinfo?.id){
                        user.GetShoweduserProfile(likes[indexx].user);
-                       navigateTo(context: context,screen: ShowUserProfile());
+                       navigateTo(context: context,screen: const ShowUserProfile());
                      }
 
                    },child:CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(likes[indexx].user?.image??''),));
@@ -219,24 +217,24 @@ class Momentcontent extends StatelessWidget {
                                InkWell( onTap: () {
                                  if(comments[indexx].user?.id!=user.userinfo?.id){
                                    user.GetShoweduserProfile(comments[indexx].user);
-                                   navigateTo(context: context,screen: ShowUserProfile());
+                                   navigateTo(context: context,screen: const ShowUserProfile());
                                  }
                                },
                                  child: Row(mainAxisAlignment: MainAxisAlignment.start,
                                    children: [
                                      CircleAvatar(backgroundColor: Colors.transparent,backgroundImage:CachedNetworkImageProvider(comments[indexx].user?.image??'') ,),
-                                     SizedBox(width: 5,),
+                                     const SizedBox(width: 5,),
                                      UserSideInfoWidgets(showdescr:1 ,UserDate: comments[indexx].user,)
                                    ],
                                  ),
                                ),
-                               Spacer(),
+                               const Spacer(),
                                Text(Helper().getTimeago(time: comments[indexx].createdAt),style: styleb45.copyWith(fontSize: 11),)
 
                              ],
                            ),
                            Text(comments[indexx].comment??'',style: styleb.copyWith(color: Colors.black87,fontSize: 12),),
-                           comments[indexx].commentReplay==''||comments[indexx].commentReplay==null ?  SizedBox()  : Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.circular(10)), width: SizeConfig.screenWidth!,child: Column(
+                           comments[indexx].commentReplay==''||comments[indexx].commentReplay==null ?  const SizedBox()  : Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.circular(10)), width: SizeConfig.screenWidth!,child: Column(
                              crossAxisAlignment: CrossAxisAlignment.start,
                              mainAxisAlignment: MainAxisAlignment.start,
                              children: [
@@ -290,15 +288,15 @@ class Momentcontent extends StatelessWidget {
            ),
            Align(alignment: Alignment.bottomCenter,child: Container(height: 40,child: Row(
              children: [
-               SizedBox(width: 5,),
+               const SizedBox(width: 5,),
                CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(user.userinfo?.image??''),radius: 15,),
-               SizedBox(width: 5,),
+               const SizedBox(width: 5,),
 
             Expanded(child: Container(child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-              child:  TextFormField(decoration: InputDecoration.collapsed(hintText: 'Say Something....'),controller: Message),
+              child:  TextFormField(decoration: const InputDecoration.collapsed(hintText: 'Say Something....'),controller: Message),
             ),decoration: BoxDecoration(color:whitecolor2,borderRadius: BorderRadius.circular(20)),)),
-               SizedBox(width: 5,),
+               const SizedBox(width: 5,),
                InkWell(onTap: () {
                  if(Message.text!=''){
                    FocusScope.of(context).unfocus();
@@ -307,10 +305,10 @@ class Momentcontent extends StatelessWidget {
 
                  }
 
-               },child: Icon(Icons.send_outlined,size: 30,color: MainColor)),
-               SizedBox(width: 5,),
+               },child: const Icon(Icons.send_outlined,size: 30,color: MainColor)),
+               const SizedBox(width: 5,),
              ],
-           ),decoration: BoxDecoration(color: Colors.white),width: SizeConfig.screenWidth, ))
+           ),decoration: const BoxDecoration(color: Colors.white),width: SizeConfig.screenWidth, ))
          ],
        )
      ),

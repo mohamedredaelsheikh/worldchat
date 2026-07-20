@@ -54,12 +54,12 @@ if( Room.LeaveLoading==false){
 }
 
 
-          },child: CircleAvatar(radius: 16,backgroundColor: Colors.black38,child: Icon(Icons.close,color: whitecolor,))),
+          },child: const CircleAvatar(radius: 16,backgroundColor: Colors.black38,child: Icon(Icons.close,color: whitecolor,))),
         ),
         Spring.rotate(
           springController: springController,
 
-          animDuration: Duration(seconds: 6),
+          animDuration: const Duration(seconds: 6),
           child:  Container(
             height: 65,
             width: 65,

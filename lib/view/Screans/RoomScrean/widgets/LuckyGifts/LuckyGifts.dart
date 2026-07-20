@@ -22,27 +22,27 @@ class LuckyTabBar extends StatelessWidget  {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
 
-    return  Container(decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.bg__time),fit: BoxFit.cover),borderRadius:BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30) ) ),width: SizeConfig.screenWidth!,
+    return  Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.bg__time),fit: BoxFit.cover),borderRadius:BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30) ) ),width: SizeConfig.screenWidth!,
       child: Column(
         children: [
-          SizedBox(height: 10,),
-          Container(width: SizeConfig.screenWidth!,decoration: BoxDecoration(   color: Colors.transparent,),height:40 ,child: Row(
+          const SizedBox(height: 10,),
+          Container(width: SizeConfig.screenWidth!,decoration: const BoxDecoration(   color: Colors.transparent,),height:40 ,child: Row(
               children: [
 
-                SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 InkWell(onTap: (){
-                  Room.ChairsRoom.forEach((element) {
+                  for (var element in Room.ChairsRoom) {
                     Room.AddUserIds(id: element.user?.id );
-                  });
+                  }
                 }, child: Container(decoration: BoxDecoration(color: Colors.white24,borderRadius: BorderRadius.circular(20)),child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1,).copyWith(bottom: 5),
                   child: Text('اختيار الكل',style: style1.copyWith(fontSize: 12)),
                 ),)),
                 Expanded(
-                  child: Container(decoration: BoxDecoration(color: Colors.transparent,),
+                  child: Container(decoration: const BoxDecoration(color: Colors.transparent,),
                     child: ListView.builder(itemCount:Room.ChairsRoom.length ,scrollDirection: Axis.horizontal,itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child:Room.ChairsRoom[index].user?.id==null?SizedBox():InkWell(onTap: (){
+                      child:Room.ChairsRoom[index].user?.id==null?const SizedBox():InkWell(onTap: (){
                         if(Room.UserIds.contains(Room.ChairsRoom[index].user?.id)){
                           Room.RemoveUserIds(id: Room.ChairsRoom[index].user?.id);
                         }else{
@@ -57,7 +57,7 @@ class LuckyTabBar extends StatelessWidget  {
                 const SizedBox(width: Dimensions.FONT_SIZE_LARGE,),
                 InkWell(onTap: (){
                   Navigator.pop(context);
-                }, child: Icon(Icons.clear,color: whitecolor2,)),
+                }, child: const Icon(Icons.clear,color: whitecolor2,)),
                 const SizedBox(width: Dimensions.FONT_SIZE_LARGE,),
               ])),
           Padding(
@@ -69,14 +69,14 @@ class LuckyTabBar extends StatelessWidget  {
             child: Expanded(flex: 2,
               child: Column(
                 children: [
-           SizedBox(height: 10,),
+           const SizedBox(height: 10,),
                   Flexible (
                     child: TabBarView(children:
                     List.generate(user.LuckyGiftcatigoris.length, (index) =>
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GridView.builder(
-                              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                              gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount:4,
                                   childAspectRatio:0.8,
                                   mainAxisSpacing: 5,
@@ -94,7 +94,7 @@ class LuckyTabBar extends StatelessWidget  {
                                   child: Container(
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
-                                        color:!gits.GiftList.contains(user.LuckyGiftcatigoris[ index]['gifts'][indexx])?Colors.transparent: MainColor.withOpacity(0.6),
+                                        color:!gits.GiftList.contains(user.LuckyGiftcatigoris[ index]['gifts'][indexx])?Colors.transparent: MainColor.withValues(alpha: 0.6),
                                         borderRadius: BorderRadius.circular(15)),
                                     child: Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
@@ -103,7 +103,7 @@ class LuckyTabBar extends StatelessWidget  {
                                         Row(mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Text( user.LuckyGiftcatigoris[index]['gifts'][indexx]['price'].toString() ,style: style4.copyWith(fontSize: 10,color: whitecolor)),
-                                          SizedBox(width: 3,),
+                                          const SizedBox(width: 3,),
                                             Image.asset(Images.coins,height: 15,width: 15,),
                                           ],
                                         ),
@@ -147,17 +147,17 @@ class LuckyTabBar extends StatelessWidget  {
                                 }
 
 
-                              },child: Container(width: 60,height: 35,                                decoration: BoxDecoration( color: Colors.white,borderRadius: BorderRadius.only(bottomRight:       Radius.circular(20),topRight: Radius.circular(20) )),
+                              },child: Container(width: 60,height: 35,                                decoration: const BoxDecoration( color: Colors.white,borderRadius: BorderRadius.only(bottomRight:       Radius.circular(20),topRight: Radius.circular(20) )),
                                   child: Center(child: Padding(
                                     padding: const EdgeInsets.only(bottom: 5),
-                                    child: Text(getLang(context: context,key: "Send") ,style: style1.copyWith(color: Color(0xFF221316),fontSize: 12, fontWeight: FontWeight.normal) ),
+                                    child: Text(getLang(context: context,key: "Send") ,style: style1.copyWith(color: const Color(0xFF221316),fontSize: 12, fontWeight: FontWeight.normal) ),
                                   )))),
 
                               Container(width: 60,height: 35,
-                                decoration: BoxDecoration( color: Colors.white,border: Border.all(color: MainColor,width: 1),borderRadius: BorderRadius.only(topLeft:   Radius.circular(20),bottomLeft: Radius.circular(20) )),
+                                decoration: BoxDecoration( color: Colors.white,border: Border.all(color: MainColor,width: 1),borderRadius: const BorderRadius.only(topLeft:   Radius.circular(20),bottomLeft: Radius.circular(20) )),
 
                                 child: PopupMenuButton(
-                                  offset: Offset(0, 0),
+                                  offset: const Offset(0, 0),
                                   onSelected: (s){
 
                                     gits.changeSentValue(s.toString());
@@ -192,7 +192,7 @@ class LuckyTabBar extends StatelessWidget  {
                               padding: const EdgeInsets.symmetric(horizontal: 5),
                               child: Text( 'Cost: ${gits.Cost}',style: style6.copyWith(height: 1,color: whitecolor,fontSize: 15)),
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
                             Row(
                               children: [
                                 Padding(
@@ -202,7 +202,7 @@ class LuckyTabBar extends StatelessWidget  {
                                 Image.asset(Images.coins,width: 15,height: 15),
                               ],
                             ),
-                            Row(children: [
+                            const Row(children: [
 
                             ],),
                           ],

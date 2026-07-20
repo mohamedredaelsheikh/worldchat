@@ -40,25 +40,25 @@ class Chatroom {
     createdAt = json['created_at'];
     id = json['id'];
     Coins = '0';
-    user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
-    Guess = json['Guess'] != null ? new guessgamemodel.fromJson(json['Guess']) : null;
+    user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
+    Guess = json['Guess'] != null ? guessgamemodel.fromJson(json['Guess']) : null;
     kind=0;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['user_id'] = this.userId;
-    data['room_id'] = this.roomId;
-    data['content'] = this.content;
-    data['updated_at'] = this.updatedAt;
-    data['created_at'] = this.createdAt;
-    data['id'] = this.id;
-    data['Coins'] =  this.Coins;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['user_id'] = userId;
+    data['room_id'] = roomId;
+    data['content'] = content;
+    data['updated_at'] = updatedAt;
+    data['created_at'] = createdAt;
+    data['id'] = id;
+    data['Coins'] =  Coins;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    if (this.Guess != null) {
-      data['Guess'] = this.Guess!.toJson();
+    if (Guess != null) {
+      data['Guess'] = Guess!.toJson();
     }
     return data;
   }

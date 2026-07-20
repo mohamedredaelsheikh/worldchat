@@ -3,14 +3,12 @@
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/view/Screans/RechargeScrean/Rechargescrean.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/LuckyBagswidget/LuckyBagswidget.dart';
-import 'package:ahlachat/view/Screans/RoomScrean/widgets/UserChairs/chairLockwidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/app_constants.dart';
-import 'package:ahlachat/util/dimensions.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
@@ -28,7 +26,7 @@ class NestedTabBar extends StatelessWidget  {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
 
-    return   Container(width: SizeConfig.screenWidth!,height: SizeConfig.screenHeight!/1.7,decoration: BoxDecoration( borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),color: Colors.black),
+    return   Container(width: SizeConfig.screenWidth!,height: SizeConfig.screenHeight!/1.7,decoration: const BoxDecoration( borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),color: Colors.black),
       child: Column(
         children: [
           const SizedBox(height : 10,),
@@ -36,20 +34,20 @@ class NestedTabBar extends StatelessWidget  {
       children: [
 
 
-         SizedBox(width: 10,),
+         const SizedBox(width: 10,),
         InkWell(onTap: (){
-          Room.ChairsRoom.forEach((element) {
+          for (var element in Room.ChairsRoom) {
             Room.AddUserIds(id: element.user?.id );
-          });
+          }
         }, child: Container(decoration: BoxDecoration(color: Colors.white24,borderRadius: BorderRadius.circular(20)),child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6) ,
           child: Text(getLang(context: context,key:   "Select_All"),style: style1.copyWith(height: 1,fontSize: 12)),
         ),)),
         Expanded(
-          child: Container(decoration: BoxDecoration(color: Colors.transparent,),
+          child: Container(decoration: const BoxDecoration(color: Colors.transparent,),
             child: ListView.builder(itemCount:Room.ChairsRoom.length ,scrollDirection: Axis.horizontal,itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
-              child:Room.ChairsRoom[index].user?.id==null?SizedBox():InkWell(onTap: (){
+              child:Room.ChairsRoom[index].user?.id==null?const SizedBox():InkWell(onTap: (){
 
                 if(Room.UserIds.contains(Room.ChairsRoom[index].user?.id)){
                   Room.RemoveUserIds(id: Room.ChairsRoom[index].user?.id);
@@ -64,8 +62,8 @@ class NestedTabBar extends StatelessWidget  {
         ),
         InkWell(onTap: (){
           Navigator.pop(context);
-        }, child: Icon(Icons.clear,color: whitecolor2,)),
-        SizedBox(width: 10,),
+        }, child: const Icon(Icons.clear,color: whitecolor2,)),
+        const SizedBox(width: 10,),
       ])),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
@@ -84,7 +82,7 @@ class NestedTabBar extends StatelessWidget  {
                         unselectedLabelColor: Colors.white54,
                         isScrollable: true,automaticIndicatorColorAdjustment: true,
                         tabs: List.generate(user.Giftcatigoris.length, (index) =>   Tab(
-                          child: Text(user.Giftcatigoris[index]['name'],style: TextStyle(fontSize: 13)),
+                          child: Text(user.Giftcatigoris[index]['name'],style: const TextStyle(fontSize: 13)),
                         ),)
                     ),
                     Flexible (
@@ -109,7 +107,7 @@ if(user.Giftcatigoris[index]['gifts'][indexx]['luckypackage']==1){
   showDialog(context: context,builder: (context) {
 
     return AlertDialog(backgroundColor: whitecolor,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),content:Container(
-      child: LuckyBagswidget(),
+      child: const LuckyBagswidget(),
     ),);
   },);
 
@@ -133,7 +131,7 @@ if(user.Giftcatigoris[index]['gifts'][indexx]['luckypackage']==1){
                                     Container(
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
-                                          color:!gits.GiftList.contains(user.Giftcatigoris[ index]['gifts'][indexx])?Colors.transparent: MainColor.withOpacity(0.3),
+                                          color:!gits.GiftList.contains(user.Giftcatigoris[ index]['gifts'][indexx])?Colors.transparent: MainColor.withValues(alpha: 0.3),
                                           borderRadius: BorderRadius.circular(15)),
                                       child: Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
@@ -142,7 +140,7 @@ if(user.Giftcatigoris[index]['gifts'][indexx]['luckypackage']==1){
                                           if(user.Giftcatigoris[index]['gifts'][indexx]['price']!=0)   Row(mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Text( user.Giftcatigoris[index]['gifts'][indexx]['price'].toString() ,style: style4.copyWith(fontSize: 10,color: Colors.white60)),
-                                              SizedBox(width: 5,),
+                                              const SizedBox(width: 5,),
                                               Padding(
                                                 padding: const EdgeInsets.only(top: 5),
                                                 child: Image.asset(Images.coins,height: 10,width: 10,),
@@ -153,7 +151,7 @@ if(user.Giftcatigoris[index]['gifts'][indexx]['luckypackage']==1){
                                         ],
                                       ),
                                     ),
-                                 if(user.Giftcatigoris[index]['gifts'][indexx]['price']>=1000)   Positioned(child: Icon(Icons.star,color: Colors.orange,size: 15,))
+                                 if(user.Giftcatigoris[index]['gifts'][indexx]['price']>=1000)   const Positioned(child: Icon(Icons.star,color: Colors.orange,size: 15,))
                                   ],
                                 )
                               );
@@ -163,7 +161,7 @@ if(user.Giftcatigoris[index]['gifts'][indexx]['luckypackage']==1){
                       ),
                     ),
                     Container(width: SizeConfig.screenWidth!,
-                      decoration: BoxDecoration( color: Colors.transparent ),
+                      decoration: const BoxDecoration( color: Colors.transparent ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15 ),
                         child: Row( children: [
@@ -182,7 +180,7 @@ if(user.Giftcatigoris[index]['gifts'][indexx]['luckypackage']==1){
 
                                   }else{
                                     if((user.userinfo?.coins??0) < gits.Cost){
-                                      navigateTo(context: context, screen: RechargeScrean());
+                                      navigateTo(context: context, screen: const RechargeScrean());
                                       Dialogs().showtoast(getLang(context: context,key: "Not_Enough"));
 
                                     }else{
@@ -201,13 +199,13 @@ print(gits.GiftKind.toString());
                                     }
 
                                   }
-                                },child: Container(width: 60,height: 35, decoration: BoxDecoration( color: Colors.white,borderRadius: BorderRadius.only(bottomRight:       Radius.circular(10),topRight: Radius.circular(10) )),
-                                    child: Center(child: Text(getLang(context: context,key: "Send") ,style: style1.copyWith(height: 1,color: Color(0xFF221316),fontSize: 13) )))),
+                                },child: Container(width: 60,height: 35, decoration: const BoxDecoration( color: Colors.white,borderRadius: BorderRadius.only(bottomRight:       Radius.circular(10),topRight: Radius.circular(10) )),
+                                    child: Center(child: Text(getLang(context: context,key: "Send") ,style: style1.copyWith(height: 1,color: const Color(0xFF221316),fontSize: 13) )))),
                                 Container(width: 60,height: 35,
-                                    decoration: BoxDecoration( color: Colors.white,  borderRadius: BorderRadius.only(topLeft:   Radius.circular(10),bottomLeft: Radius.circular(10) )),
+                                    decoration: const BoxDecoration( color: Colors.white,  borderRadius: BorderRadius.only(topLeft:   Radius.circular(10),bottomLeft: Radius.circular(10) )),
 
                                   child: PopupMenuButton(
-                                    offset: Offset(0, 0),
+                                    offset: const Offset(0, 0),
                                     onSelected: (s){
 
                                       gits.changeSentValue(s.toString());
@@ -216,7 +214,7 @@ print(gits.GiftKind.toString());
                                       gits.Cost=gits.giftprice*int.parse(s.toString())*Room.UserIds.length  ;
 
 
-                                    },child: Container( width: 50, color: Colors.transparent,child: Center(child: Text(gits.SentValue.toString(),style: style1.copyWith(height: 1,color:  Color(0xFF221316)),))),
+                                    },child: Container( width: 50, color: Colors.transparent,child: Center(child: Text(gits.SentValue.toString(),style: style1.copyWith(height: 1,color:  const Color(0xFF221316)),))),
                                     onCanceled: (){
                                       print('d');
                                     },
@@ -242,7 +240,7 @@ print(gits.GiftKind.toString());
                                 padding: const EdgeInsets.symmetric(horizontal: 5),
                                 child: Text( '${getLang(key: "Cost",context: context)}: ${gits.Cost}',style: style6.copyWith(height: 1,color: whitecolor,fontSize: 15)),
                               ),
-                              SizedBox(height: 5,),
+                              const SizedBox(height: 5,),
                               Row(
                                 children: [
                                   Padding(

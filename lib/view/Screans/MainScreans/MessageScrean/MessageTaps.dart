@@ -4,7 +4,6 @@ import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MessageScrean/MessageScrean.dart';
 import 'package:ahlachat/view/Screans/SearchScrean/SearchScrean.dart';
-import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -135,7 +134,7 @@ class _MessageTapsState extends State<MessageTaps>with SingleTickerProviderState
                     onPressed: (){
                       Room.SearchController.clear();
                       Room.SearchRooms.clear();
-                      navigateTo(context: context,screen: SearchScrean());
+                      navigateTo(context: context,screen: const SearchScrean());
 
                     },
                   ),

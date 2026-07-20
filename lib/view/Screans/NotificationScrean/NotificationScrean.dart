@@ -7,12 +7,14 @@ import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Shop_ViewModel/Shop_ViewModel.dart';
 import 'package:provider/provider.dart';
 class NotificationScrean extends StatelessWidget {
+  const NotificationScrean({super.key});
+
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
-    ShopViewmodel Shops=  Provider.of<ShopViewmodel>(context,listen: true);
-    return Scaffold(appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black),title:Text('Notifications',style: style5,) ),
-        body:user.showloading15?Center(child: CircularProgressIndicator(),) :
+    Provider.of<ShopViewmodel>(context,listen: true);
+    return Scaffold(appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black),title:Text('Notifications',style: style5,) ),
+        body:user.showloading15?const Center(child: CircularProgressIndicator(),) :
         Column(
           children: List.generate(user.Notifications.length, (index) =>Padding(
             padding: const EdgeInsets.only(top: 10,left: 10,right: 10),

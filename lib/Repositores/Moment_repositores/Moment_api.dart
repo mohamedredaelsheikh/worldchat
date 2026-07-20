@@ -15,7 +15,6 @@ int Index=2;
 int PostIndex=2;
 int FollowIndex=2;
 class Momentapi extends MomentRepository {
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -35,15 +34,15 @@ List<Postes> GeneralPostes=[];
     PostIndex=2 ;
     try {
       Response response2 = await dio.get(
-        '/api/GetPosts/${UserId}',
+        '/api/GetPosts/$UserId',
       );
 
       if (response2.statusCode == 200) {
          List list =response2.data['Postes']['date']['data'];
          List ste=response2.data['Postes']['posts'];
-         list.forEach((element) {
+         for (var element in list) {
           GeneralPostes.add(Postes.fromJson(element));
-        });
+        }
         Provider.of<MomentViewModel>(context,listen: false).GetLikedPost(ste);
       }
     } catch (e) {
@@ -58,15 +57,15 @@ List<Postes> GeneralPostes=[];
     FollowIndex=2 ;
     try {
       Response response2 = await dio.get(
-        '/api/GetPostsUserFollowing/${UserId}',
+        '/api/GetPostsUserFollowing/$UserId',
       );
 
       if (response2.statusCode == 200) {
 
         List ste=response2.data['Postes']['data'];
-        ste.forEach((element) {
+        for (var element in ste) {
           GeneralPostes.add(Postes.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -82,7 +81,7 @@ List<Postes> GeneralPostes=[];
 
     try {
       Response response2 = await dio.get(
-        '/api/GetPostsUserFollowing/${UserId}?page=${FollowIndex.toString()}',
+        '/api/GetPostsUserFollowing/$UserId?page=${FollowIndex.toString()}',
       );
 
       if (response2.statusCode == 200) {
@@ -92,9 +91,9 @@ List<Postes> GeneralPostes=[];
           FollowIndex++;
         }
 
-        list.forEach((element){
+        for (var element in list) {
           GeneralPostes.add(Postes.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -109,7 +108,7 @@ List<Postes> GeneralPostes=[];
 
     try {
       Response response2 = await dio.get(
-        '/api/GetPosts/${UserId}?page=${PostIndex.toString()}',
+        '/api/GetPosts/$UserId?page=${PostIndex.toString()}',
       );
 
       if (response2.statusCode == 200) {
@@ -119,9 +118,9 @@ List<Postes> GeneralPostes=[];
           PostIndex++;
         }
         print("INDEX IS $Index");
-        list.forEach((element){
+        for (var element in list) {
           GeneralPostes.add(Postes.fromJson(element));
-        });
+        }
         print(GeneralPostes);
       }
     } catch (e) {
@@ -144,7 +143,7 @@ List<Postes> GeneralPostes=[];
   Future<bool> ReportPost({ context, Postid}) async {
     bool status=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "post_id": Postid.toString(),
         "reason":'Post',
@@ -176,7 +175,7 @@ List<Postes> GeneralPostes=[];
   Future<bool> ReportUser({ context, Userid}) async {
     bool status=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "sender_id": UserId.toString(),
         "user_id": Userid.toString(),
 
@@ -208,7 +207,7 @@ List<Postes> GeneralPostes=[];
   Future<bool> BlockUser({ context, Userid}) async {
     bool status=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "sender_id": UserId.toString(),
         "user_id": Userid.toString(),
 
@@ -240,7 +239,7 @@ List<Postes> GeneralPostes=[];
   Future<bool> UnBlockUser({ context, Userid}) async {
     bool status=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "sender_id": UserId.toString(),
         "user_id": Userid.toString(),
 
@@ -274,7 +273,7 @@ List<Postes> GeneralPostes=[];
 
     try {
       Response response2 = await dio.get(
-        '/api/GetMyPosts/${UserId}',
+        '/api/GetMyPosts/$UserId',
       );
 
       if (response2.statusCode == 200) {
@@ -282,9 +281,9 @@ List<Postes> GeneralPostes=[];
         List list =response2.data['Postes'];
 
 
-        list.forEach((element) {
+        for (var element in list) {
           GetMyPostslist.add(Postes.fromJson(element));
-        });
+        }
 
 
  
@@ -302,7 +301,7 @@ List<Postes> GeneralPostes=[];
 bool deleted=false;
     try {
       Response response2 = await dio.get(
-        '/api/Deletemypost/${postid}',
+        '/api/Deletemypost/$postid',
       );
 
       if (response2.statusCode == 200) {
@@ -322,7 +321,7 @@ bool deleted=false;
   Comments  Commentss=Comments();
   Future<Comments> AddComment({ context,Comment,Postid}) async {
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "post_id": Postid.toString(),
         "Comment": Comment.toString(),
@@ -354,7 +353,7 @@ bool deleted=false;
   Future<Comments> ReplayComment({ context,Commentid,Replay}) async {
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "Comment_id": Commentid.toString(),
         "Replay": Replay.toString(),
       });
@@ -384,7 +383,7 @@ bool deleted=false;
   Like  Likes=Like();
   Future<Like> LikePost({ Postid}) async {
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "post_id": Postid.toString(),
 
@@ -417,7 +416,7 @@ bool deleted=false;
   Future<bool> RemoveLike({ context,Postid}) async {
     bool delete=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "post_id": Postid.toString(),
 
@@ -451,7 +450,7 @@ bool deleted=false;
   Future<Postes> AddPost({ context,tittle,image}) async {
 
     try {
-      var  map;
+      Map<String, Object>  map;
       if(image==null){
         map={
           "user_id": UserId.toString(),
@@ -465,8 +464,8 @@ bool deleted=false;
          };
       }
 
-      map.removeWhere((key, value) => key == null || value == null);
-      FormData formData = new FormData.fromMap(map);
+      map.removeWhere((key, value) => value == null);
+      FormData formData = FormData.fromMap(map);
 
 
 

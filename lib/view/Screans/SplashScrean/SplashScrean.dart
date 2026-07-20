@@ -1,7 +1,6 @@
 
 import 'dart:convert';
 
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/view/Screans/Authentication/LoginScrean/LoginScrean.dart';
 import 'package:ahlachat/view/Screans/Layouts/NavBar.dart';
 import 'package:ahlachat/view/Screans/StartBanner/StartBannerScrean.dart';
@@ -11,11 +10,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/helperclass.dart';
-import 'package:ahlachat/util/images.dart';
-import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Language_Viewmodel/LanguageViewmodel.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:ahlachat/models/Usermodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,7 +35,7 @@ class _SplashScreanState extends State<SplashScrean> {
 
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult.contains(ConnectivityResult.mobile)||connectivityResult.contains(ConnectivityResult.wifi)) {
-      SchedulerBinding.instance?.addPostFrameCallback((_) async{
+      SchedulerBinding.instance.addPostFrameCallback((_) async{
      await Helper().ids();
      Helper().checkVersion();
      Provider.of<LoginViewmodel>(context,listen: false).checklogin(context);
@@ -61,7 +57,7 @@ class _SplashScreanState extends State<SplashScrean> {
 
     if(Token==null){
 
-      UserState.UpdateCurrentPage(LoginScrean());
+      UserState.UpdateCurrentPage(const LoginScrean());
      // Navigator.pushNamed(context,AppConstants.Login_Screan);
     }else{
 
@@ -77,7 +73,7 @@ class _SplashScreanState extends State<SplashScrean> {
         UserState.UpdateCurrentPage(StartBannerScrean());
       }else{
 
-        UserState.UpdateCurrentPage(ButtomNavigation());
+        UserState.UpdateCurrentPage(const ButtomNavigation());
       }
 
     }

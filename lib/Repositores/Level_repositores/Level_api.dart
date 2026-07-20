@@ -3,14 +3,11 @@ import 'package:ahlachat/models/AchiveModel.dart';
 import 'package:dio/dio.dart';
 
 
-import '../../models/LevelGifts.dart';
-import '../../util/Dialogs.dart';
 import '../../util/app_constants.dart';
 
 import '../Moment_repositores/Moment_repository.dart';
 
 class Levelapi extends MomentRepository {
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -36,9 +33,9 @@ class Levelapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data['Models'];
 
-        list.forEach((element) {
+        for (var element in list) {
           AchiveModelss.add(AchiveModels.fromJson(element));
-        });
+        }
 
 
       }

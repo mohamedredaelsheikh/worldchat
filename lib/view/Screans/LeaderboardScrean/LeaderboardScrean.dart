@@ -24,7 +24,7 @@ class _LeaderboardScreanState extends State<LeaderboardScrean> with TickerProvid
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this)..addListener(() {
-      SchedulerBinding.instance?.addPostFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         Provider.of<RoomViewmodel>(context,listen: false).SelectedLeader(_tabController.index);
 
       });
@@ -47,7 +47,7 @@ class _LeaderboardScreanState extends State<LeaderboardScrean> with TickerProvid
   @override
   Widget build(BuildContext context) {
      RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    return Container(decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.LeadBoard),fit: BoxFit.cover)),
+    return Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.LeadBoard),fit: BoxFit.cover)),
       child: DefaultTabController(length: 3,
         child: Scaffold(
           backgroundColor: Room.LeaderShipColor,
@@ -97,26 +97,26 @@ class _LeaderboardScreanState extends State<LeaderboardScrean> with TickerProvid
                               tabPosition: TabPosition.bottom,
                             ),
                                 isScrollable: true,controller: _tabController2,
-                                labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
+                                labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
                                 unselectedLabelColor: Colors.white54,
                                 labelColor: Colors.white,
                                 onTap: (val) {},
 
                                 tabs:   [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text: getLang(context: context,key: "Daily"),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text:getLang(context: context,key: "Weekly"),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text:getLang(context: context,key: "Monthly"),
                                     ),
@@ -153,26 +153,26 @@ class _LeaderboardScreanState extends State<LeaderboardScrean> with TickerProvid
                               tabPosition: TabPosition.bottom,
                             ),
                                 isScrollable: true,controller: _tabController3,
-                                labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
+                                labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
                                 unselectedLabelColor: Colors.white54,
                                 labelColor: Colors.white,
                                 onTap: (val) {},
 
                                 tabs:   [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text: getLang(context: context,key: "Daily"),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text: getLang(context: context,key: "Weekly"),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text: getLang(context: context,key: "Monthly"),
                                     ),
@@ -209,26 +209,26 @@ class _LeaderboardScreanState extends State<LeaderboardScrean> with TickerProvid
                               tabPosition: TabPosition.bottom,
                             ),
                                 isScrollable: true,controller: _tabController4,
-                                labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
+                                labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
                                 unselectedLabelColor: Colors.white54,
                                 labelColor: Colors.white,
                                 onTap: (val) {},
 
                                 tabs:   [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text: getLang(context: context,key: "Daily"),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text:getLang(context: context,key: "Weekly"),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
                                     child: Tab(
                                       text: getLang(context: context,key: "Monthly"),
                                     ),

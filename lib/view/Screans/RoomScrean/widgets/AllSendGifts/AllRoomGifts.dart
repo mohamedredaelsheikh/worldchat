@@ -12,32 +12,32 @@ class AllGiftsInRoom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomViewmodel  Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context,listen: true);
     return AnimatedPositioned(
         height:   Room.showloading36 ? SizeConfig.screenHeight!/2:0,
         left:0,
         bottom: 0.0,
         duration: const Duration(milliseconds: 300,),
         curve: Curves.fastOutSlowIn,
-        child:  Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!,width: SizeConfig.screenWidth!,
+        child:  Container(decoration: const BoxDecoration(color: whitecolor,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!,width: SizeConfig.screenWidth!,
             child:SingleChildScrollView(
-              child: Room.showloading37? Padding(
-                padding: const EdgeInsets.only(top: 100),
+              child: Room.showloading37? const Padding(
+                padding: EdgeInsets.only(top: 100),
                 child: Center(child: CircularProgressIndicator(color: MainColor),),
               ):Column(
                 children: [
                   InkWell(onTap: (){
 
                     Room.hideSpinner36();
-                  },child: Container(child: Center(child: Icon(Icons.keyboard_arrow_down,color: whitecolor,)),height: 35,decoration: BoxDecoration(color: Colors.grey.shade300,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),)),
-                  SizedBox(height: 10,),
+                  },child: Container(child: const Center(child: Icon(Icons.keyboard_arrow_down,color: whitecolor,)),height: 35,decoration: BoxDecoration(color: Colors.grey.shade300,borderRadius: const BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),)),
+                  const SizedBox(height: 10,),
                   InkWell(onTap: (){
                     //print(Room.RoomGifts[index]);
                   },child: Text(getLang(context: context,key: "Send_Gifts"),style: style4.copyWith(color: Colors.black),)),
-                  Container(height: SizeConfig.screenHeight!/2,
+                  SizedBox(height: SizeConfig.screenHeight!/2,
                     child: GridView.builder(
-                        physics: ScrollPhysics(),
-                        gridDelegate:    SliverGridDelegateWithFixedCrossAxisCount(
+                        physics: const ScrollPhysics(),
+                        gridDelegate:    const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount:6,
                             childAspectRatio:0.8,
                             mainAxisSpacing:4,

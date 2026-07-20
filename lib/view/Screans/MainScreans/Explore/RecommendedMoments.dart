@@ -15,11 +15,9 @@ import 'package:ahlachat/viewmodels/Follow_ViewModel/Follow_ViewModel.dart';
 import 'package:ahlachat/viewmodels/Moment_Viewmodel/Moment_ViewModel.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'package:readmore/readmore.dart';
 
@@ -58,7 +56,7 @@ class _RecommendedMomentsState extends State<RecommendedMoments> {
     MomentViewModel   posts=Provider.of<MomentViewModel>(context,listen: true);
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
     FollowViewModel Follow=  Provider.of<FollowViewModel>(context,listen: true);
-    return ListView.separated( physics: BouncingScrollPhysics(),controller:_controller,itemCount: posts.GeneralPosts.length,separatorBuilder: (context, index) => Padding(
+    return ListView.separated( physics: const BouncingScrollPhysics(),controller:_controller,itemCount: posts.GeneralPosts.length,separatorBuilder: (context, index) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: Container(height: 5,color: whitecolor),
     ),itemBuilder: (context, index)
@@ -66,7 +64,7 @@ class _RecommendedMomentsState extends State<RecommendedMoments> {
       usermodel ?Postuser= posts.GeneralPosts[index].user;
       return  Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Container(width: SizeConfig.screenWidth!,
+        child: SizedBox(width: SizeConfig.screenWidth!,
             child: Column(mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -79,14 +77,14 @@ class _RecommendedMomentsState extends State<RecommendedMoments> {
                       InkWell(onTap: (){
                         if(Postuser?.id!=user.userinfo?.id){
                           user.GetShoweduserProfile(Postuser);
-                          navigateTo(context: context,screen: ShowUserProfile());
+                          navigateTo(context: context,screen: const ShowUserProfile());
                         }
 
                       },
                         child: Row(
                           children: [
                             CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(Postuser?.image ?? ''), radius: 23, ),
-                            SizedBox(width: 5,),
+                            const SizedBox(width: 5,),
                             UserSideInfoWidgets(UserDate: Postuser,showdescr: 1,)
                           ],
                         ),
@@ -129,7 +127,7 @@ class _RecommendedMomentsState extends State<RecommendedMoments> {
                     child: Column(mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         ReadMoreText(
                           posts.GeneralPosts[index].content ?? '',
                           trimLines: 2,
@@ -137,8 +135,8 @@ class _RecommendedMomentsState extends State<RecommendedMoments> {
                           trimMode: TrimMode.Line,style: style5.copyWith(height: 1),
                           trimCollapsedText: getLang(context: context,key: "Show_more"),
                           trimExpandedText:  getLang(context: context,key: "Show_less"),
-                          moreStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
-                          lessStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                          moreStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                          lessStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 5),
 
@@ -185,7 +183,7 @@ class _RecommendedMomentsState extends State<RecommendedMoments> {
                                 posts.LikePost(Postid:  posts.GeneralPosts[index].id,  );
                               }
                             }, child:  FaIcon( FontAwesomeIcons.fire,color: posts.LikedPost.contains( posts.GeneralPosts[index].id.toString())?MainColor:Colors.grey,  )),
-                            SizedBox(width: 7,),
+                            const SizedBox(width: 7,),
                             Text(  posts.GeneralPosts[index].like?.length.toString() ?? '', style: style6),
                           ],
                         ),
@@ -196,8 +194,8 @@ class _RecommendedMomentsState extends State<RecommendedMoments> {
                         },
                           child: Row(
                             children: [
-                              FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
-                              SizedBox(width: 7,),
+                              const FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
+                              const SizedBox(width: 7,),
                               Text(  posts.GeneralPosts[index].commentsuser?.length.toString() ?? '', style: style6, ),
                             ],
                           ),

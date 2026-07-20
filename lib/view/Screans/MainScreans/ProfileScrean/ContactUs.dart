@@ -5,6 +5,8 @@ import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:provider/provider.dart';
 class ContactUs extends StatelessWidget {
+  const ContactUs({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class ContactUs extends StatelessWidget {
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.navigate_next,color: whitecolor),
+                    const Icon(Icons.navigate_next,color: whitecolor),
                     Text(
                       'تواصل معنا',
                       style: style6.copyWith(fontSize: 15) ,
@@ -30,7 +32,7 @@ class ContactUs extends StatelessWidget {
 
                       user.clearreport();
                     Navigator.pop(context);
-                    },child: Icon(Icons.navigate_next)),
+                    },child: const Icon(Icons.navigate_next)),
                   ],
                 ),
               ),
@@ -101,7 +103,7 @@ class ContactUs extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: InkWell(onTap: (){
                             user.getReportImage(context);
-                          },child: Container(width: 60,height: 60,color: Color(0xFFC0C1C4).withOpacity(0.6)  ,child: user.Reportimage==null? Center(child: Icon(Icons.add,size: 60,color: whitecolor,)):Image.file( user.Reportimage,fit: BoxFit.fill),)),
+                          },child: Container(width: 60,height: 60,color: const Color(0xFFC0C1C4).withValues(alpha: 0.6)  ,child: user.Reportimage==null? const Center(child: Icon(Icons.add,size: 60,color: whitecolor,)):Image.file( user.Reportimage,fit: BoxFit.fill),)),
                         )
                       ]),
                 ),
@@ -165,7 +167,7 @@ class ContactUs extends StatelessWidget {
                 child: TextFormField(maxLines: null,controller:user.Contact,decoration: InputDecoration.collapsed(hintText: 'Leave your contacts here.',hintStyle: styleb45.copyWith(fontSize: 13,color: whitecolor7)), ),
               )),
               const SizedBox(height: 20,),
-              user. showloading7?Center(child: CircularProgressIndicator(color: MainColor),)  : InkWell(onTap: (){
+              user. showloading7?const Center(child: CircularProgressIndicator(color: MainColor),)  : InkWell(onTap: (){
 
                 if(user.Content.text==''){
                   Dialogs().showdialog4(context: context,  content:   'رجاء ادخل نص التقرير اولا' ,);

@@ -5,7 +5,7 @@ import 'package:ahlachat/util/styles.dart';
 class CustomeButton extends StatelessWidget {
 String ?tittle;
 
-CustomeButton({this.tittle, this.color, this.hight,this.ontap});
+CustomeButton({super.key, this.tittle, this.color, this.hight,this.ontap});
 VoidCallback ? ontap;
   Color ? color;
 double? hight;

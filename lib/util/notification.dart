@@ -29,7 +29,7 @@ class LocalNotificationService {
     AndroidInitializationSettings('@drawable/background');
 
 
-    final InitializationSettings settings = InitializationSettings(
+    const InitializationSettings settings = InitializationSettings(
       android: androidInitializationSettings,
 
     );
@@ -40,7 +40,7 @@ class LocalNotificationService {
         final payload = response.payload;
         if(payload=='1'){
           Provider.of<InboxroomViewModel>(NavigationService.navigatorKey.currentContext!,listen: false).GetInboxroom(context: NavigationService.navigatorKey.currentContext);
-          showModalBottomSheet(backgroundColor: Colors.white,isScrollControlled: false, barrierColor:Colors.black.withAlpha(1), shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+          showModalBottomSheet(backgroundColor: Colors.white,isScrollControlled: false, barrierColor:Colors.black.withAlpha(1), shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
             context: NavigationService.navigatorKey.currentContext!,
             builder: (context) {
               return  MessageScrean();

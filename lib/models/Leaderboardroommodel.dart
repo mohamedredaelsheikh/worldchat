@@ -10,15 +10,15 @@ class LeaderboardRoommodel {
   LeaderboardRoommodel.fromJson(Map<String, dynamic> json) {
     coins = json['coins'];
     roomId = json['room_id'];
-    room = json['room'] != null ? new RoomModel.fromJson(json['room']) : null;
+    room = json['room'] != null ? RoomModel.fromJson(json['room']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['coins'] = this.coins;
-    data['room_id'] = this.roomId;
-    if (this.room != null) {
-      data['room'] = this.room!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['coins'] = coins;
+    data['room_id'] = roomId;
+    if (room != null) {
+      data['room'] = room!.toJson();
     }
     return data;
   }
@@ -35,36 +35,36 @@ class ListoflEaderboardcategoryRoom {
     if (json['weeklysupporter'] != null) {
       weeklysupporter = <LeaderboardRoommodel>[];
       json['weeklysupporter'].forEach((v) {
-        weeklysupporter!.add(new LeaderboardRoommodel.fromJson(v));
+        weeklysupporter!.add(LeaderboardRoommodel.fromJson(v));
       });
     }
     if (json['Monthlysupporter'] != null) {
       monthlysupporter = <LeaderboardRoommodel>[];
       json['Monthlysupporter'].forEach((v) {
-        monthlysupporter!.add(new LeaderboardRoommodel.fromJson(v));
+        monthlysupporter!.add(LeaderboardRoommodel.fromJson(v));
       });
     }
     if (json['dailysupporter'] != null) {
       dailysupporter = <LeaderboardRoommodel>[];
       json['dailysupporter'].forEach((v) {
-        dailysupporter!.add(new LeaderboardRoommodel.fromJson(v));
+        dailysupporter!.add(LeaderboardRoommodel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.weeklysupporter != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (weeklysupporter != null) {
       data['weeklysupporter'] =
-          this.weeklysupporter!.map((v) => v.toJson()).toList();
+          weeklysupporter!.map((v) => v.toJson()).toList();
     }
-    if (this.monthlysupporter != null) {
+    if (monthlysupporter != null) {
       data['Monthlysupporter'] =
-          this.monthlysupporter!.map((v) => v.toJson()).toList();
+          monthlysupporter!.map((v) => v.toJson()).toList();
     }
-    if (this.dailysupporter != null) {
+    if (dailysupporter != null) {
       data['dailysupporter'] =
-          this.dailysupporter!.map((v) => v.toJson()).toList();
+          dailysupporter!.map((v) => v.toJson()).toList();
     }
     return data;
   }

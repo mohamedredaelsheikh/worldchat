@@ -1,19 +1,16 @@
 import 'package:ahlachat/models/Inboxroom.dart';
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/view/Screans/ChatScrean/Widgets/PickeChatImage.dart';
-import 'package:ahlachat/view/widgets/ModelSheet.dart';
 import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import '../../../models/MessageModel.dart';
 import '../../../util/Dialogs.dart';
 import '../../../util/Localization.dart';
-import '../../../util/SizeConfig.dart';
 import '../../../util/helperclass.dart';
 import '../../../util/images.dart';
 import '../../../util/styles.dart';
@@ -26,7 +23,7 @@ class ChatScrean extends StatefulWidget {
 
   InboxRoomModel ?InboxContent;
 int ?states;
-  ChatScrean({this.InboxContent,this.states});
+  ChatScrean({super.key, this.InboxContent,this.states});
 
   @override
   State<ChatScrean> createState() => _ChatScreanState();
@@ -37,7 +34,7 @@ class _ChatScreanState extends State<ChatScrean> {
 
 
   Widget build(BuildContext context) {
-    GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
+    Provider.of<GiftsViewModel>(context, listen: true);
     LoginViewmodel        user = Provider.of<LoginViewmodel>(context, listen: true);
     InboxroomViewModel    Inboxrooms= Provider.of<InboxroomViewModel>(context,listen: true);
     if(widget.states==0){
@@ -50,12 +47,12 @@ class _ChatScreanState extends State<ChatScrean> {
     },
       child: Directionality(textDirection: TextDirection.ltr,
         child: Scaffold(
-        backgroundColor: Color(0xFFf6f7f9),
+        backgroundColor: const Color(0xFFf6f7f9),
          appBar:CustomizeChatAppbar(InBoxid: widget.InboxContent?.id,tittle:user.checkuserkind(context: context,id:widget.InboxContent?.user?.id)?widget.InboxContent?.sender?.name??'':widget.InboxContent?.user?.name??'',image:user.checkuserkind(context: context,id:widget.InboxContent?.user?.id)?widget.InboxContent?.sender?.image??'':widget.InboxContent?.user?.image??'',userchat:user.checkuserkind(context: context,id:widget.InboxContent?.user?.id)?widget.InboxContent?.sender:widget.InboxContent?.user),
         body :Column(  
           children: [ 
             Expanded(
-                child: ListView.builder(      physics: BouncingScrollPhysics(),
+                child: ListView.builder(      physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.all(10.0),
                   itemBuilder: (context, index)
                   {
@@ -71,7 +68,7 @@ class _ChatScreanState extends State<ChatScrean> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                     CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(user.checkuserkind(context: context,id:widget.InboxContent?.user?.id)?widget.InboxContent?.sender?.image??'':widget.InboxContent?.user?.image??'')),
-                    SizedBox(width: 5,),
+                    const SizedBox(width: 5,),
                       message[index].status==1?
                       InkWell(onTap: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) => ImageView(url:AppConstants.Image_URL+(message[index].message??'')),)),child: Container(height: 200,width: 100,decoration: BoxDecoration(image: DecorationImage(image: CachedNetworkImageProvider(AppConstants.Image_URL+(message[index].message??'')),fit: BoxFit.cover),color: Colors.white,borderRadius: BorderRadius.circular(10)),)):
                       message[index].status==0?
@@ -79,17 +76,17 @@ class _ChatScreanState extends State<ChatScrean> {
                     Clipboard.setData(ClipboardData(text:message[index].message??'' ));
                     Dialogs().showtoast(getLang(context: context, key: "Copied"));
                     },
-                      child: Container( constraints: BoxConstraints(minWidth: 10, maxWidth: 200),
+                      child: Container( constraints: const BoxConstraints(minWidth: 10, maxWidth: 200),
                         decoration: BoxDecoration(color: MainColor,borderRadius: BorderRadius.circular(25)) ,
                     child: Padding(
                       padding: const EdgeInsets.symmetric( vertical: 5).copyWith(right: 19,left: 10),
-                      child: Text(message[index].message??'', maxLines: null,style: TextStyle(color: Colors.white,fontSize: 12),textAlign: TextAlign.start),
+                      child: Text(message[index].message??'', maxLines: null,style: const TextStyle(color: Colors.white,fontSize: 12),textAlign: TextAlign.start),
                     ),
             ),
           ):  InkWell(onTap: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) => ImageView(url:AppConstants.Image_URL+(message[index].message??'')),)),child: Column(
                         children: [
                           Container(height: 100,width: 100,decoration: BoxDecoration(image: DecorationImage(image: CachedNetworkImageProvider(AppConstants.Image_URL+(message[index].message??'')),fit: BoxFit.cover),color: Colors.white,borderRadius: BorderRadius.circular(10)),),
-                          Text(getLang(context: context, key: "Send_Gifts"),style: TextStyle(color: MainColor,fontWeight: FontWeight.bold),)
+                          Text(getLang(context: context, key: "Send_Gifts"),style: const TextStyle(color: MainColor,fontWeight: FontWeight.bold),)
                         ],
                       )),
         ],
@@ -115,21 +112,21 @@ class _ChatScreanState extends State<ChatScrean> {
                 Clipboard.setData(ClipboardData(text:message[index].message??'' ));
                 Dialogs().showtoast(getLang(context: context, key: "Copied"));
               },
-                child: Container(constraints: BoxConstraints(minWidth: 10, maxWidth: 200),decoration: BoxDecoration(color: MainColor,borderRadius: BorderRadius.circular(25)) ,
+                child: Container(constraints: const BoxConstraints(minWidth: 10, maxWidth: 200),decoration: BoxDecoration(color: MainColor,borderRadius: BorderRadius.circular(25)) ,
                   child: Padding(
                     padding: const EdgeInsets.symmetric( vertical: 5).copyWith(right: 19,left: 10),
-                    child: Text(message[index].message??'',style: TextStyle(color: Colors.white,fontSize: 12),textAlign: TextAlign.start),
+                    child: Text(message[index].message??'',style: const TextStyle(color: Colors.white,fontSize: 12),textAlign: TextAlign.start),
                   ),
                 ),
               ):
               InkWell(onTap: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) => ImageView(url:AppConstants.Image_URL+(message[index].message??'')),)),child: Column(
                 children: [
                   Container(height: 100,width: 100,decoration: BoxDecoration(image: DecorationImage(image: CachedNetworkImageProvider(AppConstants.Image_URL+(message[index].message??'')),fit: BoxFit.cover),color: Colors.white,borderRadius: BorderRadius.circular(10)),),
-                Text(getLang(context: context, key: "Send_Gifts"),style: TextStyle(color: MainColor,fontWeight: FontWeight.bold),)
+                Text(getLang(context: context, key: "Send_Gifts"),style: const TextStyle(color: MainColor,fontWeight: FontWeight.bold),)
                 ],
               )),
 
-              SizedBox(width: 6,),
+              const SizedBox(width: 6,),
               CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(user.userinfo?.image??'')),
 
         ],
@@ -151,17 +148,17 @@ class _ChatScreanState extends State<ChatScrean> {
                   Row(
                     children: <Widget>[
 
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       Flexible(
                         child: Container(decoration: BoxDecoration(color:secondcolor,borderRadius: BorderRadius.circular(20) ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                             child: TextField(
-                              style: TextStyle(color: Colors.black, fontSize: 15.0),
+                              style: const TextStyle(color: Colors.black, fontSize: 15.0),
                               controller: Inboxrooms.textEditingController,
                               decoration: InputDecoration.collapsed(
                                 hintText:getLang(context: context, key:  "Say"),
-                                hintStyle: TextStyle(color: Colors.black45,),
+                                hintStyle: const TextStyle(color: Colors.black45,),
                               ),
                             ),
                           ),
@@ -192,7 +189,7 @@ class _ChatScreanState extends State<ChatScrean> {
                           onPressed: () {
                             Inboxrooms.getChatRoomImage().then((value){
                               if(value==true){
-                                showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.white54,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                                showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.white54,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                                   context: context,
                                   builder: (context) {
                                     return    PickedImageChat(id:widget.InboxContent?.id ,userinfo:  !user.checkuserkind(context: context,id:widget.InboxContent?.sender?.id)?widget.InboxContent?.sender:widget.InboxContent?.user ,);
@@ -218,9 +215,9 @@ class _ChatScreanState extends State<ChatScrean> {
               ),
               width: double.infinity,
               height:80,
-              decoration: new BoxDecoration(
-                  border: new Border(
-                      top: new BorderSide(color: whitecolor4, width: 0.5)),
+              decoration: const BoxDecoration(
+                  border: Border(
+                      top: BorderSide(color: whitecolor4, width: 0.5)),
                   color: whitecolor),
             ),
           ],

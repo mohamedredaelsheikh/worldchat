@@ -3,7 +3,6 @@ import 'package:ahlachat/view/widgets/LevelWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../models/Usermodel.dart';
-import '../../util/app_constants.dart';
 import '../../util/helperclass.dart';
 import '../../util/images.dart';
 import '../../util/styles.dart';
@@ -14,7 +13,7 @@ class ProfileSideInfoWidgets extends StatelessWidget {
   usermodel? UserDate;
   Color TextColor;
   int showdescr;
-  ProfileSideInfoWidgets({this.UserDate,this.TextColor=Colors.black,this.showdescr=0});
+  ProfileSideInfoWidgets({super.key, this.UserDate,this.TextColor=Colors.black,this.showdescr=0});
   @override
   Widget build(BuildContext context) {
 
@@ -22,16 +21,16 @@ class ProfileSideInfoWidgets extends StatelessWidget {
       Row(
         children: [
           Text(Helper().CutName(UserDate?.name??'') ,style: Namestyle.copyWith(fontSize: 18,height: 1,color: TextColor,overflow: TextOverflow.ellipsis,fontWeight: FontWeight.bold),),
-          SizedBox(width:5,),
+          const SizedBox(width:5,),
           LevelWidget(Karisma:UserDate?.Karisma??0 ),
-          SizedBox(width: 2,),
+          const SizedBox(width: 2,),
           if(UserDate?.MyVip!=null&&UserDate?.MyVip?.Vip?.vipicon!=null) Row(
             children: [
               const SizedBox(width: 3,),
               CachedNetworkImage(imageUrl: UserDate?.MyVip?.Vip?.vipicon??"",height: 17, ),
             ],
           ),
-          SizedBox(width: 2,),
+          const SizedBox(width: 2,),
           if(UserDate?.Supporter==1)Image.asset(Images.Supporter,height: 15),
 
         ],
@@ -56,12 +55,12 @@ class ProfileSideInfoWidgets extends StatelessWidget {
           if(UserDate?.Announcer==1) Image.asset(Images.Announcer,height: 20),
         ],
       ),
-      SizedBox(height:  3,),
+      const SizedBox(height:  3,),
       Row(mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text( 'ID : '+(UserDate?.Newid??UserDate?.myappid)  ,style: Namestyle.copyWith(fontSize: 13,height: 1,color: Colors.black45,overflow: TextOverflow.ellipsis,fontWeight: FontWeight.normal),),
-          SizedBox(width: 2,),
+          const SizedBox(width: 2,),
           Image.asset(UserDate?.ginder=='0'?Images.sexman:Images.sexwoman,height: 16),
 
         ],

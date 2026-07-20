@@ -12,7 +12,7 @@ class GiftShow extends StatelessWidget {
 
     return  Center(
       child:svga.isLoading2
-          ? SizedBox():SVGAImage(svga.animationController2??SVGAAnimationController(vsync: thiss),clearsAfterStop:false),
+          ? const SizedBox():SVGAImage(svga.animationController2??SVGAAnimationController(vsync: thiss),clearsAfterStop:false),
     );
   }
 }

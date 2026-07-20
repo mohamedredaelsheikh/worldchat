@@ -29,10 +29,10 @@ class _SelectAgeWidgetState extends State<SelectAgeWidget> {
         context: ctx,
         builder: (_) => Container(
           height:SizeConfig.screenHeight!* 0.48366,
-          color: Color.fromARGB(255, 255, 255, 255),
+          color: const Color.fromARGB(255, 255, 255, 255),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height:SizeConfig.screenHeight!* 0.392,
                 child: CupertinoDatePicker(             mode: CupertinoDatePickerMode.date,
                     initialDateTime: DateTime.now(),
@@ -65,20 +65,20 @@ class _SelectAgeWidgetState extends State<SelectAgeWidget> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Padding(padding: EdgeInsets.only(left: 10),child: Text(getLang( context: context, key: "Your_Age",),style: style1.copyWith(color: MainColor))),
-              Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.circular(15)), width: SizeConfig.screenHeight!* 0.03968253968,child:Center(child:  Text('${user.Selectedday}',style: style1.copyWith(color: MainColor,fontSize: 20),))),
+              Padding(padding: const EdgeInsets.only(left: 10),child: Text(getLang( context: context, key: "Your_Age",),style: style1.copyWith(color: MainColor))),
+              Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.circular(15)), width: SizeConfig.screenHeight!* 0.03968253968,child:Center(child:  Text(user.Selectedday,style: style1.copyWith(color: MainColor,fontSize: 20),))),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child:   Text('-',style: style1.copyWith(color: MainColor,fontSize: 20)),
               ),
-              Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.circular(15)), width:  SizeConfig.screenHeight!* 0.03968253968,child:Center(child:  Text('${user.Selectedmonth}',style: style1.copyWith(color: MainColor,fontSize: 20),))),
+              Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.circular(15)), width:  SizeConfig.screenHeight!* 0.03968253968,child:Center(child:  Text(user.Selectedmonth,style: style1.copyWith(color: MainColor,fontSize: 20),))),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child:   Text('-',style: style1.copyWith(color: MainColor,fontSize: 20)),
               ),
               Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.circular(15)),  child:Center(child:  Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Text('${user.Selectedyear}',style: style1.copyWith(color: MainColor,fontSize: 20),),
+                child: Text(user.Selectedyear,style: style1.copyWith(color: MainColor,fontSize: 20),),
               ))),
 
               //InkWell(onTap: () =>  _showDatePickers(context),child: Text('${_chosenDateTime.month}-${_chosenDateTime.day}-${_chosenDateTime.year}',style: style1.copyWith(color: MainColor,fontSize: 20),)),

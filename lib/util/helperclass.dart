@@ -6,9 +6,7 @@ import 'package:ahlachat/util/app_constants.dart';
 import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:just_audio/just_audio.dart';
@@ -17,21 +15,20 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:http/http.dart' as http;
 class Helper{
   static Future<String> Downloadfile(String strURL,String filename)async{
 
     var Direction = await getTemporaryDirectory();
     final filepath='${Direction.path}/$filename';
     final  responseData = await http.get(Uri.parse(strURL));
-    File file = await File(filepath);
+    File file = File(filepath);
     await file.writeAsBytes(responseData.bodyBytes);
     return filepath;
   }
   String utf8convert(String text) {
     var encoded = utf8.encode(text);
     List<int> intList = List<int>.from(encoded);
-    String result = Utf8Decoder().convert(List<int>.from(intList));
+    String result = const Utf8Decoder().convert(List<int>.from(intList));
     return  result ;
   }
 
@@ -45,6 +42,7 @@ class Helper{
     } else if(Platform.isAndroid) {
       return await const AndroidId().getId(); // unique ID on Android
     }
+    return null;
   }
 
   CutName(String name){
@@ -116,7 +114,7 @@ PlaylinkMusic({path})async{
   await player.play();
 }
   RequestPermissions()async{
-    Map<Permission, PermissionStatus> statuses = await [
+    await [
       Permission.microphone,
       Permission.storage,
     ].request();
@@ -174,23 +172,15 @@ String CheckQuantaty({quantity}){
 
     case '5':
       return 'assets/image/5x.png';
-      break;
     case '10':
       return 'assets/image/10x.png';
-      break;
     case '20':
       return 'assets/image/20x.png';
-      break;
     case '30':
       return 'assets/image/30x.png';
-      break;
     default: {
       return  'assets/image/1x.png';
     }
-
-    break;
-
-
   }
 }
 
@@ -302,8 +292,8 @@ CheckLevel({required int Karisma}){
 }
 bool validateMobile(String value) {
     String patttern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-    RegExp regExp = new RegExp(patttern);
-    if (value.length == 0) {
+    RegExp regExp = RegExp(patttern);
+    if (value.isEmpty) {
       return false;    }
     else if (!regExp.hasMatch(value)) {
       return false;
@@ -319,7 +309,7 @@ void navigateTo({required BuildContext context, required Widget screen}) {
         pageBuilder:
             (context, animation, secondaryAnimation) =>
             screen,
-        transitionDuration: Duration(
+        transitionDuration: const Duration(
           milliseconds: 300,
         ),
         transitionsBuilder: (context, animation,
@@ -345,7 +335,7 @@ void navigatereplacementTo(BuildContext context, Widget screen) {
         pageBuilder:
             (context, animation, secondaryAnimation) =>
         screen,
-        transitionDuration: Duration(
+        transitionDuration: const Duration(
           milliseconds: 300,
         ),
         transitionsBuilder: (context, animation,

@@ -1,12 +1,10 @@
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/helperclass.dart';
-import 'package:ahlachat/view/Screans/FollowScreans/FriendsScrean.dart';
 import 'package:ahlachat/view/Screans/MainScreans/ShopScrean/SendtofriendsScrean.dart';
 import 'package:ahlachat/viewmodels/Follow_ViewModel/Follow_ViewModel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:svgaplayer_flutter/player.dart';
 
 import '../../../../util/Localization.dart';
 import '../../../../util/SizeConfig.dart';
@@ -15,7 +13,6 @@ import '../../../../util/styles.dart';
 import '../../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import '../../../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import '../../../../viewmodels/Shop_ViewModel/Shop_ViewModel.dart';
-import '../../../widgets/PhotoWithFrame.dart';
 class ByeItem extends StatefulWidget {
   const ByeItem({Key? key}) : super(key: key);
 
@@ -40,7 +37,7 @@ class _ByeItemState extends State<ByeItem> {
     ];
     return Container(
       width: SizeConfig.screenWidth!,
-      decoration: BoxDecoration(  color: Colors.white,    borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20),)),
+      decoration: const BoxDecoration(  color: Colors.white,    borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20),)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(mainAxisAlignment: MainAxisAlignment.start,
@@ -49,7 +46,7 @@ class _ByeItemState extends State<ByeItem> {
           children: [
             InkWell(onTap: (){
               Navigator.pop(context);
-            },child: Icon(Icons.clear,color: Colors.black45,)),
+            },child: const Icon(Icons.clear,color: Colors.black45,)),
 
             Center(child: CachedNetworkImage(imageUrl:  Room.ShowItem?.imagegift??'',height: 80)),
             const SizedBox(height: 10,),
@@ -142,7 +139,7 @@ class _ByeItemState extends State<ByeItem> {
               ],
             ),
 
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
 
             Row( 
               children: [
@@ -167,7 +164,7 @@ class _ByeItemState extends State<ByeItem> {
                       decoration: BoxDecoration(color:MainColor,borderRadius: BorderRadius.circular(10)),
                     ),
                   ),
-                ),         SizedBox(width:  20,),
+                ),         const SizedBox(width:  20,),
                 Expanded(flex: 1,
                   child: InkWell(onTap: (){
 

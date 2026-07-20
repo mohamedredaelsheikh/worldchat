@@ -8,18 +8,18 @@ class FrameShops extends StatelessWidget {
  int   index1=100;
 
 
- FrameShops(this.index1);
+ FrameShops(this.index1, {super.key});
 
   @override
   Widget build(BuildContext context) {
 
     ShopViewmodel Shops=  Provider.of<ShopViewmodel>(context,listen: true);
 
-    return  CustomScrollView(physics: BouncingScrollPhysics() ,
+    return  CustomScrollView(physics: const BouncingScrollPhysics() ,
       slivers: <Widget>[
 
         SliverGrid(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               childAspectRatio:0.65,
               mainAxisSpacing: 0,

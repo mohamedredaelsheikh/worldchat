@@ -11,7 +11,6 @@ import 'package:ahlachat/models/MessageModel.dart';
 import 'package:ahlachat/models/emoji.dart';
 import 'package:ahlachat/models/emojicategory.dart';
 import 'package:ahlachat/util/Localization.dart';
-import 'package:ahlachat/view/Screans/Authentication/LoginScrean/LoginScrean.dart';
 import 'package:ahlachat/view/Screans/ChatScrean/ChatScrean.dart';
 import 'package:ahlachat/view/Screans/HostreportScrean/HostreportScrean.dart';
 import 'package:ahlachat/view/Screans/SearchScrean/widgets/SearchPeople.dart';
@@ -20,7 +19,6 @@ import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -227,14 +225,14 @@ usermodel? playerinfo;
 usermodel? userinfo;
 bool  Newmessage=false;
 List selectedcolor=[];
-Widget CurrentBage= SizedBox();
+Widget CurrentBage= const SizedBox();
 int TargetMin=0;
   GetTargetTime({ context})async {
     ShowGlopalLoading();
     await userapi()
         .GetTimeTarget(  context: context)
         .then((value) {
-      navigateTo(context: context, screen: HostreportScrean());
+      navigateTo(context: context, screen: const HostreportScrean());
       TargetMin=value;
       notifyListeners();
       DismissGlopalLoading();
@@ -255,7 +253,7 @@ UserGifts({ context})async {
 }
 InboxRoomModel ? ChatRoom=InboxRoomModel();
 GetInBoxChat({ context,userid,user})async {
-  InboxroomViewModel    Inboxrooms= Provider.of<InboxroomViewModel>(context,listen: false);
+  Provider.of<InboxroomViewModel>(context,listen: false);
 
   ShowGlopalLoading();
     await Followapi().CheckFriends( userid ).then((value)async {
@@ -449,11 +447,11 @@ UpdateCurrentPage(  Widget  Bage){
 adduserimoge({int ?id, imoges}){
   imoge.add({'uid':id ,'time': DateTime.now(),'imoge':imoges});
   print(id);
-  if(imoge.length>0){
-    Timer.periodic(Duration(seconds:1,), (timer) {
+  if(imoge.isNotEmpty){
+    Timer.periodic(const Duration(seconds:1,), (timer) {
       for (var i in imoge){
         if(DateTime.now().difference(i['time']).inSeconds>3){
-          if(imoge.length>0){
+          if(imoge.isNotEmpty){
             imoge.remove(i) ;
             notifyListeners();
             break;
@@ -474,11 +472,11 @@ adduserimoge({int ?id, imoges}){
   LuckYPackage({int ?id, Lucky}){
     Luckypackages.add({'id':id ,'time': DateTime.now(),'Lucky':Lucky});
     print(Luckypackages);
-    if(Luckypackages.length>0){
-      Timer.periodic(Duration(seconds:2,), (timer) {
+    if(Luckypackages.isNotEmpty){
+      Timer.periodic(const Duration(seconds:2,), (timer) {
         for (var i in Luckypackages){
           if(DateTime.now().difference(i['time']).inSeconds>5){
-            if(Luckypackages.length>0){
+            if(Luckypackages.isNotEmpty){
               Luckypackages.remove(i) ;
               notifyListeners();
               break;
@@ -586,7 +584,7 @@ MyUSERINFO(usermodel U){
     await userapi().SearchUser( text).then((value) {
       Searchusers=value;
 print(Searchusers.length);
-      navigateTo(context: context,screen: Searchpeople());
+      navigateTo(context: context,screen: const Searchpeople());
       DismissGlopalLoading();
     });
     notifyListeners();
@@ -1278,8 +1276,7 @@ print(userinfo?.MessageNumber);
 
 
       List list =value['Banner'];
-      list.forEach((element) {Banners.add(Bannerss.fromJson(element));});
-      List emojilist =value['emoji'];
+      for (var element in list) {Banners.add(Bannerss.fromJson(element));}
     //  emojilist.forEach((element) {emojis.add(emojimodel.fromJson(element));});
       Giftcatigoris=value['catigoris'];
 
@@ -1295,9 +1292,9 @@ print(userinfo?.MessageNumber);
 
 
 
-      datalist.forEach((element) {
+      for (var element in datalist) {
         Shipping.add(shipping.fromJson(element));
-      });
+      }
 
       prefs.setString('ConstData',jsonEncode(value));
 
@@ -1329,6 +1326,7 @@ Future<String?>  getId() async {
     print('Platform.isAndroid');
     return await const AndroidId().getId(); // unique ID on Android
   }
+  return null;
 }
   getAllconstant(context) async {
 
@@ -1342,9 +1340,9 @@ Future<String?>  getId() async {
   Banners.clear();
 //  list.forEach((element) {Banners.add(Bannerss.fromJson(element));});
   List emojilist =value['emoji'];
-  emojilist.forEach((element) {emojis.add(emojimodel.fromJson(element));});
+  for (var element in emojilist) {emojis.add(emojimodel.fromJson(element));}
   List emojilistCategory =value['emojiCategory'];
-  emojilistCategory.forEach((element) {emojisCategory.add(emojecategory.fromJson(element));});
+  for (var element in emojilistCategory) {emojisCategory.add(emojecategory.fromJson(element));}
 
 
   Giftcatigoris=value['catigoris'];
@@ -1382,9 +1380,9 @@ print(version);print(Appversion);
 
 
 
-  datalist.forEach((element) {
+  for (var element in datalist) {
     Shipping.add(shipping.fromJson(element));
-  });
+  }
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString('ConstData',jsonEncode(value));
 

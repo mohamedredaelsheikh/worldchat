@@ -2,7 +2,6 @@
 
 import 'package:ahlachat/models/AgencyModel.dart';
 import 'package:ahlachat/models/FamilyModel.dart';
-import 'package:ahlachat/models/FamilyRequestModel.dart';
 import 'package:ahlachat/models/JoinRoomModel.dart';
 import 'package:ahlachat/models/MyVip.dart';
 import 'package:ahlachat/models/PostsModel.dart';
@@ -193,9 +192,9 @@ StartBannerModel ?StarterBanner;
     FamilyAdmin=json['FamilyAdmin'];
     FamilyId=json['FamilyId'];
     FamilyModels=json['FamilyModel'];
-    MyRoom = json['myroom'] != null ? new RoomModel.fromJson(json['myroom']) : null;
+    MyRoom = json['myroom'] != null ? RoomModel.fromJson(json['myroom']) : null;
 
-    MyFamil=json['family'] != null ? new FamilyModel.fromJson(json['family']) : null;
+    MyFamil=json['family'] != null ? FamilyModel.fromJson(json['family']) : null;
     music=json['music']==null?null:AppConstants.Image_URL+json['music'];
     socialToken = json['social_token'];
     notifiToken = json['notifi_token'].toString();
@@ -204,11 +203,11 @@ StartBannerModel ?StarterBanner;
     ginder =json['ginder'].toString();
     AgencyKarisma=json['AgencyKarisma'];
     description = json['description'];
-    followers=json['followers']==null?0:json['followers'];
-    following=json['following']==null?0:json['following'];
-    friends=json['friends']==null?0:json['friends'];
-    visitors=json['visitors']==null?0:json['visitors'];
-    coins = json['coins']==null?0:json['coins'];
+    followers=json['followers'] ?? 0;
+    following=json['following'] ?? 0;
+    friends=json['friends'] ?? 0;
+    visitors=json['visitors'] ?? 0;
+    coins = json['coins'] ?? 0;
     Flag= json['Flag'];
     Official=json['Official'];
     Admin=json['Admin'];
@@ -220,39 +219,39 @@ StartBannerModel ?StarterBanner;
     Supporter=json['Supporter'];
      ban=json['ban'];
     CustomersService=json['CustomersService'];
-    MyVip = json['myvip'] != null ? new MyVipmodel.fromJson(json['myvip']) : null;
-    agency= json['agency'] != null ? new Agencymodel.fromJson(json['agency']) : null;
-    currentroom = json['currentroom'] != null ? new RoomModel.fromJson(json['currentroom']) : null;
+    MyVip = json['myvip'] != null ? MyVipmodel.fromJson(json['myvip']) : null;
+    agency= json['agency'] != null ? Agencymodel.fromJson(json['agency']) : null;
+    currentroom = json['currentroom'] != null ? RoomModel.fromJson(json['currentroom']) : null;
     if (json['giftssent'] != null) {
       giftssent = <Gifts>[];
       json['giftssent'].forEach((v) {
-        giftssent!.add(new Gifts.fromJson(v));
+        giftssent!.add(Gifts.fromJson(v));
       });
     }
 
     if (json['models'] != null) {
       Models = <UserModels>[];
       json['models'].forEach((v) {
-        Models!.add(new UserModels.fromJson(v));
+        Models!.add(UserModels.fromJson(v));
       });
     }
 
     if (json['Relations'] != null) {
       Relations = <RelationModel>[];
       json['Relations'].forEach((v) {
-        Relations!.add(new RelationModel.fromJson(v));
+        Relations!.add(RelationModel.fromJson(v));
       });
     }
     if (json['profile_image'] != null) {
       ProfileImages = <UserImages>[];
       json['profile_image'].forEach((v) {
-        ProfileImages!.add(new UserImages.fromJson(v));
+        ProfileImages!.add(UserImages.fromJson(v));
       });
     }
     if (json['Postes'] != null) {
       Postuser = <Postes>[];
       json['Postes'].forEach((v) {
-        Postuser!.add(new Postes.fromJson(v));
+        Postuser!.add(Postes.fromJson(v));
       });
     }else{
       Postuser=[];
@@ -281,7 +280,7 @@ StartBannerModel ?StarterBanner;
     if (json['giftscollect'] != null) {
       giftscollect = <Gifts>[];
       json['giftscollect'].forEach((v) {
-        giftscollect!.add(new Gifts.fromJson(v));
+        giftscollect!.add(Gifts.fromJson(v));
       });
     }
     Karisma=json['Karisma'];
@@ -303,90 +302,90 @@ StartBannerModel ?StarterBanner;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['image'] = this.image;
-    data['phone_number'] = this.phoneNumber;
-    data['AgencyKarisma'] = this.AgencyKarisma;
-    data['name'] = this.name;
-    data['Hidden'] = this.Hidden;
-    data['followers'] =this.followers;
-    data['following'] =this.following;
-    data['friends'] =this.friends;
-    data['year'] =  this.year  ;
-    data['MessageNumber']=this.MessageNumber;
-    data['ginput']=this.ginput;
-    data['AgencyId'] =this.AgencyId;
-    data['Newid']= this.Newid;
-    data['Supporter']= this.Supporter;
-    data['ban']=this.ban;
-    data['ChairKarisma']=this.ChairKarisma;
-    data['Level']=  this.Level  ;
-    data['day']=  this.day  ;
-    data['bubbles']= this.bubbles;
-    data['ColoredMessage']=  this.ColoredMessage  ;
-    data['agency']=  this.agency ;
-    data['month']=  this.month;
-    data['followIds']=this.followIds;
-    data['JoinAgencyids']=this.joinsrequested;
-    data['Official']= this.Official;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['image'] = image;
+    data['phone_number'] = phoneNumber;
+    data['AgencyKarisma'] = AgencyKarisma;
+    data['name'] = name;
+    data['Hidden'] = Hidden;
+    data['followers'] =followers;
+    data['following'] =following;
+    data['friends'] =friends;
+    data['year'] =  year  ;
+    data['MessageNumber']=MessageNumber;
+    data['ginput']=ginput;
+    data['AgencyId'] =AgencyId;
+    data['Newid']= Newid;
+    data['Supporter']= Supporter;
+    data['ban']=ban;
+    data['ChairKarisma']=ChairKarisma;
+    data['Level']=  Level  ;
+    data['day']=  day  ;
+    data['bubbles']= bubbles;
+    data['ColoredMessage']=  ColoredMessage  ;
+    data['agency']=  agency ;
+    data['month']=  month;
+    data['followIds']=followIds;
+    data['JoinAgencyids']=joinsrequested;
+    data['Official']= Official;
 
-    data['db']= this.DB;
-    data['Announcer']= this.Announcer;
+    data['db']= DB;
+    data['Announcer']= Announcer;
 
-    data['Admin']= this.Admin;
-    data['SuperAdmin']= this.SuperAdmin;
-    data['MemberAgency']= this.MemberAgency;
-    data['Supporter']= this.Supporter;
+    data['Admin']= Admin;
+    data['SuperAdmin']= SuperAdmin;
+    data['MemberAgency']= MemberAgency;
+    data['Supporter']= Supporter;
     data['PassApp']= password;
-    data['MoneyAgency']= this.MoneyAgency;
-    data['CustomersService']= this.CustomersService;
+    data['MoneyAgency']= MoneyAgency;
+    data['CustomersService']= CustomersService;
 
-    data['familyrequest']= this.FamilyRequests;
+    data['familyrequest']= FamilyRequests;
 
-    if (this.MyFamil != null) {
-      data['family'] = this.MyFamil!.toJson();
+    if (MyFamil != null) {
+      data['family'] = MyFamil!.toJson();
     }
-    if (this.MyRoom != null) {
-      data['myroom'] = this.MyRoom!.toJson();
+    if (MyRoom != null) {
+      data['myroom'] = MyRoom!.toJson();
     }
-    data['social'] = this.social;
-    data['email'] = this.email;
-    data['Flag']=this.Flag;
-    data['social_token'] = this.socialToken;
-    data['notifi_token'] = this.notifiToken;
-    data['music']=this.music;
-    data['userToken'] = this.rememperToken;
-    data['ginder'] = this.ginder;
-    data['description'] = this.description;
-    data['coins'] = this.coins;
+    data['social'] = social;
+    data['email'] = email;
+    data['Flag']=Flag;
+    data['social_token'] = socialToken;
+    data['notifi_token'] = notifiToken;
+    data['music']=music;
+    data['userToken'] = rememperToken;
+    data['ginder'] = ginder;
+    data['description'] = description;
+    data['coins'] = coins;
     data['FriendState'] =FriendState;
     data['visitors']=  visitors;
-    data['FaceBook'] = this.faceBook;
-    data['Instgram'] = this.instgram;
+    data['FaceBook'] = faceBook;
+    data['Instgram'] = instgram;
 
-    data['created_at'] = this.createdAt;
-    data['myappid']=this.myappid;
-    data['city']=this.city;
-    data['giftssent']=this.giftssent;
-    data['giftscollect']=this.giftscollect;
-    data['frameimage']=this.frameimage;
-    data['Enterbubles']=this.Enterbubles;
-    data['Input']=this.Input;
-    data['Karisma']=this.Karisma;
-    data['entry']=this.entry;
-    data['Postes']=this.Postuser;
-    data['models']=this.Models;
-    data['profile_image']=this.Models;
+    data['created_at'] = createdAt;
+    data['myappid']=myappid;
+    data['city']=city;
+    data['giftssent']=giftssent;
+    data['giftscollect']=giftscollect;
+    data['frameimage']=frameimage;
+    data['Enterbubles']=Enterbubles;
+    data['Input']=Input;
+    data['Karisma']=Karisma;
+    data['entry']=entry;
+    data['Postes']=Postuser;
+    data['models']=Models;
+    data['profile_image']=Models;
     data['myjoindroom']=CurrentRoom;
-    if (this.MyVip != null) {
-      data['MyVip'] = this.MyVip!.toJson();
+    if (MyVip != null) {
+      data['MyVip'] = MyVip!.toJson();
     }
     if (StarterBanner != null) {
       data['StartBanner'] = StarterBanner!.toJson();
     }
-    if (this.currentroom != null) {
-      data['currentroom'] = this.currentroom!.toJson();
+    if (currentroom != null) {
+      data['currentroom'] = currentroom!.toJson();
     }
     return data;
   }

@@ -9,7 +9,6 @@ import 'package:ahlachat/viewmodels/Agora_ViewModel/AgoraViewmodel.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../widgets/UserInfoWidgets.dart';
@@ -21,7 +20,7 @@ class LeaveChairUser extends StatelessWidget {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     AgoraViewmodel Agora=Provider.of<AgoraViewmodel>(context,listen: true);
-    return Container(decoration: const BoxDecoration(color: Colors.transparent,image: const DecorationImage(image: ExactAssetImage(Images.shopback),fit: BoxFit.cover)), width: SizeConfig.screenWidth! ,child:
+    return Container(decoration: const BoxDecoration(color: Colors.transparent,image: DecorationImage(image: ExactAssetImage(Images.shopback),fit: BoxFit.cover)), width: SizeConfig.screenWidth! ,child:
     Column(mainAxisAlignment: MainAxisAlignment.start,mainAxisSize: MainAxisSize.min,
       children: [
 
@@ -34,7 +33,7 @@ class LeaveChairUser extends StatelessWidget {
         user.showloading3?const SizedBox(height: 50,):Padding(
           padding: const EdgeInsets.all(10.0),
           child: InkWell(onTap:() {
-            showModalBottomSheet(barrierColor:Colors.transparent,shape: const RoundedRectangleBorder(borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+            showModalBottomSheet(barrierColor:Colors.transparent,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
               context: context,
               builder: (context) {
                 return const ShowGiftRoom();
@@ -75,7 +74,7 @@ class LeaveChairUser extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const CircleAvatar(radius: 25,backgroundColor: Colors.red,child: const Icon(Icons.chair,size: 30,color: whitecolor),),
+                    const CircleAvatar(radius: 25,backgroundColor: Colors.red,child: Icon(Icons.chair,size: 30,color: whitecolor),),
                     Text(getLang(context: context,key: "Leave_Chair"),style:style3.copyWith(fontWeight: FontWeight.normal))
                   ],
                 ),

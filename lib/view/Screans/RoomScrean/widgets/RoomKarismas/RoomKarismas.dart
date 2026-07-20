@@ -1,8 +1,6 @@
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/app_constants.dart';
-import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/view/widgets/UserSideInfoWidget.dart';
@@ -10,7 +8,6 @@ import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 class  RoomKarismas extends StatelessWidget {
   const RoomKarismas({Key? key}) : super(key: key);
@@ -25,25 +22,25 @@ class  RoomKarismas extends StatelessWidget {
             children: [
               const SizedBox(height: 10,),
                TabBar(
-                  indicatorColor:Color(0xFFFFD700),indicatorSize: TabBarIndicatorSize.label,indicatorWeight: 2 ,
-                  labelColor: Color(0xFFFFD700),
+                  indicatorColor:const Color(0xFFFFD700),indicatorSize: TabBarIndicatorSize.label,indicatorWeight: 2 ,
+                  labelColor: const Color(0xFFFFD700),
                   unselectedLabelColor: Colors.white70,labelStyle: style1,
                   isScrollable: true,
                   tabs: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Tab(
                         child: Text( getLang(context: context,key: "Daily"),),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Tab(
                         child: Text(getLang(context: context,key: "Weekly")),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Tab(
                         child: Text(getLang(context: context,key: "Monthly")),
                       ),
@@ -62,7 +59,7 @@ class  RoomKarismas extends StatelessWidget {
                                 Room.changeloading13();
                                 user.GetShoweduserProfile(Room.RoomLeader?.dailysupporter![index].user);
                                  CheckBlocked=false;
-                                Navigator.pushNamed(context,'${AppConstants.ShowUser_Profile}');
+                                Navigator.pushNamed(context,AppConstants.ShowUser_Profile);
                               }
 
                             }
@@ -134,7 +131,7 @@ class  RoomKarismas extends StatelessWidget {
                                 Room.changeloading13();
                                 user.GetShoweduserProfile(Room.RoomLeader?.monthlysupporter![index].user);
                                  CheckBlocked=false;
-                                Navigator.pushNamed(context,'${AppConstants.ShowUser_Profile}');
+                                Navigator.pushNamed(context,AppConstants.ShowUser_Profile);
                               }
 
                             }

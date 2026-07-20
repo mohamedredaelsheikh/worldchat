@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 class LeaveRoomWidget extends StatelessWidget {
 
   final ScrollController? _controller= ScrollController();
+
+  LeaveRoomWidget({super.key});
   @override
   Widget build(BuildContext context) {
     SvgViewmodel svga=  Provider.of<SvgViewmodel>(context,listen: true);

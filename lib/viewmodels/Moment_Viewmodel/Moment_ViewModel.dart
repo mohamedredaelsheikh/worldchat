@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:ahlachat/main.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/helperclass.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ahlachat/Repositores/Moment_repositores/Moment_api.dart';
 import 'package:ahlachat/models/CommentsModel.dart';
@@ -169,7 +168,6 @@ class MomentViewModel extends ChangeNotifier{
   }
 
   void showSpinner3() {
-     ;
     showloading3 = true;
     notifyListeners();
   }
@@ -203,9 +201,9 @@ class MomentViewModel extends ChangeNotifier{
 
     await Momentapi().AddmoreFollowPosts(context).then((value) {
 
-      value.forEach((element) {
+      for (var element in value) {
         FollowPosts.add(element);
-      });
+      }
       hideSpinner7();
     });
     notifyListeners();
@@ -215,9 +213,9 @@ class MomentViewModel extends ChangeNotifier{
     showSpinner7();
     await Momentapi().AddmorePosts(context).then((value) {
        
-      value.forEach((element) {
+      for (var element in value) {
         GeneralPosts.add(element);
-      });
+      }
       hideSpinner7();
     });
     notifyListeners();
@@ -239,7 +237,7 @@ class MomentViewModel extends ChangeNotifier{
     await Momentapi().AddComment( Comment: Comment,Postid: Postid).then((value){
        
 
-      if(value!=null&&value!=Comments()){
+      if(value!=Comments()){
         var General =GeneralPosts.where((element) => element.id==Postid) ;
         if(General.isNotEmpty){
           GeneralPosts.where((element) => element.id==Postid).first.commentsuser?.add(value);
@@ -266,7 +264,7 @@ class MomentViewModel extends ChangeNotifier{
     await Momentapi().AddComment( Comment: Comment,Postid: Postid).then((value){
        
 
-      if(value!=null&&value!=Comments()){
+      if(value!=Comments()){
         user.userProfileData?.Postuser?[index].commentsuser?.add(value);
         LikedPost.add(Postid);
       }
@@ -282,7 +280,7 @@ class MomentViewModel extends ChangeNotifier{
     await Momentapi().AddComment( Comment: Comment,Postid: Postid).then((value){
        
 
-      if(value!=null&&value!=Comments()){
+      if(value!=Comments()){
          MyPosts.reversed.toList()[index].commentsuser?.add(value);
         LikedPost.add(Postid);
       }

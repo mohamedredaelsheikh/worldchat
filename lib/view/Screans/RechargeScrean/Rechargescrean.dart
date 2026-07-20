@@ -3,7 +3,6 @@ import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ahlachat/models/PayPalPackage.dart';
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/images.dart';
@@ -16,19 +15,21 @@ import 'package:purchases_flutter/models/store_product_wrapper.dart';
 
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 class RechargeScrean extends StatelessWidget {
-  static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
+  static const String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
+
+  const RechargeScrean({super.key});
 
 
   @override
   Widget build(BuildContext context) {
-    LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
+    Provider.of<LoginViewmodel>(context, listen: true);
     WalletViewmodel   Wallet =Provider.of<WalletViewmodel>(context,listen: true);
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black),backgroundColor: whitecolor
+      appBar: AppBar(automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black),backgroundColor: whitecolor
 
           ,centerTitle: true,title: Text(getLang(context: context, key: "Recharge"),style: style6.copyWith(fontSize: 20),)),
    body: Container(
-     child: CustomScrollView(physics: NeverScrollableScrollPhysics(),
+     child: CustomScrollView(physics: const NeverScrollableScrollPhysics(),
        slivers: <Widget>[
          SliverToBoxAdapter(
            child: DefaultTabController(
@@ -71,7 +72,7 @@ class RechargeScrean extends StatelessWidget {
                    ),
                  ),
 
-                 Container(  height: SizeConfig.screenHeight,
+                 SizedBox(  height: SizeConfig.screenHeight,
                    child: TabBarView(
                        children:[
 
@@ -84,7 +85,7 @@ class RechargeScrean extends StatelessWidget {
                                Wallet.purchasePackage(Backage: Wallet.packages[index],context: context);
                              } ,
 
-                               child: Container(decoration: BoxDecoration(border: Border.all( color: Color(0xFFC0C1C4).withOpacity(0.2)),borderRadius: BorderRadius.circular(10)),child: Padding(
+                               child: Container(decoration: BoxDecoration(border: Border.all( color: const Color(0xFFC0C1C4).withValues(alpha: 0.2)),borderRadius: BorderRadius.circular(10)),child: Padding(
                                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                                  child: Row(
                                    children: [
@@ -95,7 +96,7 @@ class RechargeScrean extends StatelessWidget {
                                          Text(Products.description+'  ${getLang(context: context,key: "Coins")}'),
                                        ],
                                      ),
-                                     Spacer(),
+                                     const Spacer(),
                                      Container(decoration: BoxDecoration(color: Colors.greenAccent,borderRadius: BorderRadius.circular(15)), child: Center(child: Padding(
                                        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                                        child: Text(Products.priceString,style: style3.copyWith(fontSize: 12)),
@@ -113,9 +114,9 @@ class RechargeScrean extends StatelessWidget {
                              padding: const EdgeInsets.symmetric(vertical: 5),
                              child: InkWell(onTap:()async{
 
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => WebViewScrean(name: 'Paypal', link: 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=devtechnosquad405@gmail.com&item_name=${Products.coins}&custom=${UserId}&amount=${Products.price}&currency_code=USD&return=https://cp.hakini.live&cancel_return=https://cp.hakini.live&notify_url=https://cp.hakini.live/paypal',),));
+                              Navigator.push(context,MaterialPageRoute(builder: (context) => WebViewScrean(name: 'Paypal', link: 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=devtechnosquad405@gmail.com&item_name=${Products.coins}&custom=$UserId&amount=${Products.price}&currency_code=USD&return=https://cp.hakini.live&cancel_return=https://cp.hakini.live&notify_url=https://cp.hakini.live/paypal',),));
                             } ,
-                               child: Container(decoration: BoxDecoration(border: Border.all( color: Color(0xFFC0C1C4).withOpacity(0.2)),borderRadius: BorderRadius.circular(10)),child: Padding(
+                               child: Container(decoration: BoxDecoration(border: Border.all( color: const Color(0xFFC0C1C4).withValues(alpha: 0.2)),borderRadius: BorderRadius.circular(10)),child: Padding(
                                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                                  child: Row(
                                    children: [
@@ -126,7 +127,7 @@ class RechargeScrean extends StatelessWidget {
                                          Text(Products.coins.toString()+'   ${getLang(context: context,key: "Coins")}'),
                                        ],
                                      ),
-                                     Spacer(),
+                                     const Spacer(),
                                      Container(width: 100,decoration: BoxDecoration(color: Colors.greenAccent,borderRadius: BorderRadius.circular(15)), child: Center(child: Padding(
                                        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                                        child: Text(Products.price.toString()+"  \$",style: style3.copyWith(fontSize: 12)),

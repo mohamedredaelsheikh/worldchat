@@ -8,12 +8,9 @@ import 'package:ahlachat/view/Screans/SplashScrean/InternetConnection.dart';
 import 'package:ahlachat/view/widgets/PickFlag.dart';
 import 'package:flutter/material.dart';
 
-import '../view/Screans/AddMusicScrean/AddMusicScrean.dart';
 import '../view/Screans/AgencyScrean/AgencesScrean.dart';
 import '../view/Screans/AgencyScrean/AgencyProfileScrean.dart';
-import '../view/Screans/AgencyScrean/SearchForAgency.dart';
 import '../view/Screans/Authentication/CompleteSignUp/CompleteSignUp.dart';
-import '../view/Screans/Authentication/EnterCodeScrean/EnterCodeScrean.dart';
 import '../view/Screans/Authentication/EnterCodeScrean/EnterCodeSignUp.dart';
 import '../view/Screans/Authentication/LoginScrean/LoginScrean.dart';
 import '../view/Screans/Authentication/LoginScrean/PhoneAuthScrean.dart';
@@ -75,10 +72,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         case AppConstants.EnterCodeSignUp_Screan:
           return MaterialPageRoute(builder: (_) => const EnterCodeSignUp());
         case AppConstants.SearchForRooms_Screan:
-          return MaterialPageRoute(builder: (_) => SearchScrean());
+          return MaterialPageRoute(builder: (_) => const SearchScrean());
 
         case AppConstants.InternetConnection_Screan:
-          return MaterialPageRoute(builder: (_) => InternetConnection());
+          return MaterialPageRoute(builder: (_) => const InternetConnection());
         case AppConstants.ImageView:
           return MaterialPageRoute(builder: (_) => ImageView());
 
@@ -88,7 +85,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         case AppConstants.CreateFamily_Screan:
           return MaterialPageRoute(builder: (_) => const CreateFamilyScrean());
         case AppConstants.ShowUser_Profile:
-          return MaterialPageRoute(builder: (_) => ShowUserProfile());
+          return MaterialPageRoute(builder: (_) => const ShowUserProfile());
 
         case AppConstants.Edit_Profile:
           return MaterialPageRoute(builder: (_) => const EditProfile());
@@ -99,7 +96,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
 
         case AppConstants.Contact_Us:
-          return MaterialPageRoute(builder: (_) => ContactUs());
+          return MaterialPageRoute(builder: (_) => const ContactUs());
         case AppConstants.Fan_Screan:
           return MaterialPageRoute(builder: (_) => const FanScrean());
         case AppConstants.Visitors_Screan:
@@ -118,20 +115,20 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           return MaterialPageRoute(builder: (_) => StartBannerScrean());
 
         case AppConstants.Buttom_Navigation:
-          return MaterialPageRoute(builder: (_) => ButtomNavigation());
+          return MaterialPageRoute(builder: (_) => const ButtomNavigation());
         case AppConstants.Chat_Screan:
           return MaterialPageRoute(builder: (_) => ChatScrean(InboxContent: settings.arguments as InboxRoomModel));
         case AppConstants.Level_Gifts:
           return MaterialPageRoute(builder: (_) => const LevelGifts());
 
         case AppConstants.User_Gifts:
-          return MaterialPageRoute(builder: (_) => UserGifts());
+          return MaterialPageRoute(builder: (_) => const UserGifts());
         case AppConstants.Notification_Screan:
-          return MaterialPageRoute(builder: (_) => NotificationScrean());
+          return MaterialPageRoute(builder: (_) => const NotificationScrean());
         case AppConstants.Agency_Screan:
-          return MaterialPageRoute(builder: (_) => AgencesScrean());
+          return MaterialPageRoute(builder: (_) => const AgencesScrean());
         case AppConstants.AgencyProfile_Screan:
-          return MaterialPageRoute(builder: (_) => AgencyProfileScrean());
+          return MaterialPageRoute(builder: (_) => const AgencyProfileScrean());
 
 
         case AppConstants.Moment_Content:
@@ -139,9 +136,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
 
         case AppConstants.BageScrean:
-          return MaterialPageRoute(builder: (_) => BagScrean());
+          return MaterialPageRoute(builder: (_) => const BagScrean());
         case AppConstants.Recharge_Screan:
-          return MaterialPageRoute(builder: (_) => RechargeScrean());
+          return MaterialPageRoute(builder: (_) => const RechargeScrean());
         case AppConstants.Shop_Screan:
           return MaterialPageRoute(builder: (_) => ShopScrean());
         case AppConstants.FollowedRoom_Screan:

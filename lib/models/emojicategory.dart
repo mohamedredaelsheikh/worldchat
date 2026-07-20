@@ -23,19 +23,19 @@ class emojecategory {
     if (json['emoji'] != null) {
       emoji = <emojimodel>[];
       json['emoji'].forEach((v) {
-        emoji!.add(new emojimodel.fromJson(v));
+        emoji!.add(emojimodel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['status'] = status;
 
-    if (this.emoji != null) {
-      data['emoji'] = this.emoji!.map((v) => v.toJson()).toList();
+    if (emoji != null) {
+      data['emoji'] = emoji!.map((v) => v.toJson()).toList();
     }
     return data;
   }

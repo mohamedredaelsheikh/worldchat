@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +11,7 @@ import '../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 
 class ImageView extends StatelessWidget {
  String ?url ;
- ImageView({this.url});
+ ImageView({super.key, this.url});
   @override
   Widget build(BuildContext context) {
    return Container(
@@ -51,7 +49,7 @@ class ImageView extends StatelessWidget {
 }
 class ImageFileView extends StatelessWidget {
   File ?Files ;
-  ImageFileView({this.Files});
+  ImageFileView({super.key, this.Files});
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
@@ -60,7 +58,7 @@ class ImageFileView extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 50,),
-            Container(width: SizeConfig.screenWidth,height: 60,child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
+            SizedBox(width: SizeConfig.screenWidth,height: 60,child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
               GestureDetector(onTap:   (){
                 Navigator.pop(context);
 
@@ -84,14 +82,14 @@ class ImageFileView extends StatelessWidget {
 
 class ImageView2 extends StatelessWidget {
   String ?url ;
-  ImageView2({this.url});
+  ImageView2({super.key, this.url});
   @override
   Widget build(BuildContext context) {
     return Container(
         child: Column(
           children: [
             const SizedBox(height: 50,),
-            Container(width: SizeConfig.screenWidth,height: 60,child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
+            SizedBox(width: SizeConfig.screenWidth,height: 60,child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
               GestureDetector(onTap:   ()=>
                   Navigator.pop(context) ,child: const Icon(Icons.close,color: Colors.white,size: 25)),
            ],)),

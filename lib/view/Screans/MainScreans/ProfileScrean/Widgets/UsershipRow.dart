@@ -23,7 +23,7 @@ class FollwoingRowWidget extends StatelessWidget {
       children: [
         InkWell(onTap: ()
         {Follow.GetmyVisitors(context: context);
-          navigateTo(context: context, screen: VisitorsScrean());
+          navigateTo(context: context, screen: const VisitorsScrean());
 
                 },child: FollowRowWidget(name:getLang(context: context, key: "Visitors")  ,num:user.userinfo?.visitors.toString())),
         InkWell(onTap: ()
@@ -31,18 +31,18 @@ class FollwoingRowWidget extends StatelessWidget {
 
           Follow.GetFriends(context: context);
 
-          navigateTo(context: context, screen:  FriendsScrean());
+          navigateTo(context: context, screen:  const FriendsScrean());
 
           },child: FollowRowWidget(name: getLang(context: context, key: "Friends") ,num:user.userinfo?.friends.toString())),
     InkWell(onTap: (){
       Follow.GetFollowing(context: context);
-      navigateTo(context: context, screen:  FollowingScrean());
+      navigateTo(context: context, screen:  const FollowingScrean());
     },child: FollowRowWidget(name: getLang(context: context, key: "Following")  ,num:user.userinfo?.following.toString())),
     InkWell(onTap: ()
     {
       Follow.Getmyfans(context: context);
 
-      navigateTo(context: context, screen:  FanScrean());
+      navigateTo(context: context, screen:  const FanScrean());
       },child: FollowRowWidget(name: getLang(context: context, key: "Fans") ,num:user.userinfo?.followers.toString()))
       ],
     );
@@ -52,9 +52,9 @@ class FollwoingRowWidget extends StatelessWidget {
 Widget  FollowRowWidget({String ?num,String? name}){
   return    Column(
     children: [
-      Text(num??'',style:TextStyle().copyWith(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold)),
-      SizedBox(height: 5,),
-      Text(name??"",style: style5.copyWith(color: Colors.black87.withOpacity(0.7),fontSize: 15,height: 1, fontWeight: FontWeight.normal)),
+      Text(num??'',style:const TextStyle().copyWith(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold)),
+      const SizedBox(height: 5,),
+      Text(name??"",style: style5.copyWith(color: Colors.black87.withValues(alpha: 0.7),fontSize: 15,height: 1, fontWeight: FontWeight.normal)),
     ],
   );
 }

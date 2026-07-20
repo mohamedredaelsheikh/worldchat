@@ -34,9 +34,9 @@ class SendGift extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children:[
-              SizedBox(width: 5,),
+              const SizedBox(width: 5,),
               CircleAvatar(backgroundColor: Colors.transparent,radius:20,backgroundImage: CachedNetworkImageProvider(gift.Imagesender ??Images.userphoto),),
-              SizedBox(width: 5,),
+              const SizedBox(width: 5,),
               Column(mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -44,12 +44,12 @@ class SendGift extends StatelessWidget {
                   Text("${getLang(context: context,key: "Sent")} ${gift.giftname}"  ,style: style1.copyWith(fontSize: 13,color:whitecolor2)),
                 ],
               ),
-              SizedBox(width: 20,),
+              const SizedBox(width: 20,),
               CircleAvatar(backgroundColor: Colors.transparent,radius: 20,backgroundImage: CachedNetworkImageProvider(gift.gifimage??Images.profilephoto),),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               Image.asset(Helper().CheckQuantaty(quantity: gift.quantitys.toString()),height: 40,width: 40,),
 
-              SizedBox(width: 5,),
+              const SizedBox(width: 5,),
             ],
           ),height: 50.0,decoration:BoxDecoration(color: Colors.orange,gradient: gradiant5,borderRadius:  BorderRadius.circular(25)), ),
         )),

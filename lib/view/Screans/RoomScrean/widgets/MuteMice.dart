@@ -9,7 +9,6 @@ import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
-import 'package:ahlachat/view/Screans/RoomScrean/widgets/AllBlockedUser.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/InviteToChairScrean/InviteToChairScrean.dart';
 import 'package:ahlachat/viewmodels/Agora_ViewModel/AgoraViewmodel.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
@@ -55,7 +54,7 @@ class _MutemicState extends State<Mutemic>   {
             children: [
               InkWell(onTap: (){
                 Navigator.pop(context);
-              },child: Icon(Icons.cancel_outlined,color: whitecolor)),
+              },child: const Icon(Icons.cancel_outlined,color: whitecolor)),
               const Spacer(),
 
               const    SizedBox(width: 10,),
@@ -64,8 +63,8 @@ class _MutemicState extends State<Mutemic>   {
           ),
         ),
         const  SizedBox(height: 10,),
-        Container(width: SizeConfig.screenWidth!,
-          child:GridView.count(childAspectRatio :1.0,shrinkWrap: true ,cacheExtent: 16.6,physics: NeverScrollableScrollPhysics(),
+        SizedBox(width: SizeConfig.screenWidth!,
+          child:GridView.count(cacheExtent: 16.6, childAspectRatio :1.0,shrinkWrap: true,physics: const NeverScrollableScrollPhysics(),
             crossAxisCount:4,
             crossAxisSpacing:0.8,
             mainAxisSpacing:1,
@@ -88,7 +87,7 @@ class _MutemicState extends State<Mutemic>   {
                      Room.Currentroom?.chairs?[index].user!=null?const SizedBox() :Row(
                        children: [
                          Icon(Room.Currentroom?.chairs?[index].Lock==0?Icons.lock_outline_sharp:Icons.lock_open_outlined,color: whitecolor,size: 20,),
-                         if(Room.Currentroom?.chairs?[index].Lock==0&&Room.Currentroom?.chairs?[index].userId==null)  SizedBox(width: 10,),
+                         if(Room.Currentroom?.chairs?[index].Lock==0&&Room.Currentroom?.chairs?[index].userId==null)  const SizedBox(width: 10,),
                      if(Room.Currentroom?.chairs?[index].Lock==0&&Room.Currentroom?.chairs?[index].userId==null) InkWell(onTap: (){
                        Navigator.pop(context);
                       Room.InvitedChair.clear();
@@ -102,23 +101,23 @@ class _MutemicState extends State<Mutemic>   {
 
                        InviteChairId=Room.Currentroom?.chairs?[index].chairId??'';
 
-                       showModalBottomSheet(barrierColor:Colors.transparent,context: context, shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )), builder: (BuildContext context) {
+                       showModalBottomSheet(barrierColor:Colors.transparent,context: context, shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )), builder: (BuildContext context) {
 
-                         return   InviteToChair();
+                         return   const InviteToChair();
                        });
 
                        Room.GetUserJoin(context: context);
-                     },child: Icon(Icons.chair,color: whitecolor ,size: 20,)),
+                     },child: const Icon(Icons.chair,color: whitecolor ,size: 20,)),
 
                        ],
                      ),
-                     Room.Currentroom?.chairs?[index].userId!=null? Icon(Icons.person_outline,color: whitecolor ,size: 30,):SizedBox()
+                     Room.Currentroom?.chairs?[index].userId!=null? const Icon(Icons.person_outline,color: whitecolor ,size: 30,):const SizedBox()
                    ],)
 
                   ],),));}
             ),), ),
         Expanded(
-          child:rooms.length==0?Center(child: Text(getLang(context: context, key: "No_Users_Chair"), style: style1,)):
+          child:rooms.isEmpty?Center(child: Text(getLang(context: context, key: "No_Users_Chair"), style: style1,)):
           ListView.builder(itemCount:rooms.length ,scrollDirection: Axis.vertical,itemBuilder: (context, index) =>
           rooms[index].user?.name==null? const SizedBox():
           Padding(
@@ -140,7 +139,7 @@ class _MutemicState extends State<Mutemic>   {
                         Navigator.pop(context);
                         Room.Evictionuser(Userid:rooms[index].user?.id,context: context);
                       });
-                    },child: Icon(Icons.exit_to_app,color: whitecolor,size: 19,)),
+                    },child: const Icon(Icons.exit_to_app,color: whitecolor,size: 19,)),
                     const Spacer(),
    Row(
                       children: [

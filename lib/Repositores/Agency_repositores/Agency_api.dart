@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import '../../models/AgencyModel.dart';
 import '../../models/Joinagency.dart';
 import '../../models/Usermodel.dart';
-import '../../util/Dialogs.dart';
 import '../../util/app_constants.dart';
 import '../Moment_repositores/Moment_repository.dart';
 
@@ -19,7 +18,6 @@ class Agencyapi extends MomentRepository {
   List<joinagincy> joinagincys=[];
   List<usermodel> useragincys=[];
   List<Agencymodel> Searchagency=[];
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -64,9 +62,9 @@ class Agencyapi extends MomentRepository {
 
       if (response2.statusCode == 200) {
         List list =response2.data['request'];
-        list.forEach((element) {
+        for (var element in list) {
           JoinRequestes.add(JoinRequestModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -143,9 +141,9 @@ class Agencyapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data['Agency']['data'];
 
-        list.forEach((element) {
+        for (var element in list) {
           Agences.add(Agencymodel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -167,9 +165,9 @@ class Agencyapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data['Agency'];
 
-        list.forEach((element) {
+        for (var element in list) {
           Agences.add(Agencymodel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -191,9 +189,9 @@ class Agencyapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data['Agency']['Members']['data'];
         Provider.of<LoginViewmodel>(context,listen: false).updateMenuit(response2.data['Agency']['menuit']);
-        list.forEach((element) {
+        for (var element in list) {
           useragincys.add(usermodel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -218,9 +216,9 @@ class Agencyapi extends MomentRepository {
 
         }
         print("INDEX IS $Indexxx");
-        list.forEach((element){
+        for (var element in list) {
           Agences.add(Agencymodel.fromJson(element));
-        });
+        }
         print(Agences);
       }
     } catch (e) {
@@ -248,9 +246,9 @@ class Agencyapi extends MomentRepository {
           print("INDEX IS ${Indexxx2+1}");
         }
         print("INDEX IS $Indexxx2");
-        list.forEach((element){
+        for (var element in list) {
           useragincys.add(usermodel.fromJson(element));
-        });
+        }
         print(joinagincys);
       }
     } catch (e) {
@@ -270,9 +268,9 @@ class Agencyapi extends MomentRepository {
 
       if (response2.statusCode == 200) {
         List list =response2.data['Agency'];
-        list.forEach((element) {
+        for (var element in list) {
           Searchagency.add(Agencymodel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -308,7 +306,7 @@ class Agencyapi extends MomentRepository {
   Future<bool> LeaveAgency({context,Agancyid}) async {
     bool check=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "agancy_id": Agancyid.toString(),
 
@@ -338,7 +336,7 @@ class Agencyapi extends MomentRepository {
   Future<bool> RequsetJoinAgency({context,Agancyid}) async {
     bool check=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "agancy_id": Agancyid.toString(),
 

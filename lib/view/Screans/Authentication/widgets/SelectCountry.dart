@@ -16,7 +16,7 @@ class CountryChoose extends StatelessWidget {
           children: [
             Text('${getLang(context:context,  key: "Country")}  :  ',style: style1.copyWith(color: MainColor)),
             const Spacer(),
-            SelectCountry()
+            const SelectCountry()
           ],
         ),
       ),

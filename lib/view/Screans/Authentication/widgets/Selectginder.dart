@@ -7,6 +7,8 @@ import '../../../../util/Localization.dart';
 import '../../../../util/styles.dart';
 import '../../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 class SelectGenderWidget extends StatelessWidget {
+  const SelectGenderWidget({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class SelectGenderWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(padding: EdgeInsets.only(left: 10),child: Text(getLang( context: context, key: "Gender"),style: style1.copyWith(color: MainColor, fontWeight: FontWeight.normal))),
+            Padding(padding: const EdgeInsets.only(left: 10),child: Text(getLang( context: context, key: "Gender"),style: style1.copyWith(color: MainColor, fontWeight: FontWeight.normal))),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
               Checkbox(focusColor: MainColor,checkColor:whitecolor ,activeColor: MainColor,value: !user.gender, onChanged: (value){

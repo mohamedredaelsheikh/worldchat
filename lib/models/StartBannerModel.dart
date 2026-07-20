@@ -16,10 +16,10 @@ class StartBannerModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['room_id'] = this.roomId;
-    data['photo'] = this.photo;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['room_id'] = roomId;
+    data['photo'] = photo;
     return data;
   }
 }

@@ -16,7 +16,7 @@ import '../../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 class EnterCodeScrean extends StatefulWidget {
  String ?PhoneNumber;
 
- EnterCodeScrean({required this.PhoneNumber});
+ EnterCodeScrean({super.key, required this.PhoneNumber});
 
   @override
   State<EnterCodeScrean> createState() => _EnterCodeScreanState();
@@ -31,7 +31,7 @@ class _EnterCodeScreanState extends State<EnterCodeScrean>  with SingleTickerPro
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     return Scaffold(
 
-        appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black45),),
+        appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black45),),
           body: SingleChildScrollView(
             child: Padding(
               padding:   EdgeInsets.symmetric(horizontal: SizeConfig.TenSize!*2),
@@ -50,7 +50,7 @@ class _EnterCodeScreanState extends State<EnterCodeScrean>  with SingleTickerPro
                     animationType: AnimationType.fade,
                     pinTheme: PinTheme(borderWidth: 0.0,
                       shape: PinCodeFieldShape.box,
-                      fieldOuterPadding:EdgeInsets.symmetric(horizontal: 3),
+                      fieldOuterPadding:const EdgeInsets.symmetric(horizontal: 3),
                       activeColor: Colors.black54,borderRadius: BorderRadius.circular(10),
                       selectedColor:MainColor,
                       inactiveColor: Colors.black54,
@@ -58,7 +58,7 @@ class _EnterCodeScreanState extends State<EnterCodeScrean>  with SingleTickerPro
                       fieldWidth:SizeConfig.TenSize!*4.5,
                       activeFillColor: Colors.black12,
                     ),
-                    animationDuration: Duration(milliseconds: 300),
+                    animationDuration: const Duration(milliseconds: 300),
                     cursorColor: Colors.black87,
                     enablePinAutofill: true,
                     enableActiveFill: false,mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -97,7 +97,7 @@ class _EnterCodeScreanState extends State<EnterCodeScrean>  with SingleTickerPro
                       }
                     } ,
                     child: Center(child: Container(
-                      decoration: BoxDecoration(color:user.sendcodestate!=0?Color(0xFF1878f3).withOpacity(0.8):Colors.black12,borderRadius: BorderRadius.circular(25)),
+                      decoration: BoxDecoration(color:user.sendcodestate!=0?const Color(0xFF1878f3).withValues(alpha: 0.8):Colors.black12,borderRadius: BorderRadius.circular(25)),
                       width: SizeConfig.screenWidth!,
                       height: SizeConfig.TenSize!*4.4,
                       child: Center(child: Text(getLang(context: context, key: "Next"),style: style1,)),

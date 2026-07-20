@@ -1,9 +1,6 @@
 
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:country_calling_code_picker/country_code_picker.dart';
-import 'package:country_list_pick/country_list_pick.dart' as ss;
-import 'package:country_list_pick/country_selection_theme.dart';
-import 'package:country_list_pick/support/code_country.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 class PickCode extends StatelessWidget {
@@ -12,7 +9,7 @@ class PickCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
-    return Scaffold(appBar: AppBar(automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black45)),body:CountryPickerWidget(
+    return Scaffold(appBar: AppBar(automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black45)),body:CountryPickerWidget(
       onSelected: (country) {
 
         user.UpdateFlagCode(
@@ -31,7 +28,7 @@ class PickCode2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
-    return Scaffold(appBar: AppBar(automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black45)),body:CountryPickerWidget(
+    return Scaffold(appBar: AppBar(automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black45)),body:CountryPickerWidget(
       onSelected: (country) {
 
         user.UpdateFlagCode2(

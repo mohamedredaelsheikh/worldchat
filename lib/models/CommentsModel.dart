@@ -32,21 +32,21 @@ class Comments {
     likes = json['likes'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
+    user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['post_id'] = this.postId;
-    data['user_id'] = this.userId;
-    data['Comment'] = this.comment;
-    data['CommentReplay'] = this.commentReplay;
-    data['likes'] = this.likes;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['post_id'] = postId;
+    data['user_id'] = userId;
+    data['Comment'] = comment;
+    data['CommentReplay'] = commentReplay;
+    data['likes'] = likes;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
     return data;
   }

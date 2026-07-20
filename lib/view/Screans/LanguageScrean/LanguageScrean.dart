@@ -11,7 +11,7 @@ class LanguageScrean extends StatelessWidget {
     languageViewmodel language=Provider.of<languageViewmodel>(context,listen: true);
 
     return Scaffold(
-      appBar: AppBar(iconTheme: IconThemeData(color: Colors.black),backgroundColor: Colors.white,title:   Text(getLang(context: context,key: "Language"),style: style2,),automaticallyImplyLeading: true ),
+      appBar: AppBar(iconTheme: const IconThemeData(color: Colors.black),backgroundColor: Colors.white,title:   Text(getLang(context: context,key: "Language"),style: style2,),automaticallyImplyLeading: true ),
 
       body: CustomScrollView(
         slivers: [

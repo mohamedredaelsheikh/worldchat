@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +10,7 @@ import '../../../../viewmodels/Games_ViewModel/Games_ViewModel.dart';
 class GameScrean extends StatefulWidget {
 
   int index;
-  GameScrean({required this.index, });
+  GameScrean({super.key, required this.index, });
 
   @override
   GameScreanState createState() => GameScreanState();

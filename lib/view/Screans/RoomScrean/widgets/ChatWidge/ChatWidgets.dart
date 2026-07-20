@@ -2,18 +2,15 @@
 import 'package:ahlachat/view/Screans/MainScreans/MessageScrean/MessageScrean.dart';
 import 'package:ahlachat/view/Screans/RolletUserScrean/RolletUserScrean.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/GuessWidgets/GuessWidgets.dart';
-import 'package:ahlachat/view/widgets/ModelSheet.dart';
 import 'package:ahlachat/view/widgets/WebViewScrean.dart';
 import 'package:ahlachat/viewmodels/InboxRooms_Viewmodel/InboxRoomsViewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
-import 'package:ahlachat/view/Screans/RoomScrean/widgets/InBoxsRoom.dart';
 
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/emoji/emojisscrean.dart';
 import 'package:ahlachat/viewmodels/Agora_ViewModel/AgoraViewmodel.dart';
@@ -30,7 +27,6 @@ class ChatWidgets extends StatelessWidget {
     RoomViewmodel Room=   Provider.of<RoomViewmodel>(context,listen: true);
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     AgoraViewmodel Agora= Provider.of<AgoraViewmodel>(context,listen: true);
-    var wait=5;
     return  Padding(
       padding: const EdgeInsets.only(bottom: 7),
       child: Container(width: SizeConfig.screenWidth!,color: Colors.transparent,child: Row(
@@ -63,7 +59,7 @@ class ChatWidgets extends StatelessWidget {
                             child: GestureDetector(onTap:(){
                               Navigator.pop(context);
                               Provider.of<InboxroomViewModel>(context,listen: false).GetInboxroom(context: context);
-                              showModalBottomSheet(backgroundColor: Colors.white,isScrollControlled: false, barrierColor:Colors.black.withAlpha(1), shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                              showModalBottomSheet(backgroundColor: Colors.white,isScrollControlled: false, barrierColor:Colors.black.withAlpha(1), shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                                 context: context,
                                 builder: (context) {
                                   return  MessageScrean();
@@ -111,7 +107,7 @@ class ChatWidgets extends StatelessWidget {
                   const SizedBox(width: 30,),
 
                   if(JoinChairs)   InkWell(onTap: (){
-                    showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                    showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                       context: context,
                       builder: (context) {
                         return const EmojiTabBar();
@@ -121,15 +117,15 @@ class ChatWidgets extends StatelessWidget {
                   },child: Image.asset(Images.imoje,width: 22,height: 22,color: Colors.white)),
                   const SizedBox(width: 10,),
                   if(JoinChairs)   InkWell(onTap: (){
-                    showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                    showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                       context: context,
                       builder: (context) {
                         return Container(
                           child: Column(mainAxisSize: MainAxisSize.min,
                             children: [
-                              SizedBox(height: 25,),
+                              const SizedBox(height: 25,),
                               Text('القسم الترفيهي',style: style1,) ,
-                              SizedBox(height: 25,),
+                              const SizedBox(height: 25,),
                               Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   InkWell(onTap: (){
@@ -138,7 +134,7 @@ class ChatWidgets extends StatelessWidget {
                                         backgroundColor: Colors.transparent, isScrollControlled: true,
                                         context: context,
                                         builder: (context) {
-                                          return Container(height: 600,child: WebViewRollet(name: getLang( context: context, key: "Terms_Service"), link: 'http://game.worldchat.online/?token=${user.userinfo?.rememperToken}',));
+                                          return SizedBox(height: 600,child: WebViewRollet(name: getLang( context: context, key: "Terms_Service"), link: 'http://game.worldchat.online/?token=${user.userinfo?.rememperToken}',));
                                         });
                                   },child: Image.asset(Images.fruits,height: 60, width: 60,fit: BoxFit.fill)),
                                   InkWell(onTap: (){
@@ -156,14 +152,14 @@ class ChatWidgets extends StatelessWidget {
                                       }
                                     });
                                     print(Room.ChairsRoom);
-                                    showModalBottomSheet(barrierColor:Colors.transparent,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                                    showModalBottomSheet(barrierColor:Colors.transparent,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                                       context: context,
                                       builder: (context) {
                                         return StatefulBuilder(
                                           builder: (BuildContext context, void Function(void Function()) setState) {
-                                            return Container(decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), ),image: DecorationImage(image: ExactAssetImage(Images.VipBackground),fit: BoxFit.cover)), width: SizeConfig.screenWidth,child: Column(
+                                            return Container(decoration: const BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), ),image: DecorationImage(image: ExactAssetImage(Images.VipBackground),fit: BoxFit.cover)), width: SizeConfig.screenWidth,child: Column(
                                               children: [
-                                                SizedBox(height: 20,),
+                                                const SizedBox(height: 20,),
                                                 Expanded(
                                                   child: ListView.builder(itemCount: Room.ChairsRoom.length,itemBuilder: (context, index) => Padding(
                                                     padding: const EdgeInsets.symmetric(horizontal: 20, ).copyWith(top: 10),
@@ -184,7 +180,7 @@ class ChatWidgets extends StatelessWidget {
                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                           children: [
                                                             Text(Room.ChairsRoom[index].user?.name??'',style: style1.copyWith(fontSize: 13),),
-                                                            Room.Rolletchoice.contains(Room.ChairsRoom[index].user?.name)?    Icon(Icons.check_box,color: Colors.white):Icon(Icons.check_box_outline_blank_outlined,color: Colors.white),
+                                                            Room.Rolletchoice.contains(Room.ChairsRoom[index].user?.name)?    const Icon(Icons.check_box,color: Colors.white):const Icon(Icons.check_box_outline_blank_outlined,color: Colors.white),
 
                                                           ],
                                                         ),
@@ -192,11 +188,11 @@ class ChatWidgets extends StatelessWidget {
                                                     ),
                                                   ),),
                                                 ),
-                                                Padding(padding: EdgeInsets.symmetric(horizontal: 20),
+                                                Padding(padding: const EdgeInsets.symmetric(horizontal: 20),
                                                     child: InkWell(onTap: (){
                                                       if(  Room.Rolletchoice.length>=2){
                                                         Navigator.pop(context);
-                                                        showModalBottomSheet(barrierColor:Colors.transparent,context: context, shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )), builder: (BuildContext context) {
+                                                        showModalBottomSheet(barrierColor:Colors.transparent,context: context, shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )), builder: (BuildContext context) {
 
                                                           return const RolletFullscrean();
                                                         });
@@ -204,7 +200,7 @@ class ChatWidgets extends StatelessWidget {
                                                         Dialogs().showtoast('عدد الاشخاص يجب ان يكون 2 او اكثر');
                                                       }
                                                     },child: Container(child: Center(child: Text(getLang(context: context,key: 'Start'),style: style2,)),decoration: BoxDecoration( color: Colors.white,borderRadius:  BorderRadius.circular(10)),height: 50,width: SizeConfig.screenWidth))),
-                                                SizedBox(height: 20,),
+                                                const SizedBox(height: 20,),
                                               ],
                                             ),);
                                           },
@@ -216,14 +212,14 @@ class ChatWidgets extends StatelessWidget {
                                   },child: Image.asset(Images.Rolletuser,height: 60, width: 60,fit: BoxFit.fill)),
                                 ],
                               ),
-                              SizedBox(height: 25,),
+                              const SizedBox(height: 25,),
                               Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   InkWell(onTap: (){
                                     Navigator.pop(context);
                                     user.SelectGuess(val: null);
                                     user.SelectGuesscoins(val: null);
-                                    showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                                    showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                                         context: context,
                                         builder: (context) {
                                           return GuessWidgets();
@@ -231,7 +227,7 @@ class ChatWidgets extends StatelessWidget {
                                   },child: Image.asset(Images.guessing,height: 60, width: 60,fit: BoxFit.fill)),
                                  ],
                               ),
-                              SizedBox(height: 25,),
+                              const SizedBox(height: 25,),
                             ],
                           ),
                         );
@@ -272,7 +268,7 @@ class ChatWidgets extends StatelessWidget {
 
 
          const GiftBox(),
-         SizedBox(width: 10,)
+         const SizedBox(width: 10,)
         ],
       ),),
     );

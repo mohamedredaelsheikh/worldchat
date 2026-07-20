@@ -2,13 +2,11 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
 import '../../util/app_constants.dart';
-import '../Auth_Viewmodel/LoginViewModel.dart';
 import '../Music_Viewmodel/MusicViewmodel.dart';
 import '../Room_Viewmodel/Room_Viewmodel.dart';
 class AgoraViewmodel extends ChangeNotifier{
@@ -101,7 +99,7 @@ int index=0;
   }
 
   next(context)async{
-    MusicViewModel music= Provider.of<MusicViewModel>(context,listen: false);
+    Provider.of<MusicViewModel>(context,listen: false);
 
    //
    // if(music.SongsList.length==index+1){
@@ -157,14 +155,14 @@ int volumnaudio=50;
   //
   stopAudioMexing( context)async{
     playmusic=false;
-    MusicViewModel music= Provider.of<MusicViewModel>(context,listen: false);
+    Provider.of<MusicViewModel>(context,listen: false);
 
     await _engine?.pauseAudioMixing();
   //  music.player.pause();
     notifyListeners();
   }
   resumAudioMexing( context)async{
-    MusicViewModel music= Provider.of<MusicViewModel>(context,listen: false);
+    Provider.of<MusicViewModel>(context,listen: false);
 
     playmusic=true;
     await _engine?.resumeAudioMixing();
@@ -268,7 +266,7 @@ int volumnaudio=50;
 
         }, onAudioVolumeIndication: (RtcConnection connection, List<AudioVolumeInfo> speakers, int speakerNumber, int totalVolume) {
 
-      speakers.forEach((speaker) {
+      for (var speaker in speakers) {
 
     if ((speaker.volume ?? 0) >70){
 
@@ -286,7 +284,7 @@ int volumnaudio=50;
       });
     }
 
-    });}
+    }}
     ));
   }
 }

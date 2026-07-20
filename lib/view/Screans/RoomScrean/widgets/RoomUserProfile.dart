@@ -1,18 +1,13 @@
-import 'dart:convert';
 
-import 'package:ahlachat/view/Screans/RoomScrean/widgets/ChatwithuserRoom.dart';
-import 'package:ahlachat/view/widgets/ModelSheet.dart';
 import 'package:ahlachat/view/widgets/UserInfoWidgets.dart';
 import 'package:ahlachat/viewmodels/Agora_ViewModel/AgoraViewmodel.dart';
 import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/app_constants.dart';
-import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/SendGift.dart';
@@ -24,7 +19,6 @@ import 'package:ahlachat/viewmodels/InboxRooms_Viewmodel/InboxRoomsViewmodel.dar
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:svgaplayer_flutter/svgaplayer_flutter.dart';
 class RoomUserProfile extends StatelessWidget {
   const RoomUserProfile({Key? key}) : super(key: key);
 
@@ -33,11 +27,11 @@ class RoomUserProfile extends StatelessWidget {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
     FollowViewModel Follow=  Provider.of<FollowViewModel>(context,listen: true);
-    InboxroomViewModel    Inboxlsit= Provider.of<InboxroomViewModel>(context,listen: true);
+    Provider.of<InboxroomViewModel>(context,listen: true);
     AgoraViewmodel Agora=Provider.of<AgoraViewmodel>(context,listen: true);
     GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
 
-    return Container(decoration: const BoxDecoration(image: DecorationImage(image: const ExactAssetImage(Images.shopback),fit: BoxFit.fill)),width: SizeConfig.screenWidth! ,child:
+    return Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.shopback),fit: BoxFit.fill)),width: SizeConfig.screenWidth! ,child:
     Column(mainAxisAlignment: MainAxisAlignment.center,
      crossAxisAlignment: CrossAxisAlignment.center,
      mainAxisSize: MainAxisSize.min,
@@ -77,7 +71,7 @@ Navigator.pop(context);
                ),),
              )),
              const SizedBox(width: 10,),
-             Expanded(flex: 1,child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.blueAccent.withOpacity(0.9),),height: 60,child: Row(
+             Expanded(flex: 1,child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.blueAccent.withValues(alpha: 0.9),),height: 60,child: Row(
                children: [
                  const SizedBox(width: 10,),
                  Image.asset(Images.Cardheart,height: 40),
@@ -128,7 +122,7 @@ Navigator.pop(context);
            });
            gits.Cost=0;
 
-           showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+           showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
              context: context,
              builder: (context) {
                return const NestedTabBar();
@@ -215,10 +209,10 @@ class MyProfileInRoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
+    Provider.of<RoomViewmodel>(context,listen: true);
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
 
-    return Container(decoration: BoxDecoration(color: Colors.transparent,image: DecorationImage(image: ExactAssetImage(Images.shopback),fit: BoxFit.cover)), width: SizeConfig.screenWidth! ,child:
+    return Container(decoration: const BoxDecoration(color: Colors.transparent,image: DecorationImage(image: ExactAssetImage(Images.shopback),fit: BoxFit.cover)), width: SizeConfig.screenWidth! ,child:
     Column(mainAxisAlignment: MainAxisAlignment.start,mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -230,10 +224,10 @@ class MyProfileInRoom extends StatelessWidget {
 
 
 
-        user.showloading3?SizedBox(height: 50,):Padding(
+        user.showloading3?const SizedBox(height: 50,):Padding(
           padding: const EdgeInsets.all(10.0),
           child: InkWell(onTap:() {
-            showModalBottomSheet(barrierColor:Colors.transparent,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+            showModalBottomSheet(barrierColor:Colors.transparent,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
               context: context,
               builder: (context) {
                 return const ShowGiftRoom();
@@ -247,12 +241,12 @@ class MyProfileInRoom extends StatelessWidget {
                 Row(
                   children: [
                     if((user.userroominfo?.giftssent?.length??0)>0)  CachedNetworkImage(imageUrl: user.userroominfo?.giftssent?[0].gift?.image??Images.userphoto, height: 25,),
-                    SizedBox(width: 5,),
+                    const SizedBox(width: 5,),
                     if((user.userroominfo?.giftssent?.length??0)>1)    CachedNetworkImage(imageUrl: user.userroominfo?.giftssent?[1].gift?.image??Images.userphoto, height: 25,),
-                    SizedBox(width: 5,),
+                    const SizedBox(width: 5,),
                     if((user.userroominfo?.giftssent?.length??0)>2)CachedNetworkImage(imageUrl: user.userroominfo?.giftssent?[2].gift?.image??Images.userphoto, height: 25,),
-                    SizedBox(width: 5,),
-                    Icon(Icons.arrow_forward_ios,color:Colors.black38,size: 20,)
+                    const SizedBox(width: 5,),
+                    const Icon(Icons.arrow_forward_ios,color:Colors.black38,size: 20,)
                   ],
                 )
               ],
@@ -260,7 +254,7 @@ class MyProfileInRoom extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 35,),
+        const SizedBox(height: 35,),
 
       ],
     ),
@@ -281,7 +275,7 @@ class RoomUserunchairProfile extends StatelessWidget {
     InboxroomViewModel    Inboxlsit= Provider.of<InboxroomViewModel>(context,listen: true);
     GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
 
-    return Container(decoration: BoxDecoration(color: Colors.transparent,image: DecorationImage(image: ExactAssetImage(Images.shopback),fit: BoxFit.cover)), width: SizeConfig.screenWidth! ,child:
+    return Container(decoration: const BoxDecoration(color: Colors.transparent,image: DecorationImage(image: ExactAssetImage(Images.shopback),fit: BoxFit.cover)), width: SizeConfig.screenWidth! ,child:
     Column(mainAxisAlignment: MainAxisAlignment.center,mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -289,16 +283,16 @@ class RoomUserunchairProfile extends StatelessWidget {
         const   SizedBox(height: 5),
         UserInfoWidgets(UserDate: user.userroominfo),
 
-        SizedBox(height: 25,),
+        const SizedBox(height: 25,),
         Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
           InkWell(  onTap: (){
             user.GetShoweduserProfile(user.userroominfo);
             CheckBlocked=false;
-            Navigator.pushNamed(context,'${AppConstants.ShowUser_Profile}');
-          },child: FaIcon( FontAwesomeIcons.user,size: 20 ,color: Colors.black54,)),
+            Navigator.pushNamed(context,AppConstants.ShowUser_Profile);
+          },child: const FaIcon( FontAwesomeIcons.user,size: 20 ,color: Colors.black54,)),
           InkWell(  onTap: (){
 
-            Inboxlsit.Inboxrooms.forEach((element) {
+            for (var element in Inboxlsit.Inboxrooms) {
               if((element.userId.toString()==user.userinfo?.id.toString()&&element.senderId.toString()==user.userroominfo?.id.toString())||(element.userId.toString()==user.userroominfo?.id.toString()&&element.senderId.toString()==user.userinfo?.id.toString())){
                 Inboxlsit.changdefaultindex(value:element.id );
                 print('Found Found');
@@ -306,10 +300,10 @@ class RoomUserunchairProfile extends StatelessWidget {
                 Inboxlsit.changdefaultindex(value:0 );
                 print('NotFound');
               }
-            });
+            }
             Navigator.pop(context);
             Room. showSpinner28();
-          }, child:  FaIcon( FontAwesomeIcons.commenting,size: 20 ,color: Colors.black54,)),
+          }, child:  const FaIcon( FontAwesomeIcons.commenting,size: 20 ,color: Colors.black54,)),
           InkWell(  onTap: (){
             gits.GiftList.clear();
             gits. giftprice=0;
@@ -328,14 +322,14 @@ class RoomUserunchairProfile extends StatelessWidget {
               }
             });
             gits.Cost=0;
-            showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+            showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
               context: context,
               builder: (context) {
                 return const NestedTabBar();
               },
             );
 
-          },child: FaIcon( FontAwesomeIcons.gift,size: 20 ,color: Colors.black54,)),
+          },child: const FaIcon( FontAwesomeIcons.gift,size: 20 ,color: Colors.black54,)),
           InkWell(onTap: (){
 
             if((user.userinfo?.followIds?.contains(user.userroominfo?.id.toString()??'')??true)){
@@ -367,7 +361,7 @@ class RoomUserunchairProfile extends StatelessWidget {
             Room.Message.text='@ ${user.userroominfo?.name }';
             Dialogs().showtoast('Mention');
 
-          },child: FaIcon( FontAwesomeIcons.at,size: 20 ,color: Colors.black54,)),
+          },child: const FaIcon( FontAwesomeIcons.at,size: 20 ,color: Colors.black54,)),
           if((Room.checkadmin(context: context)||(Room.Currentroom?.supervisorsId?.contains(user.userinfo?.id.toString())??false))&&!(Room.Currentroom?.supervisorsId?.contains(user.userroominfo?.id.toString())??false))
             if(user.userroominfo?.id!=Room.Currentroom?.adminId)InkWell(onTap: (){
             Navigator.pop(context);

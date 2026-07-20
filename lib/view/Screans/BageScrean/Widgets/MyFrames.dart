@@ -8,7 +8,7 @@ class FrameItem extends StatelessWidget {
   int   index1=100;
 
 
-  FrameItem(this.index1);
+  FrameItem(this.index1, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class FrameItem extends StatelessWidget {
       slivers: <Widget>[
 
         SliverGrid(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio:0.75, 
               mainAxisSpacing: 0,

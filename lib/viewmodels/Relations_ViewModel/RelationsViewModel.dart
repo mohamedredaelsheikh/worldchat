@@ -5,7 +5,6 @@ import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/util/helperclass.dart';
-import 'package:ahlachat/view/Screans/Family/SearchResults.dart';
 import 'package:ahlachat/view/Screans/RelationsScrean/UserRelationList.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:flutter/foundation.dart';
@@ -100,7 +99,7 @@ LeaveRelation({required id,required context})async{
     await Relationapi().GetUserRelation().then((value) {
       UserRelations=value;
       print(UserRelations.length);
-      navigateTo(context: context,screen: UserRelationResults());
+      navigateTo(context: context,screen: const UserRelationResults());
       DismissGlopalLoading();
     });
     notifyListeners();

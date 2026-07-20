@@ -13,7 +13,7 @@ class TopRowRankWidget extends StatelessWidget {
   Leaderboardusermodel? Leader;
   String image;
 
-  TopRowRankWidget({required this.Leader,required this.image});
+  TopRowRankWidget({super.key, required this.Leader,required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class TopRowRankWidget extends StatelessWidget {
       child: InkWell(onTap:() {
         if(Leader?.user?.id!=user.userinfo?.id){
           user.GetShoweduserProfile(Leader?.user);
-          navigateTo(context: context,screen: ShowUserProfile());
+          navigateTo(context: context,screen: const ShowUserProfile());
         }
 
 
@@ -42,15 +42,15 @@ class TopRowRankWidget extends StatelessWidget {
              ],),
            ),
 
-           SizedBox(height: 2,),
+           const SizedBox(height: 2,),
            Text(Helper().CutName(Leader?.user?.name??''),style: style7.copyWith(fontWeight: FontWeight.normal,fontSize: 10)),
-           SizedBox(height: 2,),
+           const SizedBox(height: 2,),
            Padding(
              padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 0),
              child: Row(mainAxisSize: MainAxisSize.min,
                children: [
                  Text( Helper().k_m_b_generator(int.parse(Leader?.coins??''))  ,style: style7.copyWith(height: 1,fontSize:10)),
-                 SizedBox(width: 5,),
+                 const SizedBox(width: 5,),
                  Image.asset(Images.coins,width: 10),
                ],
              ),

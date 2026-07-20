@@ -26,7 +26,7 @@ class _EnterCodeSignUpState extends State<EnterCodeSignUp> with SingleTickerProv
 
 
 
-    SchedulerBinding.instance?.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
 
       Provider.of<LoginViewmodel>(context,listen: false).UpdateUsernameComp(name:null );
       Gmail=null;
@@ -37,7 +37,7 @@ class _EnterCodeSignUpState extends State<EnterCodeSignUp> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
-    return Scaffold(appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black45),),
+    return Scaffold(appBar: AppBar(centerTitle: true,automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black45),),
 
 
         body: SingleChildScrollView(
@@ -57,7 +57,7 @@ class _EnterCodeSignUpState extends State<EnterCodeSignUp> with SingleTickerProv
                   animationType: AnimationType.fade,
                   pinTheme: PinTheme(borderWidth: 0.0,
                     shape: PinCodeFieldShape.box,
-                    fieldOuterPadding:EdgeInsets.symmetric(horizontal: 3),
+                    fieldOuterPadding:const EdgeInsets.symmetric(horizontal: 3),
                     activeColor: Colors.black54,borderRadius: BorderRadius.circular(10),
                     selectedColor:MainColor,
                     inactiveColor: Colors.black54,
@@ -65,7 +65,7 @@ class _EnterCodeSignUpState extends State<EnterCodeSignUp> with SingleTickerProv
                     fieldWidth: SizeConfig.TenSize!*4.5,
                     activeFillColor: Colors.black12,
                   ),
-                  animationDuration: Duration(milliseconds: 300),
+                  animationDuration: const Duration(milliseconds: 300),
                   cursorColor: Colors.black87,
                   enablePinAutofill: true,
                   enableActiveFill: false,mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -104,7 +104,7 @@ class _EnterCodeSignUpState extends State<EnterCodeSignUp> with SingleTickerProv
                     }}
                   } ,
                   child: Center(child: Container(
-                    decoration: BoxDecoration(color:user.sendcodestate!=0?Color(0xFF1878f3).withOpacity(0.8):Colors.black12,borderRadius: BorderRadius.circular(25)),
+                    decoration: BoxDecoration(color:user.sendcodestate!=0?const Color(0xFF1878f3).withValues(alpha: 0.8):Colors.black12,borderRadius: BorderRadius.circular(25)),
                     width: SizeConfig.screenWidth!,
                     height:  SizeConfig.TenSize!*4.4,
                     child: Center(child: Text(getLang(context: context, key: "Next"),style: style1,)),

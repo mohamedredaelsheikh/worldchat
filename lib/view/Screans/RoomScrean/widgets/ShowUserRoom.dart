@@ -31,9 +31,9 @@ class ShowGiftRoom extends StatelessWidget {
                     children: [
                       InkWell(onTap: (){
                        Navigator.pop(context);
-                      },child: Icon(Icons.cancel_outlined,color: whitecolor2,)),
+                      },child: const Icon(Icons.cancel_outlined,color: whitecolor2,)),
                       Text( getLang(context: context,key: "gifts"),style: style6.copyWith(fontSize: 16,color: whitecolor2)),
-                      Opacity(opacity: 0,child: Icon(Icons.cancel_outlined,)),
+                      const Opacity(opacity: 0,child: Icon(Icons.cancel_outlined,)),
 
                     ],
                   ),
@@ -64,10 +64,10 @@ class ShowGiftRoom extends StatelessWidget {
 
 
                 ),
-                Container(height:  (SizeConfig.screenHeight!/2),
+                SizedBox(height:  (SizeConfig.screenHeight!/2),
                   child: TabBarView(children: [
                     GridView.builder(
-                        gridDelegate:    SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:    const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount:4,
                             childAspectRatio:0.9,
                             mainAxisSpacing: 5,
@@ -95,7 +95,7 @@ class ShowGiftRoom extends StatelessWidget {
                           );
                         }),
                     GridView.builder(
-                        gridDelegate:    SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:    const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount:4,
                             childAspectRatio:0.9,
                             mainAxisSpacing: 5,

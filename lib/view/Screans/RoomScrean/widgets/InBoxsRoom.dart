@@ -17,7 +17,7 @@ class InBoxRoom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    return Container(decoration: BoxDecoration(color: whitecolor,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!/2,width: SizeConfig.screenWidth!,
+    return Container(decoration: const BoxDecoration(color: whitecolor,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),height: SizeConfig.screenHeight!/2,width: SizeConfig.screenWidth!,
         child:Column(
           children: [
             InkWell(onTap: (){
@@ -33,14 +33,14 @@ class InBoxRoom extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: InkWell(onTap: (){
                       Navigator.pop(context);
-                      },child: Icon(Icons.cancel,size: 30,color:  whitecolor,)),
+                      },child: const Icon(Icons.cancel,size: 30,color:  whitecolor,)),
                     ),
                     Text(getLang(context: context, key: "Chat_List"),style: style2.copyWith(color: whitecolor),),
 
                   ],
                 ),
               ),
-            ) ,decoration: BoxDecoration(color: Colors.grey.shade300,borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),)),
+            ) ,decoration: BoxDecoration(color: Colors.grey.shade300,borderRadius: const BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20) )),)),
             Expanded(child: MessageScrean(kind: 0,)),
           ],
         ),

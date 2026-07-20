@@ -18,7 +18,7 @@ class ChatReversedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context,listen: true);
     return Portal(
       child: Container(color: Colors.transparent,
         child: Column(
@@ -29,7 +29,7 @@ class ChatReversedList extends StatelessWidget {
 
 
             Container(height: 100,color: Colors.transparent,
-              child: ListView(physics: NeverScrollableScrollPhysics(),
+              child: ListView(physics: const NeverScrollableScrollPhysics(),
                 reverse: true,
                 shrinkWrap: true,
                 children: <Widget>[
@@ -72,8 +72,8 @@ print(Room.Message.text);
 }
                             }
                             Room.Message.clear();
-                          }, child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          }, child: const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Icon(Icons.send_outlined,color: MainColor),
                           )),
                         ],
@@ -81,7 +81,7 @@ print(Room.Message.text);
                           mentions: [
                             Mention(
                                 trigger: '@',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.amber,
                                 ),
                                 data:  Room.ChairMaps,

@@ -19,11 +19,11 @@ class PayPalPackage {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['coins'] = this.coins;
-    data['price'] = this.price;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['coins'] = coins;
+    data['price'] = price;
+    data['status'] = status;
     return data;
   }
 }

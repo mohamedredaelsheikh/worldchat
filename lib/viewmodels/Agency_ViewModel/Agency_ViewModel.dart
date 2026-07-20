@@ -101,7 +101,7 @@ class AagencyViewModel extends ChangeNotifier{
     await Agencyapi().SearchAgency(tittle: text).then((value) {
       Searchagency=value;
 
-      navigateTo(context: context,screen: SearchAgencyResults());
+      navigateTo(context: context,screen: const SearchAgencyResults());
       DismissGlopalLoading();
     });
     notifyListeners();
@@ -254,9 +254,9 @@ Dialogs().showtoast(getLang(context: context,key: "Sorry"));
     showSpinner2();
     await Agencyapi().AddmoreAgency(context).then((value) {
        
-      value.forEach((element) {
+      for (var element in value) {
         Agences.add(element);
-      });
+      }
 
       HiddenSpinner2();
     });
@@ -267,9 +267,9 @@ Dialogs().showtoast(getLang(context: context,key: "Sorry"));
 
     await Agencyapi().AddmoreAgencyMembers(context,Agencyinfo?.id).then((value) {
        
-      value.forEach((element) {
+      for (var element in value) {
         useragincys.add(element);
-      });
+      }
       HiddenSpinner4();
 
     });

@@ -1,9 +1,7 @@
 import 'package:ahlachat/viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import 'package:circular_countdown/circular_countdown.dart';
 import 'package:flutter/material.dart';
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/Localization.dart';
-import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
 
@@ -23,7 +21,6 @@ class SideSliders extends StatelessWidget {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
     GiftsViewModel gits = Provider.of<GiftsViewModel>(context, listen: true);
 
-    var wait=5;
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,7 +28,7 @@ class SideSliders extends StatelessWidget {
         children: [
           Room.waitingtimer2? Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Container(width: 30,height: 30,
+            child: SizedBox(width: 30,height: 30,
               child: TimeCircularCountdown(
                 unit: CountdownUnit.second,
                 shouldDowngradeUnit: false,
@@ -48,7 +45,7 @@ class SideSliders extends StatelessWidget {
                 },
               ),
             ),
-          ):SizedBox(),
+          ):const SizedBox(),
 
           InkWell(onTap: (){
 
@@ -56,7 +53,7 @@ class SideSliders extends StatelessWidget {
                 backgroundColor: Colors.transparent, isScrollControlled: true,
                 context: context,
                 builder: (context) {
-                  return Container(height: 600,child: WebViewRollet(name: getLang( context: context, key: "Terms_Service"), link: 'https://spinner.hakini.live/?token=${user.userinfo?.rememperToken}',));
+                  return SizedBox(height: 600,child: WebViewRollet(name: getLang( context: context, key: "Terms_Service"), link: 'https://spinner.hakini.live/?token=${user.userinfo?.rememperToken}',));
                 });
           },child: Image.asset(Images.Rollet,height: 60, width: 60,)),
 
@@ -78,7 +75,7 @@ class SideSliders extends StatelessWidget {
                 Room. UserIds.clear();
                 gits.GiftList.clear();
                 gits.Cost=0;
-                showModalBottomSheet(barrierColor:Colors.transparent,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                showModalBottomSheet(barrierColor:Colors.transparent,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                   context: context,
                   builder: (context) {
                     return const LuckyTabBar();

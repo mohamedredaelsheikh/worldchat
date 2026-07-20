@@ -52,11 +52,11 @@ await Recorder.openRecorder();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,child: Column(
+       body: SizedBox(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,child: Column(
          mainAxisAlignment: MainAxisAlignment.center,
          crossAxisAlignment: CrossAxisAlignment.center,
          children: [
-           ElevatedButton(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(!record?Colors.blue:Colors.red) ),onPressed: () {
+           ElevatedButton(style: ButtonStyle(backgroundColor: WidgetStateProperty.all(!record?Colors.blue:Colors.red) ),onPressed: () {
              if(!record){
                startrecord();
              }else{

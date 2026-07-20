@@ -63,9 +63,9 @@ class VipModel {
     cost = json['cost'];
     specialID = json['SpecialID'];
     profileEntry = json['ProfileEntry']==null?null:AppConstants.Image_URL+json['ProfileEntry'];
-    bubbles=json['ProfileEntry']==null?null:json['ProfileEntry'];
-    coloredMessage = json['ColoredMessage']==null?null: json['ColoredMessage'];
-    hidden = json['Hidden']==null?null: json['Hidden'];
+    bubbles=json['ProfileEntry'];
+    coloredMessage = json['ColoredMessage'];
+    hidden = json['Hidden'];
 
     day=json['days'];
     createdAt = json['created_at'];
@@ -73,22 +73,22 @@ class VipModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['Gif'] = this.gif;
-    data['name'] = this.name;
-    data['status'] = this.status;
-    data['vipicon'] = this.vipicon;
-    data['Entry'] = this.urlentry;
-    data['Frame'] = this.urlframe;
-    data['Level'] = this.level;
-    data['background_image'] =this.backgroundimage;
-    data['SpecialID'] = this.specialID;
-    data['ProfileEntry'] = this.profileEntry;
-    data['ColoredMessage'] = this.coloredMessage;
-    data['Hidden'] = this.hidden;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['Gif'] = gif;
+    data['name'] = name;
+    data['status'] = status;
+    data['vipicon'] = vipicon;
+    data['Entry'] = urlentry;
+    data['Frame'] = urlframe;
+    data['Level'] = level;
+    data['background_image'] =backgroundimage;
+    data['SpecialID'] = specialID;
+    data['ProfileEntry'] = profileEntry;
+    data['ColoredMessage'] = coloredMessage;
+    data['Hidden'] = hidden;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

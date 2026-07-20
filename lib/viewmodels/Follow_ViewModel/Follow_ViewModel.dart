@@ -14,7 +14,6 @@ import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../models/Visitors.dart';
 
 class FollowViewModel extends ChangeNotifier {
 bool fanspanner=false;

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:ahlachat/Repositores/Shop_repositores/ShopRepository.dart';
 import 'package:dio/dio.dart';
@@ -43,9 +42,9 @@ List<Shop> AllShop=[];
     
    List list =response2.data['ShopCategory'] ;
  
-  list.forEach((element) {
+  for (var element in list) {
   AllShop.add(Shop.fromJson(element));
-  });
+  }
  
       }
     } catch (e) {
@@ -69,7 +68,7 @@ List<Shop> AllShop=[];
     bool check=false;
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "item_id": itemId.toString(),
         "user_id": UserId.toString(),
         "day": day.toString(),
@@ -107,7 +106,7 @@ List<Shop> AllShop=[];
     bool check=false;
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "item_id": itemId.toString(),
         "user_id": UserId.toString(),
         "reciver":userid.toString(),
@@ -140,7 +139,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
         "frame": Frame.toString(),
@@ -179,7 +178,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
         "frame": Frame.toString(),
@@ -217,7 +216,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
         "frame": Frame.toString(),
@@ -255,7 +254,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
 
@@ -294,7 +293,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
         "entry": Entry.toString(),
@@ -333,7 +332,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
 
@@ -372,7 +371,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
 
@@ -410,7 +409,7 @@ List<Shop> AllShop=[];
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
 
@@ -451,9 +450,9 @@ List<Shop> AllShop=[];
       );
       if (response2.statusCode == 200) {
           List list =response2.data['MyitemsCategory'] ;
-         list.forEach((element) {
+         for (var element in list) {
           AllMyItems.add(Salesmodel.fromJson(element));
-         });
+         }
  
       }
     } catch (e) {

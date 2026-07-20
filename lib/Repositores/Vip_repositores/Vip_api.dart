@@ -3,13 +3,11 @@ import 'package:ahlachat/models/MyVip.dart';
 import 'package:dio/dio.dart';
 
 import '../../models/VipModel.dart';
-import '../../util/Dialogs.dart';
 import '../../util/app_constants.dart';
 import '../Moment_repositores/Moment_repository.dart';
 
 
 class Vipapi extends MomentRepository {
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -36,9 +34,9 @@ class Vipapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data['Vip'];
 
-        list.forEach((element) {
+        for (var element in list) {
           Vips.add(VipModel.fromJson(element));
-        });
+        }
 
 
       }
@@ -60,9 +58,9 @@ class Vipapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data['MyVip'];
 
-        list.forEach((element) {
+        for (var element in list) {
           MyVips.add(MyVipmodel.fromJson(element));
-        });
+        }
 
 
       }

@@ -35,7 +35,6 @@ int ?ginder;
   void initState() {
 if(mounted){
   LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: false);
-  var info=user.userinfo;
   Description=user.userinfo?.description;
   Username=user.userinfo?.name;
   Password=user.userinfo?.password;
@@ -61,18 +60,19 @@ if(mounted){
 
     });
   }
+  // ignore: unused_element
   void _showDatePickers(ctx) {
-    LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: false);
+    Provider.of<LoginViewmodel>(context, listen: false);
     FocusScope.of(context).unfocus();
 
     showCupertinoModalPopup(
         context: ctx,
         builder: (_) => Container(
           height:SizeConfig.screenHeight!* 0.48366,
-          color: Color.fromARGB(255, 255, 255, 255),
+          color: const Color.fromARGB(255, 255, 255, 255),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height:SizeConfig.screenHeight!* 0.392,
                 child: CupertinoDatePicker(mode: CupertinoDatePickerMode.date,
                        initialDateTime:  DateTime(int.parse(year??'2022'),int.parse(month??'2022'),int.parse(day??'2022')),
@@ -110,11 +110,11 @@ if(mounted){
        appBar: AppBar(centerTitle: false,
         elevation: 0,title: Text(getLang(context: context,key: "Edit_Profile"),style: style2.copyWith(fontSize: 17)),
         backgroundColor: whitecolor,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),),
 
-body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
+body: SizedBox(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
   child: Column(mainAxisAlignment: MainAxisAlignment.start,
 
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -132,7 +132,7 @@ body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
                         user.userinfo?.image??'')
                         : FileImage(user.Edimage) as ImageProvider),
               ),
-              CircleAvatar(radius: 15,backgroundColor: MainColor,child: Icon(Icons.camera_alt,color: Colors.white,size: 15),)
+              const CircleAvatar(radius: 15,backgroundColor: MainColor,child: Icon(Icons.camera_alt,color: Colors.white,size: 15),)
             ],
           )),
       const SizedBox(
@@ -147,7 +147,7 @@ body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
           ),
           Expanded(
             child: Container(height: 40,
-              decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(0.1),borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: 0.1),borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
@@ -179,7 +179,7 @@ body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
           ),
           Expanded(
             child: Container(height: 40,
-              decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(0.1),borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: 0.1),borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
@@ -217,7 +217,7 @@ body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
 
             setState(() {});
           },
-            child: Container( width: 120,decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(ginder == 1?1:0.1),borderRadius: BorderRadius.circular(20)),
+            child: Container( width: 120,decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: ginder == 1?1:0.1),borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
                 child: Center(
@@ -237,7 +237,7 @@ body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
             ginder = 0;
             setState(() {});
           },
-            child: Container(width: 120, decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(ginder == 0?1:0.1),borderRadius: BorderRadius.circular(20)),
+            child: Container(width: 120, decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: ginder == 0?1:0.1),borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
                 child: Center(
@@ -264,7 +264,7 @@ body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
           ),
           Expanded(
             child: Container(height: 40,
-              decoration: BoxDecoration( color: Color(0xFF1878f3).withOpacity(0.1),borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration( color: const Color(0xFF1878f3).withValues(alpha: 0.1),borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
@@ -296,14 +296,14 @@ body: Container(height: SizeConfig.screenHeight,width: SizeConfig.screenWidth,
           )
         ],
       ),
-     Spacer(),
+     const Spacer(),
 
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: InkWell(onTap: (){
           print(user.userinfo?.rememperToken);
           print(Token);
-          if(Username?.length==0){
+          if(Username?.isEmpty ?? false){
             Dialogs().showtoast(getLang(context: context, key: "required"));
           }else {
             user.updateNormalProfile(context: context,Password: Password,token: Token,name:Username,Description: Description,PhoneNumber: PhoneNumber,City:City,year: year,month: month,day: day,ginder:ginder,FlagCITY:Flag);

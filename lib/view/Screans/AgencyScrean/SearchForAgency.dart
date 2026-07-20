@@ -1,14 +1,12 @@
 import 'package:ahlachat/viewmodels/Agency_ViewModel/Agency_ViewModel.dart';
-import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
-import 'package:ahlachat/viewmodels/Family_ViewModel/Family_ViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:ahlachat/util/styles.dart';
-import 'package:ahlachat/viewmodels/Animated_Viewmodel/ElementViewModel.dart';
-import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class SearchAgencyScrean extends StatefulWidget {
+  const SearchAgencyScrean({super.key});
+
   @override
   State<SearchAgencyScrean> createState() => _SearchAgencyScreanState();
 }
@@ -25,7 +23,7 @@ class _SearchAgencyScreanState extends State<SearchAgencyScrean> {
 
     return Scaffold(
         appBar: AppBar(  leading: IconButton(
-          icon: Icon(Icons.navigate_before, color: Colors.black),
+          icon: const Icon(Icons.navigate_before, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ), title:   Text('Search Agency',style: style4.copyWith(height: 1,color: Colors.black87,fontWeight: FontWeight.normal)),centerTitle: false),
         body:DefaultTabController(length: 1, child: Column(mainAxisAlignment: MainAxisAlignment.start,
@@ -42,7 +40,7 @@ class _SearchAgencyScreanState extends State<SearchAgencyScrean> {
                 isScrollable: true,controller: Tabcontroller,
                 labelStyle: style2.copyWith(fontSize: 13),
                 unselectedLabelColor: Colors.black45,
-                labelColor: Colors.black,indicatorPadding:EdgeInsets.symmetric(horizontal: 20) ,
+                labelColor: Colors.black,indicatorPadding:const EdgeInsets.symmetric(horizontal: 20) ,
                 onTap: (val){
                 },
                 tabs: const [
@@ -71,13 +69,13 @@ class _SearchAgencyScreanState extends State<SearchAgencyScrean> {
                         }
                         print('asdas');
                       },
-                      decoration:   InputDecoration(suffixIcon:FamilySearchController.text==''?SizedBox():  InkWell(onTap: () {
+                      decoration:   InputDecoration(suffixIcon:FamilySearchController.text==''?const SizedBox():  InkWell(onTap: () {
                         FamilySearchController.clear();
                         setState(() {
 
                         });
-                      },child: Icon(Icons.clear,color: Colors.black45,size: 22)),  prefixIcon:  Icon(Icons.search_outlined,color: Colors.black45,size: 22),
-                        hintText: "Agency ID or Name",hintStyle: TextStyle(fontSize: 16 ,color: Colors.black45) ,border: InputBorder.none,
+                      },child: const Icon(Icons.clear,color: Colors.black45,size: 22)),  prefixIcon:  const Icon(Icons.search_outlined,color: Colors.black45,size: 22),
+                        hintText: "Agency ID or Name",hintStyle: const TextStyle(fontSize: 16 ,color: Colors.black45) ,border: InputBorder.none,
                       ),
                     ),
 

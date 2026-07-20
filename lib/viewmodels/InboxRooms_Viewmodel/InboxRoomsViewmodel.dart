@@ -4,15 +4,12 @@ import 'package:ahlachat/Repositores/Moment_repositores/Moment_api.dart';
 import 'package:ahlachat/models/Usermodel.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ahlachat/Repositores/Chat_repositores/Chat_api.dart';
 
 import 'package:ahlachat/models/Inboxroom.dart';
 
 import 'package:ahlachat/models/MessageModel.dart';
-import 'package:ahlachat/util/Dialogs.dart';
-import 'package:ahlachat/util/Localization.dart';
 
 import 'package:ahlachat/util/app_constants.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -187,7 +184,6 @@ if(value.inboxroomId==user.ChatRoom?.id){
     notifyListeners();
   }
 ReadInboxRoom({id,context})async{
-  Inboxrooms.where((element) => element.id==id).first!=0;
   inroomid=id;
   print(inroomid);
   await Chatapi().ReadInboxRoom(InboxRoom:inroomid ,context:context ).then((value) {

@@ -33,7 +33,7 @@ ShowMessage({name, message}){
     primaryColor:  Colors.white,
     secondaryColor:  MainColor,
     backgroundType:  BackgroundType.lighter,
-    title:  Text(name),  iconSize: 25,toastDuration: Duration(seconds:2),animationDuration:Duration(seconds: 1) ,
+    title:  Text(name),  iconSize: 25,toastDuration: const Duration(seconds:2),animationDuration:const Duration(seconds: 1) ,
     description:  Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Text(message,style: style2),
@@ -279,13 +279,13 @@ ShowMessage({name, message}){
       },);
     }
     return showCupertinoDialog(context: context,builder: (contexts) {
-      return CupertinoAlertDialog(title: Text(''),content:Text(content),actions: [
+      return CupertinoAlertDialog(title: const Text(''),content:Text(content),actions: [
         Row(children: [
           CupertinoDialogAction(onPressed: (){
 
             Navigator.pop(contexts,true);
 
-          }, child: Text('')),
+          }, child: const Text('')),
         ],)
       ],);
     },);
@@ -301,13 +301,13 @@ ShowMessage({name, message}){
       },);
     }
     return showCupertinoDialog(context: context,builder: (contexts) {
-      return CupertinoAlertDialog(title: Text(''),content:Text(content),actions: [
+      return CupertinoAlertDialog(title: const Text(''),content:Text(content),actions: [
         Row(children: [
           CupertinoDialogAction(onPressed: (){
 
             Navigator.pop(contexts,true);
 
-          }, child: Text('')),
+          }, child: const Text('')),
         ],)
       ],);
     },);
@@ -351,12 +351,12 @@ ShowMessage({name, message}){
         context: context,
         builder: (_) => AlertDialog(
           backgroundColor: Colors.transparent,
-           content: Container(height: 300,width: 250,child: Column(mainAxisSize: MainAxisSize.min,
+           content: SizedBox(height: 300,width: 250,child: Column(mainAxisSize: MainAxisSize.min,
 mainAxisAlignment: MainAxisAlignment.start,
              crossAxisAlignment: CrossAxisAlignment.start,
              children: [
-               InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20) ),child: Padding(
-                 padding: const EdgeInsets.all(8.0),
+               InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20) ),child: const Padding(
+                 padding: EdgeInsets.all(8.0),
                  child: Icon(Icons.cancel_outlined,color: whitecolor),
                ))),
       Align(alignment: Alignment.center,child: CircleAvatar(backgroundColor: Colors.transparent,foregroundColor: Colors.black87,radius: 80, child:
@@ -376,15 +376,15 @@ mainAxisAlignment: MainAxisAlignment.start,
         context: context,
         builder: (_) => AlertDialog(
           backgroundColor: Colors.transparent,
-          content: Container(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
+          content: SizedBox(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.cancel_outlined,color: whitecolor),
               ))),
-Container(height: 350,
+SizedBox(height: 350,
  child:   SVGASimpleImage(resUrl:svga)
 ),
             ],
@@ -407,20 +407,20 @@ Container(height: 350,
              // user.ByeVip(context: context,vip: Vips.Vips[index]);
             },child: Center(child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(child: Center(child:  Text(getLang(context: context, key: "Yes"),style: style6.copyWith(fontSize: 20),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFeae2be))),
+              child: Container(child: Center(child:  Text(getLang(context: context, key: "Yes"),style: style6.copyWith(fontSize: 20),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: const Color(0xFFeae2be))),
             ))),
 
            ],
-          backgroundColor: Color(0xFF2b2f3b),
-          content: Container(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
+          backgroundColor: const Color(0xFF2b2f3b),
+          content: SizedBox(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.cancel_outlined,color: whitecolor),
               ))),
-              Container(height: 350,
+              SizedBox(height: 350,
                   child:   SVGASimpleImage(resUrl:svga)
               ),
             ],
@@ -454,7 +454,7 @@ Container(height: 350,
       },);
     }
     return showCupertinoDialog(context: context,builder: (contexts) {
-      return CupertinoAlertDialog(title: Text('tittle'),content:Text('content'),actions: [
+      return CupertinoAlertDialog(title: const Text('tittle'),content:const Text('content'),actions: [
         Row(children: [
           CupertinoDialogAction(onPressed: (){
 

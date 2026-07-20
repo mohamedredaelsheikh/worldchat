@@ -21,9 +21,6 @@ import 'package:ahlachat/view/Screans/RoomScrean/widgets/SentGift/SentGift.dart'
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/UserChairs/UserChairs.dart';
 import 'package:ahlachat/viewmodels/RoomPlay_ViewModel/RoomPlayViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
-import 'package:lottie/lottie.dart';
-import 'package:motion_toast/motion_toast.dart';
-import 'package:motion_toast/resources/arrays.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/ChatWedget.dart';
@@ -31,7 +28,6 @@ import 'package:ahlachat/view/Screans/RoomScrean/widgets/Headwidget.dart';
 
 import 'package:svgaplayer_flutter/svgaplayer_flutter.dart';
 import 'package:timer_count_down/timer_count_down.dart';
-import '../../../util/helperclass.dart';
 import '../../../util/styles.dart';
 import '../../../viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 class RoomScrean extends StatefulWidget {
@@ -92,7 +88,7 @@ class _RoomScreanState extends State<RoomScrean> with TickerProviderStateMixin ,
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-           Container(width: SizeConfig.screenWidth!,height: SizeConfig.screenHeight!,child:CachedNetworkImage (
+           SizedBox(width: SizeConfig.screenWidth!,height: SizeConfig.screenHeight!,child:CachedNetworkImage (
             imageUrl:Room.Currentroom?.animateimage??'',height: SizeConfig.screenHeight!,width: SizeConfig.screenWidth!,fit: BoxFit.cover,)),
 
             Padding(
@@ -106,7 +102,7 @@ class _RoomScreanState extends State<RoomScrean> with TickerProviderStateMixin ,
                     Expanded(
                     child: Row(crossAxisAlignment: CrossAxisAlignment.end,
                       children:  [
-                     chatRoom(),
+                     const chatRoom(),
 
                         if(Room.checkadmin(context: context)||(Room.Currentroom?.supervisorsId?.contains(user.userinfo?.id.toString())??false))    Padding(
                            padding: const EdgeInsets.only(bottom: 20),
@@ -114,17 +110,17 @@ class _RoomScreanState extends State<RoomScrean> with TickerProviderStateMixin ,
                              children: [
                          if(user.Newmessage)   InkWell(onTap: (){
                                  Provider.of<InboxroomViewModel>(context,listen: false).GetInboxroom(context: context);
-                                 showModalBottomSheet(backgroundColor: Colors.white,isScrollControlled: false, barrierColor:Colors.black.withAlpha(1), shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                                 showModalBottomSheet(backgroundColor: Colors.white,isScrollControlled: false, barrierColor:Colors.black.withAlpha(1), shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                                    context: context,
                                    builder: (context) {
                                      return  MessageScrean();
                                    },
                                  );
                                  user.changeNewmessage(false);
-                               },child: Container(height: 40,width: 40,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image:DecorationImage(image:  ExactAssetImage('assets/image/ezgif.com-crop.gif'))),)),
-SizedBox(height: 10,),
+                               },child: Container(height: 40,width: 40,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image:const DecorationImage(image:  ExactAssetImage('assets/image/ezgif.com-crop.gif'))),)),
+const SizedBox(height: 10,),
                                InkWell(onTap: () { 
-                                 showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                                 showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                                    context: context,
                                    builder: (context) {
                                      return const MusicPlayerRoom();
@@ -134,7 +130,7 @@ SizedBox(height: 10,),
                              ],
                            ),
                          ),
-                        SizedBox(width: 10,)
+                        const SizedBox(width: 10,)
                       ],
                     ),
                  ),
@@ -144,9 +140,9 @@ SizedBox(height: 10,),
             ),
             const EntryShow(),
             const GiftShow(),
-         if(Room.selected)   Positioned(top: 100,child: EnterAnimateWidget()),
+         if(Room.selected)   const Positioned(top: 100,child: EnterAnimateWidget()),
 
-            GlopalGiftWidget(),
+            const GlopalGiftWidget(),
             AnimatedPositioned(
               width: Provider.of<GiftsViewModel>(context, listen: false).GlobalLuckystate?500:0  ,
               height: 100.0  ,
@@ -159,7 +155,7 @@ SizedBox(height: 10,),
                 }
               },
               child:InkWell(onTap: () {
-                if(GlopalGift.GlopelLuckyRoomid==Room.Currentroom?.id.toString()){
+                if(GlopalGift.GlopelLuckyRoomid.toString()==Room.Currentroom?.id.toString()){
 
                 }else{
                   Room.EnterRoom2(context: context,id: GlopalGift.GlopelLuckyRoomid);
@@ -176,7 +172,7 @@ SizedBox(height: 10,),
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
                           CircleAvatar(backgroundColor: Colors.transparent,radius:20,backgroundImage: CachedNetworkImageProvider(  GlopalGift.SenderLucky?.image??Images.userphoto),),
-                          SizedBox(width: 5,),
+                          const SizedBox(width: 5,),
                           Column(mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -184,39 +180,39 @@ SizedBox(height: 10,),
                               Text(" ضرب كيس حظ في ${GlopalGift.GlopelLuckyRoomname}",style: style1.copyWith(fontSize: 12),textDirection: TextDirection.rtl, ),
                             ],
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           Image.asset(Images.LuckyPrize,height: 70,)
                         ],
                       ),
-                    ),decoration:BoxDecoration( image: DecorationImage(image: ExactAssetImage('assets/image/d6.png'),fit: BoxFit.cover), borderRadius:  BorderRadius.circular(0)), ),
+                    ),decoration:BoxDecoration( image: const DecorationImage(image: ExactAssetImage('assets/image/d6.png'),fit: BoxFit.cover), borderRadius:  BorderRadius.circular(0)), ),
                   )),
                 ),
               ),
             ),
-            if(Room.guesses.isNotEmpty)GeussRoomWidget(),
+            if(Room.guesses.isNotEmpty)const GeussRoomWidget(),
 
             const SendGift(),
             if (!Room.showloading7) const  SizedBox() else
             const   ChatReversedList(),
-            if(Room.Combowin.length!=0)      Align(alignment: Alignment.topCenter,child: Padding(
+            if(Room.Combowin.isNotEmpty)      Align(alignment: Alignment.topCenter,child: Padding(
               padding: const EdgeInsets.only(top: 120),
               child: Stack(alignment: Alignment.center,children: [
                 Image.asset('assets/image/ic_lucky_new_bg.png',height: 160),
                 Column(mainAxisSize: MainAxisSize.min,children: [
-                  Text('فوز',style: TextStyle(color: Colors.yellow,fontSize: 25,height: 0),),
-                  SizedBox(height:   10,),
+                  const Text('فوز',style: TextStyle(color: Colors.yellow,fontSize: 25,height: 0),),
+                  const SizedBox(height:   10,),
                   Row(mainAxisSize: MainAxisSize.min,children: [
                     Image.asset(Images.coins,height: 18),
-                    SizedBox(width: 3,),
+                    const SizedBox(width: 3,),
                     Text(Room.Combowin.first['amount'].toString(),style: style1.copyWith(fontSize: 22,color: Colors.yellow),),
 
                   ],),
-                  Text(' تهانينك علي فوزك 0.${Room.Combowin.first['persantage'].toString()} اضعاف العائد',style: TextStyle(color: Colors.white,fontSize: 9),),
+                  Text(' تهانينك علي فوزك 0.${Room.Combowin.first['persantage'].toString()} اضعاف العائد',style: const TextStyle(color: Colors.white,fontSize: 9),),
 
                 ],)
               ],),
             )),
-            if(Room.Combouser.length!=0)
+            if(Room.Combouser.isNotEmpty)
               Directionality(textDirection: TextDirection.ltr,
                 child: Align(alignment: Alignment.centerLeft,child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -228,7 +224,7 @@ SizedBox(height: 10,),
                               CircleAvatar(backgroundImage: CachedNetworkImageProvider( Room.Combouser[index]['image']??"",)),
                               Text('ارسل',style: style1),
                               CachedNetworkImage(imageUrl: Room.Combouser[index]['imagegift']??"",width: 60,height: 60),
-                              Text('X'+'${ Room.Combouser[index]['count']}',style: style1.copyWith(fontSize: 25,color: Colors.yellow)),
+                              Text('X''${ Room.Combouser[index]['count']}',style: style1.copyWith(fontSize: 25,color: Colors.yellow)),
 
                             ],
                           ),
@@ -266,12 +262,12 @@ SizedBox(height: 10,),
                         seconds: 5,
                         build: (_, double time) => Text(
                           time.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20,
                               color: Colors.white,fontWeight: FontWeight.bold
                           ),
                         ),
-                        interval: Duration(milliseconds: 100),
+                        interval: const Duration(milliseconds: 100),
                         onFinished: () {
 
                           Room.HideLuckyCombo();
@@ -287,7 +283,7 @@ SizedBox(height: 10,),
 
          if(user.Luckypackages.isNotEmpty)   InkWell(onTap: () {
        user.AcceptLuckyPackage(Roomid: Room.Currentroom?.id,context: context,Luckyid:user.Luckypackages.first['id'] );
-            },child: SVGASimpleImage(assetsName:'assets/image/1665252390.svga',)),
+            },child: const SVGASimpleImage(assetsName:'assets/image/1665252390.svga',)),
           ],
         ),
       ),

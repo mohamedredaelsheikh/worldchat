@@ -2,21 +2,17 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:ahlachat/Repositores/user_repositores/user_repository.dart';
 import 'package:ahlachat/models/Inboxroom.dart';
 import 'package:ahlachat/models/UsarImages.dart';
-import 'package:ahlachat/models/UserModels.dart';
 import 'package:ahlachat/view/Screans/Authentication/EnterCodeScrean/EnterCodeScrean.dart';
 import 'package:ahlachat/view/Screans/Authentication/LoginScrean/LoginScrean.dart';
-import 'package:ahlachat/view/Screans/RoomScrean/widgets/InBoxsRoom.dart';
 
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +34,6 @@ import '../../util/helperclass.dart';
 import '../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 
 class userapi extends UserRepository {
-  @override
   final _firebaseAuth = FirebaseAuth.instance;
 
   usermodel userinfo=usermodel() ;
@@ -143,9 +138,9 @@ int target=0;
       if (response2.statusCode == 200) {
         List list =response2.data['UserGifts'];
 
-        list.forEach((element) {
+        for (var element in list) {
           UserGifts.add(usergifts.fromJson(element));
-        });
+        }
 
 
       }
@@ -177,9 +172,9 @@ int target=0;
       if (response2.statusCode == 200) {
         List list =response2.data['UserNotifications'];
 
-        list.forEach((element) {
+        for (var element in list) {
           Notifications.add(Notificationmodel.fromJson(element));
-        });
+        }
 
 
       }
@@ -227,9 +222,9 @@ int target=0;
 
       if (response2.statusCode == 200) {
         List list =response2.data['users'];
-        list.forEach((element) {
+        for (var element in list) {
           Searchuser.add(usermodel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -364,7 +359,7 @@ int target=0;
   Future<bool> Removebubbles({context}) async {
     bool check=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
 
       });
@@ -438,7 +433,7 @@ int target=0;
   Future<bool> Updatebubbles({bubbles,context}) async {
     bool check=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "bubbles": bubbles.toString(),
       });
@@ -472,7 +467,7 @@ int target=0;
   Future<bool> updateColoredMessage({Color,context}) async {
     bool check=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "Color": Color.toString(),
       });
@@ -506,7 +501,7 @@ int target=0;
   Future<bool> setHidden({Hidden,context}) async {
     bool check=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "Hidden": Hidden.toString(),
       });
@@ -542,42 +537,38 @@ int target=0;
     try {
       final googleuser = GoogleSignIn();
       final signin = await googleuser.signIn();
-      if (googleuser != null) {
-        final googleAuth = await signin?.authentication;
-        if (googleAuth?.idToken != null) {
-          ShowGlopalLoading();
-          final usercredentioal = await _firebaseAuth
-              .signInWithCredential(GoogleAuthProvider.credential(
-            accessToken: googleAuth?.accessToken,
-            idToken: googleAuth?.idToken,
+      final googleAuth = await signin?.authentication;
+      if (googleAuth?.idToken != null) {
+        ShowGlopalLoading();
+        final usercredentioal = await _firebaseAuth
+            .signInWithCredential(GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
 
-          ));
+        ));
 
 
-          Gmail=usercredentioal.user?.email;
-          final ByteData imageData = await NetworkAssetBundle(Uri.parse(usercredentioal.user?.photoURL??'')).load("");
-          final Uint8List bytes = imageData.buffer.asUint8List();
-          ByteData byteData = ByteData.view(bytes.buffer);
-          var tempDir = await getTemporaryDirectory();
-          File file = await File('${tempDir.path}/img').writeAsBytes(bytes.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-          if(usercredentioal.user!=null){
-            Provider.of<LoginViewmodel>(context,listen: false).UpdateUsernameComp(name:usercredentioal.user?.displayName );
-            Provider.of<LoginViewmodel>(context,listen: false).updateComimage(image: file);
-           UserLoginGoogle(context: context ,email:usercredentioal.user?.email);
-          }
-          //Provider.of<LoginViewmodel>(context,listen: false).UserSocialRegester(context: context, uuid: usercredentioal.user!.uid,social: "2");
-
-        } else {
-//throw FirebaseAuthException(code: 'id tolen is null',message: 'id tolen is null');
-          print('=======================> id tolen is null');
+        Gmail=usercredentioal.user?.email;
+        final ByteData imageData = await NetworkAssetBundle(Uri.parse(usercredentioal.user?.photoURL??'')).load("");
+        final Uint8List bytes = imageData.buffer.asUint8List();
+        ByteData byteData = ByteData.view(bytes.buffer);
+        var tempDir = await getTemporaryDirectory();
+        File file = await File('${tempDir.path}/img').writeAsBytes(bytes.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+        if(usercredentioal.user!=null){
+          Provider.of<LoginViewmodel>(context,listen: false).UpdateUsernameComp(name:usercredentioal.user?.displayName );
+          Provider.of<LoginViewmodel>(context,listen: false).updateComimage(image: file);
+         UserLoginGoogle(context: context ,email:usercredentioal.user?.email);
         }
+        //Provider.of<LoginViewmodel>(context,listen: false).UserSocialRegester(context: context, uuid: usercredentioal.user!.uid,social: "2");
+
       } else {
-        //   throw FirebaseAuthException(code: 'id tolen is null',message: 'id tolen is null');
-        print('=======================>googleuser empty');
+//throw FirebaseAuthException(code: 'id tolen is null',message: 'id tolen is null');
+        print('=======================> id tolen is null');
       }
     } catch (e) {
       print(e);
     }
+    return null;
   }
 
 
@@ -586,7 +577,7 @@ int target=0;
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
 
         "user_id": UserId.toString(),
         "newid": newid.toString(),
@@ -620,6 +611,7 @@ int target=0;
 
     return check;
   }
+  @override
   Future<usermodel> UserLogin({Phonenumber, context}) async {
 
 
@@ -641,7 +633,7 @@ if(response2.data['users']!="E05"){
     Dialogs().showtoast('تم حظر هذا الحساب');
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
-    navigateTo(context: context, screen: LoginScrean());
+    navigateTo(context: context, screen: const LoginScrean());
   }else{
     Provider.of<LoginViewmodel>(context,listen: false).SendCodeRlogin(context: context,phonenumber: Phonenumber);
 
@@ -763,7 +755,7 @@ print(response2.data);
     final completer = Completer<AuthCredential>();
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phoneNumber,
-      timeout: Duration(seconds: 60),
+      timeout: const Duration(seconds: 60),
       verificationCompleted: completer.complete,
       verificationFailed: completer.completeError,
       codeAutoRetrievalTimeout: (verificationId) {
@@ -774,7 +766,7 @@ print(response2.data);
       },
     );
     try {
-      final credential = await completer.future;
+      await completer.future;
       return true;
     } catch (e) {
 
@@ -788,7 +780,7 @@ print(response2.data);
       Dialogs().showtoast(phonenumber.toString());
     //  _firebaseAuth.setSettings(appVerificationDisabledForTesting:false  );
       _firebaseAuth.verifyPhoneNumber(phoneNumber: phonenumber,
-          timeout: Duration(seconds:30),
+          timeout: const Duration(seconds:30),
           verificationCompleted: (AuthCredential credential) async{
             print(credential);
 
@@ -827,7 +819,7 @@ print(response2.data);
       // Provider.of<LoginViewmodel>(context,listen: false).hideSpinner();
       // DismissGlopalLoading();
       // Dialogs().showtoast(getLang( context: context, key: "Phone_valid"));
-    };
+    }
 
   }
   ReSendCodelogin({context,phonenumber}){
@@ -837,7 +829,7 @@ print(response2.data);
 
     try{
       _firebaseAuth.verifyPhoneNumber(phoneNumber: phonenumber,
-          timeout: Duration(seconds:30),
+          timeout: const Duration(seconds:30),
           verificationCompleted: (AuthCredential credential) async{
             print(credential);
             print('Code Is Recived');
@@ -867,14 +859,14 @@ print(response2.data);
     }catch(error){
       Provider.of<LoginViewmodel>(context,listen: false).hideSpinner();
       Dialogs().showtoast(getLang( context: context, key: "Phone_valid"));
-    };
+    }
 
   }
 
   EnterCodelogin({context,code,Phonenumber})async{
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: false);
 
-    AuthCredential credential = await PhoneAuthProvider.credential(verificationId:verificationid??'', smsCode:code);
+    AuthCredential credential = PhoneAuthProvider.credential(verificationId:verificationid??'', smsCode:code);
     _firebaseAuth.signInWithCredential(credential).then(( result){
        Provider.of<LoginViewmodel>(context,listen: false).UserLoginVerify(context: context,Parimater: Phonenumber);
        user.updatesendcodestate(value: 0);
@@ -892,7 +884,7 @@ print(response2.data);
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: false);
     print(verificationid);
     print(code);
-    AuthCredential credential = await PhoneAuthProvider.credential(verificationId:verificationid??'', smsCode:code);
+    AuthCredential credential = PhoneAuthProvider.credential(verificationId:verificationid??'', smsCode:code);
     _firebaseAuth.signInWithCredential(credential).then(( result){
       Navigator.pushReplacementNamed(context, AppConstants.CompleteSignUp_Screan);
       user.updatesendcodestate(value: 0);
@@ -914,7 +906,7 @@ print(response2.data);
    //   _firebaseAuth.setSettings(appVerificationDisabledForTesting:true,forceRecaptchaFlow:false  );
 
       _firebaseAuth.verifyPhoneNumber(phoneNumber: phonenumber,
-          timeout: Duration(seconds:30),
+          timeout: const Duration(seconds:30),
           verificationCompleted: (AuthCredential credential) async{
             print(credential);
             print('Code Is Recived');
@@ -954,7 +946,7 @@ print(response2.data);
       print('rwtvasd');
       Provider.of<LoginViewmodel>(context,listen: false).hideSpinner();
       Dialogs().showtoast(getLang( context: context, key: "Phone_valid"));
-    };
+    }
 
   }
 
@@ -964,7 +956,7 @@ print(response2.data);
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "vip_id": Vip?.id.toString(),
         "days": Vip?.day.toString(),
@@ -999,7 +991,7 @@ print(response2.data);
 
 
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "Myvip_id": Vip?.id.toString(),
       });
@@ -1060,7 +1052,7 @@ print(response2.data);
 
     bool remove=false;
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
         "Myvip_id": MyVip?.id.toString(),
       });
@@ -1083,7 +1075,7 @@ print(response2.data);
 
   Future<usermodel> CheckRegester({name, phone, context}) async {
     try {
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "name": name.toString(),
         "phone_number": phone.toString(),
       });
@@ -1115,7 +1107,7 @@ print(response2.data);
           "user_id":UserId.toString(),
           "notifi_token":notifitoken.toString(),
         };
-      FormData formData = new FormData.fromMap(map);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/Verifyaccount',
         data: formData,
@@ -1156,14 +1148,13 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
     return userinfo;
 
   }
-  @override
   Future<bool> SendReport({context,contact,feedback,feedback_type,contact_type,image})async{
 
     bool data=false;
     try {
 
 
-      var map;
+      Map<String, Object> map;
       if(image!=null){
         map= {
           "user_id": UserId.toString(),
@@ -1185,7 +1176,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
       }
       print('2222222222222222222222222222222222');
 
-      FormData formData = new FormData.fromMap(map);
+      FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         '/api/SendReport',
         data: formData,
@@ -1219,7 +1210,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
   List data=[];
     try {
 
-      FormData formData = new FormData.fromMap({
+      FormData formData = FormData.fromMap({
         "user_id": UserId.toString(),
 
       });
@@ -1233,13 +1224,13 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
 
         List list =response2.data['users']['giftssent'];
 
-        list.forEach((element){
+        for (var element in list) {
           giftssent.add(Gifts.fromJson(element));
-        });
+        }
         List list2 =response2.data['users']['giftscollect'];
-        list2.forEach((element){
+        for (var element in list2) {
           giftscollect.add(Gifts.fromJson(element));
-        });
+        }
 
 
         data.add(giftssent);
@@ -1327,6 +1318,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
   }
 
 
+  @override
   Future<usermodel> Userinfo({ context}) async {
 
 
@@ -1403,7 +1395,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
      print(name);
      print(City);
      print(ginder);  print(day);  print(year); print(month);print(Password);
-    var  map;
+    Map<String, dynamic>  map;
     if(Image!=null){
       map={
         "description": Description.toString(),
@@ -1434,10 +1426,10 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
       };
     }
 
-    map.removeWhere((key, value) => key == null || value == null||value==''||value=='null');
+    map.removeWhere((key, value) => value == null||value==''||value=='null');
 
     try {
-      FormData formData = new FormData.fromMap(map);
+      FormData formData = FormData.fromMap(map);
 
       Response response2 = await dio.post(
         'api/UpdateProfile',
@@ -1465,7 +1457,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
   }
   FutureUpdatephoto({photo ,context,token,avatar}) async {
 
-    var map;
+    Map<String, dynamic> map;
     if(photo!=null){
       map={
         "image": await MultipartFile.fromFile(photo?.path, filename: photo?.path?.split('/')?.last),
@@ -1476,9 +1468,9 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
       };
     }
     String image ='';
-    map.removeWhere((key, value) => key == null || value == null);
+    map.removeWhere((key, value) => value == null);
     try {
-      FormData formData = new FormData.fromMap(map);
+      FormData formData = FormData.fromMap(map);
 
       Response response2 = await dio.post(
         'api/Updatephoto',
@@ -1505,7 +1497,6 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
     return image;
   }
 
-  @override
 
 
 
@@ -1544,7 +1535,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
     try{
       print('phone number $phonecode$phonenumber');
       _firebaseAuth.verifyPhoneNumber(phoneNumber:"$phonecode$phonenumber",
-          timeout: Duration(seconds:30),
+          timeout: const Duration(seconds:30),
           verificationCompleted: (AuthCredential credential) async{
             print(credential);
             print('Code Is Recived');
@@ -1571,10 +1562,11 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
 
     }catch(error){
       Dialogs().showtoast(getLang( context: context, key: "Phone_valid"));
-    };
+    }
 
   }
 
+  @override
   getAllconstant(context) async {
     try {
       var avatars = await dio.get('api/GetConstData');
@@ -1609,7 +1601,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
   }
   Future<usermodel>
   RegesterNewUser({context,ginder,Flag,city,image,name,phone_number,year,month,day}) async {
-    var  map;
+    Map<String, Object>  map;
     try {
 
       if(Gmail==null){
@@ -1644,7 +1636,7 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
         };
       }
 
-      FormData formData = new FormData.fromMap(map);
+      FormData formData = FormData.fromMap(map);
 
       Response response2 = await dio.post(
         '/api/SignUpaccount',
@@ -1681,10 +1673,11 @@ if(userinfo.music!=null&&userinfo.music!=''&&Gmail==null){
     return userinfo;
   }
 
+  @override
   Future<bool> SignOut({context}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     print('Token is ======> $Token');
-    FormData formData = new FormData.fromMap({
+    FormData formData = FormData.fromMap({
       "user_id":UserId.toString(),
     });
 

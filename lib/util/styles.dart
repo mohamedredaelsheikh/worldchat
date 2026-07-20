@@ -1,104 +1,102 @@
-import 'dart:ui';
 
-import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
 
-  TextStyle style1 =  TextStyle(fontFamily: 'NotoSans',
+  TextStyle style1 =  const TextStyle(fontFamily: 'NotoSans',
   fontWeight: FontWeight.bold,
   fontSize:16,
   color: whitecolor,
 
 );
 
-TextStyle Namestyle =  TextStyle(fontFamily: 'NotoSans',
+TextStyle Namestyle =  const TextStyle(fontFamily: 'NotoSans',
   fontWeight: FontWeight.normal,
   fontSize:14,
 
 );
-TextStyle Namestyle2 =  TextStyle(fontFamily: 'NotoSans',
+TextStyle Namestyle2 =  const TextStyle(fontFamily: 'NotoSans',
   fontWeight: FontWeight.normal,
   fontSize:14,
 color: Colors.white
 );
-  TextStyle styleb = TextStyle(fontFamily: 'NotoSans',
+  TextStyle styleb = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: Colors.black,
 );
-  TextStyle styleb45 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle styleb45 = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: Colors.black45,
 );
-  TextStyle style2 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle style2 = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.bold,
   fontSize:16,
   color: blackcolor,
 );
-  TextStyle style7 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle style7 = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.bold,
   fontSize:16,
   color: whitecolor,
 );
-  TextStyle style3 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle style3 = const TextStyle(fontFamily: 'NotoSans',
 
   fontSize:2,
   fontWeight: FontWeight.bold,
 );
-  TextStyle style4 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle style4 = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: Colors.black45,
 );
-  TextStyle style5 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle style5 = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:16,
   color: blackcolor,
 );
 
-  TextStyle style6 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle style6 = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:11,
   color: blackcolor,
 );
 
-  TextStyle style8 = TextStyle(fontFamily: 'NotoSans',
+  TextStyle style8 = const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,
   fontSize:13,
   color: blackcolor,
 );
-  TextStyle style11= TextStyle(fontFamily: 'NotoSans',
+  TextStyle style11= const TextStyle(fontFamily: 'NotoSans',
 
   fontWeight: FontWeight.normal,height: 1,
   fontSize:17,
   color:  Colors.white,
 );
-  TextStyle style9 = TextStyle(
+  TextStyle style9 = const TextStyle(
   fontFamily: 'OmarR',
   fontWeight: FontWeight.bold,
   fontSize:25,
   color: blackcolor,
 );
-  TextStyle style10= TextStyle(
+  TextStyle style10= const TextStyle(
   fontFamily: 'OmarR',
   fontWeight: FontWeight.normal,
   fontSize:17,
   color:  Colors.black54,
 );
 
-  TextStyle CountryPickerText= TextStyle(fontSize:16, color: Colors.blueGrey);
-  TextStyle CountryPickerText2= TextStyle(fontSize:  16,  color: MainColor);
+  TextStyle CountryPickerText= const TextStyle(fontSize:16, color: Colors.blueGrey);
+  TextStyle CountryPickerText2= const TextStyle(fontSize:  16,  color: MainColor);
 const Color whitecolor = Colors.white;
 const Color blackcolor = Colors.black;
 const Color whitecolor2=CupertinoColors.lightBackgroundGray;
@@ -113,13 +111,13 @@ const Color yellowcolor1=Color.fromRGBO(234, 226, 190, 0.5);
 const BoxShape BoxCircle = BoxShape.circle;
 const Color OrangeColor=CupertinoColors.activeOrange;
 
-const Color MainColor = const Color(0xFF1878f3);
+const Color MainColor = Color(0xFF1878f3);
   Color MainColor2 = const Color(0xFF9a1aaa);
-const Color SecondColor = const Color(0xFFfee890);
-const  Color ThirdColor=const Color(0xFFa80f03);
-const  Color secondcolor=const Color(0xFFF5F6F8);
+const Color SecondColor = Color(0xFFfee890);
+const  Color ThirdColor=Color(0xFFa80f03);
+const  Color secondcolor=Color(0xFFF5F6F8);
 
-const  Color black1=const Color.fromRGBO(0, 0, 0, 0.7);
+const  Color black1=Color.fromRGBO(0, 0, 0, 0.7);
 const gradiant1=LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
@@ -131,12 +129,12 @@ const gradiant7=LinearGradient(
 var gradiant10=LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    colors: [Colors.red.withOpacity(0.8), Colors.red,   Colors.transparent]);
+    colors: [Colors.red.withValues(alpha: 0.8), Colors.red,   Colors.transparent]);
 
  var gradiant4=LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    colors: [Colors.purple.withOpacity(0.9), Colors.blue.withOpacity(0.9)]);
+    colors: [Colors.purple.withValues(alpha: 0.9), Colors.blue.withValues(alpha: 0.9)]);
 const gradiant6=LinearGradient(
     begin: Alignment.topRight,
     end: Alignment.bottomLeft,
@@ -144,7 +142,7 @@ const gradiant6=LinearGradient(
 var gradiant5=LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    colors: [Colors.red.withOpacity(0.8), Color(0xFF925AF2).withOpacity(0.8)]);
+    colors: [Colors.red.withValues(alpha: 0.8), const Color(0xFF925AF2).withValues(alpha: 0.8)]);
 
 
 const gradiant2=LinearGradient(
@@ -169,12 +167,12 @@ const EdgeInsets WPadding40=EdgeInsets.symmetric(horizontal: 40);
 const EdgeInsets BPadding10=EdgeInsets.only(bottom: 10);
 
 //-------------------------------------
- var HSized10=SizedBox(height:10,);
-var HSized15=SizedBox(height:5 );
-var HSized20=SizedBox(height: 20);
-var HSized25=SizedBox(height: 25);
-var HSized30=SizedBox(height:30);
-var HSized40=SizedBox(height:40);
+ var HSized10=const SizedBox(height:10,);
+var HSized15=const SizedBox(height:5 );
+var HSized20=const SizedBox(height: 20);
+var HSized25=const SizedBox(height: 25);
+var HSized30=const SizedBox(height:30);
+var HSized40=const SizedBox(height:40);
 //-------------------------------------
 const WSized5=SizedBox(width: 5,);
 const WSized10=SizedBox(width: 10,);
@@ -185,6 +183,6 @@ topLeft: Radius.circular(20.0),
 topRight: Radius.circular(20.0),
 );
   InputBorder CountryPickerInputBorder=OutlineInputBorder(
-  borderSide:   BorderSide(color: MainColor, width:1),
+  borderSide:   const BorderSide(color: MainColor, width:1),
   borderRadius: BorderRadius.circular(15.0),
 );

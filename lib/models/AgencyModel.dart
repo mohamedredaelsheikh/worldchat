@@ -55,28 +55,28 @@ class Agencymodel {
       ban = json['ban'];
       createdAt = json['created_at'];
      updatedAt = json['updated_at'];
-     user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
+     user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['user_id'] = this.userId;
-    data['appid'] = this.appid;
-   data['description'] = this.description;
-    data['password'] = this.password;
-    data['coins'] = this.coins;
-    data['AgencyKind'] = this.agencyKind;
-    data['model'] = this.model;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['user_id'] = userId;
+    data['appid'] = appid;
+   data['description'] = description;
+    data['password'] = password;
+    data['coins'] = coins;
+    data['AgencyKind'] = agencyKind;
+    data['model'] = model;
     // data['image'] = this.image;
 
-     data['user_number'] = this.userNumber;
-    data['ban'] = this.ban;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+     data['user_number'] = userNumber;
+    data['ban'] = ban;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
     return data;
   }

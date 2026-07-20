@@ -11,7 +11,7 @@ class JoinAgencyRequests extends StatelessWidget {
   Widget build(BuildContext context) {
     AagencyViewModel  Agency=Provider.of<AagencyViewModel>(context,listen:  true);
 
-    return Scaffold(appBar: AppBar(  iconTheme: IconThemeData(color: Colors.black),centerTitle: true,elevation: 0,title: Text("طلبات الانضمام",style: style6.copyWith(fontSize: 19),)),
+    return Scaffold(appBar: AppBar(  iconTheme: const IconThemeData(color: Colors.black),centerTitle: true,elevation: 0,title: Text("طلبات الانضمام",style: style6.copyWith(fontSize: 19),)),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -21,18 +21,18 @@ class JoinAgencyRequests extends StatelessWidget {
                 child: Row(
                   children: [
                     CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(Agency.JoinRequestes[index].user?.image??''),),
-                    SizedBox(width: 5,),
+                    const SizedBox(width: 5,),
                     UserSideInfoWidgets(UserDate:Agency.JoinRequestes[index].user,TextColor: Colors.black,),
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       children: [
                         InkWell(onTap: () {
                           Agency.AcceptJoinRequests(Agency.JoinRequestes[index].id??0,context);
-                        },child: Container(width: 70,height: 40,color: Colors.green,child: Center(child: Text('قبول')),)),
-                        SizedBox(width: 15,),
+                        },child: Container(width: 70,height: 40,color: Colors.green,child: const Center(child: Text('قبول')),)),
+                        const SizedBox(width: 15,),
                         InkWell(onTap: () {
                           Agency.refuseJoinRequests(Agency.JoinRequestes[index].id??0,context);
-                        },child: Container(width: 70,height: 40,color: Colors.red,child: Center(child: Text('رفض')),))
+                        },child: Container(width: 70,height: 40,color: Colors.red,child: const Center(child: Text('رفض')),))
                       ],
                     )
                   ],

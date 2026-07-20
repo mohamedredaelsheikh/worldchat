@@ -1,17 +1,14 @@
 
-import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/util/styles.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:ahlachat/viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
-import 'package:animated_overflow/animated_overflow.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class EnterAnimateWidget extends StatefulWidget {
-  EnterAnimateWidget({Key? key, this.title}) : super(key: key);
+  const EnterAnimateWidget({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -23,9 +20,8 @@ class _EnterAnimateWidgetState extends State<EnterAnimateWidget> {
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
     RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
-    LoginViewmodel user= Provider.of<LoginViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context,listen: true);
 
     return  TweenAnimationBuilder(
       child:Container(color: Colors.transparent,
@@ -39,7 +35,7 @@ class _EnterAnimateWidgetState extends State<EnterAnimateWidget> {
             if(Rooms.EnterUserinfo?.Enterbubles=='')  Container(width: 150,height: 30 ,
               decoration: BoxDecoration(color:   Colors.orange, gradient: gradiant5, borderRadius: BorderRadius.circular(10)),
               child: Center(child: Padding(
-                padding:   EdgeInsets.only(left: 10 ),
+                padding:   const EdgeInsets.only(left: 10 ),
                 child: Text(' دخل الغرفه ${Rooms.EnterUserinfo?.name??''} ',style: style2.copyWith(color: Colors.white,fontSize: 12) ,textDirection: TextDirection.ltr,),
               )),
             ),
@@ -49,7 +45,7 @@ class _EnterAnimateWidgetState extends State<EnterAnimateWidget> {
           ],
         ),
       ),
-      duration: Duration(milliseconds: 3000),
+      duration: const Duration(milliseconds: 3000),
       onEnd: (){
       Rooms.HideEnterWidget();
 
@@ -60,7 +56,7 @@ class _EnterAnimateWidgetState extends State<EnterAnimateWidget> {
       builder: (context, value, child){
         return Transform.translate(
           offset:  Offset(
-              ( value  as double) * 60,
+              ( value) * 60,
               0.0
           ),
           child: child,

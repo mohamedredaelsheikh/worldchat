@@ -17,7 +17,7 @@ class CustomizeAppbar extends StatelessWidget  implements PreferredSizeWidget{
 
 String? tittle;
 bool  ? autopop;
-CustomizeAppbar({this.tittle,  this.autopop});
+CustomizeAppbar({super.key, this.tittle,  this.autopop});
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +29,12 @@ CustomizeAppbar({this.tittle,  this.autopop});
       ),
         title:Text(tittle??"",style: style2.copyWith(color: whitecolor ),),
         automaticallyImplyLeading:  false,
-        leading:autopop??false?SizedBox() :InkWell(onTap: ()
+        leading:autopop??false?const SizedBox() :InkWell(onTap: ()
         {
           Navigator.pop(context);
 
 
-          },child: Icon(Icons.arrow_back_ios_sharp,color: whitecolor,)),
+          },child: const Icon(Icons.arrow_back_ios_sharp,color: whitecolor,)),
       ),
     );
   }
@@ -42,7 +42,7 @@ CustomizeAppbar({this.tittle,  this.autopop});
 
   // TODO: implement preferredSize
   @override
-  Size get preferredSize =>   Size.fromHeight(50);
+  Size get preferredSize =>   const Size.fromHeight(50);
 }
 
 
@@ -52,14 +52,14 @@ class CustomizeChatAppbar extends StatelessWidget  implements PreferredSizeWidge
   String? image;
   usermodel?userchat;
  var InBoxid;
-  CustomizeChatAppbar({this.tittle,this.image,this.userchat,this.InBoxid});
+  CustomizeChatAppbar({super.key, this.tittle,this.image,this.userchat,this.InBoxid});
 
   @override
   Widget build(BuildContext context) {
 
     InboxroomViewModel    Inboxrooms= Provider.of<InboxroomViewModel>(context,listen: true);
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
-    MomentViewModel   posts=Provider.of<MomentViewModel>(context,listen: true);
+    Provider.of<MomentViewModel>(context,listen: true);
 
     return Directionality(textDirection: TextDirection.ltr,
         child: AppBar(centerTitle: true, backgroundColor: Colors.white,actions: [
@@ -94,7 +94,7 @@ if(value=='Delete'){
         title:InkWell(onTap:(){
 
           user.GetShoweduserProfile(userchat);
-           Navigator.pushNamed(context,'${AppConstants.ShowUser_Profile}');
+           Navigator.pushNamed(context,AppConstants.ShowUser_Profile);
         } ,
           child: Row(mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,7 +109,7 @@ if(value=='Delete'){
         leading: InkWell(onTap: () {
           Inboxrooms.ExistChatRoom();
           Navigator.pop(context);
-        },child: Icon(Icons.arrow_back_ios_sharp,color:Colors.black45,)),
+        },child: const Icon(Icons.arrow_back_ios_sharp,color:Colors.black45,)),
       ),
     );
   }

@@ -31,19 +31,19 @@ class _AddPostScreanState extends State<AddPostScrean> {
                  InkWell(onTap: (){
                    posts.getImage();
                  },
-                   child: Container(  height: 90,width: 100,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2),borderRadius: BorderRadius.circular(8)  ),child:posts.Postimage==null?Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   child: Container(  height: 90,width: 100,decoration: BoxDecoration(color: Colors.grey.withValues(alpha: 0.2),borderRadius: BorderRadius.circular(8)  ),child:posts.Postimage==null?Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                      crossAxisAlignment: CrossAxisAlignment.center,children: [
-                       Icon(Icons.image,color: Colors.grey.withOpacity(0.7),size: 40),
-                       Text(getLang( context: context, key: "Post_picture"),style: style6.copyWith(fontSize: 10,color: Colors.grey.withOpacity(0.7)),textAlign: TextAlign.center),
+                       Icon(Icons.image,color: Colors.grey.withValues(alpha: 0.7),size: 40),
+                       Text(getLang( context: context, key: "Post_picture"),style: style6.copyWith(fontSize: 10,color: Colors.grey.withValues(alpha: 0.7)),textAlign: TextAlign.center),
                      ],) :ClipRRect(    borderRadius: BorderRadius.circular((10.0)),child: Image.file(posts.Postimage,fit: BoxFit.fill,))),
                  ),
-                 Spacer(),
+                 const Spacer(),
                  InkWell(onTap: () {
                    Navigator.pop(context);
-                 },child: Icon(Icons.clear,color: MainColor,))
+                 },child: const Icon(Icons.clear,color: MainColor,))
                ],
              ),
-             SizedBox(height: 30,),
+             const SizedBox(height: 30,),
              Container(
                decoration: BoxDecoration(color: whitecolor2,borderRadius: BorderRadius.circular(10)),
 
@@ -53,15 +53,15 @@ class _AddPostScreanState extends State<AddPostScrean> {
 setState(() {
 
 });
-                 },controller: posts.PostName, cursorColor: MainColor ,textAlign: TextAlign.start,decoration:InputDecoration.collapsed(hintText:'Your Post Tittle',hintStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                 },controller: posts.PostName, cursorColor: MainColor ,textAlign: TextAlign.start,decoration:const InputDecoration.collapsed(hintText:'Your Post Tittle',hintStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
 
 
                  ) ,),
                ),
              ),
-           Spacer(),
+           const Spacer(),
           InkWell(onTap: (){
-               if(posts.PostName.text.length==0|| posts.Postimage==null)
+               if(posts.PostName.text.isEmpty|| posts.Postimage==null)
                {
                  print('not');
 
@@ -73,9 +73,9 @@ setState(() {
                //     Room
              },child: Center(child: Padding(
                padding: const EdgeInsets.symmetric(horizontal: 10),
-               child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: posts.PostName.text.length==0|| posts.Postimage==null ?Colors.black12:MainColor ),child: Center(child: Text(getLang(key: "Save",context: context),style:  style1,)),height:45,width: SizeConfig.screenWidth!,),
+               child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) ,color: posts.PostName.text.isEmpty|| posts.Postimage==null ?Colors.black12:MainColor ),child: Center(child: Text(getLang(key: "Save",context: context),style:  style1,)),height:45,width: SizeConfig.screenWidth!,),
              ))),
-             SizedBox(height: 20,),
+             const SizedBox(height: 20,),
            ],
          ),
        ),

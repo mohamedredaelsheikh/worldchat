@@ -1,4 +1,3 @@
-import 'package:ahlachat/util/Dialogs.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/util/styles.dart';
@@ -50,9 +49,9 @@ class _WeeklystarScreanState extends State<WeeklystarScrean> {
               const SizedBox(width: 30,),
             ],
           ),),
-          const SliverPadding(padding: const EdgeInsets.symmetric(vertical: 10)),
-      if(Room.WeeklyStar!=null)    SliverToBoxAdapter(child: Center(child: Text("${intl.DateFormat('ddMMM  -').format(DateTime.parse(Room.WeeklyStar?.starttime??'' ))}" "${intl.DateFormat('  ddMMM').format(DateTime.parse(Room.WeeklyStar?.endtime??'' ))}" ,style: const TextStyle(color:const Color(0xFFffce63) ),))),
-          const SliverPadding(padding: const EdgeInsets.symmetric(vertical: 10)),
+          const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+      if(Room.WeeklyStar!=null)    SliverToBoxAdapter(child: Center(child: Text("${intl.DateFormat('ddMMM  -').format(DateTime.parse(Room.WeeklyStar?.starttime??'' ))}" "${intl.DateFormat('  ddMMM').format(DateTime.parse(Room.WeeklyStar?.endtime??'' ))}" ,style: const TextStyle(color:Color(0xFFffce63) ),))),
+          const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
           SliverToBoxAdapter(child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
@@ -71,7 +70,7 @@ class _WeeklystarScreanState extends State<WeeklystarScrean> {
                                 CachedNetworkImage(imageUrl: Room.WeeklyStar?.gifts![1].image??'',height: 40,)
 
                               ],),
-                              Text(Room.WeeklyStar?.gifts![1].name??'',style: const TextStyle(fontSize: 10,color: const Color(0xFFffc401)),),
+                              Text(Room.WeeklyStar?.gifts![1].name??'',style: const TextStyle(fontSize: 10,color: Color(0xFFffc401)),),
                               Row(mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Image.asset(Images.coins,height: 10,) ,
@@ -89,7 +88,7 @@ class _WeeklystarScreanState extends State<WeeklystarScrean> {
                                CachedNetworkImage(imageUrl: Room.WeeklyStar?.gifts![0].image??'',height: 40,)
 
                               ],),
-                                   Text(Room.WeeklyStar?.gifts![0].name??'',style: const TextStyle(fontSize: 10,color: const Color(0xFFffc401)),),
+                                   Text(Room.WeeklyStar?.gifts![0].name??'',style: const TextStyle(fontSize: 10,color: Color(0xFFffc401)),),
                                  Row(mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Image.asset(Images.coins,height: 10,) ,
@@ -107,7 +106,7 @@ class _WeeklystarScreanState extends State<WeeklystarScrean> {
                                 CachedNetworkImage(imageUrl: Room.WeeklyStar?.gifts![2].image??'',height: 40,)
 
                               ],),
-                              Text(Room.WeeklyStar?.gifts![2].name??'',style: const TextStyle(fontSize: 10,color: const Color(0xFFffc401)),),
+                              Text(Room.WeeklyStar?.gifts![2].name??'',style: const TextStyle(fontSize: 10,color: Color(0xFFffc401)),),
                               Row(mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Image.asset(Images.coins,height: 10,) ,
@@ -144,7 +143,7 @@ class _WeeklystarScreanState extends State<WeeklystarScrean> {
                              onTap: () {
                                if(Room.WeeklyStar?.supporters![index].user?.id!=user.userinfo?.id){
                                  user.GetShoweduserProfile(Room.WeeklyStar?.supporters![index].user);
-                                 navigateTo(context: context, screen: ShowUserProfile());
+                                 navigateTo(context: context, screen: const ShowUserProfile());
                                }
 
                              },
@@ -175,7 +174,7 @@ class _WeeklystarScreanState extends State<WeeklystarScrean> {
                             onTap: () {
                               if(Room.WeeklyStar?.supporteds![index].user?.id!=user.userinfo?.id){
                                 user.GetShoweduserProfile(Room.WeeklyStar?.supporteds![index].user);
-                                navigateTo(context: context, screen: ShowUserProfile());
+                                navigateTo(context: context, screen: const ShowUserProfile());
                               }
 
                             },
@@ -203,10 +202,10 @@ class _WeeklystarScreanState extends State<WeeklystarScrean> {
                     ],
                   ),
                 ),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),border: Border.all(color: const Color(0xFFffc401).withOpacity(0.3)))),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),border: Border.all(color: const Color(0xFFffc401).withValues(alpha: 0.3)))),
           ),),
-          const SliverPadding(padding: const EdgeInsets.symmetric(vertical: 10)),
-            SliverToBoxAdapter(child: Directionality(textDirection: TextDirection.rtl,child: Padding(
+          const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+            const SliverToBoxAdapter(child: Directionality(textDirection: TextDirection.rtl,child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text('1. سيكون هناك 3 هدايا مختلفة في كل أسبوع. استلام الهدايا الأسبوعية سيكون لديك فرصة للحصول على ترتيب في القائمة؛\n2. سيحصل أكثر 3 مستلمين للهدية الأسبوعية و اكثر داعمين على مكافآت؛ سيتم إرسال شارة النجم الأسبوعي لهم مع نهايه المسابقه، وسوف تكون الشارة صالحة لمدةأسبوع واحد؛\n3. يتم حساب بيانات قائمة نجوم الهدايا الأسبوعية' ,style: TextStyle(color:Color(0xFFffce63),fontSize: 12 ) ),
           )),)

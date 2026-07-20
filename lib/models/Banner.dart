@@ -25,23 +25,23 @@ class Bannerss {
     if (json['subbanner'] != null) {
       SubBanner = <SubBannerModel>[];
       json['subbanner'].forEach((v) {
-        SubBanner!.add(new SubBannerModel.fromJson(v));
+        SubBanner!.add(SubBannerModel.fromJson(v));
       });
     }
     id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['image'] = this.image;
-    data['Secondimage'] = this.Secondimage;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['image'] = image;
+    data['Secondimage'] = Secondimage;
 
-    data['Room_id'] = this.roomId;
-    data['updated_at'] = this.updatedAt;
-    data['created_at'] = this.createdAt;
-    data['id'] = this.id;
-    if (this.SubBanner != null) {
-      data['subbanner'] = this.SubBanner!.map((v) => v.toJson()).toList();
+    data['Room_id'] = roomId;
+    data['updated_at'] = updatedAt;
+    data['created_at'] = createdAt;
+    data['id'] = id;
+    if (SubBanner != null) {
+      data['subbanner'] = SubBanner!.map((v) => v.toJson()).toList();
     }
     return data;
   }

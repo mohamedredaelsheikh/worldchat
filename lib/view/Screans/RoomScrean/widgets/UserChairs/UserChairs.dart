@@ -15,7 +15,7 @@ class UserChair extends StatelessWidget {
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
 
 
-     return  GridView.count( padding: EdgeInsets.only(top: 0),shrinkWrap: true ,cacheExtent: 15.6,physics: NeverScrollableScrollPhysics(),
+     return  GridView.count( cacheExtent: 15.6, padding: const EdgeInsets.only(top: 0),shrinkWrap: true,physics: const NeverScrollableScrollPhysics(),
        crossAxisCount:4,
           childAspectRatio :0.98,
        crossAxisSpacing:0.0,

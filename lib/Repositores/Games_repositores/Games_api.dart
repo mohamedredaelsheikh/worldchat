@@ -8,7 +8,6 @@ import '../Moment_repositores/Moment_repository.dart';
 int GameIndex=2;
 class Gamesapi extends MomentRepository {
   List<GamesModel> GamesList=[];
-  @override
   var dio = Dio(
     BaseOptions(
       baseUrl: AppConstants.BASE_URL,
@@ -34,9 +33,9 @@ class Gamesapi extends MomentRepository {
       if (response2.statusCode == 200) {
         List list =response2.data['games']['data'];
 
-        list.forEach((element) {
+        for (var element in list) {
           GamesList.add(GamesModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -68,9 +67,9 @@ class Gamesapi extends MomentRepository {
           GameIndex++;
         }
         
-        list.forEach((element){
+        for (var element in list) {
           GamesList.add(GamesModel.fromJson(element));
-        });
+        }
         print(GamesList);
       }
     } catch (e) {

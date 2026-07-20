@@ -13,13 +13,13 @@ class CreateFamilyScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FamilyViewModel  Family=Provider.of<FamilyViewModel>(context,listen:  true);
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context,listen: true);
 
-    return Container(decoration: const BoxDecoration(image: const DecorationImage(image: ExactAssetImage( Images.VipBackground),fit: BoxFit.cover)),
+    return Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage( Images.VipBackground),fit: BoxFit.cover)),
       child: Scaffold(backgroundColor: Colors.transparent,
         appBar: AppBar(backgroundColor: Colors.transparent,title:   Text(getLang(key: "Create_Family",context: context),style: style1,),automaticallyImplyLeading: true ),
         body: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: SizeConfig.screenHeight,
             width: SizeConfig.screenWidth,
             child: Padding(

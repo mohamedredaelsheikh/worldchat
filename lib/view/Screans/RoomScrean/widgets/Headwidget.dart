@@ -3,10 +3,8 @@ import 'package:ahlachat/util/Localization.dart';
 import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/AllBlockedUser.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/MusicPlayer.dart';
-import 'package:ahlachat/view/Screans/RoomScrean/widgets/MuteMice.dart';
 import 'package:ahlachat/view/Screans/RoomScrean/widgets/Supervisor/Supervisor.dart';
 import 'package:ahlachat/view/widgets/ModelSheet.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +41,7 @@ class Headwidget extends StatelessWidget {
                  child: Row(
                    children: [
                      Container(decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),image: DecorationImage(image: CachedNetworkImageProvider (Room.Currentroom?.image??Images.profilephoto),fit: BoxFit.cover )),height: 40,width: 40),
-                     SizedBox(width : 5,),
+                     const SizedBox(width : 5,),
                      Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                        crossAxisAlignment: CrossAxisAlignment.start,mainAxisSize: MainAxisSize.min,
                        children: [
@@ -51,28 +49,28 @@ class Headwidget extends StatelessWidget {
                          Text('ID : ${Room.Currentroom?.RoomID ?? ''}',style:style3.copyWith(color: whitecolor,fontSize: 11,height: 1,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis) ),
                        ],
                      ),
-                     SizedBox(width : 10,),
+                     const SizedBox(width : 10,),
                    ],
                  ),
                ),
-               Spacer(),
+               const Spacer(),
                Row(
                  children: [
 
-                   PopupMenuButton(color: Colors.black , padding: EdgeInsets.all(0.0), shape: RoundedRectangleBorder(
+                   PopupMenuButton(color: Colors.black , padding: const EdgeInsets.all(0.0), shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(
     Radius.circular(20.0),
     )),icon:Image.asset(Images.editroom,width: 25,height: 25,color: whitecolor2,),
                        onSelected: (value) {
                      if(value==0){
                        Room.AddtoEdit();
-                       GlopalbottomSheet(isscrollable: true,context: context,Screan: EditRoom());
+                       GlopalbottomSheet(isscrollable: true,context: context,Screan: const EditRoom());
                      }else if(value==1){
                        Room.GetRoomSupervisor();
-                       GlopalbottomSheet2(context: context,Screan: SupervisorsTabBar());
+                       GlopalbottomSheet2(context: context,Screan: const SupervisorsTabBar());
 
                      } else if(value==3){
-                       showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                       showModalBottomSheet(barrierColor:Colors.transparent,  backgroundColor: Colors.black,elevation: 0,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                          context: context,
                          builder: (context) {
                            return const MusicPlayerRoom();
@@ -80,7 +78,7 @@ class Headwidget extends StatelessWidget {
                        );
                      }else if(value==4){
                        Room.GetKickeduser(context:context );
-                       GlopalbottomSheet(context: context,Screan: AllBlockeduserInRoom());
+                       GlopalbottomSheet(context: context,Screan: const AllBlockeduserInRoom());
 
                      }else if(value==5){
                        Dialogs().showdialog(context: context, tittle: 'sad', content:getLang(context: context,key: "Delete_chat_room"), buttontext: getLang(context: context, key: "Yes"), onTap: (){
@@ -103,23 +101,23 @@ class Headwidget extends StatelessWidget {
                                    child: Column(
                                      children: [
                                        Text(getLang(context: context, key: "Enter_Password"),style: style1),
-                                       SizedBox(height: 25,),
+                                       const SizedBox(height: 25,),
                                        PinCodeTextField(keyboardType: TextInputType.number,
                                          length: 4,
-                                         obscureText: false,textStyle: TextStyle(color:  Color(0xFFeae2be)),
+                                         obscureText: false,textStyle: const TextStyle(color:  Color(0xFFeae2be)),
                                          animationType: AnimationType.fade,
                                          pinTheme: PinTheme(borderWidth: 0.0,
                                            shape: PinCodeFieldShape.box,
-                                           fieldOuterPadding:EdgeInsets.symmetric(horizontal: 3),
-                                           activeColor: Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
-                                           selectedColor: Color(0xFFeae2be),
-                                           inactiveColor: Color(0xFFeae2be),
+                                           fieldOuterPadding:const EdgeInsets.symmetric(horizontal: 3),
+                                           activeColor: const Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
+                                           selectedColor: const Color(0xFFeae2be),
+                                           inactiveColor: const Color(0xFFeae2be),
                                            fieldHeight: 40,
                                            fieldWidth: 40,
-                                           activeFillColor: Color(0xFFeae2be),
+                                           activeFillColor: const Color(0xFFeae2be),
                                          ),
-                                         animationDuration: Duration(milliseconds: 300),
-                                         cursorColor: Color(0xFFeae2be),
+                                         animationDuration: const Duration(milliseconds: 300),
+                                         cursorColor: const Color(0xFFeae2be),
                                          enablePinAutofill: true,
                                          enableActiveFill: false,mainAxisAlignment: MainAxisAlignment.spaceAround,
                                          enabled:true,
@@ -141,12 +139,12 @@ class Headwidget extends StatelessWidget {
 
 
                                          }
-                                       },child: Container(child: Center(child:  Text( getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be)))),
+                                       },child: Container(child: Center(child:  Text( getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be)))),
                                      ],
                                    ),
                                  )),
                                ],
-                               backgroundColor: Color(0xFF2b2f3b),
+                               backgroundColor: const Color(0xFF2b2f3b),
 
                              )
                          );
@@ -169,7 +167,7 @@ class Headwidget extends StatelessWidget {
                      Follow.GetFriends(context: context);
                      Navigator.pushNamed(context, AppConstants.ShareRoom_Screan);
                    },child: Image.asset(Images.Kickout,width: 28,height: 28,color: whitecolor2,)),
-              SizedBox(width: 15,),
+              const SizedBox(width: 15,),
                    InkWell(onTap:(){
                      GlopalbottomSheet(isscrollable: true,context: context,Screan: LeaveRoomWidget());
 
@@ -186,7 +184,7 @@ class Headwidget extends StatelessWidget {
                  child: InkWell(onTap: (){
                   print(Room.Currentroom?.supervisorsId);
 
-                  GlopalbottomSheet(context: context,Screan: RoomKarismas());
+                  GlopalbottomSheet(context: context,Screan: const RoomKarismas());
                   Room.GetRoomKarisma(context: context);
                  },
                    child :Container(decoration: BoxDecoration(color: whitecolor4,borderRadius: BorderRadius.circular(10), ),
@@ -204,9 +202,9 @@ class Headwidget extends StatelessWidget {
                    ),
                  ),
                ),
-               Spacer(),
+               const Spacer(),
                InkWell(onTap: (){
-                 GlopalbottomSheet(context: context,Screan: AlluserInRoom());
+                 GlopalbottomSheet(context: context,Screan: const AlluserInRoom());
                  Room.GetUserJoin(context: context);
                },
                  child :Container(decoration: BoxDecoration(color: whitecolor4,borderRadius: BorderRadius.circular(10), ),
@@ -230,12 +228,12 @@ class Headwidget extends StatelessWidget {
   }
 }
 PopupMenuItem _buildPopupMenuItem({String ?title, IconData ?iconData,int ?val}) {
-  return PopupMenuItem(padding: EdgeInsets.all(0),value: val,height: 30,
+  return PopupMenuItem(padding: const EdgeInsets.all(0),value: val,height: 30,
     child:  Row(mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         Icon(iconData,color: Colors.white,size: 13),
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         Text(title??'',style: style5.copyWith(color: Colors.white,height: 1,fontSize: 13)),
       ],
     ),

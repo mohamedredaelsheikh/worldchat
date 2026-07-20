@@ -19,19 +19,18 @@ class SubBannerModel {
     id = json['id'];
     bannerId = json['banner_id'];
     status = json['status'];
-    phone= json['phone']==null?null:json['phone'];
+    phone= json['phone'];
     image =AppConstants.Image_URL+ json['image'];
-  ;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['banner_id'] = this.bannerId;
-    data['status'] = this.status;
-    data['image'] = this.image;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['banner_id'] = bannerId;
+    data['status'] = status;
+    data['image'] = image;
 
-    data['phone'] = this.phone;
+    data['phone'] = phone;
     return data;
   }
 }

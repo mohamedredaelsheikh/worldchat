@@ -15,10 +15,10 @@ import '../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 class UserInfoWidgets extends StatelessWidget {
 
   usermodel? UserDate;
-  UserInfoWidgets({this.UserDate});
+  UserInfoWidgets({super.key, this.UserDate});
   @override
   Widget build(BuildContext context) {
-    RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
+    Provider.of<RoomViewmodel>(context,listen: true);
 
     return Column(crossAxisAlignment: CrossAxisAlignment.center,children: [
       Row(mainAxisSize: MainAxisSize.min,
@@ -28,11 +28,11 @@ class UserInfoWidgets extends StatelessWidget {
             package: countryCodePackageName,
             width: 25,
           ),
-           SizedBox(width: 10,),
+           const SizedBox(width: 10,),
            Row(
              children: [
                Text(Helper().CutName(UserDate?.name??'') ,style: Namestyle.copyWith(fontSize: 16,color: Colors.black,overflow: TextOverflow.ellipsis),),
-               SizedBox(width: 5,),
+               const SizedBox(width: 5,),
                if(UserDate?.SuporrtedImage!=null)CachedNetworkImage(imageUrl: UserDate?.SuporrtedImage??'' ,height: 15),
              ],
            ),
@@ -45,7 +45,7 @@ class UserInfoWidgets extends StatelessWidget {
 
           LevelWidget(Karisma:UserDate?.Karisma??0 ),
 
-          SizedBox(width: 2,),
+          const SizedBox(width: 2,),
           if(UserDate?.MyVip!=null&&UserDate?.MyVip?.Vip?.vipicon!=null) Row(
             children: [
               const SizedBox(width: 3,),
@@ -53,24 +53,24 @@ class UserInfoWidgets extends StatelessWidget {
             ],
           ),
           if(UserDate?.Supporter==1)Image.asset(Images.Supporter,height: 16),
-          SizedBox(width: 2,),
+          const SizedBox(width: 2,),
           Image.asset(UserDate?.ginder=='0'?Images.sexman:Images.sexwoman,height: 16),
         ],
       ),
-      SizedBox(height:  2,),
+      const SizedBox(height:  2,),
       Row(mainAxisSize: MainAxisSize.min,
         children: [
           Text( UserDate?.Newid??UserDate?.myappid??""  ,style: style6.copyWith(color: Colors.grey,fontSize: 17,height: 1) ),
-          SizedBox(width: 5,),
+          const SizedBox(width: 5,),
           InkWell(onTap: (){
             Clipboard.setData(ClipboardData(text:UserDate?.Newid??UserDate?.myappid??"" ));
             Dialogs().showtoast(getLang(context: context, key: "Copied"));
-          },child:  Icon(Icons.copy_outlined,color:  Colors.grey,size: 16,)),
+          },child:  const Icon(Icons.copy_outlined,color:  Colors.grey,size: 16,)),
           if(UserDate?.MyVip!=null&&UserDate?.MyVip?.Vip?.vipicon!=null) CachedNetworkImage(imageUrl: UserDate?.MyVip?.Vip?.gif??"",height: 25, ),
 
         ],
       ),
-      SizedBox(height:  2,),
+      const SizedBox(height:  2,),
 
       Row(mainAxisSize: MainAxisSize.min,children: [
         if(UserDate?.MyFamil!=null) if(UserDate?.MyFamil?.model!=null)CachedNetworkImage(imageUrl:  UserDate?.MyFamil?.model??'',height: 16),

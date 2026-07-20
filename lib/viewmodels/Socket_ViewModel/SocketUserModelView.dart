@@ -168,8 +168,8 @@ if(messages.senderId.toString()!=user.userinfo?.id.toString()){
         var user=usermodel.fromJson(data['data']['sender']);
         LocalNotificationService().showNotification(body:'  قام ${user.name} بمتابعتك  ',id: 5, title:'رساله جديده',  );
         showDialog(context: NavigationService.navigatorKey.currentContext!,builder: (context) {
-          return AlertDialog(backgroundColor:  Color(0xFF2b2f3b),shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),content:Container(
-            child:Text('  قام ${user.name} بمتابعتك  ',style: style3.copyWith(color: Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),textDirection: TextDirection.rtl  ),
+          return AlertDialog(backgroundColor:  const Color(0xFF2b2f3b),shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),content:Container(
+            child:Text('  قام ${user.name} بمتابعتك  ',style: style3.copyWith(color: const Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),textDirection: TextDirection.rtl  ),
           ),actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -178,9 +178,9 @@ if(messages.senderId.toString()!=user.userinfo?.id.toString()){
                   Provider.of<FollowViewModel>(context,listen: false).ReturnFollow(context: NavigationService.navigatorKey.currentContext!,Senderid:user.id);
 
                   Navigator.pop(context);
-                },child: Container(child: Center(child:  Text('رد المتابعه',style: style6.copyWith(fontSize: 15),)),width: 80,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFeae2be)))),
+                },child: Container(child: Center(child:  Text('رد المتابعه',style: style6.copyWith(fontSize: 15),)),width: 80,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: const Color(0xFFeae2be)))),
 
-                InkWell(onTap:()=>Navigator.pop(context),child: Container(child: Center(child:  Text(getLang( context: context, key: "Close"),style:  style6.copyWith(fontSize: 15),)),width: 80,height: 37,decoration: BoxDecoration(color: Color(0xFFeae2be),borderRadius: BorderRadius.circular(20), ))),
+                InkWell(onTap:()=>Navigator.pop(context),child: Container(child: Center(child:  Text(getLang( context: context, key: "Close"),style:  style6.copyWith(fontSize: 15),)),width: 80,height: 37,decoration: BoxDecoration(color: const Color(0xFFeae2be),borderRadius: BorderRadius.circular(20), ))),
 
                ],),
             )

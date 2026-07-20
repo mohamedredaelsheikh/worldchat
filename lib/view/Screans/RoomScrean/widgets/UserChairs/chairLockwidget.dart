@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 class ChairLockwidget extends StatelessWidget {
 
   final int index;
-  const ChairLockwidget({ required this.index});
+  const ChairLockwidget({super.key,  required this.index});
   @override
   Widget build(BuildContext context) {
     LoginViewmodel        user = Provider.of<LoginViewmodel>(context, listen: true);
@@ -22,7 +22,7 @@ class ChairLockwidget extends StatelessWidget {
       children: [
         if(Room.checkadmin(context: context))
 
-         PopupMenuButton( color: Colors.black , padding: EdgeInsets.all(0.0), shape: RoundedRectangleBorder(
+         PopupMenuButton( color: Colors.black , padding: const EdgeInsets.all(0.0), shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(10.0),
             )),onSelected: (value) {
@@ -40,7 +40,7 @@ if(Room.Currentroom?.chairs?[index].Lock==0){
               }
             });
             InviteChairId=Room.Currentroom?.chairs?[index].chairId??'';
-            GlopalbottomSheet(context: context,Screan: InviteToChair());
+            GlopalbottomSheet(context: context,Screan: const InviteToChair());
             Room.GetUserJoin(context: context);
           }  },
         itemBuilder: (BuildContext bc) {
@@ -48,7 +48,7 @@ if(Room.Currentroom?.chairs?[index].Lock==0){
           if(Room.checkadmin(context: context))  _buildPopupMenuItem(title: Room.Currentroom?.chairs?[index].Lock!=0?getLang(context: context,key: "UnLock"):getLang(context: context,key: "Lock"),iconData: Icons.lock_outline,val: 0),
           if(Room.checkadmin(context: context) &&Room.Currentroom?.chairs?[index].Lock==0)  _buildPopupMenuItem(title:getLang(context: context,key: "Invite_user"),iconData: Icons.add,val: 1),
 
-          ];},icon: Image.asset(Room.Currentroom?.chairs?[index].Lock!=0? Images.LockChairs:Images.Chairs ,height: 80,width: 80 ) )else PopupMenuButton( color: Colors.black , padding: EdgeInsets.all(0.0), shape: RoundedRectangleBorder(
+          ];},icon: Image.asset(Room.Currentroom?.chairs?[index].Lock!=0? Images.LockChairs:Images.Chairs ,height: 80,width: 80 ) )else PopupMenuButton( color: Colors.black , padding: const EdgeInsets.all(0.0), shape: const RoundedRectangleBorder(
            borderRadius: BorderRadius.all(
              Radius.circular(10.0),
            )),onSelected: (value) {
@@ -93,7 +93,7 @@ if(Room.Currentroom?.chairs?[index].Lock==0){
              }
            });
            InviteChairId=Room.Currentroom?.chairs?[index].chairId??'';
-           GlopalbottomSheet(context: context,Screan: InviteToChair());
+           GlopalbottomSheet(context: context,Screan: const InviteToChair());
            Room.GetUserJoin(context: context);
          }  },
            itemBuilder: (BuildContext bc) {
@@ -109,7 +109,7 @@ if(Room.Currentroom?.chairs?[index].Lock==0){
 }
 class Circle extends StatelessWidget {
   final String?ChairId;
-  const Circle({  required this.ChairId}) ;
+  const Circle({super.key,   required this.ChairId}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -118,12 +118,12 @@ class Circle extends StatelessWidget {
   }
 }
 PopupMenuItem _buildPopupMenuItem({String ?title, IconData ?iconData,int ?val}) {
-  return PopupMenuItem(value: val,height: 30,padding: EdgeInsets.all(0),
+  return PopupMenuItem(value: val,height: 30,padding: const EdgeInsets.all(0),
     child:  Row(
       children: [
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         Icon(iconData, color: Colors.white,size:  14),
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         Text(title??'',style: style5.copyWith(color: Colors.white,height: 1,fontSize: 13)),
       ],
     ),

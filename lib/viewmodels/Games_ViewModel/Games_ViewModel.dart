@@ -37,9 +37,9 @@ class GamesViewModel extends ChangeNotifier{
     showSpinner2();
     await Gamesapi().GetMoreGames(context).then((value) {
        
-      value.forEach((element) {
+      for (var element in value) {
         GamesList.add(element);
-      });
+      }
       hideSpinner2();
     });
     notifyListeners();

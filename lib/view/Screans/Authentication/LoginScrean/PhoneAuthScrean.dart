@@ -2,9 +2,7 @@ import 'package:ahlachat/util/app_constants.dart';
 import 'package:ahlachat/view/Screans/Authentication/LoginScrean/Widgets/Termsanscondition.dart';
 import 'package:country_calling_code_picker/country_code_picker.dart';
 
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -12,8 +10,6 @@ import 'package:provider/provider.dart';
 import '../../../../util/Dialogs.dart';
 import '../../../../util/Localization.dart';
 import '../../../../util/SizeConfig.dart';
-import '../../../../util/helperclass.dart';
-import '../../../../util/images.dart';
 import '../../../../util/styles.dart';
 import '../../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 
@@ -29,7 +25,7 @@ class _PhoneAuthScreanState extends State<PhoneAuthScrean> {
   @override
   Widget build(BuildContext context) {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
-    return Scaffold( appBar: AppBar(elevation:0.0,automaticallyImplyLeading: true,iconTheme: IconThemeData(color: Colors.black)),
+    return Scaffold( appBar: AppBar(elevation:0.0,automaticallyImplyLeading: true,iconTheme: const IconThemeData(color: Colors.black)),
         body: Padding(
           padding: WPadding30,
           child: SingleChildScrollView(
@@ -45,7 +41,7 @@ class _PhoneAuthScreanState extends State<PhoneAuthScrean> {
                     Text( getLang(context: context, key: "Hey"),style: style2.copyWith(fontSize:  SizeConfig.TenSize!*4.5)),
                     SizedBox(height:  SizeConfig.TenSize!*3,),
 
-                    Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFF1878f3).withOpacity(0.1)),
+                    Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: const Color(0xFF1878f3).withValues(alpha: 0.1)),
                       child: Padding(
                         padding:   EdgeInsets.symmetric(vertical:  SizeConfig.TenSize!*1.2,horizontal:  SizeConfig.TenSize!),
                         child: Row(
@@ -62,7 +58,7 @@ class _PhoneAuthScreanState extends State<PhoneAuthScrean> {
                                     package: countryCodePackageName,
                                     width: 30,
                                   ),
-                                  SizedBox(width: 5,),
+                                  const SizedBox(width: 5,),
                                   Text(user.Code, style: style2.copyWith(height: 1,fontSize: 20,color: Colors.black45)),
                                 ],
                               ),
@@ -90,7 +86,7 @@ class _PhoneAuthScreanState extends State<PhoneAuthScrean> {
                        InkWell(
                             onTap: () {
 
-                              if (user.LoginPhonenumber.text.length == 0) {
+                              if (user.LoginPhonenumber.text.isEmpty) {
                               } else {
                                 if(user.value==false){
                                   Dialogs().showtoast(getLang(context:context,key: "MustAccept" ));
@@ -105,7 +101,7 @@ class _PhoneAuthScreanState extends State<PhoneAuthScrean> {
                             child: Center(
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: user.LoginPhonenumber.text.length != 0?Color(0xFF1878f3).withOpacity(0.8):Colors.black12,
+                                    color: user.LoginPhonenumber.text.isNotEmpty?const Color(0xFF1878f3).withValues(alpha: 0.8):Colors.black12,
                                     borderRadius: BorderRadius.circular(25)),
                                 width: SizeConfig.screenWidth!,
                                 height:  SizeConfig.TenSize!*4.5,

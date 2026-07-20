@@ -28,7 +28,7 @@ class UserLevelGifts {
     id = json['id'];
     userId = json['user_id'];
     svgaurl=json['svga']==null?'':AppConstants.Image_URL+json['svga'];
-    svga=json['svga']==null?'': json['svga'];
+    svga=json['svga'] ?? '';
     tittle = json['tittle'];
     message = json['message'];
     image =AppConstants.Image_URL+ json['image'];
@@ -38,17 +38,17 @@ class UserLevelGifts {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['user_id'] = this.userId;
-    data['svga'] = this.svga;
-    data['svga'] = this.svgaurl;
-    data['tittle'] = this.tittle;
-    data['message'] = this.message;
-    data['image'] = this.image;
-    data['kind'] = this.kind;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['svga'] = svga;
+    data['svga'] = svgaurl;
+    data['tittle'] = tittle;
+    data['message'] = message;
+    data['image'] = image;
+    data['kind'] = kind;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
 
     return data;
   }

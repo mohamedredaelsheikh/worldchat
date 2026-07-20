@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class SearchScrean extends StatefulWidget {
+  const SearchScrean({super.key});
+
   @override
   State<SearchScrean> createState() => _SearchScreanState();
 }
@@ -22,7 +24,7 @@ class _SearchScreanState extends State<SearchScrean> {
     LoginViewmodel user = Provider.of<LoginViewmodel>(context, listen: true);
     return Scaffold(
       appBar: AppBar(  leading: IconButton(
-        icon: Icon(Icons.navigate_before, color: Colors.black),
+        icon: const Icon(Icons.navigate_before, color: Colors.black),
         onPressed: () => Navigator.of(context).pop(),
       ), title:   Text('Search',style: style4.copyWith(height: 1,color: Colors.black87,fontWeight: FontWeight.normal)),centerTitle: false),
   body:DefaultTabController(length: 2, child: Column(mainAxisAlignment: MainAxisAlignment.start,
@@ -39,7 +41,7 @@ class _SearchScreanState extends State<SearchScrean> {
           isScrollable: true,controller: Tabcontroller,
           labelStyle: style2.copyWith(fontSize: 13),
           unselectedLabelColor: Colors.black45,
-          labelColor: Colors.black,indicatorPadding:EdgeInsets.symmetric(horizontal: 20) ,
+          labelColor: Colors.black,indicatorPadding:const EdgeInsets.symmetric(horizontal: 20) ,
           onTap: (val){
           },
           tabs:   [
@@ -71,13 +73,13 @@ setState(() {
                 }
                     print('asdas');
               },
-                  decoration:   InputDecoration(suffixIcon:UserSearchController.text==''?SizedBox():  InkWell(onTap: () {
+                  decoration:   InputDecoration(suffixIcon:UserSearchController.text==''?const SizedBox():  InkWell(onTap: () {
                     UserSearchController.clear();
                     setState(() {
 
                     });
-                  },child: Icon(Icons.clear,color: Colors.black45,size: 22)),  prefixIcon:  Icon(Icons.search_outlined,color: Colors.black45,size: 22),
-                      hintText: "User ID or Nickname",hintStyle: TextStyle(fontSize: 16 ,color: Colors.black45) ,border: InputBorder.none,
+                  },child: const Icon(Icons.clear,color: Colors.black45,size: 22)),  prefixIcon:  const Icon(Icons.search_outlined,color: Colors.black45,size: 22),
+                      hintText: "User ID or Nickname",hintStyle: const TextStyle(fontSize: 16 ,color: Colors.black45) ,border: InputBorder.none,
                   ),
                  ),
               TextFormField(controller: RoomSearchController,
@@ -94,13 +96,13 @@ setState(() {
                   }
 
                 },
-                decoration:   InputDecoration(suffixIcon:RoomSearchController.text==''?SizedBox():  InkWell(onTap: () {
+                decoration:   InputDecoration(suffixIcon:RoomSearchController.text==''?const SizedBox():  InkWell(onTap: () {
                   RoomSearchController.clear();
                   setState(() {
 
                   });
-                },child: Icon(Icons.clear,color: Colors.black45,size: 22)),  prefixIcon:  Icon(Icons.search_outlined,color: Colors.black45,size: 22),
-                  hintText:"Search By ID or name",hintStyle: TextStyle(fontSize: 16 ,color: Colors.black45) ,border: InputBorder.none,
+                },child: const Icon(Icons.clear,color: Colors.black45,size: 22)),  prefixIcon:  const Icon(Icons.search_outlined,color: Colors.black45,size: 22),
+                  hintText:"Search By ID or name",hintStyle: const TextStyle(fontSize: 16 ,color: Colors.black45) ,border: InputBorder.none,
                 ),
               ),
 

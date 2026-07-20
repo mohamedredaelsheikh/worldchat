@@ -18,7 +18,7 @@ class ProfileStack extends StatelessWidget {
       children: [
         CircleAvatar(backgroundColor: MainColor,radius: SizeConfig.screenHeight!*0.081,child: CircleAvatar(backgroundColor: MainColor,radius: SizeConfig.screenHeight!*0.0793,backgroundImage:user.Signupimage==null?CachedNetworkImageProvider(user.Avatarlink??Images.unphoto):FileImage(user.Signupimage) as ImageProvider)),
 
-        Positioned(bottom:5,right: 0, child: Icon(Icons.photo_camera_outlined,color: whitecolor,))
+        const Positioned(bottom:5,right: 0, child: Icon(Icons.photo_camera_outlined,color: whitecolor,))
       ],
     );
   }

@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 import 'package:svgaplayer_flutter/svgaplayer_flutter.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 class MyVipListScrean extends StatelessWidget {
+  const MyVipListScrean({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +32,16 @@ class MyVipListScrean extends StatelessWidget {
     return Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage(Images.VipBackground),fit: BoxFit.fill)),
 
       child: Scaffold(backgroundColor: Colors.transparent,
-        appBar: AppBar( elevation:0,centerTitle: false,iconTheme: IconThemeData(color: Color(0xFFeae2be)),backgroundColor:  Colors.transparent, title: Text('Vips',style: style5.copyWith(color: Color(0xFFeae2be)),),),
+        appBar: AppBar( elevation:0,centerTitle: false,iconTheme: const IconThemeData(color: Color(0xFFeae2be)),backgroundColor:  Colors.transparent, title: Text('Vips',style: style5.copyWith(color: const Color(0xFFeae2be)),),),
         body: DefaultTabController(length: Vips.MyVips.length,child:
         Column(
           children: [
-            TabBar( isScrollable:true,labelColor: Color(0xFFeae2be),labelStyle:style5.copyWith(fontSize: 14,) ,
+            TabBar( isScrollable:true,labelColor: const Color(0xFFeae2be),labelStyle:style5.copyWith(fontSize: 14,) ,
                 indicator: MaterialIndicator(
                   height: 5,
                   topLeftRadius: 8,
                   topRightRadius: 8,
-                  horizontalPadding: 10,color: Color(0xFFeae2be),
+                  horizontalPadding: 10,color: const Color(0xFFeae2be),
                   tabPosition: TabPosition.bottom,
                 ),
                 tabs:List.generate(Vips.MyVips.length, (index) => Tab(
@@ -54,7 +56,7 @@ class MyVipListScrean extends StatelessWidget {
                           SliverToBoxAdapter(child: Column(
                             children: [
                               Image.asset(Images.abg,width: 130),
-                              Text(getLang(context: context, key: "Privileges"),style: style3.copyWith(color: Color(0xFFeae2be),fontWeight: FontWeight.normal,fontSize: 15),),
+                              Text(getLang(context: context, key: "Privileges"),style: style3.copyWith(color: const Color(0xFFeae2be),fontWeight: FontWeight.normal,fontSize: 15),),
 
                             ],
                           ),),
@@ -67,8 +69,8 @@ class MyVipListScrean extends StatelessWidget {
                                     Column(mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Image.asset(Vips.MyVips[index].Vip?.vipicon!=null?viptabs[0].image??'':viptabs[0].grayimage??'',height: 50,width: 50),
-                                        SizedBox(height: 10),
-                                        Text(viptabs[0].name??'',style: style3.copyWith(color:Vips.MyVips[index].Vip?.vipicon!=null?Color(0xFFeae2be):Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
+                                        const SizedBox(height: 10),
+                                        Text(viptabs[0].name??'',style: style3.copyWith(color:Vips.MyVips[index].Vip?.vipicon!=null?const Color(0xFFeae2be):const Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
                                       ],
                                     ),
                                     InkWell(
@@ -87,16 +89,16 @@ class MyVipListScrean extends StatelessWidget {
 
                                                     },child: Center(child: Padding(
                                                       padding: const EdgeInsets.all(8.0),
-                                                      child: Container(child: Center(child:  Text(getLang(context: context,key: "Use_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be))),
+                                                      child: Container(child: Center(child:  Text(getLang(context: context,key: "Use_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be))),
                                                     ))),
                                                 ],
                                                 backgroundColor: Colors.transparent,
-                                                content: Container(height: 300,width: 250,child: Column(mainAxisSize: MainAxisSize.min,
+                                                content: SizedBox(height: 300,width: 250,child: Column(mainAxisSize: MainAxisSize.min,
                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20) ),child: Padding(
-                                                      padding: const EdgeInsets.all(8.0),
+                                                    InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20) ),child: const Padding(
+                                                      padding: EdgeInsets.all(8.0),
                                                       child: Icon(Icons.cancel_outlined,color: whitecolor),
                                                     ))),
                                                     Align(alignment: Alignment.center,child: CircleAvatar(backgroundColor: Colors.transparent,foregroundColor: Colors.black87,radius: 80, child:
@@ -114,8 +116,8 @@ class MyVipListScrean extends StatelessWidget {
                                       child: Column(mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Image.asset(Vips.MyVips[index].Vip?.frame!=null?viptabs[1].image??'':viptabs[1].grayimage??'',height: 50,width: 50),
-                                          SizedBox(height: 10),
-                                          Text(viptabs[1].name??'',style: style3.copyWith(color:  Vips.MyVips[index].Vip?.frame!=null?Color(0xFFeae2be):Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
+                                          const SizedBox(height: 10),
+                                          Text(viptabs[1].name??'',style: style3.copyWith(color:  Vips.MyVips[index].Vip?.frame!=null?const Color(0xFFeae2be):const Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
                                         ],
                                       ),
                                     ),
@@ -132,19 +134,19 @@ class MyVipListScrean extends StatelessWidget {
                                                     user.UserpdateEntry(context: context,Entry:Vips.MyVips[index].Vip?.entry );
                                                   },child: Center(child: Padding(
                                                     padding: const EdgeInsets.all(8.0),
-                                                    child: Container(child: Center(child:  Text(getLang(context: context,key: "Use_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be))),
+                                                    child: Container(child: Center(child:  Text(getLang(context: context,key: "Use_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be))),
                                                   ))),
                                               ],
                                               backgroundColor: Colors.transparent,
-                                              content: Container(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
+                                              content: SizedBox(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment: MainAxisAlignment.start,
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: Padding(
-                                                    padding: const EdgeInsets.all(8.0),
+                                                  InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: const Padding(
+                                                    padding: EdgeInsets.all(8.0),
                                                     child: Icon(Icons.cancel_outlined,color: whitecolor),
                                                   ))),
-                                                  Container(height: 350,
+                                                  SizedBox(height: 350,
                                                       child:   SVGASimpleImage(resUrl:Vips.MyVips[index].Vip?.urlentry)
                                                   ),
                                                 ],
@@ -156,8 +158,8 @@ class MyVipListScrean extends StatelessWidget {
                                       child: Column(mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Image.asset(Vips.MyVips[index].Vip?.entry!=null?viptabs[2].image??'':viptabs[2].grayimage??'',height: 50,width: 50),
-                                          SizedBox(height: 10),
-                                          Text(viptabs[2].name??'',style: style3.copyWith(color:Vips.MyVips[index].Vip?.entry!=null?Color(0xFFeae2be):Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
+                                          const SizedBox(height: 10),
+                                          Text(viptabs[2].name??'',style: style3.copyWith(color:Vips.MyVips[index].Vip?.entry!=null?const Color(0xFFeae2be):const Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
 
                                         ],
                                       ),
@@ -165,8 +167,8 @@ class MyVipListScrean extends StatelessWidget {
                                     Column(mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Image.asset(Vips.MyVips[index].Vip?.level!=null?viptabs[3].image??'':viptabs[3].grayimage??'',height: 50,width: 50),
-                                        SizedBox(height: 10),
-                                        Text("${viptabs[3].name}",style: style3.copyWith(color:Vips.MyVips[index].Vip?.level!=null?Color(0xFFeae2be):Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
+                                        const SizedBox(height: 10),
+                                        Text("${viptabs[3].name}",style: style3.copyWith(color:Vips.MyVips[index].Vip?.level!=null?const Color(0xFFeae2be):const Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
                                       ],
                                     ),
                                     InkWell(onTap: () {
@@ -184,20 +186,20 @@ class MyVipListScrean extends StatelessWidget {
                                                         children: [
                                                           PinCodeTextField(keyboardType: TextInputType.number,
                                                             length: 6,
-                                                            obscureText: false,textStyle: TextStyle(color:  Color(0xFFeae2be)),
+                                                            obscureText: false,textStyle: const TextStyle(color:  Color(0xFFeae2be)),
                                                             animationType: AnimationType.fade,
                                                             pinTheme: PinTheme(borderWidth: 0.0,
                                                               shape: PinCodeFieldShape.box,
-                                                              fieldOuterPadding:EdgeInsets.symmetric(horizontal: 3),
-                                                              activeColor: Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
-                                                              selectedColor: Color(0xFFeae2be),
-                                                              inactiveColor: Color(0xFFeae2be),
+                                                              fieldOuterPadding:const EdgeInsets.symmetric(horizontal: 3),
+                                                              activeColor: const Color(0xFFeae2be),borderRadius: BorderRadius.circular(10),
+                                                              selectedColor: const Color(0xFFeae2be),
+                                                              inactiveColor: const Color(0xFFeae2be),
                                                               fieldHeight: 40,
                                                               fieldWidth: 40,
-                                                              activeFillColor: Color(0xFFeae2be),
+                                                              activeFillColor: const Color(0xFFeae2be),
                                                             ),
-                                                            animationDuration: Duration(milliseconds: 300),
-                                                            cursorColor: Color(0xFFeae2be),
+                                                            animationDuration: const Duration(milliseconds: 300),
+                                                            cursorColor: const Color(0xFFeae2be),
                                                             enablePinAutofill: true,
                                                             enableActiveFill: false,mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                             enabled:true,
@@ -218,19 +220,19 @@ class MyVipListScrean extends StatelessWidget {
                                                               Vips.UpdateNewId(context: context,Id: textEditingController.text,Nyvipid: Vips.MyVips[index].id );
 
                                                             }
-                                                          },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be)))),
+                                                          },child: Container(child: Center(child:  Text(getLang(context: context, key: "Done"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be)))),
                                                         ],
                                                       ),
                                                     )),
                                                 ],
-                                                backgroundColor: Color(0xFF2b2f3b),
+                                                backgroundColor: const Color(0xFF2b2f3b),
                                                 content : Column(mainAxisSize: MainAxisSize.min,
                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                   mainAxisAlignment:MainAxisAlignment.center ,
                                                   children: [
-                                                    Text('Special ID',style: style3.copyWith(color: Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 15),),
+                                                    Text('Special ID',style: style3.copyWith(color: const Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 15),),
                                                     Center(child: Image.asset(Images.abg,width: 130)),
-                                                    Text('You can get a special ID like ( 77777 99999 29633 ) Once',style: style3.copyWith(color: Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),),
+                                                    Text('You can get a special ID like ( 77777 99999 29633 ) Once',style: style3.copyWith(color: const Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),),
                                                   ],
                                                 )
                                             )
@@ -240,8 +242,8 @@ class MyVipListScrean extends StatelessWidget {
                                       child: Column(mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Image.asset(Vips.MyVips[index].Vip?.specialID==1?viptabs[4].image??'':viptabs[4].grayimage??'',height: 50,width: 50),
-                                          SizedBox(height: 10),
-                                          Text(viptabs[4].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.specialID==1?Color(0xFFeae2be):Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
+                                          const SizedBox(height: 10),
+                                          Text(viptabs[4].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.specialID==1?const Color(0xFFeae2be):const Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
 
                                         ],
                                       ),
@@ -259,19 +261,19 @@ class MyVipListScrean extends StatelessWidget {
                                                     user.updatebubbles(context: context,bubbles: Vips.MyVips[index].Vip?.bubbles);
                                                   },child: Center(child: Padding(
                                                     padding: const EdgeInsets.all(8.0),
-                                                    child: Container(child: Center(child:  Text(getLang(context: context, key: "Use_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be))),
+                                                    child: Container(child: Center(child:  Text(getLang(context: context, key: "Use_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be))),
                                                   ))),
                                               ],
                                               backgroundColor: Colors.transparent,
-                                              content: Container(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
+                                              content: SizedBox(height: 400, child: Column(mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment: MainAxisAlignment.start,
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: Padding(
-                                                    padding: const EdgeInsets.all(8.0),
+                                                  InkWell(onTap: ()=>Navigator.pop(context),child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),child: const Padding(
+                                                    padding: EdgeInsets.all(8.0),
                                                     child: Icon(Icons.cancel_outlined,color: whitecolor),
                                                   ))),
-                                                  Container(height: 350,
+                                                  SizedBox(height: 350,
                                                       child:   SVGASimpleImage(resUrl:Vips.MyVips[index].Vip?.profileEntry)
                                                   ),
                                                 ],
@@ -284,8 +286,8 @@ class MyVipListScrean extends StatelessWidget {
                                       child: Column(mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Image.asset(Vips.MyVips[index].Vip?.profileEntry!=null?viptabs[5].image??'':viptabs[5].grayimage??'',height: 50,width: 50),
-                                          SizedBox(height: 10),
-                                          Text(viptabs[5].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.profileEntry!=null?Color(0xFFeae2be):Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
+                                          const SizedBox(height: 10),
+                                          Text(viptabs[5].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.profileEntry!=null?const Color(0xFFeae2be):const Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
 
                                         ],
                                       ),
@@ -295,7 +297,7 @@ class MyVipListScrean extends StatelessWidget {
                                         showDialog(barrierDismissible: true,
                                             context: context,
                                             builder: (_) => AlertDialog(
-                                                backgroundColor: Color(0xFF2b2f3b),
+                                                backgroundColor: const Color(0xFF2b2f3b),
                                                 actions: [
                                                   if( user.userinfo?.Hidden==0)
                                                     InkWell(onTap:(){
@@ -303,7 +305,7 @@ class MyVipListScrean extends StatelessWidget {
                                                       user.SetHidden(context: context,hidden: 1);
                                                     },child: Center(child: Padding(
                                                       padding: const EdgeInsets.all(8.0),
-                                                      child: Container(child: Center(child:  Text(getLang(context: context,key: "Hide_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be))),
+                                                      child: Container(child: Center(child:  Text(getLang(context: context,key: "Hide_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be))),
                                                     ))),
                                                 ],
                                                 content : Column(mainAxisSize: MainAxisSize.min,
@@ -313,12 +315,12 @@ class MyVipListScrean extends StatelessWidget {
                                                     Row(mainAxisSize: MainAxisSize.min,
                                                       children: [
                                                         CircleAvatar(radius: 15,backgroundColor: Color(int.parse(Vips.Vips[index].coloredMessage))),
-                                                        SizedBox(width: 10,),
-                                                        Text(getLang(context: context,key: "Colored_Message"),style: style3.copyWith(color: Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 15),),
+                                                        const SizedBox(width: 10,),
+                                                        Text(getLang(context: context,key: "Colored_Message"),style: style3.copyWith(color: const Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 15),),
                                                       ],
                                                     ),
                                                     Center(child: Image.asset(Images.abg,width: 130)),
-                                                    Text(getLang(context: context,key: "ColordNot"),style: style3.copyWith(color: Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),),
+                                                    Text(getLang(context: context,key: "ColordNot"),style: style3.copyWith(color: const Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),),
                                                   ],
                                                 )
                                             )
@@ -328,8 +330,8 @@ class MyVipListScrean extends StatelessWidget {
                                       child: Column(mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Image.asset(Vips.MyVips[index].Vip?.coloredMessage!=null?viptabs[6].image??'':viptabs[6].grayimage??'',height: 50,width: 50),
-                                          SizedBox(height: 10),
-                                          Text(viptabs[6].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.coloredMessage!=null?Color(0xFFeae2be):Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
+                                          const SizedBox(height: 10),
+                                          Text(viptabs[6].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.coloredMessage!=null?const Color(0xFFeae2be):const Color(0xFF4f4d4d),fontWeight: FontWeight.normal,fontSize: 11),),
                                         ],
                                       ),
                                     ),
@@ -344,17 +346,17 @@ class MyVipListScrean extends StatelessWidget {
                                                   user.SetHidden(context: context,hidden: 1);
                                                 },child: Center(child: Padding(
                                                   padding: const EdgeInsets.all(8.0),
-                                                  child: Container(child: Center(child:  Text(getLang(context: context,key: "Hide_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xFFeae2be))),
+                                                  child: Container(child: Center(child:  Text(getLang(context: context,key: "Hide_Now"),style: style6.copyWith(fontSize: 15,height: 1),)),width: SizeConfig.screenWidth!,height: 37,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color(0xFFeae2be))),
                                                 ))),
                                             ],
-                                                backgroundColor: Color(0xFF2b2f3b),
+                                                backgroundColor: const Color(0xFF2b2f3b),
                                                 content : Column(mainAxisSize: MainAxisSize.min,
                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                   mainAxisAlignment:MainAxisAlignment.center ,
                                                   children: [
-                                                    Text(getLang(context: context,key: "Hidden_Account"),style: style3.copyWith(color: Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 15),),
+                                                    Text(getLang(context: context,key: "Hidden_Account"),style: style3.copyWith(color: const Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 15),),
                                                     Center(child: Image.asset(Images.abg,width: 130)),
-                                                    Text(getLang(context: context,key: "HideNote"),style: style3.copyWith(color: Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),),
+                                                    Text(getLang(context: context,key: "HideNote"),style: style3.copyWith(color: const Color(0xFFeae2be)  ,fontWeight: FontWeight.bold,fontSize: 16),),
                                                   ],
                                                 )
                                             )
@@ -365,8 +367,8 @@ class MyVipListScrean extends StatelessWidget {
                                         children: [
                                           Image.asset(Vips.MyVips[index].Vip?.hidden==1?viptabs[7].image??'':viptabs[7].grayimage??'',height: 50,width: 50),
 
-                                          SizedBox(height: 10),
-                                          Text(viptabs[7].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.hidden==1?Color(0xFFeae2be):Color(0xFF4f4d4d) ,fontWeight: FontWeight.normal,fontSize: 11),),
+                                          const SizedBox(height: 10),
+                                          Text(viptabs[7].name??'',style: style3.copyWith(color: Vips.MyVips[index].Vip?.hidden==1?const Color(0xFFeae2be):const Color(0xFF4f4d4d) ,fontWeight: FontWeight.normal,fontSize: 11),),
 
                                         ],
                                       ),
@@ -374,10 +376,10 @@ class MyVipListScrean extends StatelessWidget {
 
 
                                   ],
-                                  physics: ScrollPhysics(),
+                                  physics: const ScrollPhysics(),
                                 ),
                               ),
-                              Container(width: SizeConfig.screenWidth!, child: Padding(
+                              SizedBox(width: SizeConfig.screenWidth!, child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 10,).copyWith(bottom: 10),
                                 child: Row(
                                   children: [
@@ -395,7 +397,7 @@ class MyVipListScrean extends StatelessWidget {
                                         }
 
                                       },
-                                      child: Container( decoration: BoxDecoration(color: Color(0xFFeae2be) ,borderRadius: BorderRadius.circular(20)),child: Padding(
+                                      child: Container( decoration: BoxDecoration(color: const Color(0xFFeae2be) ,borderRadius: BorderRadius.circular(20)),child: Padding(
                                         padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 20),
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 7),

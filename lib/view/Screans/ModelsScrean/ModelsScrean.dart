@@ -16,9 +16,9 @@ class ModelsScrean extends StatelessWidget {
     LevelViewModel  Level=Provider.of<LevelViewModel>(context,listen:  true);
     LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
 
-    return Container(decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage('assets/image/VipBackground.png'),fit: BoxFit.cover)),
+    return Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage('assets/image/VipBackground.png'),fit: BoxFit.cover)),
       child: DefaultTabController(length: 2,
-        child: Scaffold( backgroundColor: Colors.transparent, appBar: AppBar(iconTheme: IconThemeData(color: Colors.white),backgroundColor: Colors.transparent,title:   Text(getLang(context: context,key: "Models"),style: style1,),automaticallyImplyLeading: true ),
+        child: Scaffold( backgroundColor: Colors.transparent, appBar: AppBar(iconTheme: const IconThemeData(color: Colors.white),backgroundColor: Colors.transparent,title:   Text(getLang(context: context,key: "Models"),style: style1,),automaticallyImplyLeading: true ),
 
           body: CustomScrollView(
             slivers: [
@@ -28,13 +28,13 @@ class ModelsScrean extends StatelessWidget {
                   topLeftRadius: 0,
                   topRightRadius: 0,
                   bottomLeftRadius: 5,horizontalPadding: 25,
-                  bottomRightRadius: 5,color:Color(0xFFeae2be),
+                  bottomRightRadius: 5,color:const Color(0xFFeae2be),
                   tabPosition: TabPosition.bottom,
                 ),
                   isScrollable: false,
                   labelStyle: style5.copyWith(fontSize: 15) ,
                   unselectedLabelColor: Colors.white24,
-                  labelColor:Color(0xFFeae2be),
+                  labelColor:const Color(0xFFeae2be),
                   onTap: (val) {},
                     tabs:   [
                       Tab(
@@ -47,11 +47,11 @@ class ModelsScrean extends StatelessWidget {
                     ]
                 ),
               ),),
-SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
+const SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
               SliverFillRemaining(hasScrollBody: true,
                child: TabBarView(
                  children: [
-                   GridView.builder(  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                   GridView.builder(  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                    crossAxisCount: 3,
                    childAspectRatio:0.7,
                    mainAxisSpacing: 10,
@@ -62,7 +62,7 @@ SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
                            child: Column(mainAxisSize: MainAxisSize.min,
                              children: [
                                Text( Level.Models![index].name?? '',style: style6.copyWith(fontSize: 12,fontWeight: FontWeight.bold),),
-                               SizedBox(height: 10,),
+                               const SizedBox(height: 10,),
                                CachedNetworkImage(imageUrl: Level.Models![index].image??'',height: 120),
                                Image.asset(Images.abg,width: 130),
                                Text(Level.Models![index].description??'',style: style6.copyWith(fontSize: 12,fontWeight: FontWeight.bold),),
@@ -87,7 +87,7 @@ SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
                      );
                    },itemCount:Level.Models?.length  ),
 
-                   GridView.builder(  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                   GridView.builder(  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                        crossAxisCount: 3,
                        childAspectRatio:0.7,
                        mainAxisSpacing: 10,
@@ -98,7 +98,7 @@ SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
                            child: Column(mainAxisSize: MainAxisSize.min,
                              children: [
                                Text( user.userinfo?.Models![index].AchiveModel?.name?? '',style: style6.copyWith(fontSize: 12,fontWeight: FontWeight.bold),),
-                               SizedBox(height: 10,),
+                               const SizedBox(height: 10,),
                                CachedNetworkImage(imageUrl:user.userinfo?.Models![index].AchiveModel?.image??'',height: 120),
                                Image.asset(Images.abg,width: 130),
                                Text(user.userinfo?.Models![index].AchiveModel?.description??'',style: style6.copyWith(fontSize: 12,fontWeight: FontWeight.bold),),
@@ -115,7 +115,7 @@ SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
                            child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
                              children: [
                                CachedNetworkImage(imageUrl: user.userinfo?.Models![index].AchiveModel?.image??'',height: 120),
-                               Text( "${DateFormat('dd-MMM-yyy').format(DateTime.parse(user.userinfo?.Models![index].createdAt??'' ))}",
+                               Text( DateFormat('dd-MMM-yyy').format(DateTime.parse(user.userinfo?.Models![index].createdAt??'' )),
                                  style: style3.copyWith(fontSize: 12,color: Colors.white),)
                              ],
                            ),

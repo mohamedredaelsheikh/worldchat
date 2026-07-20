@@ -13,7 +13,7 @@ class UserRankWidget extends StatelessWidget {
   Leaderboardusermodel? Leader;
   String image;
 
-  UserRankWidget({required this.Leader,required this.image});
+  UserRankWidget({super.key, required this.Leader,required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class UserRankWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 0),
       child: InkWell(onTap:() {
         user.GetShoweduserProfile(Leader?.user);
-        navigateTo(context: context,screen: ShowUserProfile());
+        navigateTo(context: context,screen: const ShowUserProfile());
 
       },
         child: Container(height: 250,color: Colors.transparent,child: Stack(
@@ -33,16 +33,16 @@ class UserRankWidget extends StatelessWidget {
             Positioned(top: 20,child: Column(mainAxisSize: MainAxisSize.min,
               children: [
                 CircleAvatar(backgroundColor: Colors.transparent,radius:35,backgroundImage: CachedNetworkImageProvider(Leader?.user?.image??''),),
-                SizedBox(height: 8,),
+                const SizedBox(height: 8,),
                 Text(Helper().CutName(Leader?.user?.name??''),style: style7.copyWith(fontWeight: FontWeight.normal,fontSize: 13)),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Container(decoration: BoxDecoration(color: Colors.white24,borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 3),
                     child: Row(
                       children: [
                         Text( Helper().k_m_b_generator(int.parse(Leader?.coins??''))  ,style: style7.copyWith(height: 1,fontSize:12)),
-                        SizedBox(width: 5,),
+                        const SizedBox(width: 5,),
                         Image.asset(Images.coins,width: 13),
                       ],
                     ),

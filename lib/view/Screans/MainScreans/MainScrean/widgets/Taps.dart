@@ -4,14 +4,12 @@
 
 import 'dart:io';
 
-import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/util/helperclass.dart';
 import 'package:ahlachat/view/Screans/Layouts/widgets/AnimateAddRoom.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MainScrean/ExploreScrean.dart';
 import 'package:ahlachat/view/Screans/MainScreans/MainScrean/RoomFollowScrean.dart';
 import 'package:ahlachat/view/Screans/SearchScrean/SearchScrean.dart';
 import 'package:ahlachat/view/widgets/ModelSheet.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -20,7 +18,6 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../../../util/Dialogs.dart';
 import '../../../../../util/Localization.dart';
 import '../../../../../util/app_constants.dart';
-import '../../../../../util/dimensions.dart';
 import '../../../../../util/images.dart';
 import '../../../../../util/styles.dart';
 import '../../../../../viewmodels/Animated_Viewmodel/ElementViewModel.dart';
@@ -28,12 +25,11 @@ import '../../../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import '../../../../../viewmodels/Gifts_Viewmodel/Gifts_Viewmodel.dart';
 import '../../../../../viewmodels/RoomPlay_ViewModel/RoomPlayViewModel.dart';
 import '../../../../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
-import '../../../MomentScrean/MomentScrean.dart';
 import '../NewRoomsScrean.dart';
 import '../TrendScrean.dart';
 
 class MainScrean extends StatefulWidget {
-  MainScrean({Key? key}) : super(key: key);
+  const MainScrean({Key? key}) : super(key: key);
 
   @override
   State<MainScrean> createState() => _MainScreanState();
@@ -142,7 +138,7 @@ class _MainScreanState extends State<MainScrean> with SingleTickerProviderStateM
                         onPressed: (){
                           Room.SearchController.clear();
                           Room.SearchRooms.clear();
-                          navigateTo(context: context,screen: SearchScrean());
+                          navigateTo(context: context,screen: const SearchScrean());
 
                         },
                       ),
@@ -176,7 +172,7 @@ class _MainScreanState extends State<MainScrean> with SingleTickerProviderStateM
                             }
                             else{
 
-                              GlopalbottomSheet(isscrollable: false,context: context,Screan: AddRoomScrean());
+                              GlopalbottomSheet(isscrollable: false,context: context,Screan: const AddRoomScrean());
 
 
 

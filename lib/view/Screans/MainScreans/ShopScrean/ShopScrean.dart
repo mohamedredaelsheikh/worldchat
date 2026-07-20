@@ -14,17 +14,19 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 class ShopScrean extends StatelessWidget {
 List Pays=[];
 
+  ShopScrean({super.key});
+
   @override
   Widget build(BuildContext context) {
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context,listen: true);
 
     ShopViewmodel Shop=  Provider.of<ShopViewmodel>(context,listen: true);
 
     return   DefaultTabController(
       length:Shop.AllShop.length,
       initialIndex: 0,
-      child: Scaffold(backgroundColor:Color(0xFFf6f7f9),
-        appBar: AppBar(iconTheme: IconThemeData(color: Colors.black),backgroundColor: Colors.white,title:   Text(getLang(key: "Shop",context: context),style: style2,),automaticallyImplyLeading: true ),
+      child: Scaffold(backgroundColor:const Color(0xFFf6f7f9),
+        appBar: AppBar(iconTheme: const IconThemeData(color: Colors.black),backgroundColor: Colors.white,title:   Text(getLang(key: "Shop",context: context),style: style2,),automaticallyImplyLeading: true ),
 
         body: Column(
             children: [

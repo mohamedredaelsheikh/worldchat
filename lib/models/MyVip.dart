@@ -46,26 +46,26 @@ class MyVipmodel {
     updateLevel = json['update_level'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    Vip = json['vip'] != null ? new VipModel.fromJson(json['vip']) : null;
+    Vip = json['vip'] != null ? VipModel.fromJson(json['vip']) : null;
 
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['user_id'] = this.userId;
-    data['vip_id'] = this.vipId;
-    data['status'] = this.status;
-    data['days'] = this.days;
-    data['cost'] = this.cost;
-    data['new_id'] = this.newId;
-    data['Color_message'] = this.colorMessage;
-    data['Hidden'] = this.hidden;
-    data['update_level'] = this.updateLevel;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.Vip != null) {
-      data['vip'] = this.Vip!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['vip_id'] = vipId;
+    data['status'] = status;
+    data['days'] = days;
+    data['cost'] = cost;
+    data['new_id'] = newId;
+    data['Color_message'] = colorMessage;
+    data['Hidden'] = hidden;
+    data['update_level'] = updateLevel;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (Vip != null) {
+      data['vip'] = Vip!.toJson();
     }
     return data;
   }

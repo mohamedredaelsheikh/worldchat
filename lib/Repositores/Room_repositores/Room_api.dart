@@ -9,7 +9,6 @@ import 'package:dio/dio.dart';
 
  import 'package:provider/provider.dart';
 
-import '../../models/ChairModel.dart';
 import '../../models/JoinRoomModel.dart';
 import '../../models/Kickedusers.dart';
 import '../../models/Leaderboardusermodel.dart';
@@ -27,7 +26,6 @@ int IndexTrade=2;
 int IndexRecommended=2;
 int IndexRecommended2=2;
 class Roomapi extends RoomRepository {
-  @override
   var dio = Dio(BaseOptions(
       baseUrl: AppConstants.BASE_URL,
       headers: {
@@ -80,7 +78,7 @@ class Roomapi extends RoomRepository {
         "room_id":roomid.toString(),
         "RoomAds":RoomAds.toString()
       });
-      var  map;
+      Map<String, dynamic>  map;
       if(image==null){
           map={
           "name":name.toString(),
@@ -102,7 +100,7 @@ class Roomapi extends RoomRepository {
         };
       }
 
-      map.removeWhere((key, value) => key == null || value == null);
+      map.removeWhere((key, value) => value == null);
       FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/UpdateRoom',
@@ -125,7 +123,7 @@ class Roomapi extends RoomRepository {
       var  map={
         "kick_id": kickid.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
+      map.removeWhere((key, value) => value == null);
       FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/unkickuser',
@@ -157,7 +155,7 @@ class Roomapi extends RoomRepository {
         "room_id": room_id.toString(),
         "status": State.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
+      map.removeWhere((key, value) => value == null);
       FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/SetThroneChair',
@@ -191,7 +189,7 @@ class Roomapi extends RoomRepository {
         "room_id":roomid.toString(),
         "chair_id":InviteChairId.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
+      map.removeWhere((key, value) => value == null);
       FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/SentInviteChair',
@@ -217,7 +215,7 @@ class Roomapi extends RoomRepository {
       var  map={
         "room_id": RoomID.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null);
+      map.removeWhere((key, value) => value == null);
       FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/DeleteRoomChat',
@@ -248,7 +246,7 @@ class Roomapi extends RoomRepository {
           "password": password.toString(),
           "room_id":roomid.toString()
         };
-      map.removeWhere((key, value) => key == null || value == null);
+      map.removeWhere((key, value) => value == null);
       FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/SetPasswordRoom',
@@ -283,7 +281,7 @@ class Roomapi extends RoomRepository {
       };
 
 
-      map.removeWhere((key, value) => key == null || value == null);
+      map.removeWhere((key, value) => value == null);
       FormData formData = FormData.fromMap(map);
       Response response2 = await dio.post(
         'api/RemovePasswordRoom',
@@ -321,9 +319,9 @@ class Roomapi extends RoomRepository {
       print(response2.data['join']);
       if (response2.statusCode == 200) {
         List list =response2.data['join'];
-        list.forEach((element){
+        for (var element in list) {
           joinuserRooms.add(joinRoom.fromJson(element));
-        });
+        }
         print(joinuserRooms);
       }
     } catch (e) {
@@ -382,9 +380,9 @@ class Roomapi extends RoomRepository {
 
       if (response2.statusCode == 200) {
         List list =response2.data;
-        list.forEach((element) {
+        for (var element in list) {
           karismas.add(KarismaCollectModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -453,9 +451,9 @@ class Roomapi extends RoomRepository {
 
       if (response2.statusCode == 200) {
         List list =response2.data['Rooms']['data'];
-        list.forEach((element) {
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -474,9 +472,9 @@ class Roomapi extends RoomRepository {
 
       if (response2.statusCode == 200) {
         List list =response2.data['Rooms'];
-        list.forEach((element) {
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -495,9 +493,9 @@ class Roomapi extends RoomRepository {
 
       if (response2.statusCode == 200) {
         List list =response2.data['Rooms'];
-        list.forEach((element) {
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -525,9 +523,9 @@ List<RoomModel> FollowedRoom=[];
 print(response2.data);
       if (response2.statusCode == 200) {
         List list =response2.data['FollowRoom'];
-        list.forEach((element) {
+        for (var element in list) {
           FollowedRoom.add(RoomModel.fromJson(element['room']));
-        });
+        }
         print(FollowedRoom);
       }
     } catch (e) {
@@ -549,7 +547,7 @@ print(response2.data);
 
     try {
       Response response2 = await dio.get(
-        '/api/GetRooms/${SelectedRoomCategory}?page=${Index.toString()}',
+        '/api/GetRooms/$SelectedRoomCategory?page=${Index.toString()}',
       );
 
       if (response2.statusCode == 200) {
@@ -559,9 +557,9 @@ print(response2.data);
           Index++;
         }
         print("INDEX IS $Index");
-        list.forEach((element){
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -595,9 +593,9 @@ print(response2.data);
           IndexRecommended++;
         }
         print("INDEX IS $IndexRecommended");
-        list.forEach((element){
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -630,9 +628,9 @@ print(response2.data);
           IndexRecommended2++;
         }
         print("INDEX IS $IndexRecommended");
-        list.forEach((element){
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -661,9 +659,9 @@ print(response2.data);
 
         List list =response2.data['Rooms'];
 
-        list.forEach((element){
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -683,9 +681,9 @@ print(response2.data);
       if (response2.statusCode == 200) {
         List list =response2.data['Rooms']['data'];
 
-        list.forEach((element){
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -713,9 +711,9 @@ print(response2.data);
       if (response2.statusCode == 200) {
         List list =response2.data['Rooms']['data'];
 
-        list.forEach((element){
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -743,9 +741,9 @@ print(response2.data);
       if (response2.statusCode == 200) {
         List list =response2.data['Rooms']['data'];
 
-        list.forEach((element){
+        for (var element in list) {
           ImportantRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(ImportantRooms);
       }
     } catch (e) {
@@ -765,9 +763,9 @@ print(response2.data);
       if (response2.statusCode == 200) {
         List list =response2.data;
 
-        list.forEach((element){
+        for (var element in list) {
           Countries.add(FlagModel.fromJson(element));
-        });
+        }
         print(Countries);
       }
     } catch (e) {
@@ -835,9 +833,9 @@ print(response2.data);
       );
       if (response2.statusCode == 200) {
         List list =response2.data['Rooms']['data'];
-         list.forEach((element) {
+         for (var element in list) {
           TradeRooms.add(RoomModel.fromJson(element));
-        });
+        }
 
       }
     } catch (e) {
@@ -849,8 +847,6 @@ print(response2.data);
   }
 
   Future<ListoflEaderboardcategoryRoom?>getRoomLeaderboard(context)async {
-    ListoflEaderboardcategory ? Leaderboardsupporter;
-    ListoflEaderboardcategory ? Leaderboardsupported;
     ListoflEaderboardcategoryRoom ?LeaderboardRoom;
     try {
       Response response2 = await dio.get(
@@ -984,9 +980,9 @@ print(response2.data);
           IndexTrade++;
         }
         
-        list.forEach((element){
+        for (var element in list) {
           TradeRooms.add(RoomModel.fromJson(element));
-        });
+        }
         print(TradeRooms);
       }
     } catch (e) {
@@ -1005,9 +1001,9 @@ print(response2.data);
 
       if (response2.statusCode == 200) {
         List list =response2.data;
-        list.forEach((element) {
+        for (var element in list) {
           KickeduserRooms.add(KickedUser.fromJson(element));
-        });
+        }
         print(KickeduserRooms);
       }
     } catch (e) {
@@ -1179,9 +1175,9 @@ print(response2.data['Roomimages']['image']);
 
       if (response2.statusCode == 200) {
         List list =response2.data['gifts'] ;
-        list.forEach((element) {
+        for (var element in list) {
           RoomGifts.add(Gifts.fromJson(element));
-        });
+        }
         //Provider.of<LoginViewmodel>(context,listen: false).SendCodeRegester(context: context,phonenumber: "+2"+phone.toString());
       }
     } catch (e) {
@@ -1208,9 +1204,9 @@ print(response2.data['Roomimages']['image']);
 print(response2.data);
       if (response2.statusCode == 200) {
         List list =response2.data ;
-        list.forEach((element) {
+        for (var element in list) {
           SupervisorRoom.add(Supervisors.fromJson(element));
-        });
+        }
         //Provider.of<LoginViewmodel>(context,listen: false).SendCodeRegester(context: context,phonenumber: "+2"+phone.toString());
       }
     } catch (e) {
@@ -1293,7 +1289,7 @@ bool leaved=false;
         "room_id":Roomid.toString(),
         "user_id":   UserId.toString(),
       };
-      map.removeWhere((key, value) => key == null || value == null||value=='null'||key=='null');
+      map.removeWhere((key, value) => value=='null'||key=='null');
       FormData formData = FormData.fromMap(map);
       print('Join id is 1');
       Response response2 = await dio.post(

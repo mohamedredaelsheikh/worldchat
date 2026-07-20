@@ -1,21 +1,9 @@
-import 'package:ahlachat/main.dart';
-import 'package:ahlachat/util/Dialogs.dart';
-import 'package:ahlachat/util/Localization.dart';
-import 'package:ahlachat/viewmodels/Agora_ViewModel/AgoraViewmodel.dart';
-import 'package:ahlachat/viewmodels/Socket_ViewModel/Socketviewmodel.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:ahlachat/util/styles.dart';
 
-import 'package:just_audio/just_audio.dart';
 
-import 'package:provider/provider.dart';
 
-import 'package:rxdart/rxdart.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Repositores/Music_repositores/Musicapi.dart';
-import '../Auth_Viewmodel/LoginViewModel.dart';
 class DurationState{
   DurationState({this.position = Duration.zero, this.total = Duration.zero});
   Duration position, total;

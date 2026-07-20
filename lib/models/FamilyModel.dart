@@ -58,40 +58,40 @@ class FamilyModel {
     if (json['TopStar'] != null) {
       topStar = <TopStar>[];
       json['TopStar'].forEach((v) {
-        topStar!.add(new TopStar.fromJson(v));
+        topStar!.add(TopStar.fromJson(v));
       });
     }
     if (json['rooms'] != null) {
       rooms = <RoomModel>[];
       json['rooms'].forEach((v) {
-        rooms!.add(new RoomModel.fromJson(v));
+        rooms!.add(RoomModel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['Familyid'] = this.familyid;
-    data['firstadmin'] = this.firstadmin;
-    data['secondadmin'] = this.secondadmin;
-    data['Karisma'] = this.karisma;
-    data['GlopalKarisma'] = this.GlopalKarisma;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['Familyid'] = familyid;
+    data['firstadmin'] = firstadmin;
+    data['secondadmin'] = secondadmin;
+    data['Karisma'] = karisma;
+    data['GlopalKarisma'] = GlopalKarisma;
 
-    data['describtion'] = this.describtion;
-    data['image'] = this.image;
-    data['model'] = this.model;
-    data['user_id'] = this.userId;
-    data['nubmers'] = this.nubmers;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.topStar != null) {
-      data['TopStar'] = this.topStar!.map((v) => v.toJson()).toList();
+    data['describtion'] = describtion;
+    data['image'] = image;
+    data['model'] = model;
+    data['user_id'] = userId;
+    data['nubmers'] = nubmers;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (topStar != null) {
+      data['TopStar'] = topStar!.map((v) => v.toJson()).toList();
     }
-    if (this.rooms != null) {
-      data['rooms'] = this.rooms!.map((v) => v.toJson()).toList();
+    if (rooms != null) {
+      data['rooms'] = rooms!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -106,15 +106,15 @@ class TopStar {
   TopStar.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'];
     coins = json['coins'];
-    user = json['user'] != null ? new usermodel.fromJson(json['user']) : null;
+    user = json['user'] != null ? usermodel.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['user_id'] = this.userId;
-    data['coins'] = this.coins;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['user_id'] = userId;
+    data['coins'] = coins;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
     return data;
   }

@@ -16,7 +16,7 @@ class MemberFamilyRank extends StatelessWidget {
     FamilyViewModel  Family=Provider.of<FamilyViewModel>(context,listen:  true);
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
     print(Room.LeaderboardRoom?.dailysupporter?.length);
-    return Container(decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage('assets/image/eh.png'),fit: BoxFit.cover)),
+    return Container(decoration: const BoxDecoration(image: DecorationImage(image: ExactAssetImage('assets/image/eh.png'),fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(centerTitle: false,automaticallyImplyLeading: true,backgroundColor: Colors.transparent,title: Text(getLang(context: context,key: "Members_Rank"),style: style1,)),
@@ -34,26 +34,26 @@ class MemberFamilyRank extends StatelessWidget {
                   tabPosition: TabPosition.bottom,
                 ),
                     isScrollable: true,
-                    labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
+                    labelStyle: style3.copyWith(fontSize: 14),indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
                     unselectedLabelColor: Colors.white54,
                     labelColor:    Colors.amberAccent,
                     onTap: (val) {},
 
                     tabs:   [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Tab(
                           text: getLang(context: context,key: "Daily"),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Tab(
                           text: getLang(context: context,key: "Weekly"),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Tab(
                           text: getLang(context: context,key: "Monthly"),
                         ),

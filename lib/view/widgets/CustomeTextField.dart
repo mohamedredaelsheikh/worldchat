@@ -22,7 +22,7 @@ TextEditingController ?Controller;
  final Widget? prefxIcon;
 final Widget? suffixicon;
  final VoidCallback ? ontap;
- CustomeTextField({
+ CustomeTextField({super.key, 
    this.suffixicon,
       this.hint,
       this.obscureText,
@@ -54,18 +54,18 @@ final Widget? suffixicon;
 cursorColor: Colors.black,keyboardType:type,
               decoration: InputDecoration( suffixIcon: suffixicon,
                   suffixIconColor: Colors.black,
-                focusedBorder:bordercolor==null?OutlineInputBorder(
+                focusedBorder:bordercolor==null?const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent, width: 1.0),
 
                 ): OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(color: MainColor, width: 1.0),
+                  borderSide: const BorderSide(color: MainColor, width: 1.0),
                 ),
-                enabledBorder: bordercolor==null?OutlineInputBorder(
+                enabledBorder: bordercolor==null?const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent, width: 1.0),
                 ): OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(color: Colors.black45, width: 1.0),
+                  borderSide: const BorderSide(color: Colors.black45, width: 1.0),
                 ),
                 hintText:hint,
 
@@ -76,7 +76,7 @@ cursorColor: Colors.black,keyboardType:type,
           if(type==TextInputType.phone)
 
 
-            CountryCodePhone()
+            const CountryCodePhone()
         ],
       ),
     ),);
@@ -136,14 +136,14 @@ class CustomTextFormField3 extends StatelessWidget {
 
           hintStyle: style1.copyWith(color:hintColor??Colors.black45),
 
-          enabledBorder: new OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(radius??30),
-            borderSide:  BorderSide(color:Colors.transparent  ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius??30),
+            borderSide:  const BorderSide(color:Colors.transparent  ),
 
           ),
-          focusedBorder: new OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(radius??30),
-            borderSide:  BorderSide(color: Colors.transparent ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius??30),
+            borderSide:  const BorderSide(color: Colors.transparent ),
 
           ),
           hintText: hint.toString(),
@@ -208,14 +208,14 @@ class CustomTextFormField4 extends StatelessWidget {
 
           hintStyle: style1.copyWith(color:hintColor??Colors.black45),
 
-          enabledBorder: new OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(radius??30),
-            borderSide:  BorderSide(color:Colors.transparent  ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius??30),
+            borderSide:  const BorderSide(color:Colors.transparent  ),
 
           ),
-          focusedBorder: new OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(radius??30),
-            borderSide:  BorderSide(color: Colors.transparent ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius??30),
+            borderSide:  const BorderSide(color: Colors.transparent ),
 
           ),
           hintText: hint.toString(),

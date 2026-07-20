@@ -13,16 +13,17 @@ import 'package:provider/provider.dart';
 
 import '../../../../util/images.dart';
 import '../../../../viewmodels/Auth_Viewmodel/LoginViewModel.dart';
-import '../../../../viewmodels/Room_Viewmodel/Room_Viewmodel.dart';
 
 class NewRoomsScrean extends StatelessWidget {
-  ScrollController? _controller= ScrollController();
+  final ScrollController? _controller= ScrollController();
   int showed_ads = 0;
+
+  NewRoomsScrean({super.key});
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Rooms=  Provider.of<RoomViewmodel>(context,listen: true);
-    SvgViewmodel svga=  Provider.of<SvgViewmodel>(context,listen: true);
-    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
+    Provider.of<SvgViewmodel>(context,listen: true);
+    Provider.of<LoginViewmodel>(context,listen: true);
 
     roomcontext=context;
     void _scrollListener() {
@@ -40,7 +41,7 @@ class NewRoomsScrean extends StatelessWidget {
       },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CustomScrollView(cacheExtent: 10.0,physics: const BouncingScrollPhysics(),
+          child: CustomScrollView(cacheExtent: 10.0, physics: const BouncingScrollPhysics(),
             controller: _controller,
             slivers: <Widget>[
 
@@ -52,22 +53,22 @@ class NewRoomsScrean extends StatelessWidget {
                       Expanded(child: InkWell(
                         onTap: (){
                           Rooms.GetWeeklyStar(context: context);
-                           navigateTo(context: context, screen: WeeklystarScrean());
+                           navigateTo(context: context, screen: const WeeklystarScrean());
                         },
                         child: Container( height: 60,child: Padding(
                           padding: const EdgeInsets.only(top: 12),
                           child: Center(child: Text(getLang(context: context, key: "Weekly_Star"),style: style6.copyWith(color: Colors.white,fontSize: 13))),
-                        ),decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), image: const DecorationImage(image:const ExactAssetImage(Images.Rank),fit: BoxFit.fill)),),
+                        ),decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), image: const DecorationImage(image:ExactAssetImage(Images.Rank),fit: BoxFit.fill)),),
                       )) ,
                     const SizedBox(width: 10,),
                       Expanded(child: Container( child: Padding(
                         padding: const EdgeInsets.only(top: 12),
                         child: Center(child: Text(getLang(context: context, key: "Games" ),style: style6.copyWith(color: Colors.white,fontSize: 13))),
-                      ),height: 60,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: const DecorationImage(image:const ExactAssetImage(Images.Games),fit: BoxFit.fill)),)),
+                      ),height: 60,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: const DecorationImage(image:ExactAssetImage(Images.Games),fit: BoxFit.fill)),)),
                       const SizedBox(width: 10,),
                       Expanded(child: InkWell( onTap: () {
                         Rooms.GetFamilyLeaderboard(context: context);
-                        navigateTo(context: context,screen: LeaderboardFamilyScrean());
+                        navigateTo(context: context,screen: const LeaderboardFamilyScrean());
                       },
                         child: Container(child: Padding(
                           padding: const EdgeInsets.only(top: 12),
@@ -79,7 +80,7 @@ class NewRoomsScrean extends StatelessWidget {
                   ),
                 ),
               ),
-              SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
+              const SliverPadding(padding: EdgeInsets.symmetric(vertical: 5)),
 
 
             SliverGrid(

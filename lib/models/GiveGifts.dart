@@ -46,19 +46,19 @@ class givegifts {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['image'] = this.image;
-    data['sound']=this.Sound;
-    data['category_id'] = this.categoryId;
-    data['price'] = this.price;
-    data['state'] = this.state;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['Listuser'] = this.ListUser;
-    data['quantity'] = this.quantity;
-    data['svga']=this.svga;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['image'] = image;
+    data['sound']=Sound;
+    data['category_id'] = categoryId;
+    data['price'] = price;
+    data['state'] = state;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['Listuser'] = ListUser;
+    data['quantity'] = quantity;
+    data['svga']=svga;
     return data;
   }
 }

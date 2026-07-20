@@ -20,11 +20,11 @@ class emojimodel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['emoji_svga'] = this.emojiSvga;
-    data['emoji_Name'] = this.emojiName;
-    data['image'] = this.image;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['emoji_svga'] = emojiSvga;
+    data['emoji_Name'] = emojiName;
+    data['image'] = image;
     return data;
   }
 }

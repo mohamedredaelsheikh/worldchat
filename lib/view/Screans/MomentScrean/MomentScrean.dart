@@ -20,6 +20,8 @@ import 'package:readmore/readmore.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class MomentScrean extends StatefulWidget {
+  const MomentScrean({super.key});
+
   @override
   State<MomentScrean> createState() => _MomentScreanState();
 }
@@ -47,6 +49,7 @@ class _MomentScreanState extends State<MomentScrean> {
 
 
   }
+  @override
   void initState() {
     _controller = ScrollController();
     _controller?.addListener(_scrollListener);
@@ -67,7 +70,7 @@ class _MomentScreanState extends State<MomentScrean> {
       children: [
 
 
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Container(height: 30,decoration: BoxDecoration(color: Colors.white,borderRadius:  BorderRadius.circular(25.0)),
@@ -100,7 +103,7 @@ class _MomentScreanState extends State<MomentScrean> {
               ),
             ),
           ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
           Expanded(child: TabBarView(children: [
             SmartRefresher(
               enablePullDown: true,
@@ -113,7 +116,7 @@ class _MomentScreanState extends State<MomentScrean> {
 
               },
               controller:posts.refreshController3,
-              child: ListView.separated( physics: BouncingScrollPhysics(),controller:_controller,itemCount: posts.GeneralPosts.length,separatorBuilder: (context, index) => Padding(
+              child: ListView.separated( physics: const BouncingScrollPhysics(),controller:_controller,itemCount: posts.GeneralPosts.length,separatorBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Container(height: 5,color: whitecolor),
               ),itemBuilder: (context, index)
@@ -121,7 +124,7 @@ class _MomentScreanState extends State<MomentScrean> {
                 usermodel ?Postuser= posts.GeneralPosts[index].user;
                 return  Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(width: SizeConfig.screenWidth!,
+                  child: SizedBox(width: SizeConfig.screenWidth!,
                       child: Column(mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -134,14 +137,14 @@ class _MomentScreanState extends State<MomentScrean> {
                                 InkWell(onTap: (){
                                   if(Postuser?.id!=user.userinfo?.id){
                                     user.GetShoweduserProfile(Postuser);
-                                    navigateTo(context: context,screen: ShowUserProfile());
+                                    navigateTo(context: context,screen: const ShowUserProfile());
                                   }
 
                                 },
                                   child: Row(
                                     children: [
                                       CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(Postuser?.image ?? ''), radius: 23, ),
-                                      SizedBox(width: 5,),
+                                      const SizedBox(width: 5,),
                                       UserSideInfoWidgets(UserDate: Postuser,showdescr: 1,)
                                     ],
                                   ),
@@ -184,7 +187,7 @@ class _MomentScreanState extends State<MomentScrean> {
                               child: Column(mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(height: 10,),
+                                  const SizedBox(height: 10,),
                                   ReadMoreText(
                                     posts.GeneralPosts[index].content ?? '',
                                     trimLines: 2,
@@ -192,8 +195,8 @@ class _MomentScreanState extends State<MomentScrean> {
                                     trimMode: TrimMode.Line,style: style5.copyWith(height: 1),
                                     trimCollapsedText: getLang(context: context,key: "Show_more"),
                                     trimExpandedText:  getLang(context: context,key: "Show_less"),
-                                    moreStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
-                                    lessStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                                    moreStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                                    lessStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 5),
 
@@ -240,7 +243,7 @@ class _MomentScreanState extends State<MomentScrean> {
                                           posts.LikePost(Postid:  posts.GeneralPosts[index].id,  );
                                         }
                                       }, child:  FaIcon( FontAwesomeIcons.fire,color: posts.LikedPost.contains( posts.GeneralPosts[index].id.toString())?MainColor:Colors.grey,  )),
-                                      SizedBox(width: 7,),
+                                      const SizedBox(width: 7,),
                                       Text(  posts.GeneralPosts[index].like?.length.toString() ?? '', style: style6),
                                     ],
                                   ),
@@ -251,8 +254,8 @@ class _MomentScreanState extends State<MomentScrean> {
                                   },
                                     child: Row(
                                       children: [
-                                        FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
-                                        SizedBox(width: 7,),
+                                        const FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
+                                        const SizedBox(width: 7,),
                                         Text(  posts.GeneralPosts[index].commentsuser?.length.toString() ?? '', style: style6, ),
                                       ],
                                     ),
@@ -268,7 +271,7 @@ class _MomentScreanState extends State<MomentScrean> {
 
               ),
             ),
-            ListView.separated( physics: BouncingScrollPhysics(),controller:_controller2,itemCount: posts.FollowPosts.length,separatorBuilder: (context, index) => Padding(
+            ListView.separated( physics: const BouncingScrollPhysics(),controller:_controller2,itemCount: posts.FollowPosts.length,separatorBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 2),
               child: Container(height: 5,color: whitecolor),
             ),itemBuilder: (context, index)
@@ -276,7 +279,7 @@ class _MomentScreanState extends State<MomentScrean> {
               usermodel ?Postuser= posts.FollowPosts[index].user;
               return  Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Container(width: SizeConfig.screenWidth!,
+                child: SizedBox(width: SizeConfig.screenWidth!,
                     child: Column(mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -289,14 +292,14 @@ class _MomentScreanState extends State<MomentScrean> {
                               InkWell(onTap: (){
                                 if(Postuser?.id!=user.userinfo?.id){
                                   user.GetShoweduserProfile(Postuser);
-                                  navigateTo(context: context,screen: ShowUserProfile());
+                                  navigateTo(context: context,screen: const ShowUserProfile());
                                 }
 
                               },
                                 child: Row(
                                   children: [
                                     CircleAvatar(backgroundColor: Colors.transparent,backgroundImage: CachedNetworkImageProvider(posts.FollowPosts[index].user?.image ?? ''), radius: 23, ),
-                                    SizedBox(width: 5,),
+                                    const SizedBox(width: 5,),
                                     UserSideInfoWidgets(UserDate: posts.FollowPosts[index].user,showdescr: 1,)
                                   ],
                                 ),
@@ -320,7 +323,7 @@ class _MomentScreanState extends State<MomentScrean> {
                                           border: Border.all(color: MainColor),
                                           borderRadius: BorderRadius.circular(25)),
                                       child: Padding(
-                                        padding:   EdgeInsets.symmetric(horizontal: 9),
+                                        padding:   const EdgeInsets.symmetric(horizontal: 9),
                                         child: Text(getLang(context: context,key: "UnFollow")),
                                       ),
                                     ): Container(
@@ -339,7 +342,7 @@ class _MomentScreanState extends State<MomentScrean> {
                             child: Column(mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 10,),
+                                const SizedBox(height: 10,),
                                 ReadMoreText(
                                   posts.FollowPosts[index].content ?? '',
                                   trimLines: 2,
@@ -347,8 +350,8 @@ class _MomentScreanState extends State<MomentScrean> {
                                   trimMode: TrimMode.Line,style: style5.copyWith(height: 1),
                                   trimCollapsedText: getLang(context: context,key: "Show_more"),
                                   trimExpandedText:  getLang(context: context,key: "Show_less"),
-                                  moreStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
-                                  lessStyle: TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                                  moreStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
+                                  lessStyle: const TextStyle(fontSize: 14,color: MainColor, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 5),
 
@@ -395,7 +398,7 @@ class _MomentScreanState extends State<MomentScrean> {
                                         posts.LikePost(Postid: posts.FollowPosts[index].id );
                                       }
                                     }, child:  FaIcon( FontAwesomeIcons.fire,color: posts.LikedPost.contains(posts.FollowPosts[index].id.toString())?MainColor:Colors.grey,  )),
-                                    SizedBox(width: 7,),
+                                    const SizedBox(width: 7,),
                                     Text( posts.FollowPosts[index].like?.length.toString() ?? '', style: style6),
                                   ],
                                 ),
@@ -406,8 +409,8 @@ class _MomentScreanState extends State<MomentScrean> {
                                 },
                                   child: Row(
                                     children: [
-                                      FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
-                                      SizedBox(width: 7,),
+                                      const FaIcon( FontAwesomeIcons.comment,color: MainColor,size: 22),
+                                      const SizedBox(width: 7,),
                                       Text( posts.FollowPosts[index].commentsuser?.length.toString() ?? '', style: style6, ),
                                     ],
                                   ),

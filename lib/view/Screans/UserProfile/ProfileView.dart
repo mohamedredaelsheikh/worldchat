@@ -1,15 +1,14 @@
-import 'package:ahlachat/util/images.dart';
 import 'package:ahlachat/view/widgets/PhotoWithFrame.dart';
 import 'package:ahlachat/view/widgets/UserInfoWidgets.dart';
-import 'package:ahlachat/view/widgets/UserSideInfoWidget.dart';
 import 'package:ahlachat/viewmodels/Auth_Viewmodel/LoginViewModel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:provider/provider.dart';
 
 class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
+
 
 
   @override
@@ -25,8 +24,8 @@ class ProfileView extends StatelessWidget {
           indicatorColor: Colors.transparent,
 
           indicatorBackgroundColor:Colors.transparent,
-          children:List.generate(user.userProfileData?.ProfileImages?.length==0?1:user.userProfileData?.ProfileImages?.length??0, (index) => CachedNetworkImage(
-              imageUrl:user.userProfileData?.ProfileImages?.length==0?user.userProfileData?.image??'':user.userProfileData?.ProfileImages![index].image??'',fit: BoxFit.fill)),
+          children:List.generate((user.userProfileData?.ProfileImages?.isEmpty ?? false)?1:user.userProfileData?.ProfileImages?.length??0, (index) => CachedNetworkImage(
+              imageUrl:(user.userProfileData?.ProfileImages?.isEmpty ?? false)?user.userProfileData?.image??'':user.userProfileData?.ProfileImages![index].image??'',fit: BoxFit.fill)),
           onPageChanged: (value) {},
           autoPlayInterval: 4000,
           isLoop: true,

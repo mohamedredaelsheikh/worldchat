@@ -51,7 +51,7 @@ class GlopalGiftWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children:[
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
                   Row(
                     children: [
                       CircleAvatar(backgroundColor: Colors.transparent,radius:20,backgroundImage: CachedNetworkImageProvider(  GlopalGift.Sender?.image??Images.userphoto),),
@@ -63,21 +63,21 @@ class GlopalGiftWidget extends StatelessWidget {
                           Text(Helper().CutName3(name: GlopalGift.Sender?.name??""),style: Namestyle.copyWith(color: Colors.white,fontSize: 13 ),),
                           Text(  "${getLang(context: context,key: "Send")} ${GlopalGift.GlopelGift?.name??''}",style: style6.copyWith(color: Colors.white,fontSize: 13 ),),
 
-                          SizedBox(height: 10,)
+                          const SizedBox(height: 10,)
                         ],
                       ),
                     ],
                   ),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
 
-                  SizedBox(width: 20,),
+                  const SizedBox(width: 20,),
                   Container(height:  40,width:40,decoration: BoxDecoration(image:DecorationImage(image: CachedNetworkImageProvider( GlopalGift.GlopelGift?.image??Images.userphoto)) ) ,),
-                  SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
                   Image.asset(Helper().CheckQuantaty(quantity:  GlopalGift.GlopelGiftQuantity),height: 40,width: 40,),
 
                 ],
               ),
-            ),decoration:BoxDecoration( image: DecorationImage(image: ExactAssetImage('assets/image/o.png'),fit: BoxFit.cover), borderRadius:  BorderRadius.circular(0)), ),
+            ),decoration:BoxDecoration( image: const DecorationImage(image: ExactAssetImage('assets/image/o.png'),fit: BoxFit.cover), borderRadius:  BorderRadius.circular(0)), ),
           )),
         ),
       ),

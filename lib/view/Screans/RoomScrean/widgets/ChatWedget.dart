@@ -1,10 +1,8 @@
 
 
-import 'package:ahlachat/util/SizeConfig.dart';
 import 'package:ahlachat/view/Screans/ChatScrean/GuessGameWidget.dart';
 import 'package:ahlachat/view/widgets/UserSideInfoWidget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ahlachat/util/Dialogs.dart';
@@ -28,8 +26,8 @@ import '../../../widgets/ModelSheet.dart';
    RoomViewmodel  Room=  Provider.of<RoomViewmodel>(context,listen: true);
    LoginViewmodel user=  Provider.of<LoginViewmodel>(context,listen: true);
    return Expanded(
-     child: ListView.builder(addAutomaticKeepAlives: true,padding: EdgeInsets.only(top: 0),
-       physics: BouncingScrollPhysics(),
+     child: ListView.builder(addAutomaticKeepAlives: true,padding: const EdgeInsets.only(top: 0),
+       physics: const BouncingScrollPhysics(),
        controller: Room.controller,
        itemCount:Room.Currentroom?.chatroom?.length,itemBuilder:(context, index) =>
          InkWell(onDoubleTap: (){
@@ -68,7 +66,7 @@ import '../../../widgets/ModelSheet.dart';
                if(user.userinfo?.id.toString()!=Room.Currentroom?.chatroom?[index].user?.id.toString() ){
                  user.userinfoRoom(context: context,id:Room.Currentroom?.chatroom?[index].user?.id );
                  user.getuserroominfo(user:Room.Currentroom?.chatroom?[index].user);
-                 GlopalbottomSheet(context: context,Screan: RoomUserunchairProfile());
+                 GlopalbottomSheet(context: context,Screan: const RoomUserunchairProfile());
                }else{
 
 
@@ -87,7 +85,7 @@ import '../../../widgets/ModelSheet.dart';
                    Row(    mainAxisSize: MainAxisSize.min,
                      children: [
                        CircleAvatar(backgroundColor: Colors.transparent,radius: 15,backgroundImage: CachedNetworkImageProvider(Room.Currentroom?.chatroom?[index].user?.image??''),),
-                       SizedBox(width: 5,),
+                       const SizedBox(width: 5,),
                        UserSideInfoWidgets(UserDate: Room.Currentroom?.chatroom?[index].user,showdescr: 1,TextColor: Colors.white,),
                      ],
                    ),
@@ -111,13 +109,13 @@ import '../../../widgets/ModelSheet.dart';
                    Room.Currentroom?.chatroom?[index].kind==4?Row(mainAxisSize: MainAxisSize.min,
                      children: [
                        Text('${Room.Currentroom?.chatroom?[index].content}',style:Namestyle.copyWith( color: (Room.Currentroom?.chatroom?[index].user?.ColoredMessage!=null&&Room.Currentroom?.chatroom?[index].kind!=1)?Color(int.parse(Room.Currentroom?.chatroom?[index].user?.ColoredMessage)):whitecolor4,fontSize: 15),),
-                       SizedBox(width: 25,),
+                       const SizedBox(width: 25,),
                        Image.asset(Room.Currentroom?.chatroom?[index].roomId=='0'?'assets/image/loselucky.png':'assets/image/winlucky.webp',width: 30,height:  30),
                      ],
                    ):Room.Currentroom?.chatroom?[index].kind==5?
                    Padding(
                      padding: const EdgeInsets.all(8.0),
-                     child: Container(child: Lottie.network(
+                     child: SizedBox(child: Lottie.network(
                        Room.Currentroom?.chatroom?[index].content??'',  repeat: false,reverse: false, frameRate: FrameRate.max,animate: true  ),
                          height: 50,width: 50,),
                    ):
@@ -148,19 +146,19 @@ import '../../../widgets/ModelSheet.dart';
                    Room.Currentroom?.chatroom?[index].kind==9?Column(
                      mainAxisSize: MainAxisSize.min,
                      children: [
-                       Room.Currentroom?.chatroom?[index].Guess?.status==0?   Text('${int.parse(Room.Currentroom?.chatroom?[index].Coins??"0").round().toString()}  لعبه التخمين  , الهديه هي ${Room.Currentroom?.chatroom?[index].user?.name} بداء ',textDirection: TextDirection.ltr,style: TextStyle(color: Colors.orange,fontSize: 13),):
+                       Room.Currentroom?.chatroom?[index].Guess?.status==0?   Text('${int.parse(Room.Currentroom?.chatroom?[index].Coins??"0").round().toString()}  لعبه التخمين  , الهديه هي ${Room.Currentroom?.chatroom?[index].user?.name} بداء ',textDirection: TextDirection.ltr,style: const TextStyle(color: Colors.orange,fontSize: 13),):
                        Room.Currentroom?.chatroom?[index].Guess?.status==3?
   InkWell(onTap: () {
     Dialogs().showtoast(Room.Currentroom?.chatroom?[index].Guess?.status.toString());
-  },child: Text( '${Room.Currentroom?.chatroom?[index].Guess?.Sender?.name} تعادل مع  ',textDirection: TextDirection.ltr,style: TextStyle(color: Colors.orange,fontSize: 16 ),)):InkWell(onTap: () {
+  },child: Text( '${Room.Currentroom?.chatroom?[index].Guess?.Sender?.name} تعادل مع  ',textDirection: TextDirection.ltr,style: const TextStyle(color: Colors.orange,fontSize: 16 ),)):InkWell(onTap: () {
     print(Room.Currentroom?.chatroom?[index].Guess?.winner.runtimeType);
-  },child: Text('${Room.Currentroom?.chatroom?[index].Guess?.Sender?.id==Room.Currentroom?.chatroom?[index].Guess?.winner?Room.Currentroom?.chatroom![index].Guess?.Sender?.name??'':Room.Currentroom?.chatroom?[index].Guess?.Reciver?.name??""} الفائز هو  ',textDirection: TextDirection.ltr,style: TextStyle(color: Colors.orange,fontSize: 16),)),
+  },child: Text('${Room.Currentroom?.chatroom?[index].Guess?.Sender?.id==Room.Currentroom?.chatroom?[index].Guess?.winner?Room.Currentroom?.chatroom![index].Guess?.Sender?.name??'':Room.Currentroom?.chatroom?[index].Guess?.Reciver?.name??""} الفائز هو  ',textDirection: TextDirection.ltr,style: const TextStyle(color: Colors.orange,fontSize: 16),)),
           if(Room.Currentroom?.chatroom?[index].Guess?.status==0)    Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
                       child: InkWell(onTap:() {
                         user.SelectGuess(val: null);
                         user.SelectGuesscoins(val: null);
-                        showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
+                        showModalBottomSheet(barrierColor:Colors.transparent,backgroundColor:  Colors.black,shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight:Radius.circular(30), )),
                             context: context,
                             builder: (context) {
                               return GuessGameWidget(index: index,);
@@ -178,7 +176,7 @@ import '../../../widgets/ModelSheet.dart';
 
                  Padding(
                    padding: const EdgeInsets.only(top: 5),
-                   child: Container(  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:  (Room.Currentroom?.chatroom?[index].user?.ColoredMessage!=null&&Room.Currentroom?.chatroom?[index].kind!=1)?Color(int.parse(Room.Currentroom?.chatroom?[index].user?.ColoredMessage)).withOpacity(0.7):Colors.transparent,),
+                   child: Container(  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:  (Room.Currentroom?.chatroom?[index].user?.ColoredMessage!=null&&Room.Currentroom?.chatroom?[index].kind!=1)?Color(int.parse(Room.Currentroom?.chatroom?[index].user?.ColoredMessage)).withValues(alpha: 0.7):Colors.transparent,),
 
                        child: Padding(
                          padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 2),
@@ -211,7 +209,7 @@ class DICE extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomViewmodel Room=  Provider.of<RoomViewmodel>(context,listen: true);
-    return Container(child: Lottie.network(
+    return SizedBox(child: Lottie.network(
         Room.Currentroom?.chatroom?[2].content??'',  repeat: false,reverse: false, frameRate: FrameRate.max,animate: true  ),
       height: 50,width: 50,);
   }

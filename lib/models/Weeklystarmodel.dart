@@ -36,40 +36,40 @@ class WeeklyStarModel {
     if (json['supporters'] != null) {
       supporters = <Leaderboardusermodel>[];
       json['supporters'].forEach((v) {
-        supporters!.add(new Leaderboardusermodel.fromJson(v));
+        supporters!.add(Leaderboardusermodel.fromJson(v));
       });
     }
     if (json['supporteds'] != null) {
       supporteds = <Leaderboardusermodel>[];
       json['supporteds'].forEach((v) {
-        supporteds!.add(new Leaderboardusermodel.fromJson(v));
+        supporteds!.add(Leaderboardusermodel.fromJson(v));
       });
     }
     if (json['gifts'] != null) {
       gifts = <Gift>[];
       json['gifts'].forEach((v) {
-        gifts!.add(new Gift.fromJson(v));
+        gifts!.add(Gift.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['Starttime'] = this.starttime;
-    data['Endtime'] = this.endtime;
-    data['image'] = this.image;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.supporters != null) {
-      data['supporters'] = this.supporters!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['Starttime'] = starttime;
+    data['Endtime'] = endtime;
+    data['image'] = image;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (supporters != null) {
+      data['supporters'] = supporters!.map((v) => v.toJson()).toList();
     }
-    if (this.supporteds != null) {
-      data['supporteds'] = this.supporteds!.map((v) => v.toJson()).toList();
+    if (supporteds != null) {
+      data['supporteds'] = supporteds!.map((v) => v.toJson()).toList();
     }
-    if (this.gifts != null) {
-      data['gifts'] = this.gifts!.map((v) => v.toJson()).toList();
+    if (gifts != null) {
+      data['gifts'] = gifts!.map((v) => v.toJson()).toList();
     }
     return data;
   }
